@@ -1,0 +1,22 @@
+@import '../shared/colors.scss';
+
+@mixin primary-button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 2px;
+  padding: 13px 20px;
+  background: $gradient;
+  font-size: 16px;
+  color: $white;
+  outline: none;
+  font-weight: 600;
+  line-height: 1.5;
+  transition: all 2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background: linear-gradient(135deg, $orange 20%, $pink 100%); 
+  }
+}

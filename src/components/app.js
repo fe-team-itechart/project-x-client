@@ -1,9 +1,12 @@
 import React from 'react';
+import Header from '../containers/header';
 
 const App = () => {
   return (
-    <div>aaa</div>
+    <>
+      <Header />
+    </>
   );
 };
 
-export default App
+export default App;
