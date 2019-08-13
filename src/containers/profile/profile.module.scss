@@ -1,0 +1,92 @@
+@import '../../scss/shared/breakpoints.scss';
+@import '../../scss/shared/fonts.scss';
+@import '../../scss/shared/colors.scss';
+
+
+// phone > 320px 
+@media screen and (min-width: $width-xs) {
+    .profile{
+        display: block;
+        .menu{
+            width: 100%;
+        }
+        .main{
+            width: 100%;
+        }
+    }
+}
+
+// tablet > 768px 
+@media screen and (min-width: $width-md) {
+    .profile{
+        display: block;
+        .menu{
+            width: 100%;
+        }
+        .main{
+            width: 100%;
+        }
+    }
+}
+
+// desktop > 1200px 
+@media screen and (min-width: $width-xl) {
+    body{
+        background-color: $bcg-gray-dark;
+    }
+    .profile{
+        background-color: $bcg-gray-dark;
+        display: flex;
+        width: 100%;
+        max-width: 900px;
+        position: relative;
+        left: 50%;
+        margin-left: -450px;
+        .menu{
+            width: 300px;
+            padding: 15px;
+            button{
+                width: 100%;
+                height: 100px;
+                background-color: $bcg-gray-light;
+                border: none;
+                border-top: 3px $bcg-gray-dark solid;
+                color: $white;
+            }
+            button.active{
+                background: $gradient;
+            }
+            .user{
+                text-align: center;
+                margin-bottom: 15px;
+                .photo{
+                    width: 200px;
+                    height: 200px;
+                    background-image: url(https://www.ktk.kz/getimage/mainpagebig/111099);
+                    margin: 15px;
+                    position: relative;
+                    left: 50%;
+                    margin-left: -100px;
+                    background-size: auto 100%;
+                    border-radius: 50%;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-color: #000;
+                    border: 2px $bcg-gray-light solid;
+                }
+                .name{
+                    color: $white;
+                    font-size: 20px;
+                    font-weight: 100;
+                }
+                .role{
+                    font-size: 18px;
+                    color: $gray-input;
+                }
+            }
+        }
+        .main{
+            width: 600px;
+        }
+    }
+}

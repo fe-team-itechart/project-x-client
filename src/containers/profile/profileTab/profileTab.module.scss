@@ -1,0 +1,66 @@
+@import '../../../scss/shared/breakpoints.scss';
+@import '../../../scss/shared/fonts.scss';
+@import '../../../scss/shared/colors.scss';
+
+@media screen and (min-width: $width-xl) {
+  .profile{
+    width: 100%;
+    margin-top: 40px;
+
+    input{
+      background-color: transparent;
+      color: $white;
+      border: 1px $gray-input solid;
+    }
+    input::placeholder{
+      color: $gray-input;
+    }
+    input:disabled{
+      border: 1px transparent solid;
+    }
+    .userFio{
+      display: flex;
+      input{
+        width: 50%;
+        padding: 15px 5px;
+        margin: 0 5px;
+      }
+    }
+    .description{
+      margin-top: 25px;
+      input{
+        width: 100%;
+        padding: 15px 5px;
+      }
+      margin-right: 12px;
+    }
+    .social{
+      margin-top: 25px;
+      section span{
+        display: inline-block;
+        width: 250px;
+        padding: 15px 5px;
+        background: $bcg-gray-light;
+        color: $white;
+        margin: 5px 10px 5px 0;
+      }
+      section input{
+        padding: 15px 5px;
+        width: 298px;
+      }
+      svg{
+        font-size: 20px;
+        margin: 0 5px;
+      }
+    }
+    button{
+      background: $gradient;
+      width: 100px;
+      height: 50px;
+      text-align: center;
+      margin: 25px 15px 15px 0;
+      color: $white;
+      border: none;
+    }
+  }
+}
