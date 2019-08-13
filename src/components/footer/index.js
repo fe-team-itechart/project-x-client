@@ -13,32 +13,38 @@ export const Footer = () => {
       </div>
       <div className={styles.social_media_container}>
         <h2>Follow us on</h2>
-        <div>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://vk.com/itechart.group">
-            <span className={styles.social_media}>
-              <FaVk />
-            </span>
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.youtube.com/user/iTechArt">
-            <span className={styles.social_media}>
-              <FaYoutube />
-            </span>
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.facebook.com/iTechArt.Group/">
-            <span className={styles.social_media}>
-              <FaFacebookSquare />
-            </span>
-          </a>
-        </div>
+        <ul>
+          <li>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://vk.com/itechart.group">
+              <span className={styles.social_media}>
+                <FaVk />
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.youtube.com/user/iTechArt">
+              <span className={styles.social_media}>
+                <FaYoutube />
+              </span>
+            </a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.facebook.com/iTechArt.Group/">
+              <span className={styles.social_media}>
+                <FaFacebookSquare />
+              </span>
+            </a>
+          </li>
+        </ul>
       </div>
     </footer>
   );

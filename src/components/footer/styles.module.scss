@@ -12,6 +12,15 @@
     flex-direction: column-reverse;
   }
 
+  h2 {
+    color: $white;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    color: $white;
+  }
+
   div {
     width: 30%;
     @media screen and (max-width: $width-xl) {
@@ -31,15 +40,6 @@
   }
 }
 
-h2 {
-  color: $white;
-  margin-bottom: 20px;
-}
-
-p {
-  color: $white;
-}
-
 .social_media_container {
   height: auto;
   display: flex;
@@ -47,14 +47,17 @@ p {
   align-items: center;
   justify-content: flex-start;
 
-  div {
+  ul {
     display: flex;
     justify-content: space-around;
     width: 80%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
     @media screen and (max-width: $width-xl) {
-      flex-direction:row;
-      width: 40%;
-      }
+        flex-direction:row;
+        width: 40%;
+    }
 
     a {
       width: 50px;
