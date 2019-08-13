@@ -2,84 +2,90 @@
 @import '../../scss/shared/breakpoints.scss';
 
 .footer {
-    margin: 15px auto;
-    width: 90%;
-    background-color:$bcg-gray-light;
-    display: flex;
-    justify-content: space-around;
-    padding: 20px 0;
+  margin: 15px auto;
+  width: 90%;
+  background-color:$bcg-gray-light;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+  @media screen and (max-width: $width-xl) {
+    flex-direction: column-reverse;
+  }
+
+  div {
+    width: 30%;
     @media screen and (max-width: $width-xl) {
-        flex-direction: column-reverse;
-      }
-    div{
-         width: 30%;
-         @media screen and (max-width: $width-xl) {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            padding: 0 0 20px 0;
-            align-items: center;
-          }
-          img{
-              height: 40px;
-              @media screen and (max-width: $width-xl) {
-                width: 200px
-              } 
-          }
-     }
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 0 0 20px 0;
+      align-items: center;
+    }
+    
+    img {
+      height: 40px;
+      @media screen and (max-width: $width-xl) {
+        width: 200px
+      } 
+    }
+  }
 }
 h2 {
-    color: $white;
-    margin: 0 0 20px 0;
+  color: $white;
+  margin: 0 0 20px 0;
 }
-p{
-    color: $white;
+p {
+  color: $white;
 }
-.social_media_container{
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    div{
-        display: flex;
-        justify-content: space-around;
-        @media screen and (max-width: $width-xl) {
-            flex-direction:row;
-            width: 40%;
-          }
-        width: 80%;
-        a{
-            width: 50px;
-            color: #000;
-            text-decoration: none;
-            :visited{
-                color: #000;
-                text-decoration: underline;
-            }
-            :hover {
-                color: #000;
-                text-decoration:none;
-            }
-            
-            :focus{
-                color: #000;
-                text-decoration: underline;
-            }
-            :active {
-                color: #000;
-                text-decoration: underline;
-            }
-        }
-    }
+.social_media_container {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 
-}
-.social_media{
+  div {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    width: 50px;
-    background: $gradient;
-    border-radius: 50%;
+    justify-content: space-around;
+    width: 80%;
+    @media screen and (max-width: $width-xl) {
+      flex-direction:row;
+      width: 40%;
+      }
+
+    a{
+      width: 50px;
+      color: #000;
+      text-decoration: none;
+
+      :visited {
+        color: #000;
+        text-decoration: underline;
+      }
+
+      :hover {
+        color: #000;
+        text-decoration:none;
+      }  
+
+      :focus {
+        color: #000;
+        text-decoration: underline;
+      }
+
+      :active {
+        color: #000;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.social_media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  background: $gradient;
+  border-radius: 50%;
 }
