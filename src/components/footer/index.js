@@ -3,7 +3,7 @@ import React from 'react';
 import { FaVk, FaYoutube, FaFacebookSquare } from 'react-icons/fa';
 import styles from './styles.module.scss';
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div>
@@ -43,5 +43,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;
