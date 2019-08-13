@@ -1,9 +1,12 @@
 import React from 'react';
 
-const App = () => {
+import { Footer } from './footer/index';
+import styles from './styles.module.scss';
+
+export const App = () => {
   return (
-    <div>aaa</div>
+    <div className={styles.page}>
+      <Footer />
+    </div>
   );
 };
-
-export default App
