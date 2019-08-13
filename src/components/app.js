@@ -1,9 +1,12 @@
 import React from 'react';
+import Footer from './footer/index';
 
 const App = () => {
   return (
-    <div>aaa</div>
+    <div>
+      <Footer />;
+    </div>
   );
 };
 
-export default App
+export default App;
