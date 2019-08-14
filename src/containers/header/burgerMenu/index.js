@@ -9,19 +9,21 @@ class Burger extends Component {
     isActive: false,
   };
 
+  burgerHandle = () => {
+    this.setState(state => ({ isActive: !state.isActive }));
+  };
+
   render() {
-    const burgerHandle = () => {
-      this.setState(state => ({ isActive: !state.isActive }));
-    };
+    const { isActive } = this.state;
     return (
       <>
         <div
-          className={this.state.isActive ? styles.burger_active : styles.burger}
-          onClick={burgerHandle}
+          className={isActive ? styles.burger_active : styles.burger}
+          onClick={this.burgerHandle}
         />
         {this.state.isActive ? (
           <>
-            <div className={styles.clickOutside} onClick={burgerHandle} />
+            <div className={styles.clickOutside} onClick={this.burgerHandle} />
             <div
               className={styles.menu}
               wrappedRef={instance => {
