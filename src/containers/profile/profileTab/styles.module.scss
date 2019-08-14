@@ -78,8 +78,9 @@
 
 @media screen and (min-width: $width-xl) {
   .profile{
-    width: 100%;
-    margin-top: 40px;
+    width: 90%;
+    margin: 0 5%;
+    margin-top: 50px;
 
     input{
       @include primary-input;
@@ -120,7 +121,7 @@
       section input{
         @include primary-input;
         padding: 15px 5px;
-        width: 298px;
+        width: 238px;
       }
       svg{
         font-size: 20px;
