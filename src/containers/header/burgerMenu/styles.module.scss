@@ -18,11 +18,6 @@
     transparent 86%,
     rgb(255, 255, 255) 87%
   );
-  @media (max-width: $width-sm) {
-    width: 20px;
-    height: 20px;
-  }
-
 }
 .burger_active {
   width: 30px;
@@ -42,10 +37,6 @@
       transparent 56%
     );
   list-style-type: none;
-  @media (max-width: $width-sm) {
-    width: 20px;
-    height: 20px;
-  }
 }
 .click_outside{
   position: absolute;
@@ -60,7 +51,7 @@
   width: 250px;
   text-align: center;
   right: 0;
-  top: 66px;
+  top: 81px;
   overflow: hidden;
   z-index: 1000;
   

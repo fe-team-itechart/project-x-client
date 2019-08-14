@@ -2,7 +2,7 @@
 @import '../../scss/shared/breakpoints.scss';
 
 .footer {
-  margin: 15px auto;
+  margin: 15px 0;
   width: 90%;
   background-color: $bcg-gray-light;
   display: flex;
@@ -73,16 +73,20 @@
         color: $black;
         text-decoration: underline;
       }
+
+      .social_media {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        width: 50px;
+        background: $gradient;
+        border-radius: 50%;
+        @media screen and (max-width: $width-sm) {
+          margin: 0 2px;
+      }
+      }
     }
   }
 }
 
-.social_media {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  width: 50px;
-  background: $gradient;
-  border-radius: 50%;
-}
