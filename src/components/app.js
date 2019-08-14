@@ -1,10 +1,18 @@
 import React from 'react';
-import { Help } from './help/index'
 
-const App = () => {
+import Header from '../containers/header';
+import { Help } from './help/index';
+import { Footer } from './footer/index';
+import styles from './styles.module.scss';
+
+export const App = () => {
   return (
-    <Help />
+    <div className={styles.page}>
+      <Header />
+      <Help />
+      <Footer />
+    </div>
   );
 };
 
-export default App
+export default App;
