@@ -10,12 +10,12 @@ function profile() {
 
   return (
     <section className={styles.profile}>
-      <section className={styles.mobileBurger}>
+      <section className={styles.mobile_burger}>
         <button onClick={() => setMenu({ marginLeft: '0' })}>
           <FaBars />
         </button>
       </section>
-      <section className={styles.mobilemenu} style={menu}>
+      <section className={styles.mobile_menu} style={menu}>
         <section className={styles.user}>
           <div className={styles.photo} />
           <div className={styles.name}>John Doe</div>
@@ -46,7 +46,7 @@ function profile() {
           }}>
           Settings
         </button>
-        <button className={styles.closeButton} onClick={() => setMenu({ marginLeft: '-100%' })}><FaWindowClose/></button>
+        <button className={styles.close_button} onClick={() => setMenu({ marginLeft: '-100%' })}><FaWindowClose/></button>
       </section>
 
       <section className={styles.menu}>

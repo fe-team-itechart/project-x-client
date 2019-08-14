@@ -7,7 +7,7 @@ export default function profileTab() {
 
   return ( 
     <section className={styles.profile}>
-      <section className={styles.userFio}>
+      <section className={styles.user_fio}>
         <input type="text" placeholder="First name" disabled={update} defaultValue='John'/>
         <input type="text" placeholder="Last name" disabled={update} defaultValue='Doe'/>
       </section>

@@ -4,10 +4,19 @@
 @import '../../../scss/mixins/button.scss';
 @import '../../../scss/mixins/input.scss';
 
+.facebook_icon{
+  color:#3b5998;
+}
+.twitter_icon{
+  color:#1da1f2;
+}
+
+
 @media screen and (min-width: $width-xs) {
   .profile{
-    width: 100%;
+    width: 90%;
     margin-top: 40px;
+    margin: 0 5%;
 
     input{
       @include primary-input;
@@ -17,7 +26,7 @@
     input::placeholder{
       color: $gray-input;
     }
-    .userFio{
+    .user_fio{
       display: flex;
       input{
         width: 50%;
@@ -80,7 +89,7 @@
     input::placeholder{
       color: $gray-input;
     }
-    .userFio{
+    .user_fio{
       display: flex;
       input{
         @include primary-input;

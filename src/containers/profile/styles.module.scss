@@ -6,18 +6,15 @@
 
 // phone > 320px 
 @media screen and (min-width: $width-xs) {
-    body{
-        background-color: $bcg-gray-dark;
-    }
     .profile{
         display: block;
-        .closeButton{
+        .close_button{
             svg{
                 font-size: 30px;
-                color: #f97a13;
+                color: $orange;
             }
         }
-        .mobileBurger{
+        .mobile_burger{
             display: block;
             text-align: center;
             padding: 15px 0;
@@ -31,11 +28,12 @@
         .menu{
             display: none;
         }
-        .mobilemenu{
+        .mobile_menu{
             width: 100%;
             padding: 0px;
-            height: 100vh;
+            height: 100%;
             position: absolute;
+            overflow-x: auto;
             background-color: $bcg-gray-dark;
             top: 0;
             transition: 0.3s;
@@ -100,9 +98,6 @@
 
 // desktop > 1200px 
 @media screen and (min-width: $width-xl) {
-    body{
-        background-color: $bcg-gray-dark;
-    }
     .profile{
         background-color: $bcg-gray-dark;
         display: flex;
@@ -111,10 +106,10 @@
         position: relative;
         left: 50%;
         margin-left: -450px;
-        .mobileBurger{
+        .mobile_burger{
             display: none;
         }
-        .mobilemenu{
+        .mobile_menu{
             display: none;
         }
         .menu{
