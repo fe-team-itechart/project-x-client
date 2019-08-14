@@ -71,22 +71,7 @@
               padding: 10px 0px;
               @media (max-width: $width-lg) {
                 flex-basis: 23%;
-         }
-      }
+              }
+        }
     }
-
-    // .buttons{
-    //     flex: 1 1 auto;
-    //     display: flex;
-    //     justify-content: space-around;
-
-    //  .button{
-    //   @include primary-button;
-    //   flex-basis: 40%; 
-    //   padding: 10px 0px;
-    //   @media (max-width: $width-lg) {
-    //     flex-basis: 45%;
-    //   }
-    // }
-  // }
 }

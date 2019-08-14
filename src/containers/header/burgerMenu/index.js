@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { MdSearch } from 'react-icons/md';
+// conect after setting router and change links,
 // import { NavLink } from 'react-router-dom';
 import styles from './styles.module.scss';
 

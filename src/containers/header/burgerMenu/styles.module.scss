@@ -30,15 +30,15 @@
   background: linear-gradient(
       45deg,
       transparent 45%,
-      rgb(255, 255, 255) 46%,
-      rgb(255, 255, 255) 55%,
+      $white 46%,
+      $white 55%,
       transparent 56%
     ),
     linear-gradient(
       -45deg,
       transparent 45%,
-      rgb(255, 255, 255) 46%,
-      rgb(255, 255, 255) 55%,
+      $white 46%,
+      $white 55%,
       transparent 56%
     );
   list-style-type: none;
@@ -71,7 +71,7 @@
     align-items: center;
     height: 50px;
     width: 100%;
-    color: #ffffff;
+    color: $white;
     font-size: 18px;
     text-decoration: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
