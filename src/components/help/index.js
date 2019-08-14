@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 import {
   FaUser,
   FaCogs,
@@ -13,7 +13,7 @@ import styles from './styles.module.scss';
 export const Help = () => {
   return (
     <section className={styles.cards_wrapper}>
-      <a href="#" className={styles.card_link}>
+      <a href="/" className={styles.card_link}>
         <div className={styles.card_wrapper}>
           <FaClipboardList />
           <h2>Getting Started</h2>
@@ -21,7 +21,7 @@ export const Help = () => {
         </div>
       </a>
 
-      <a href="#" className={styles.card_link}>
+      <a href="/" className={styles.card_link}>
         <div className={styles.card_wrapper}>
           <FaUser />
           <h2>Account/Profile</h2>
@@ -29,7 +29,7 @@ export const Help = () => {
         </div>
       </a>
 
-      <a href="#" className={styles.card_link}>
+      <a href="/" className={styles.card_link}>
         <div className={styles.card_wrapper}>
           <FaCogs />
           <h2>Troubleshooting</h2>
@@ -37,7 +37,7 @@ export const Help = () => {
         </div>
       </a>
 
-      <a href="#" className={styles.card_link}>
+      <a href="/" className={styles.card_link}>
         <div className={styles.card_wrapper}>
           <FaBook />
           <h2>Course Taking</h2>
@@ -45,7 +45,7 @@ export const Help = () => {
         </div>
       </a>
 
-      <a href="#" className={styles.card_link}>
+      <a href="/" className={styles.card_link}>
         <div className={styles.card_wrapper}>
           <FaWallet />
           <h2>Purchase/Refunds</h2>

@@ -3,19 +3,25 @@
 
 .cards_wrapper {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   flex-wrap: wrap;
   width: 90%;
   margin: auto;
 
+  @media screen and (max-width: $width-sm) {
+    width: 100%;
+  }
+
   .card_link {
     display: block;
-    width: 300px;
+    width: 340px;
     text-decoration: none;
     color: $white;
-    margin: 10px;
     text-align: center;
+    margin: 10px auto;
+
+    @media screen and (max-width: $width-sm) {
+      width: 90%;
+    }
   
     .card_wrapper {
       display: flex;
