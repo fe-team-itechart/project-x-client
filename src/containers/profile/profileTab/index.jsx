@@ -2,29 +2,38 @@ import React, { useState } from 'react';
 import styles from './styles.module.scss';
 import { FaFacebookF, FaLinkedinIn, FaTwitter} from "react-icons/fa";
 
-export default function profileTab() {
+export const ProfileTab = () => {
   const [update, setUpdate] = useState(true);
+  const {
+    profile,
+    user_fio,
+    description,
+    social,
+    twitter_icon,
+    facebook_icon,
+    linkedin_icon,
+  } = styles;
 
   return ( 
-    <section className={styles.profile}>
-      <section className={styles.user_fio}>
+    <section className={profile}>
+      <section className={user_fio}>
         <input type="text" placeholder="First name" disabled={update} defaultValue='John'/>
         <input type="text" placeholder="Last name" disabled={update} defaultValue='Doe'/>
       </section>
-      <section className={styles.description}>
+      <section className={description}>
         <input type="text" placeholder="Description" disabled={update} />
       </section>
-      <section className={styles.social}>
+      <section className={social}>
         <section>
-          <span><FaTwitter style={{ color:'#1da1f2 '}}/>http://twitter.com/</span>
+          <span><FaTwitter className={twitter_icon}/>http://twitter.com/</span>
           <input type="text" placeholder="twitter nick" disabled={update} defaultValue='johntwitt'/>
         </section>
         <section>
-          <span><FaFacebookF style={{ color:'#3b5998 '}}/>https://www.facebook.com/</span>
+          <span><FaFacebookF className={facebook_icon}/>https://www.facebook.com/</span>
           <input type="text" placeholder="facebook nick" disabled={update} defaultValue='jhondoe'/>
         </section>
         <section>
-          <span><FaLinkedinIn style={{ color:'#0073b0 '}}/>https://www.linkedin.com/</span>
+          <span><FaLinkedinIn className={linkedin_icon}/>https://www.linkedin.com/</span>
           <input type="text" placeholder="linkedin nick" disabled={update} />
         </section>
       </section>

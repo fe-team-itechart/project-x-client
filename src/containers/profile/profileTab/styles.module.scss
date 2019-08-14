@@ -4,141 +4,99 @@
 @import '../../../scss/mixins/button.scss';
 @import '../../../scss/mixins/input.scss';
 
-.facebook_icon{
-  color:#3b5998;
-}
-.twitter_icon{
-  color:#1da1f2;
-}
-
-
-@media screen and (min-width: $width-xs) {
-  .profile{
-    width: 90%;
-    margin-top: 40px;
-    margin: 0 5%;
-
+.profile{
+  width: 90%;
+  margin-top: 40px;
+  margin: 0 5%;
+  input{
+    @include primary-input;
+    background-color: transparent;
+    color: $white;
+  }
+  input::placeholder{
+    color: $gray-input;
+  }
+  .user_fio{
+    display: flex;
     input{
       @include primary-input;
-      background-color: transparent;
+      width: 50%;
+      padding: 15px 5px;
+      margin: 0 5px;
+    }
+  }
+  .description{
+    margin-top: 25px;
+    input{
+      @include primary-input;
+      width: 100%;
+      padding: 15px 5px;
+    }
+    margin-right: 12px;
+  }
+  .social{
+    margin-top: 25px;
+    section span{
+      display: inline-block;
+      width: 250px;
+      padding: 15px 5px;
+      background: $bcg-gray-light;
       color: $white;
+      margin: 5px 10px 5px 0;
     }
-    input::placeholder{
-      color: $gray-input;
+    section input{
+      @include primary-input;
+      padding: 15px 5px;
+      width: 238px;
     }
-    .user_fio{
-      display: flex;
-      input{
-        width: 50%;
-        padding: 15px 5px;
-        margin: 0 5px;
-      }
+    svg{
+      font-size: 20px;
+      margin: 0 5px;
     }
-    .description{
-      margin-top: 25px;
-      input{
-        width: 100%;
-        padding: 15px 5px;
-      }
-      margin-right: 12px;
+    .facebook_icon{
+      color:#3b5998;
     }
+    .twitter_icon{
+      color:#1da1f2;
+    }
+    .linkedin_icon{
+      color:#0073b0;
+    }
+  }
+  button{
+    @include primary-button;
+    background: $gradient;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    margin: 25px 15px 15px 0;
+    color: $white;
+    border: none;
+    float: left;
+  }
+  @media screen and (min-width: $width-xs) {
     .social{
-      margin-top: 25px;
-      section{
-        margin: 15px 0 0 0;
-      }
       section span{
-        display: inline-block;
         width: 98%;
         padding: 15px 1%;
-        background: $bcg-gray-light;
-        color: $white;
       }
       section input{
         padding: 15px 1%;
         width: 98%;
       }
-      svg{
-        font-size: 20px;
-        margin: 0 5px;
-      }
-    }
-    button{
-      @include primary-button;
-      background: $gradient;
-      width: 100px;
-      height: 50px;
-      text-align: center;
-      margin: 25px 15px 15px 0;
-      color: $white;
-      border: none;
-      float: left;
     }
   }
-}
-
-@media screen and (min-width: $width-xl) {
-  .profile{
-    width: 90%;
-    margin: 0 5%;
-    margin-top: 50px;
-
-    input{
-      @include primary-input;
-      background-color: transparent;
-      color: $white;
-    }
-    input::placeholder{
-      color: $gray-input;
-    }
-    .user_fio{
-      display: flex;
-      input{
-        @include primary-input;
-        width: 50%;
-        padding: 15px 5px;
-        margin: 0 5px;
-      }
-    }
-    .description{
-      margin-top: 25px;
-      input{
-        @include primary-input;
-        width: 100%;
-        padding: 15px 5px;
-      }
-      margin-right: 12px;
-    }
+  @media screen and (min-width: $width-xl) {
     .social{
-      margin-top: 25px;
       section span{
-        display: inline-block;
         width: 250px;
         padding: 15px 5px;
-        background: $bcg-gray-light;
-        color: $white;
         margin: 5px 10px 5px 0;
       }
       section input{
-        @include primary-input;
         padding: 15px 5px;
         width: 238px;
       }
-      svg{
-        font-size: 20px;
-        margin: 0 5px;
-      }
-    }
-    button{
-      @include primary-button;
-      background: $gradient;
-      width: 100px;
-      height: 50px;
-      text-align: center;
-      margin: 25px 15px 15px 0;
-      color: $white;
-      border: none;
-      float: left;
     }
   }
 }
