@@ -13,13 +13,9 @@
       @include primary-input;
       background-color: transparent;
       color: $white;
-      border: 1px $gray-input solid;
     }
     input::placeholder{
       color: $gray-input;
-    }
-    input:disabled{
-      border: 1px transparent solid;
     }
     .userFio{
       display: flex;
@@ -80,13 +76,9 @@
       @include primary-input;
       background-color: transparent;
       color: $white;
-      border: 1px $gray-input solid;
     }
     input::placeholder{
       color: $gray-input;
-    }
-    input:disabled{
-      border: 1px transparent solid;
     }
     .userFio{
       display: flex;

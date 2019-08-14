@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './profile.module.scss';
+import styles from './styles.module.scss';
 import { FaBars, FaWindowClose } from 'react-icons/fa';
 
 import ProfileTab from './profileTab/profileTab.jsx';

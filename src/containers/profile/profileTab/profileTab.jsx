@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './profileTab.module.scss';
+import styles from './styles.module.scss';
 import { FaFacebookF, FaLinkedinIn, FaTwitter} from "react-icons/fa";
 
 export default function profileTab() {
