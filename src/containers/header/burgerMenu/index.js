@@ -24,11 +24,7 @@ class Burger extends Component {
         {this.state.isActive ? (
           <>
             <div className={styles.click_outside} onClick={this.burgerHandle} />
-            <div
-              className={styles.menu}
-              wrappedRef={instance => {
-                this.burgerHandle = instance.burgerHandle;
-              }}>
+            <div className={styles.menu}>
               <a className={styles.menu_item} href="/">
                 Sourses
               </a>
