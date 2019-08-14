@@ -23,7 +23,7 @@ class Burger extends Component {
         />
         {this.state.isActive ? (
           <>
-            <div className={styles.clickOutside} onClick={this.burgerHandle} />
+            <div className={styles.click_outside} onClick={this.burgerHandle} />
             <div
               className={styles.menu}
               wrappedRef={instance => {
