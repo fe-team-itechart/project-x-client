@@ -1,0 +1,99 @@
+@import "../../../scss/shared/breakpoints.scss";
+@import "../../../scss/mixins/button.scss";
+@import "../../../scss/shared/colors.scss";
+@import "../../../scss/mixins/input.scss";
+
+.burger {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background: linear-gradient(
+    to bottom,
+    rgb(255, 255, 255) 15%,
+    transparent 16%,
+    transparent 43.5%,
+    rgb(255, 255, 255) 44.5%,
+    rgb(255, 255, 255) 58.5%,
+    transparent 59.5%,
+    transparent 86%,
+    rgb(255, 255, 255) 87%
+  );
+}
+.burger_active {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(
+      45deg,
+      transparent 45%,
+      $white 46%,
+      $white 55%,
+      transparent 56%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 45%,
+      $white 46%,
+      $white 55%,
+      transparent 56%
+    );
+  list-style-type: none;
+}
+.click_outside{
+  position: absolute;
+  left:0;
+  top:0;
+  width: 100%;
+  height: 100vh;
+}
+.menu {
+  display: block;
+  position: absolute;
+  width: 250px;
+  text-align: center;
+  right: 0;
+  top: 81px;
+  overflow: hidden;
+  z-index: 1000;
+  
+  .menu_item {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    color: $white;
+    font-size: 18px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgb(158, 157, 157);
+    z-index: 100000000;
+  }
+  .search{
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex: 1 1 auto;
+    cursor: pointer;
+    background-color: $gray-input;
+  input{
+    @include primary-input;
+    width: 100%;
+  }
+  .icon{
+    position: absolute;
+    font-size: 25px;
+    right:0;
+    cursor: pointer;
+    transition: .3s;
+  }
+  .icon:hover{
+        color: $orange;
+        }
+}
+  .button{
+    @include primary-button;
+    border-radius: 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+}

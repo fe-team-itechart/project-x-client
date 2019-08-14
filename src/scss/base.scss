@@ -1,0 +1,8 @@
+@import './shared/fonts.scss';
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: $primary-font;
+}
