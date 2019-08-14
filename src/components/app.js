@@ -1,11 +1,14 @@
 import React from 'react';
 import Profile from '../containers/profile/profile.jsx';
 
-const App = () => {
+import { Footer } from './footer/index';
+import styles from './styles.module.scss';
+
+export const App = () => {
   return (
-    <div>
-      <p>test app</p>
+    <div className={styles.page}>
       <Profile />
+      <Footer />
     </div>
   );
 };

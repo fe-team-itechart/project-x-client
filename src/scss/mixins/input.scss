@@ -1,0 +1,19 @@
+@import '../shared/colors.scss';
+
+@mixin primary-input {
+  border: 0;
+  border-bottom: 1px solid $gray-input;
+  border-radius: 0;
+  outline: none;
+  padding: 6px 0;
+  color: $white;
+  background: transparent;
+  font-weight: 400;
+  font-size: 18px;
+  transition: border-bottom .3s;
+  line-height: 1.5;
+
+  &:hover, &:focus {
+    border-bottom: 1px solid $orange;
+  }
+}
