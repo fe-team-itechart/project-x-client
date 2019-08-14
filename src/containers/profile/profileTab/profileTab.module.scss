@@ -1,7 +1,8 @@
 @import '../../../scss/shared/breakpoints.scss';
 @import '../../../scss/shared/fonts.scss';
 @import '../../../scss/shared/colors.scss';
-
+@import '../../../scss/mixins/button.scss';
+@import '../../../scss/mixins/input.scss';
 
 @media screen and (min-width: $width-xs) {
   .profile{
@@ -9,6 +10,7 @@
     margin-top: 40px;
 
     input{
+      @include primary-input;
       background-color: transparent;
       color: $white;
       border: 1px $gray-input solid;
@@ -57,6 +59,7 @@
       }
     }
     button{
+      @include primary-button;
       background: $gradient;
       width: 100px;
       height: 50px;
@@ -74,6 +77,7 @@
     margin-top: 40px;
 
     input{
+      @include primary-input;
       background-color: transparent;
       color: $white;
       border: 1px $gray-input solid;
@@ -87,6 +91,7 @@
     .userFio{
       display: flex;
       input{
+        @include primary-input;
         width: 50%;
         padding: 15px 5px;
         margin: 0 5px;
@@ -95,6 +100,7 @@
     .description{
       margin-top: 25px;
       input{
+        @include primary-input;
         width: 100%;
         padding: 15px 5px;
       }
@@ -111,6 +117,7 @@
         margin: 5px 10px 5px 0;
       }
       section input{
+        @include primary-input;
         padding: 15px 5px;
         width: 298px;
       }
@@ -120,6 +127,7 @@
       }
     }
     button{
+      @include primary-button;
       background: $gradient;
       width: 100px;
       height: 50px;
