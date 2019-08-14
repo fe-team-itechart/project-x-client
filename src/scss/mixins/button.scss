@@ -12,6 +12,9 @@
   font-weight: 600;
   line-height: 1.5;
   transition: all 2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     background: linear-gradient(135deg, $orange 20%, $pink 100%); 

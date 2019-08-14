@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './styles.module.scss';
-import { FaBars, FaWindowClose } from 'react-icons/fa';
+import { FaWindowClose, FaUserCircle } from 'react-icons/fa';
 
 import ProfileTab from './profileTab/profileTab.jsx';
 
@@ -12,7 +12,7 @@ function profile() {
     <section className={styles.profile}>
       <section className={styles.mobile_burger}>
         <button onClick={() => setMenu({ marginLeft: '0' })}>
-          <FaBars />
+          <FaUserCircle />
         </button>
       </section>
       <section className={styles.mobile_menu} style={menu}>

@@ -1,0 +1,86 @@
+@import "../../scss/shared/colors.scss";
+@import "../../scss/mixins/input.scss";
+@import "../../scss/mixins/button.scss";
+@import "../../scss/shared/breakpoints.scss";
+
+.header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $bcg-gray-light;
+    padding: 20px 0;
+    color: $white;
+    height: 50px;
+    font-size: 16px;
+    width: 90%;
+    margin: 15px 0;
+    @media (max-width: $width-lg) {
+      justify-content: space-around;
+    }
+
+    .logo{
+        flex: 0.3 1 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @media (max-width: $width-md) {
+          justify-content: flex-start;
+        }
+        
+      img{
+        cursor: pointer;
+        height: 32px;
+      }
+    }
+
+    .search{
+        display: flex;
+        align-items: center;
+        position: relative;
+        flex: 1 1 auto;
+        cursor: pointer;
+
+      input{
+        @include primary-input;
+        width: 100%;
+      }
+
+      .icon{
+        position: absolute;
+        font-size: 25px;
+        right:0;
+        cursor: pointer;
+        transition: .3s;
+      }
+
+      .icon:hover{
+            color: $orange;
+            }
+    }
+
+    .menu{
+        flex: 2 1 auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style-type: none;
+
+        .link{
+            cursor: pointer;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .link:hover{
+            color: $orange;
+            }
+        .button{
+              @include primary-button;
+              flex-basis: 20%; 
+              padding: 10px 0px;
+              @media (max-width: $width-lg) {
+                flex-basis: 23%;
+              }
+        }
+    }
+}
