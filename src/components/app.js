@@ -1,8 +1,9 @@
 import React from 'react';
+import { Help } from './help/index'
 
 const App = () => {
   return (
-    <div>aaa</div>
+    <Help />
   );
 };
 
