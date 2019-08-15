@@ -1,0 +1,55 @@
+@import '../../scss/shared/colors.scss';
+@import '../../scss/shared/breakpoints.scss';
+
+.cards_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 90%;
+  margin: auto;
+  background-color: $bcg-gray-light;
+
+  @media screen and (max-width: $width-md) {
+    width: 90%;
+  }
+
+  .card_link {
+    display: block;
+    width: 340px;
+    text-decoration: none;
+    color: $white;
+    text-align: center;
+    margin: 10px 0;
+
+    @media screen and (max-width: 1511px) {
+      width: 45%;
+    }
+
+    @media screen and (max-width: $width-md) {
+      width: 90%;
+    }
+  
+    .card_wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: $bcg-gray-dark;
+      padding: 20px;
+      height: 200px;
+
+      svg {
+        font-size: 56px;
+        margin: 10px 0;
+      }
+  
+      h2 {
+        margin: 10px 0;
+      }
+  
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
