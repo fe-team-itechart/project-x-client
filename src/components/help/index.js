@@ -3,7 +3,6 @@ import React from 'react';
 import {
   FaUser,
   FaCogs,
-  FaWallet,
   FaClipboardList,
   FaBook,
 } from 'react-icons/fa';
@@ -42,14 +41,6 @@ export const Help = () => {
           <FaBook />
           <h2>Course Taking</h2>
           <p>Everything about taking our course</p>
-        </div>
-      </a>
-
-      <a href="/" className={styles.card_link}>
-        <div className={styles.card_wrapper}>
-          <FaWallet />
-          <h2>Purchase/Refunds</h2>
-          <p>Learn about coupons, how to send gifts, and refunds.</p>
         </div>
       </a>
     </section>
