@@ -16,7 +16,7 @@
     color: $white;
     margin-bottom: 20px;
   }
-  
+
   p {
     color: $white;
   }
@@ -30,12 +30,12 @@
       padding-bottom: 20px;
       align-items: center;
     }
-    
+
     img {
       height: 40px;
       @media screen and (max-width: $width-xl) {
-        width: 200px
-      } 
+        width: 200px;
+      }
     }
   }
 }
@@ -55,8 +55,8 @@
     margin: 0;
     padding: 0;
     @media screen and (max-width: $width-xl) {
-        flex-direction:row;
-        width: 40%;
+      flex-direction: row;
+      width: 40%;
     }
 
     a {
@@ -66,10 +66,12 @@
 
       &:hover {
         color: $black;
-        text-decoration:none;
-      }  
+        text-decoration: none;
+      }
 
-      &:active, &:focus, &:visited {
+      &:active,
+      &:focus,
+      &:visited {
         color: $black;
         text-decoration: underline;
       }
@@ -84,9 +86,8 @@
         border-radius: 50%;
         @media screen and (max-width: $width-sm) {
           margin: 0 2px;
-      }
+        }
       }
     }
   }
 }
-
