@@ -22,7 +22,7 @@ const Header = () => {
             <MdSearch className={styles.icon} />
           </div>
           <div className={styles.menu}>
-            <li className={styles.link}>Sourses</li>
+            <li className={styles.link}>Sources</li>
             <li className={styles.link}>Categories</li>
             <div className={styles.button}>Log in</div>
             <div className={styles.button}>Register</div>
