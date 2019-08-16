@@ -1,0 +1,108 @@
+@import '../../../scss/shared/breakpoints.scss';
+@import '../../../scss/shared/fonts.scss';
+@import '../../../scss/shared/colors.scss';
+@import '../../../scss/mixins/button.scss';
+@import '../../../scss/mixins/input.scss';
+
+.profile{
+  width: 90%;
+  margin: 0 5%;
+  margin-top: 40px;
+  input{
+    @include primary-input;
+    background-color: transparent;
+    color: $white;
+    &::placeholder{
+      color: $gray-input;
+    }
+  }
+  .user_fio{
+    display: flex;
+    input{
+      @include primary-input;
+      width: 50%;
+      padding: 15px 5px;
+      margin: 0 5px;
+    }
+  }
+  .description{
+    margin-top: 25px;
+    input{
+      @include primary-input;
+      width: 100%;
+      padding: 15px 5px;
+    }
+    margin-right: 12px;
+  }
+  .social{
+    margin-top: 25px;
+    section {
+      span{
+        display: inline-block;
+        width: 250px;
+        padding: 15px 5px;
+        background: $bcg-gray-light;
+        color: $white;
+        margin: 5px 10px 5px 0;
+      }
+      input{
+        @include primary-input;
+        padding: 15px 5px;
+        width: 238px;
+      }
+    }
+    svg{
+      font-size: 20px;
+      margin: 0 5px;
+    }
+    .facebook_icon{
+      color:#3b5998;
+    }
+    .twitter_icon{
+      color:#1da1f2;
+    }
+    .linkedin_icon{
+      color:#0073b0;
+    }
+  }
+  button{
+    @include primary-button;
+    background: $gradient;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    margin: 25px 15px 15px 0;
+    color: $white;
+    border: none;
+    float: left;
+  }
+  @media screen and (min-width: $width-xs) {
+    .social{
+      section {
+        span{
+          width: 95%;
+          padding: 15px 2.5%;
+        }
+        input{
+          padding: 15px 2.5%;
+          width: 95%;
+        }
+      }
+    }
+  }
+  @media screen and (min-width: $width-xl) {
+    .social{
+      section {
+        span{
+          width: 250px;
+          padding: 15px 5px;
+          margin: 5px 10px 5px 0;
+        }
+        input{
+          padding: 15px 5px;
+          width: 238px;
+        }
+      }
+    }
+  }
+}
