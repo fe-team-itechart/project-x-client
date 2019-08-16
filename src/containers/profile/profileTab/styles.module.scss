@@ -12,9 +12,9 @@
     @include primary-input;
     background-color: transparent;
     color: $white;
-  }
-  input::placeholder{
-    color: $gray-input;
+    &::placeholder{
+      color: $gray-input;
+    }
   }
   .user_fio{
     display: flex;
@@ -36,18 +36,20 @@
   }
   .social{
     margin-top: 25px;
-    section span{
-      display: inline-block;
-      width: 250px;
-      padding: 15px 5px;
-      background: $bcg-gray-light;
-      color: $white;
-      margin: 5px 10px 5px 0;
-    }
-    section input{
-      @include primary-input;
-      padding: 15px 5px;
-      width: 238px;
+    section {
+      span{
+        display: inline-block;
+        width: 250px;
+        padding: 15px 5px;
+        background: $bcg-gray-light;
+        color: $white;
+        margin: 5px 10px 5px 0;
+      }
+      input{
+        @include primary-input;
+        padding: 15px 5px;
+        width: 238px;
+      }
     }
     svg{
       font-size: 20px;
@@ -76,26 +78,30 @@
   }
   @media screen and (min-width: $width-xs) {
     .social{
-      section span{
-        width: 98%;
-        padding: 15px 1%;
-      }
-      section input{
-        padding: 15px 1%;
-        width: 98%;
+      section {
+        span{
+          width: 95%;
+          padding: 15px 2.5%;
+        }
+        input{
+          padding: 15px 2.5%;
+          width: 95%;
+        }
       }
     }
   }
   @media screen and (min-width: $width-xl) {
     .social{
-      section span{
-        width: 250px;
-        padding: 15px 5px;
-        margin: 5px 10px 5px 0;
-      }
-      section input{
-        padding: 15px 5px;
-        width: 238px;
+      section {
+        span{
+          width: 250px;
+          padding: 15px 5px;
+          margin: 5px 10px 5px 0;
+        }
+        input{
+          padding: 15px 5px;
+          width: 238px;
+        }
       }
     }
   }

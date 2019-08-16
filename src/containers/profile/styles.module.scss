@@ -21,9 +21,9 @@
             border: none;
             border-top: 3px $bcg-gray-dark solid;
             color: $white;
-        }
-        button.active{
-            background: $gradient;
+            &.active{
+                background: $gradient;
+            }
         }
         .user{
             text-align: center;
