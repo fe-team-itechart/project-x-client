@@ -1,0 +1,92 @@
+@import '../../scss/shared/colors.scss';
+@import '../../scss/shared/breakpoints.scss';
+
+.footer {
+  margin: 15px 0;
+  width: 90%;
+  background-color: $bcg-gray-light;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+  @media screen and (max-width: $width-xl) {
+    flex-direction: column-reverse;
+  }
+
+  h2 {
+    color: $white;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    color: $white;
+  }
+
+  div {
+    width: 30%;
+    @media screen and (max-width: $width-xl) {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 20px;
+      align-items: center;
+    }
+    
+    img {
+      height: 40px;
+      @media screen and (max-width: $width-xl) {
+        width: 200px
+      } 
+    }
+  }
+}
+
+.social_media_container {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    @media screen and (max-width: $width-xl) {
+        flex-direction:row;
+        width: 40%;
+    }
+
+    a {
+      width: 50px;
+      color: $black;
+      text-decoration: none;
+
+      &:hover {
+        color: $black;
+        text-decoration:none;
+      }  
+
+      &:active, &:focus, &:visited {
+        color: $black;
+        text-decoration: underline;
+      }
+
+      .social_media {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        width: 50px;
+        background: $gradient;
+        border-radius: 50%;
+        @media screen and (max-width: $width-sm) {
+          margin: 0 2px;
+      }
+      }
+    }
+  }
+}
+
