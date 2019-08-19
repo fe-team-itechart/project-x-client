@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { MdSearch } from 'react-icons/md';
+
 import Burger from './burgerMenu';
 import styles from './styles.module.scss';
 import Login from '../auth/login';
@@ -33,7 +35,9 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <img src="src\assets\logoLight.png" alt="Logo" />
+        <Link to="/">
+          <img src="src\assets\logoLight.png" alt="Logo" />
+        </Link>
       </div>
       {width > 768 ? (
         <>
@@ -44,14 +48,14 @@ const Header = () => {
           <div className={styles.menu}>
             <li className={styles.link}>Sources</li>
             <li className={styles.link}>Categories</li>
-            <div className={styles.button} onClick={e => openModalLog()}>
+            <div className={styles.button} onClick={() => openModalLog()}>
               Log in
             </div>
-            <div className={styles.button} onClick={e => openModalReg()}>
+            <div className={styles.button} onClick={() => openModalReg()}>
               Register
             </div>
           </div>
-          <Login modalStatus={isOpenLog} onModalClose={closeLoginModal}  />
+          <Login modalStatus={isOpenLog} onModalClose={closeLoginModal} />
           <Register modalStatus={isOpenReg} onModalClose={closeRegModal} />
         </>
       ) : (
