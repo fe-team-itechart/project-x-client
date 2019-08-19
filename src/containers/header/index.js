@@ -55,12 +55,12 @@ const Header = () => {
               Register
             </div>
           </div>
-          <Login modalStatus={isOpenLog} onModalClose={closeLoginModal} />
-          <Register modalStatus={isOpenReg} onModalClose={closeRegModal} />
         </>
       ) : (
-        <Burger />
+        <Burger log={() => openModalLog()} reg={() => openModalReg()} />
       )}
+      <Login modalStatus={isOpenLog} onModalClose={closeLoginModal} />
+      <Register modalStatus={isOpenReg} onModalClose={closeRegModal} />
     </header>
   );
 };

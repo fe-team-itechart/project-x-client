@@ -42,6 +42,7 @@
 
     input {
       @include primary-input;
+      padding: 0;
       width: 100%;
     }
 

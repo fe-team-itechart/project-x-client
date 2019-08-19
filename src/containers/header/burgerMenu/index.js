@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
 import { MdSearch } from 'react-icons/md';
-// conect after setting router and change links,
-// import { NavLink } from 'react-router-dom';
 import styles from './styles.module.scss';
 
 class Burger extends Component {
   state = {
-    isActive: false,
+    menuIsActive: false,
   };
 
   burgerHandle = () => {
-    this.setState(state => ({ isActive: !state.isActive }));
+    this.setState(state => ({ menuIsActive: !state.menuIsActive }));
   };
 
   render() {
-    const { isActive } = this.state;
+    const { menuIsActive } = this.state;
+    const { log, reg } = this.props;
     return (
       <>
         <div
-          className={isActive ? styles.burger_active : styles.burger}
+          className={menuIsActive ? styles.burger_active : styles.burger}
           onClick={this.burgerHandle}
         />
-        {this.state.isActive ? (
+        {menuIsActive ? (
           <>
             <div className={styles.click_outside} onClick={this.burgerHandle} />
             <div className={styles.menu}>
@@ -31,8 +30,22 @@ class Burger extends Component {
               <a className={styles.menu_item} href="/">
                 Categories
               </a>
-              <div className={styles.button}>Log in</div>
-              <div className={styles.button}>Register</div>
+              <div
+                className={styles.button}
+                onClick={() => {
+                  log();
+                  this.burgerHandle();
+                }}>
+                Log in
+              </div>
+              <div
+                className={styles.button}
+                onClick={() => {
+                  reg();
+                  this.burgerHandle();
+                }}>
+                Register
+              </div>
               <div className={styles.search}>
                 <input type="text" placeholder="search" />
                 <MdSearch className={styles.icon} />
