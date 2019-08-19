@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { FaWindowClose, FaUserCircle } from 'react-icons/fa';
+import { FaWindowClose } from 'react-icons/fa';
 import styles from './styles.module.scss';
 import { ProfileTab } from "./profileTab";
+import './buttons.scss';
 
 export const Profile = () => {
   const [getComponent, setComponent] = useState(0);
   const [menus, setMenu] = useState({ marginLeft: '-105%' });
+
+  const [getStatus, setStatus] = useState(0);
+
   const {
     profile,
     mobile_burger,
@@ -14,11 +18,17 @@ export const Profile = () => {
     photo,
     name,
     role,
-    active,
     main,
     close_button,
     menu,
   } = styles;
+
+  
+  const toggleButton = (elem) => {
+    setStatus(elem);
+    setComponent(elem);
+
+  }
 
   return (
     <section className={profile}>
@@ -34,27 +44,30 @@ export const Profile = () => {
           <div className={role}>student</div>
         </section>
         <button
-          className={active}
+          className={getStatus === 0? 'profile_button_active profile_button': 'profile_button'}
           onClick={() => {
-            setComponent(0), setMenu({ marginLeft: '-105%' });
+            toggleButton(0), setMenu({ marginLeft: '-105%' });
           }}>
           Public
         </button>
         <button
+          className={getStatus === 1? 'profile_button_active profile_button': 'profile_button'}
           onClick={() => {
-            setComponent(1), setMenu({ marginLeft: '-105%' });
+            toggleButton(1), setMenu({ marginLeft: '-105%' });
           }}>
           Courses
         </button>
         <button
+          className={getStatus === 2? 'profile_button_active profile_button': 'profile_button'}
           onClick={() => {
-            setComponent(2), setMenu({ marginLeft: '-105%' });
+            toggleButton(2), setMenu({ marginLeft: '-105%' });
           }}>
           Account
         </button>
         <button
+          className={getStatus === 3? 'profile_button_active profile_button': 'profile_button'}
           onClick={() => {
-            setComponent(3), setMenu({ marginLeft: '-105%' });
+            toggleButton(3), setMenu({ marginLeft: '-105%' });
           }}>
           Settings
         </button>
@@ -71,12 +84,12 @@ export const Profile = () => {
           <div className={name}>John Doe</div>
           <div className={role}>student</div>
         </section>
-        <button className={active} onClick={() => setComponent(0)}>
+        <button className={getStatus === 0? 'profile_button_active profile_button': 'profile_button'} onClick={() => toggleButton(0)}>
           Profile
         </button>
-        <button onClick={() => setComponent(1)}>Courses</button>
-        <button onClick={() => setComponent(2)}>Account</button>
-        <button onClick={() => setComponent(3)}>Settings</button>
+        <button className={getStatus === 1? 'profile_button_active profile_button': 'profile_button'} onClick={() => toggleButton(1)}>Courses</button>
+        <button className={getStatus === 2? 'profile_button_active profile_button': 'profile_button'} onClick={() => toggleButton(2)}>Account</button>
+        <button className={getStatus === 3? 'profile_button_active profile_button': 'profile_button'} onClick={() => toggleButton(3)}>Settings</button>
       </section>
       <section className={main}>
         {getComponent === 0 && <ProfileTab />}
