@@ -10,26 +10,19 @@ import validateAuth from '../../../validation/auth';
 Modal.setAppElement('#root');
 
 class Login extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      modalIsOpen: false,
-      email: '',
-      password: '',
-      errors: {
-        email: '',
-        password: '',
-      },
-    };
-  }
-
-  openModal = () => {
-    this.setState({ modalIsOpen: true });
+  state = {
+    email: '',
+    password: '',
+    errors: {},
   };
 
   closeModal = () => {
-    this.setState({ modalIsOpen: false });
+    this.props.onModalClose(false);
+    this.setState({
+      email: '',
+      password: '',
+      errors: {},
+    });
   };
 
   onChange = event => {
@@ -57,14 +50,12 @@ class Login extends Component {
   };
 
   render() {
-    const { modalIsOpen, email, password, errors } = this.state;
+    const { email, password, errors } = this.state;
+    const { modalStatus } = this.props;
     return (
       <Fragment>
-        <button onClick={this.openModal} type="button">
-          Sign In
-        </button>
         <Modal
-          isOpen={modalIsOpen}
+          isOpen={modalStatus}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           className={styles.modal}>

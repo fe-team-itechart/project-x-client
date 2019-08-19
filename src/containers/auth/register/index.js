@@ -10,26 +10,25 @@ import validateAuth from '../../../validation/auth';
 Modal.setAppElement('#root');
 
 class Register extends Component {
-  constructor() {
-    super();
+  state = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    errors: {},
+  };
 
-    this.state = {
-      modalIsOpen: false,
+  closeModal = () => {
+    this.props.onModalClose(false);
+    this.setState({
       firstName: '',
       lastName: '',
       email: '',
       password: '',
-      password2: '',
+      confirmPassword: '',
       errors: {},
-    };
-  }
-
-  openModal = () => {
-    this.setState({ modalIsOpen: true });
-  };
-
-  closeModal = () => {
-    this.setState({ modalIsOpen: false });
+    });
   };
 
   onChange = event => {
@@ -40,15 +39,24 @@ class Register extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const { firstName, lastName, email, password, password2 } = this.state;
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword,
+    } = this.state;
     const { registerRequest } = this.props;
 
     const errors = validateAuth({ firstName, lastName, email, password });
 
     if (!isEmpty(errors)) {
       this.setState({ errors });
-    } else if (password !== password2) {
-      alert('Password do not match');
+    } else if (password !== confirmPassword) {
+      this.setState(state => {
+        state.errors.password = 'Password do not match';
+        return state;
+      });
     } else {
       this.setState({ errors: {} });
       registerRequest({ firstName, lastName, email, password });
@@ -57,21 +65,18 @@ class Register extends Component {
 
   render() {
     const {
-      modalIsOpen,
       firstName,
       lastName,
       email,
       password,
-      password2,
+      confirmPassword,
       errors,
     } = this.state;
+    const { modalStatus } = this.props;
     return (
       <Fragment>
-        <button onClick={this.openModal} type="button">
-          Sign Up
-        </button>
         <Modal
-          isOpen={modalIsOpen}
+          isOpen={modalStatus}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           className={styles.modal}>
@@ -124,9 +129,9 @@ class Register extends Component {
             )}
             <input
               type="password"
-              id="password2"
-              name="password2"
-              value={password2}
+              id="confirmPassword"
+              name="confirmPassword"
+              value={confirmPassword}
               placeholder="Confirm Password"
               onChange={this.onChange}
             />
