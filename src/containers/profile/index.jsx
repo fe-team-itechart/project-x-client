@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import styles from './styles.module.scss';
 import { FaWindowClose, FaUserCircle } from 'react-icons/fa';
-import { ProfileTab } from './profileTab/';
+import styles from './styles.module.scss';
+import { ProfileTab } from "./profileTab";
 
 export const Profile = () => {
   const [getComponent, setComponent] = useState(0);
@@ -24,7 +24,7 @@ export const Profile = () => {
     <section className={profile}>
       <section className={mobile_burger}>
         <button onClick={() => setMenu({ marginLeft: '0' })}>
-          <FaUserCircle />
+          <div className={photo} />
         </button>
       </section>
       <section className={mobile_menu} style={menus}>
@@ -38,7 +38,7 @@ export const Profile = () => {
           onClick={() => {
             setComponent(0), setMenu({ marginLeft: '-105%' });
           }}>
-          Profile
+          Public
         </button>
         <button
           onClick={() => {
