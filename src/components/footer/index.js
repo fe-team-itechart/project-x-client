@@ -7,13 +7,8 @@ export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.itechart.by/">
-          <img src="src\assets\logoLight.png" alt="" />
-        </a>
-        <p>Description</p>
+        <img src="src\assets\logoLight.png" alt="" />
+        <p>We are remarkable</p>
         <p>© 2019 :iTechArt All Rights Reserved.</p>
       </div>
       <div className={styles.social_media_container}>
