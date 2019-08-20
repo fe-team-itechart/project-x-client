@@ -5,16 +5,32 @@ import types from '../actions/types';
 import * as actions from '../actions/auth';
 import setAuthToken from '../services/setAuthToken';
 
-function* register({ payload: { firstName, lastName, email, password } }) {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
+const registerRequest = data => {
+  return axios.post('api/users/registration', data, {
+    headers: { 'Content-Type': 'application/json' },
+  });
+};
 
-  // const body = JSON.stringify({ firstName, lastName, email, password });
+const loginRequest = data => {
+  return axios.post('api/users/login', data, {
+    headers: { 'Content-Type': 'application/json' },
+  });
+};
+
+function* register({
+  payload: { firstName, lastName, email, password, passwordConfirm },
+}) {
+  const body = JSON.stringify({
+    firstName,
+    lastName,
+    email,
+    password,
+    passwordConfirm,
+  });
   try {
-    // const { token } = yield call(axios.post, '/api/users/register', body, config);
+    const res = yield call(registerRequest, body);
+    console.log(res);
+    // const { token } = yield call(registerRequest, body);
     // const decoded = jwt_decode(token);
     // localStorage.setItem('token', token);
     // setAuthToken(token);
@@ -27,14 +43,11 @@ function* register({ payload: { firstName, lastName, email, password } }) {
 }
 
 function* login({ payload: { email, password } }) {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
   const body = JSON.stringify({ email, password });
   try {
-    // const { token } = yield call(axios.post, '/api/users/login', body, config);
+    const res = yield call(loginRequest, body);
+    console.log(res);
+    // const { token } = yield call(loginRequest, body);
     // const decoded = jwt_decode(token);
     // localStorage.setItem('token', token);
     // setAuthToken(token);

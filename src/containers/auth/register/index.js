@@ -6,6 +6,7 @@ import { FaTimes } from 'react-icons/fa';
 import { registerRequest } from '../../../actions/auth';
 import styles from '../styles.module.scss';
 import validateAuth from '../../../validation/auth';
+import axios from 'axios';
 
 Modal.setAppElement('#root');
 
@@ -37,8 +38,14 @@ class Register extends Component {
     });
   };
 
-  onSubmit = event => {
+  onSubmit = async event => {
     event.preventDefault();
+    // const config = {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    // };
+    // const res = await axios.post('/api/users/login', {}, body);
     const {
       firstName,
       lastName,
@@ -59,7 +66,13 @@ class Register extends Component {
       });
     } else {
       this.setState({ errors: {} });
-      registerRequest({ firstName, lastName, email, password });
+      registerRequest({
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword,
+      });
     }
   };
 
