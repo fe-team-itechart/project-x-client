@@ -6,16 +6,14 @@ import * as actions from '../actions/auth';
 import setAuthToken from '../services/setAuthToken';
 
 const googleLoginRequest = res => {
-  return axios
-    .post('http://localhost:8080/api/users/google/auth', res)
-    .then(res => {
-      const decoded = jwt_decode( res.data.token);
-      localStorage.setItem('token', res.data.token);
-      setAuthToken(res.data.token);
-      return decoded
-    });
+  return axios.post('api/users/google/auth', res).then(res => {
+    const { token } = res.data;
+    const decoded = jwt_decode(token);
+    localStorage.setItem('token', token);
+    setAuthToken(token);
+    return decoded;
+  });
 };
-
 
 function* register({ payload: { firstName, lastName, email, password } }) {
   const config = {
@@ -62,7 +60,6 @@ function* googleLogin(res) {
   try {
     const response = yield call(googleLoginRequest(res), res);
     yield put(actions.gooogleLoginSuccess(response));
-    
   } catch (err) {
     yield put(actions.gooogleLoginFailure());
   }

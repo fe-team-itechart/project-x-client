@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
 import { FaTimes } from 'react-icons/fa';
 import GoogleLogin from 'react-google-login';
-import { loginRequest,gooogleLoginRequest } from '../../../actions/auth';
+import { loginRequest, googleLoginRequest } from '../../../actions/auth';
 import styles from '../styles.module.scss';
 import validateAuth from '../../../validation/auth';
 
@@ -50,8 +50,8 @@ class Login extends Component {
     }
   };
 
-  responseGoogle = (response) => {
-    this.props.gooogleLoginRequest(response)
+  handleGoogleResponse = response => {
+    this.props.gooogleLoginRequest(response);
   };
 
   render() {
@@ -91,7 +91,7 @@ class Login extends Component {
             )}
             <GoogleLogin
               clientId={process.env.CLIENT_ID}
-              onSuccess={this.responseGoogle}
+              onSuccess={this.handleGoogleResponse}
               buttonText="Login"
               className={styles.googleButton}
               cookiePolicy={'single_host_origin'}
@@ -111,7 +111,7 @@ const mapStateToProps = state => ({});
 
 const mapDispatchToProps = {
   loginRequest,
-  gooogleLoginRequest
+  googleLoginRequest,
 };
 
 export default connect(

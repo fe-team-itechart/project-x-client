@@ -9,19 +9,18 @@ const loginSuccess = createAction(types.LOGIN_SUCCESS);
 
 const loginFailure = createAction(types.LOGIN_FAILURE);
 
+const googleLoginRequest = createAction(types.LOGIN_REQUEST);
 
-const gooogleLoginRequest = createAction(types.LOGIN_REQUEST);
+const googleLoginSuccess = createAction(types.LOGIN_SUCCESS);
 
-const gooogleLoginSuccess = createAction(types.LOGIN_SUCCESS);
-
-const gooogleLoginFailure = createAction(types.LOGIN_FAILURE);
+const googleLoginFailure = createAction(types.LOGIN_FAILURE);
 
 export {
   registerRequest,
   loginRequest,
   loginSuccess,
   loginFailure,
-  gooogleLoginFailure,
-  gooogleLoginSuccess,
-  gooogleLoginRequest
+  googleLoginFailure,
+  googleLoginSuccess,
+  googleLoginRequest,
 };
