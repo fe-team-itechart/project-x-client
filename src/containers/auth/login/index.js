@@ -51,7 +51,7 @@ class Login extends Component {
   };
 
   handleGoogleResponse = response => {
-    this.props.gooogleLoginRequest(response);
+    this.props.googleLoginRequest(response);
   };
 
   render() {

@@ -15,6 +15,13 @@ const loginSuccess = (state, { payload }) => ({
   user: payload,
 });
 
+const googleLoginSuccess = (state, { payload }) => ({
+  ...state,
+  isAuthenticated: true,
+  loading: false,
+  user: payload,
+});
+
 const loginFailure = state => ({
   ...state,
   isAuthenticated: false,
@@ -24,6 +31,7 @@ const loginFailure = state => ({
 export default handleActions(
   {
     [types.LOGIN_SUCCESS]: loginSuccess,
+    [types.GOOGLE_LOGIN_SUCCESS]: googleLoginSuccess,
     [types.LOGIN_FAILURE]: loginFailure,
   },
   initialState

@@ -14,7 +14,6 @@ const googleLoginRequest = res => {
     return decoded;
   });
 };
-
 function* register({ payload: { firstName, lastName, email, password } }) {
   const config = {
     headers: {
@@ -58,14 +57,14 @@ function* login({ payload: { email, password } }) {
 
 function* googleLogin(res) {
   try {
-    const response = yield call(googleLoginRequest(res), res);
-    yield put(actions.gooogleLoginSuccess(response));
+    const response = yield call(() => googleLoginRequest(res), res);
+    yield put(actions.googleLoginSuccess(response));
   } catch (err) {
-    yield put(actions.gooogleLoginFailure());
+    yield put(actions.googleLoginFailure());
   }
 }
 export default function*() {
   yield takeEvery(types.LOGIN_REQUEST, login);
   yield takeEvery(types.REGISTER_REQUEST, register);
-  yield takeEvery(types.LOGIN_REQUEST, googleLogin);
+  yield takeEvery(types.GOOGLE_LOGIN_REQUEST, googleLogin);
 }
