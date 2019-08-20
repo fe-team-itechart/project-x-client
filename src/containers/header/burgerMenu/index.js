@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { MdSearch } from 'react-icons/md';
+import { NavLink } from 'react-router-dom';
 import styles from './styles.module.scss';
 
 class Burger extends Component {
@@ -24,12 +25,12 @@ class Burger extends Component {
           <>
             <div className={styles.click_outside} onClick={this.burgerHandle} />
             <div className={styles.menu}>
-              <a className={styles.menu_item} href="/">
+              <NavLink className={styles.menu_item} to="/">
                 Sourses
-              </a>
-              <a className={styles.menu_item} href="/">
+              </NavLink>
+              <NavLink className={styles.menu_item} to="/">
                 Categories
-              </a>
+              </NavLink>
               <div
                 className={styles.button}
                 onClick={() => {

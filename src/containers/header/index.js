@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { MdSearch } from 'react-icons/md';
 
 import Burger from './burgerMenu';
@@ -35,9 +35,9 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Link to="/">
+        <NavLink to="/">
           <img src="src\assets\logoLight.png" alt="Logo" />
-        </Link>
+        </NavLink>
       </div>
       {width > 768 ? (
         <>
@@ -46,8 +46,12 @@ const Header = () => {
             <MdSearch className={styles.icon} />
           </div>
           <div className={styles.menu}>
-            <li className={styles.link}>Sources</li>
-            <li className={styles.link}>Categories</li>
+            <NavLink to="/" className={styles.link}>
+              Sources
+            </NavLink>
+            <NavLink to="/" className={styles.link}>
+              Categories
+            </NavLink>
             <div className={styles.button} onClick={() => openModalLog()}>
               Log in
             </div>

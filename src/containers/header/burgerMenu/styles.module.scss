@@ -70,8 +70,7 @@
     font-size: 18px;
     text-decoration: none;
     border-bottom: 1px solid $gray-input;
-    background-color: rgb(109, 106, 106);
-    z-index: 100000000;
+    background-color: $gray-input;
   }
 
   .search {

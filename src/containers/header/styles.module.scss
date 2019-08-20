@@ -70,10 +70,13 @@
       cursor: pointer;
       font-weight: bold;
       transition: 0.3s;
+      text-decoration: none;
+      color: $white;
     }
 
     .link:hover {
       color: $orange;
+      text-decoration: underline;
     }
 
     .button {
