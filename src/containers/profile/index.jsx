@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import styles from './styles.module.scss';
 import { FaWindowClose, FaUserCircle } from 'react-icons/fa';
-import { ProfileTab } from './profileTab/';
+import styles from './styles.module.scss';
+import { ProfileTab } from "./profileTab";
+import { SettingsTab } from './settingsTab';
 
 export const Profile = () => {
   const [getComponent, setComponent] = useState(0);
@@ -91,9 +92,7 @@ export const Profile = () => {
           </section>
         )}
         {getComponent === 3 && (
-          <section>
-            <p>Settings</p>
-          </section>
+          <SettingsTab />
         )}
       </section>
     </section>
