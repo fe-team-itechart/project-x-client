@@ -1,24 +1,26 @@
-@import '../../../scss/shared/breakpoints.scss';
-@import '../../../scss/shared/fonts.scss';
 @import '../../../scss/shared/colors.scss';
 @import '../../../scss/mixins/button.scss';
 @import '../../../scss/mixins/input.scss';
 
 .account {
   margin-top: 50px;
-  .password{
-    input{
+
+  .password {
+
+    input {
       @include primary-input;
       padding: 15px 0;
       margin: 0 5%;
       width: 90%;
     }
   }
-  .buttons_block{ 
+
+  .buttons_block {
     width: 95%;
     display: flex;
     margin-left: 5%;
-    button{
+
+    button {
       @include primary-button;
       background: $gradient;
       height: 50px;
@@ -28,8 +30,10 @@
       border: none;
     }
   }
+
   .payment_btn_block {
-     .payment_btn{
+
+    .payment_btn {
       @include primary-button;
       height: 50px;
       text-align: center;

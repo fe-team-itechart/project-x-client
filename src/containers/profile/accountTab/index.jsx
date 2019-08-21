@@ -13,24 +13,26 @@ export const AccountTab = () => {
 
   return ( 
     <section className={account}>
-      <section className={password}>
-        <input type="text" placeholder="password" disabled={update} />
-      </section>
-      <section className={password}>
-        <input type="text" placeholder="confirm password" disabled={update} />
-      </section>
-      <section className={buttons_block}>
-      {update && <button onClick={() => setUpdate(!update)}>update password</button>}
-      {!update && (
-        <>
-          <button onClick={() => setUpdate(!update)}>save</button>
-          <button onClick={() => setUpdate(!update)}>close</button>
-        </>
-      )}
-      </section>
-      <section className={payment_btn_block}>
-        <button className={payment_btn}>Add payment data</button>
-      </section>
+      <form>
+        <div className={password}>
+          <input type="text" placeholder="password" disabled={update} />
+        </div>
+        <div className={password}>
+          <input type="text" placeholder="confirm password" disabled={update} />
+        </div>
+        <div className={buttons_block}>
+          {update && <button onClick={() => setUpdate(!update)}>update password</button>}
+          {!update && (
+            <>
+              <button type='submit'  onClick={() => setUpdate(!update)}>save</button>
+              <button type='button' onClick={() => setUpdate(!update)}>close</button>
+            </>
+          )}
+        </div>
+      </form>
+      <div className={payment_btn_block}>
+        <button type='button' className={payment_btn}>Add payment data</button>
+      </div>
     </section>
   );
 }
