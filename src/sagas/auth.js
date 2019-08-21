@@ -1,19 +1,9 @@
 import { call, put, takeLatest, takeEvery, all } from 'redux-saga/effects';
-import jwt_decode from 'jwt-decode';
-import axios from 'axios';
 import types from '../actions/types';
 import * as actions from '../actions/auth';
-import setAuthToken from '../services/setAuthToken';
 
-const googleLoginRequest = res => {
-  return axios.post('api/users/google/auth', res).then(res => {
-    const { token } = res.data;
-    const decoded = jwt_decode(token);
-    localStorage.setItem('token', token);
-    setAuthToken(token);
-    return decoded;
-  });
-};
+import {googleLoginRequest} from '../services/auth'
+
 function* register({ payload: { firstName, lastName, email, password } }) {
   const config = {
     headers: {
@@ -57,7 +47,7 @@ function* login({ payload: { email, password } }) {
 
 function* googleLogin(res) {
   try {
-    const response = yield call(() => googleLoginRequest(res), res);
+    const response = yield call(googleLoginRequest, res);
     yield put(actions.googleLoginSuccess(response));
   } catch (err) {
     yield put(actions.googleLoginFailure());
