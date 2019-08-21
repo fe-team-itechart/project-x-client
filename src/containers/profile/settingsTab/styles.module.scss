@@ -40,16 +40,14 @@
   }
 
   .styled_checkbox {
-    position: absolute; // take it out of document flow
-    opacity: 0; // hide it
+    position: absolute; 
+    opacity: 0; 
 
     & + label {
       position: relative;
       cursor: pointer;
       padding: 0;
     }
-
-    // Box.
 
     & + label:before {
       content: '';
@@ -61,25 +59,17 @@
       background: $white;
     }
 
-    // Box hover
-
     &:hover + label:before {
       background: $gradient;
     }
-
-    // Box focus
 
     &:focus + label:before {
       box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
     }
 
-    // Box checked
-
     &:checked + label:before {
       background: $gradient;
     }
-
-    // Checkmark. Could be replaced with an image
 
     &:checked + label:after {
       content: '';
