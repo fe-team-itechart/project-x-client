@@ -8,7 +8,7 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div>
         <img src="src\assets\logoLight.png" alt="" />
-        <p>Description</p>
+        <p>We are remarkable</p>
         <p>© 2019 :iTechArt All Rights Reserved.</p>
       </div>
       <div className={styles.social_media_container}>
