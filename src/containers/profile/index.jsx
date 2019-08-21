@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { FaWindowClose, FaUserCircle } from 'react-icons/fa';
+import { FaWindowClose } from 'react-icons/fa';
 import styles from './styles.module.scss';
 import { ProfileTab } from "./profileTab";
 import { SettingsTab } from './settingsTab';
 
+
 export const Profile = () => {
   const [getComponent, setComponent] = useState(0);
   const [menus, setMenu] = useState({ marginLeft: '-105%' });
+
+  const [getStatus, setStatus] = useState(0);
+
   const {
     profile,
     mobile_burger,
@@ -15,47 +19,56 @@ export const Profile = () => {
     photo,
     name,
     role,
-    active,
     main,
     close_button,
     menu,
   } = styles;
 
+  
+  const toggleButton = (elem) => {
+    setStatus(elem);
+    setComponent(elem);
+
+  }
+
   return (
     <section className={profile}>
-      <section className={mobile_burger}>
+      <div className={mobile_burger}>
         <button onClick={() => setMenu({ marginLeft: '0' })}>
-          <FaUserCircle />
+          <div className={photo} />
         </button>
-      </section>
-      <section className={mobile_menu} style={menus}>
-        <section className={user}>
+      </div>
+      <div className={mobile_menu} style={menus}>
+        <div className={user}>
           <div className={photo} />
           <div className={name}>John Doe</div>
           <div className={role}>student</div>
-        </section>
+        </div>
         <button
-          className={active}
+          className={getStatus === 0? 'profile_button_active profile_button': 'profile_button'}
           onClick={() => {
-            setComponent(0), setMenu({ marginLeft: '-105%' });
+            toggleButton(0), setMenu({ marginLeft: '-105%' });
           }}>
-          Profile
+          Public
         </button>
         <button
+          className={getStatus === 1? 'profile_button_active profile_button': 'profile_button'}
           onClick={() => {
-            setComponent(1), setMenu({ marginLeft: '-105%' });
+            toggleButton(1), setMenu({ marginLeft: '-105%' });
           }}>
           Courses
         </button>
         <button
+          className={getStatus === 2? 'profile_button_active profile_button': 'profile_button'}
           onClick={() => {
-            setComponent(2), setMenu({ marginLeft: '-105%' });
+            toggleButton(2), setMenu({ marginLeft: '-105%' });
           }}>
           Account
         </button>
         <button
+          className={getStatus === 3? 'profile_button_active profile_button': 'profile_button'}
           onClick={() => {
-            setComponent(3), setMenu({ marginLeft: '-105%' });
+            toggleButton(3), setMenu({ marginLeft: '-105%' });
           }}>
           Settings
         </button>
@@ -64,37 +77,35 @@ export const Profile = () => {
           onClick={() => setMenu({ marginLeft: '-105%' })}>
           <FaWindowClose />
         </button>
-      </section>
+      </div>
 
-      <section className={menu}>
-        <section className={user}>
+      <div className={menu}>
+        <div className={user}>
           <div className={photo} />
           <div className={name}>John Doe</div>
           <div className={role}>student</div>
-        </section>
-        <button className={active} onClick={() => setComponent(0)}>
+        </div>
+        <button className={getStatus === 0? 'profile_button_active profile_button': 'profile_button'} onClick={() => toggleButton(0)}>
           Profile
         </button>
-        <button onClick={() => setComponent(1)}>Courses</button>
-        <button onClick={() => setComponent(2)}>Account</button>
-        <button onClick={() => setComponent(3)}>Settings</button>
-      </section>
-      <section className={main}>
+        <button className={getStatus === 1? 'profile_button_active profile_button': 'profile_button'} onClick={() => toggleButton(1)}>Courses</button>
+        <button className={getStatus === 2? 'profile_button_active profile_button': 'profile_button'} onClick={() => toggleButton(2)}>Account</button>
+        <button className={getStatus === 3? 'profile_button_active profile_button': 'profile_button'} onClick={() => toggleButton(3)}>Settings</button>
+      </div>
+      <div className={main}>
         {getComponent === 0 && <ProfileTab />}
         {getComponent === 1 && (
-          <section>
+          <div>
             <p>Courses</p>
-          </section>
+          </div>
         )}
         {getComponent === 2 && (
-          <section>
-            <p>Account</p>
-          </section>
+          <p>account</p>
         )}
         {getComponent === 3 && (
           <SettingsTab />
         )}
-      </section>
+      </div>
     </section>
   );
 };

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { MdSearch } from 'react-icons/md';
+
 import Burger from './burgerMenu';
 import styles from './styles.module.scss';
 import Login from '../auth/login';
@@ -33,7 +35,9 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <img src="src\assets\logoLight.png" alt="Logo" />
+        <NavLink to="/">
+          <img src="src\assets\logoLight.png" alt="Logo" />
+        </NavLink>
       </div>
       {width > 768 ? (
         <>
@@ -42,21 +46,25 @@ const Header = () => {
             <MdSearch className={styles.icon} />
           </div>
           <div className={styles.menu}>
-            <li className={styles.link}>Sources</li>
-            <li className={styles.link}>Categories</li>
-            <div className={styles.button} onClick={e => openModalLog()}>
+            <NavLink to="/" className={styles.link}>
+              Sources
+            </NavLink>
+            <NavLink to="/" className={styles.link}>
+              Categories
+            </NavLink>
+            <div className={styles.button} onClick={() => openModalLog()}>
               Log in
             </div>
-            <div className={styles.button} onClick={e => openModalReg()}>
+            <div className={styles.button} onClick={() => openModalReg()}>
               Register
             </div>
           </div>
-          <Login modalStatus={isOpenLog} onModalClose={closeLoginModal}  />
-          <Register modalStatus={isOpenReg} onModalClose={closeRegModal} />
         </>
       ) : (
-        <Burger />
+        <Burger log={() => openModalLog()} reg={() => openModalReg()} />
       )}
+      <Login modalStatus={isOpenLog} onModalClose={closeLoginModal} />
+      <Register modalStatus={isOpenReg} onModalClose={closeRegModal} />
     </header>
   );
 };
