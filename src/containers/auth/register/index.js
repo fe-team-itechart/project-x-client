@@ -40,12 +40,6 @@ class Register extends Component {
 
   onSubmit = async event => {
     event.preventDefault();
-    // const config = {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    // };
-    // const res = await axios.post('/api/users/login', {}, body);
     const {
       firstName,
       lastName,
@@ -53,7 +47,7 @@ class Register extends Component {
       password,
       confirmPassword,
     } = this.state;
-    const { registerRequest } = this.props;
+    const { registerRequest, onModalClose } = this.props;
 
     const errors = validateAuth({ firstName, lastName, email, password });
 
@@ -73,6 +67,7 @@ class Register extends Component {
         password,
         confirmPassword,
       });
+      onModalClose(false);
     }
   };
 

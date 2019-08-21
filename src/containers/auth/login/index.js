@@ -34,7 +34,7 @@ class Login extends Component {
   onSubmit = event => {
     event.preventDefault();
     const { email, password } = this.state;
-    const { loginRequest } = this.props;
+    const { loginRequest, onModalClose } = this.props;
 
     const errors = validateAuth({
       email,
@@ -46,6 +46,7 @@ class Login extends Component {
     } else {
       this.setState({ errors: {} });
       loginRequest({ email, password });
+      onModalClose(false);
     }
   };
 
