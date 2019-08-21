@@ -4,10 +4,10 @@
 .settings {
   margin-top: 40px;
 
-  .localization{
+  .localization {
     width: 100%;
 
-    select{
+    select {
       width: 250px;
       margin: 15px 5px;
       background-color: transparent;
@@ -16,24 +16,24 @@
       color: $white;
       cursor: pointer;
 
-      option{
+      option {
         background-color: $bcg-gray-light;
         cursor: pointer;
       }
     }
   }
 
-  ul{
+  ul {
     list-style-type: none;
     margin-left: 0;
     padding-left: 5px;
     color: $white;
 
-    li{
+    li {
       margin: 10px 0;
     }
   }
-  
+
   button {
     @include primary-button;
     margin-left: 5px;
@@ -42,14 +42,15 @@
   .styled_checkbox {
     position: absolute; // take it out of document flow
     opacity: 0; // hide it
-  
+
     & + label {
       position: relative;
       cursor: pointer;
       padding: 0;
     }
-  
+
     // Box.
+
     & + label:before {
       content: '';
       margin-right: 10px;
@@ -59,23 +60,27 @@
       height: 20px;
       background: $white;
     }
-  
+
     // Box hover
+
     &:hover + label:before {
       background: $gradient;
     }
-    
+
     // Box focus
+
     &:focus + label:before {
       box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
     }
-  
+
     // Box checked
+
     &:checked + label:before {
       background: $gradient;
     }
-  
+
     // Checkmark. Could be replaced with an image
+
     &:checked + label:after {
       content: '';
       position: absolute;
@@ -84,13 +89,8 @@
       background: $white;
       width: 2px;
       height: 2px;
-      box-shadow: 
-        2px 0 0 $white,
-        4px 0 0 $white,
-        4px -2px 0 $white,
-        4px -4px 0 $white,
-        4px -6px 0 $white,
-        4px -8px 0 $white;
+      box-shadow: 2px 0 0 $white, 4px 0 0 $white, 4px -2px 0 $white,
+        4px -4px 0 $white, 4px -6px 0 $white, 4px -8px 0 $white;
       transform: rotate(45deg);
     }
   }
