@@ -8,13 +8,13 @@ export const SettingsTab = () => {
     localization,
   } = styles;
   return (
-    <section className={settings}>
-      <section className={localization}>
+    <div className={settings}>
+      <div className={localization}>
         <select name="localization" id="">
           <option value="" defaultValue>ENG</option>
           <option value="" >RUS</option>
         </select>
-      </section>
+      </div>
       <button>
         Teacher request
       </button>
@@ -31,6 +31,6 @@ export const SettingsTab = () => {
       <button>
         save
       </button>
-    </section>
+    </div>
   )
 }
