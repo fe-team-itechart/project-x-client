@@ -1,9 +1,8 @@
-import { call, put, takeLatest, takeEvery } from 'redux-saga/effects';
-import jwt_decode from 'jwt-decode';
-import axios from 'axios';
+import { call, put, takeLatest, takeEvery, all } from 'redux-saga/effects';
 import types from '../actions/types';
 import * as actions from '../actions/auth';
-import setAuthToken from '../services/setAuthToken';
+
+import { googleLoginRequest } from '../services/auth';
 
 function* register({ payload: { firstName, lastName, email, password } }) {
   const config = {
@@ -46,7 +45,16 @@ function* login({ payload: { email, password } }) {
   }
 }
 
+function* googleLogin(res) {
+  try {
+    const response = yield call(googleLoginRequest, res);
+    yield put(actions.googleLoginSuccess(response));
+  } catch (err) {
+    yield put(actions.googleLoginFailure());
+  }
+}
 export default function*() {
   yield takeEvery(types.LOGIN_REQUEST, login);
   yield takeEvery(types.REGISTER_REQUEST, register);
+  yield takeEvery(types.GOOGLE_LOGIN_REQUEST, googleLogin);
 }

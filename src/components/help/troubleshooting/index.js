@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../../scss/helpPage.scss';
+import '../../../scss/common/helpPage.scss';
 
 export const Trobleshooting = () => {
   return (
