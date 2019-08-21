@@ -2,10 +2,12 @@ import React, { Component, Fragment } from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
+import GoogleLogin from 'react-google-login';
 import { FaTimes } from 'react-icons/fa';
 import { registerRequest } from '../../../actions/auth';
 import styles from '../styles.module.scss';
 import validateAuth from '../../../validation/auth';
+import axios from 'axios';
 
 Modal.setAppElement('#root');
 
@@ -46,7 +48,7 @@ class Register extends Component {
       password,
       confirmPassword,
     } = this.state;
-    const { registerRequest } = this.props;
+    const { registerRequest, onModalClose } = this.props;
 
     const errors = validateAuth({ firstName, lastName, email, password });
 
@@ -59,7 +61,14 @@ class Register extends Component {
       });
     } else {
       this.setState({ errors: {} });
-      registerRequest({ firstName, lastName, email, password });
+      registerRequest({
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword,
+      });
+      onModalClose(false);
     }
   };
 
@@ -134,6 +143,12 @@ class Register extends Component {
               value={confirmPassword}
               placeholder="Confirm Password"
               onChange={this.onChange}
+            />
+            <GoogleLogin
+              clientId={process.env.CLIENT_ID}
+              buttonText="Login"
+              className={styles.googleButton}
+              cookiePolicy={'single_host_origin'}
             />
             <button type="submit" className={styles.submit}>
               Sign Up

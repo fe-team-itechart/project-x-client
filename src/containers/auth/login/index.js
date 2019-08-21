@@ -3,7 +3,8 @@ import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
 import { FaTimes } from 'react-icons/fa';
-import { loginRequest } from '../../../actions/auth';
+import GoogleLogin from 'react-google-login';
+import { loginRequest, googleLoginRequest } from '../../../actions/auth';
 import styles from '../styles.module.scss';
 import validateAuth from '../../../validation/auth';
 
@@ -34,7 +35,7 @@ class Login extends Component {
   onSubmit = event => {
     event.preventDefault();
     const { email, password } = this.state;
-    const { loginRequest } = this.props;
+    const { loginRequest, onModalClose } = this.props;
 
     const errors = validateAuth({
       email,
@@ -46,7 +47,14 @@ class Login extends Component {
     } else {
       this.setState({ errors: {} });
       loginRequest({ email, password });
+      onModalClose(false);
     }
+  };
+
+  handleGoogleResponse = response => {
+    const { googleLoginRequest, onModalClose } = this.props;
+    googleLoginRequest(response);
+    onModalClose(false);
   };
 
   render() {
@@ -84,6 +92,14 @@ class Login extends Component {
             {errors.password && (
               <span className={styles.invalidFeedback}>{errors.password}</span>
             )}
+            <GoogleLogin
+              clientId={process.env.CLIENT_ID}
+              onSuccess={this.handleGoogleResponse}
+              buttonText="Login"
+              className={styles.googleButton}
+              cookiePolicy={'single_host_origin'}
+            />
+            ,
             <button type="submit" className={styles.submit}>
               Sign In
             </button>
@@ -98,6 +114,7 @@ const mapStateToProps = state => ({});
 
 const mapDispatchToProps = {
   loginRequest,
+  googleLoginRequest,
 };
 
 export default connect(

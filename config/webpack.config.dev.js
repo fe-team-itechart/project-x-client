@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
@@ -8,6 +9,11 @@ module.exports = {
     port: 3000,
     hot: true,
     open: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+      },
+    },
   },
   devtool: 'source-map',
   module: {
@@ -78,6 +84,7 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   plugins: [
+    new Dotenv(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve('public/index.html'),
