@@ -39,7 +39,7 @@ class Register extends Component {
     });
   };
 
-  onSubmit = async event => {
+  onSubmit = event => {
     event.preventDefault();
     const {
       firstName,

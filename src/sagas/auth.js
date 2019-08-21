@@ -6,38 +6,27 @@ import setAuthToken from '../services/setAuthToken';
 import { registerRequest, loginRequest } from '../services/auth';
 import { googleLoginRequest } from '../services/auth';
 
-
-function* register({
-  payload: { firstName, lastName, email, password, passwordConfirm },
-}) {
-  const body = JSON.stringify({
-    firstName,
-    lastName,
-    email,
-    password,
-    passwordConfirm,
-  });
+function* register({ payload }) {
   try {
-    const response = yield call(registerRequest, body);
+    const response = yield call(registerRequest, payload);
     yield put(actions.loginSuccess(response));
   } catch (err) {
     yield put(actions.loginFailure(err));
   }
 }
 
-function* login({ payload: { email, password } }) {
-  const body = JSON.stringify({ email, password });
+function* login({ payload }) {
   try {
-    const response = yield call(loginRequest, body);
+    const response = yield call(loginRequest, payload);
     yield put(actions.loginSuccess(response));
   } catch (err) {
     yield put(actions.loginFailure(err));
   }
 }
 
-function* googleLogin(res) {
+function* googleLogin(payload) {
   try {
-    const response = yield call(googleLoginRequest, res);
+    const response = yield call(googleLoginRequest, payload);
     yield put(actions.googleLoginSuccess(response));
   } catch (err) {
     yield put(actions.googleLoginFailure());
