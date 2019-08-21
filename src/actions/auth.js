@@ -9,6 +9,10 @@ const loginSuccess = createAction(types.LOGIN_SUCCESS);
 
 const loginFailure = createAction(types.LOGIN_FAILURE);
 
+const logOutRequest = createAction(types.LOGOUT_REQUEST);
+
+const logOutSuccess = createAction(types.LOGOUT_SUCCESS);
+
 const googleLoginRequest = createAction(types.GOOGLE_LOGIN_REQUEST);
 
 const googleLoginSuccess = createAction(types.GOOGLE_LOGIN_SUCCESS);
@@ -20,6 +24,8 @@ export {
   loginRequest,
   loginSuccess,
   loginFailure,
+  logOutRequest,
+  logOutSuccess,
   googleLoginFailure,
   googleLoginSuccess,
   googleLoginRequest,

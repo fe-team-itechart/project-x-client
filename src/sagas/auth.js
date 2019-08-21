@@ -3,8 +3,12 @@ import jwt_decode from 'jwt-decode';
 import types from '../actions/types';
 import * as actions from '../actions/auth';
 import setAuthToken from '../services/setAuthToken';
-import { registerRequest, loginRequest } from '../services/auth';
-import { googleLoginRequest } from '../services/auth';
+import {
+  registerRequest,
+  loginRequest,
+  googleLoginRequest,
+  logOutRequest,
+} from '../services/auth';
 
 function* register({ payload }) {
   try {
@@ -32,8 +36,15 @@ function* googleLogin(payload) {
     yield put(actions.googleLoginFailure());
   }
 }
+
+function* logOut(payload) {
+  const response = yield call(logOutRequest, payload);
+  yield put(actions.logOutSuccess(response));
+}
+
 export default function*() {
   yield takeEvery(types.LOGIN_REQUEST, login);
   yield takeEvery(types.REGISTER_REQUEST, register);
   yield takeEvery(types.GOOGLE_LOGIN_REQUEST, googleLogin);
+  yield takeEvery(types.LOGOUT_REQUEST, logOut);
 }

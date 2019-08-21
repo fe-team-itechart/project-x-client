@@ -21,10 +21,18 @@ const loginFailure = state => ({
   loading: false,
 });
 
+const logOutSuccess = state => ({
+  ...state,
+  isAuthenticated: false,
+  loading: false,
+  user: null,
+});
+
 export default handleActions(
   {
     [types.LOGIN_SUCCESS]: loginSuccess,
     [types.LOGIN_FAILURE]: loginFailure,
+    [types.LOGOUT_SUCCESS]: logOutSuccess,
     [types.GOOGLE_LOGIN_SUCCESS]: loginSuccess,
     [types.GOOGLE_LOGIN_FAILURE]: loginFailure,
   },

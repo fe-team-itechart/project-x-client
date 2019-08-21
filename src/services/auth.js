@@ -8,7 +8,7 @@ const config = {
 
 export const registerRequest = async data => {
   const {
-    data: { token: token },
+    data: { token },
   } = await axios.post('api/users/registration', data, config);
   const decoded = jwt_decode(token);
   localStorage.setItem('token', token);
@@ -18,7 +18,7 @@ export const registerRequest = async data => {
 
 export const loginRequest = async data => {
   const {
-    data: { token: token },
+    data: { token },
   } = await axios.post('api/users/login', data, config);
   const decoded = jwt_decode(token);
   localStorage.setItem('token', token);
@@ -26,9 +26,13 @@ export const loginRequest = async data => {
   return decoded;
 };
 
+export const logOutRequest = () => {
+  localStorage.removeItem('token');
+};
+
 export const googleLoginRequest = async data => {
   const {
-    data: { token: token },
+    data: { token },
   } = await axios.post('api/users/google/auth', data);
   const decoded = jwt_decode(token);
   localStorage.setItem('token', token);
