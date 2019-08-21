@@ -2,7 +2,7 @@ import { call, put, takeLatest, takeEvery, all } from 'redux-saga/effects';
 import types from '../actions/types';
 import * as actions from '../actions/auth';
 
-import {googleLoginRequest} from '../services/auth'
+import { googleLoginRequest } from '../services/auth';
 
 function* register({ payload: { firstName, lastName, email, password } }) {
   const config = {
