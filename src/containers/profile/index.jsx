@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaWindowClose } from 'react-icons/fa';
 import styles from './styles.module.scss';
+import './buttons.scss';
 import { ProfileTab } from "./profileTab";
 import { SettingsTab } from './settingsTab';
 
@@ -22,6 +23,7 @@ export const Profile = () => {
     main,
     close_button,
     menu,
+    hidden_text
   } = styles;
 
   
@@ -33,49 +35,52 @@ export const Profile = () => {
 
   return (
     <section className={profile}>
+      <h3 className={hidden_text}>Profile's page which include courses, settings, public profile, users's account</h3>
       <div className={mobile_burger}>
-        <button onClick={() => setMenu({ marginLeft: '0' })}>
-          <div className={photo} />
-        </button>
-      </div>
-      <div className={mobile_menu} style={menus}>
-        <div className={user}>
+        <button type='button' onClick={() => setMenu({ marginLeft: '0' })}>
           <div className={photo} />
           <div className={name}>John Doe</div>
           <div className={role}>student</div>
-        </div>
+        </button>
+      </div>
+      <div className={mobile_menu} style={menus}>
         <button
-          className={getStatus === 0? 'profile_button_active profile_button': 'profile_button'}
+          type='button'
+          className={`profile_button ${getStatus === 0? 'profile_button_active': ''}`}
           onClick={() => {
             toggleButton(0), setMenu({ marginLeft: '-105%' });
           }}>
           Public
         </button>
         <button
-          className={getStatus === 1? 'profile_button_active profile_button': 'profile_button'}
+          type='button'
+          className={`profile_button ${getStatus === 1? 'profile_button_active': ''}`}
           onClick={() => {
             toggleButton(1), setMenu({ marginLeft: '-105%' });
           }}>
           Courses
         </button>
         <button
-          className={getStatus === 2? 'profile_button_active profile_button': 'profile_button'}
+          type='button'
+          className={`profile_button ${getStatus === 2? 'profile_button_active': ''}`}
           onClick={() => {
             toggleButton(2), setMenu({ marginLeft: '-105%' });
           }}>
           Account
         </button>
         <button
-          className={getStatus === 3? 'profile_button_active profile_button': 'profile_button'}
+          type='button'
+          className={`profile_button ${getStatus === 3? 'profile_button_active': ''}`}
           onClick={() => {
             toggleButton(3), setMenu({ marginLeft: '-105%' });
           }}>
           Settings
         </button>
         <button
+          type='button'
           className={close_button}
           onClick={() => setMenu({ marginLeft: '-105%' })}>
-          <FaWindowClose />
+            <FaWindowClose />
         </button>
       </div>
 
@@ -85,12 +90,30 @@ export const Profile = () => {
           <div className={name}>John Doe</div>
           <div className={role}>student</div>
         </div>
-        <button className={getStatus === 0? 'profile_button_active profile_button': 'profile_button'} onClick={() => toggleButton(0)}>
-          Profile
+        <button 
+          type='button' 
+          className={`profile_button ${getStatus === 0? 'profile_button_active': ''}`} 
+          onClick={() => toggleButton(0)}>
+            Profile
         </button>
-        <button className={getStatus === 1? 'profile_button_active profile_button': 'profile_button'} onClick={() => toggleButton(1)}>Courses</button>
-        <button className={getStatus === 2? 'profile_button_active profile_button': 'profile_button'} onClick={() => toggleButton(2)}>Account</button>
-        <button className={getStatus === 3? 'profile_button_active profile_button': 'profile_button'} onClick={() => toggleButton(3)}>Settings</button>
+        <button 
+          type='button' 
+          className={`profile_button ${getStatus === 1? 'profile_button_active': ''}`} 
+          onClick={() => toggleButton(1)}>
+            Courses
+        </button>
+        <button 
+          type='button' 
+          className={`profile_button ${getStatus === 2? 'profile_button_active': ''}`} 
+          onClick={() => toggleButton(2)}>
+            Account
+        </button>
+        <button 
+          type='button' 
+          className={`profile_button ${getStatus === 3? 'profile_button_active': ''}`} 
+          onClick={() => toggleButton(3)}>
+            Settings
+        </button>
       </div>
       <div className={main}>
         {getComponent === 0 && <ProfileTab />}

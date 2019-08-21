@@ -7,6 +7,10 @@
 .profile {
   background-color: $bcg-gray-light;
 
+  .hidden_text {
+    display: none;
+  }
+
   .close_button {
 
     svg {
@@ -14,7 +18,7 @@
       color: $orange;
     }
   }
-  
+
   .photo {
     width: 200px;
     height: 200px;
@@ -30,6 +34,7 @@
     background-color: $black;
     border: 2px $bcg-gray-light solid;
   }
+
   .menu,
   .mobile_menu {
 
@@ -49,6 +54,7 @@
     .user {
       text-align: center;
       margin-bottom: 15px;
+
       .name {
         color: $white;
         font-size: 20px;
@@ -76,6 +82,10 @@
         background-color: transparent;
         border: none;
         color: #fff;
+
+        div {
+          font-size: 20px;
+        }
       }
     }
 
@@ -87,13 +97,16 @@
       display: block;
       width: 100%;
       padding: 0px;
-      height: 100%;
       position: absolute;
       overflow-x: auto;
       background-color: $bcg-gray-dark;
-      top: 0;
       left: 0;
       transition: 0.3s;
+      z-index: 1;
+
+      button {
+        height: 50px;
+      }
     }
 
     .main {
