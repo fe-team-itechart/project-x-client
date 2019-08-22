@@ -4,6 +4,7 @@ import styles from './styles.module.scss';
 import './buttons.scss';
 import { ProfileTab } from "./profileTab";
 import { SettingsTab } from './settingsTab';
+import { AccountTab } from './accountTab';
 
 
 export const Profile = () => {
@@ -154,12 +155,8 @@ export const Profile = () => {
             <p>Courses</p>
           </div>
         )}
-        {getComponent === 2 && (
-          <p>account</p>
-        )}
-        {getComponent === 3 && (
-          <SettingsTab />
-        )}
+        {getComponent === 2 && <AccountTab />}
+        {getComponent === 3 && <SettingsTab />}
       </div>
     </section>
   );
