@@ -11,10 +11,10 @@ export const Main = () => {
   return (
     <Switch>
       <Route exact path="/" component={Layout} />
-      <Route path="/getting_started" component={GettingStarted} />
+      <Route path="/getting-started" component={GettingStarted} />
       <Route path="/profile" component={Profile} />
       <Route path="/troubleshooting" component={Trobleshooting} />
-      <Route path="/course_taking" component={CourseTaking} />
+      <Route path="/course-taking" component={CourseTaking} />
     </Switch>
   );
 };

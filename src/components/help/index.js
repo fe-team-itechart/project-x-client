@@ -9,7 +9,7 @@ export const Help = () => {
   return (
     <section className={styles.cards_wrapper}>
       <h2>Help</h2>
-      <Link to="/getting_started" className={styles.card_link}>
+      <Link to="/getting-started" className={styles.card_link}>
         <div className={styles.card_wrapper}>
           <FaClipboardList />
           <h3>Getting Started</h3>
@@ -33,7 +33,7 @@ export const Help = () => {
         </div>
       </Link>
 
-      <Link to="/course_taking" className={styles.card_link}>
+      <Link to="/course-taking" className={styles.card_link}>
         <div className={styles.card_wrapper}>
           <FaBook />
           <h3>Course Taking</h3>
