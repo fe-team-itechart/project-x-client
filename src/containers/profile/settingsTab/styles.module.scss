@@ -1,0 +1,89 @@
+@import '../../../scss/shared/colors.scss';
+@import '../../../scss/mixins/button.scss';
+
+.settings {
+  margin-top: 40px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+
+  .localization {
+    width: 100%;
+
+    select {
+      width: 250px;
+      margin: 15px 5px;
+      background-color: transparent;
+      padding: 15px;
+      border: 3px $bcg-gray-dark solid;
+      color: $white;
+      cursor: pointer;
+
+      option {
+        background-color: $bcg-gray-light;
+        cursor: pointer;
+      }
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 5px;
+    color: $white;
+
+    li {
+      margin: 10px 0;
+    }
+  }
+
+  button {
+    @include primary-button;
+    margin-left: 5px;
+  }
+
+  .styled_checkbox {
+    position: absolute;
+    opacity: 0;
+
+    & + label {
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    & + label:before {
+      content: '';
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: text-top;
+      width: 20px;
+      height: 20px;
+      background: $white;
+    }
+
+    &:hover + label:before {
+      background: $gradient;
+    }
+
+    &:focus + label:before {
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+    }
+
+    &:checked + label:before {
+      background: $gradient;
+    }
+
+    &:checked + label:after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 9px;
+      background: $white;
+      width: 2px;
+      height: 2px;
+      box-shadow: 2px 0 0 $white, 4px 0 0 $white, 4px -2px 0 $white,
+        4px -4px 0 $white, 4px -6px 0 $white, 4px -8px 0 $white;
+      transform: rotate(45deg);
+    }
+  }
+}

@@ -16,8 +16,8 @@ export const ProfileTab = () => {
   } = styles;
 
   return (
-    <section className={profile}>
-      <section className={user_fio}>
+    <div className={profile}>
+      <div className={user_fio}>
         <input
           type="text"
           placeholder="First name"
@@ -30,12 +30,12 @@ export const ProfileTab = () => {
           disabled={update}
           defaultValue="Doe"
         />
-      </section>
-      <section className={description}>
+      </div>
+      <div className={description}>
         <input type="text" placeholder="Description" disabled={update} />
-      </section>
-      <section className={social}>
-        <section>
+      </div>
+      <div className={social}>
+        <div>
           <span>
             <FaTwitter className={twitter_icon} />
             http://twitter.com/
@@ -46,8 +46,8 @@ export const ProfileTab = () => {
             disabled={update}
             defaultValue="johntwitt"
           />
-        </section>
-        <section>
+        </div>
+        <div>
           <span>
             <FaFacebookF className={facebook_icon} />
             https://www.facebook.com/
@@ -58,15 +58,15 @@ export const ProfileTab = () => {
             disabled={update}
             defaultValue="jhondoe"
           />
-        </section>
-        <section>
+        </div>
+        <div>
           <span>
             <FaLinkedinIn className={linkedin_icon} />
             https://www.linkedin.com/
           </span>
           <input type="text" placeholder="linkedin nick" disabled={update} />
-        </section>
-      </section>
+        </div>
+      </div>
       {update && (
         <button type="button" onClick={() => setUpdate(!update)}>
           Update
@@ -82,6 +82,6 @@ export const ProfileTab = () => {
           </button>
         </>
       )}
-    </section>
+    </div>
   );
 };

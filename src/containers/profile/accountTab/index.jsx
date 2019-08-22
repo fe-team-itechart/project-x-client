@@ -12,7 +12,7 @@ export const AccountTab = () => {
   } = styles;
 
   return ( 
-    <section className={account}>
+    <div className={account}>
       <form>
         <div className={password}>
           <input type="text" placeholder="password" disabled={update} />
@@ -33,6 +33,6 @@ export const AccountTab = () => {
       <div className={payment_btn_block}>
         <button type='button' className={payment_btn}>Add payment data</button>
       </div>
-    </section>
+    </div>
   );
 }
