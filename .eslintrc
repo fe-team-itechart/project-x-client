@@ -22,7 +22,8 @@
     "no-underscore-dangle": 0,
     "import/prefer-default-export": 0,
     "import/imports-first": ["error", "absolute-first"],
-    "import/newline-after-import": "error"
+    "import/newline-after-import": "error",
+    "react/state-in-constructor": ["warn", "never"]
   },
   "globals": {
     "window": true,

@@ -6,11 +6,13 @@ import Burger from './burgerMenu';
 import styles from './styles.module.scss';
 import Login from '../auth/login';
 import Register from '../auth/register';
+import ForgotPassword from '../auth/forgotPassword';
 
 const Header = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const [isOpenLog, setModalStatusLog] = useState(false);
   const [isOpenReg, setModalStatusReg] = useState(false);
+  const [isOpenForgotPass, setModalForgotPass] = useState(false);
 
   useEffect(() => {
     const handleWidth = () => setWidth(window.innerWidth);
@@ -63,8 +65,14 @@ const Header = () => {
       ) : (
         <Burger log={() => openModalLog()} reg={() => openModalReg()} />
       )}
-      <Login modalStatus={isOpenLog} onModalClose={closeLoginModal} />
+      <Login 
+        modalStatus={isOpenLog} 
+        onModalClose={closeLoginModal}
+        modalStatusForgotPass={isOpenForgotPass}
+        onModalCloseForgotPass={setModalForgotPass}
+      />
       <Register modalStatus={isOpenReg} onModalClose={closeRegModal} />
+      <ForgotPassword modalStatus={isOpenForgotPass} onModalClose={setModalForgotPass}/>
     </header>
   );
 };

@@ -35,3 +35,15 @@ export const googleLoginRequest = async data => {
   setAuthToken(token);
   return decoded;
 };
+
+export const forgotPasswordRequest = async data => {
+  try {
+    const response = await axios.post('api/users/reset', data);
+    return response;
+  } catch (e) {
+    return {
+      status: 400,
+      data: 'Bad email'
+    };
+  }
+};
