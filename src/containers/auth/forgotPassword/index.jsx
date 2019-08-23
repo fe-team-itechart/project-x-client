@@ -48,7 +48,8 @@ class ForgotPassword extends PureComponent {
       rowFlexEnd,
       rowTop,
       closeModal,
-      successMessage
+      successMessage,
+      errorMessage
     } = styles;
 
     const {

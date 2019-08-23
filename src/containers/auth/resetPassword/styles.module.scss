@@ -1,26 +1,17 @@
 @import '../../../scss/combineStyles.scss';
 
-.modal {
-    font-family: $primary-font;
-    background-color: $bcg-gray-dark;
-    width: 380px;
-    border-radius: 6px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: auto;
-    bottom: auto;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
 
-    @media screen and (max-width: $width-sm) {
-        width: 100%;
-    }
+.wrapperF {
+    font-family: $primary-font;
+    color: $white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 
     .form {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        width: 90%;
         padding: 15px;
         box-sizing: border-box;
     }
@@ -41,11 +32,6 @@
 
     .successMessage {
         color: $green;
-        font-size: 2em;
-    }
-
-    .errorMessage {
-        color: $pink;
         font-size: 2em;
     }
 
