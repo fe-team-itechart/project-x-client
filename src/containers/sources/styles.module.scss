@@ -1,0 +1,9 @@
+@import '../../scss/shared/colors.scss';
+@import '../../scss/shared/fonts.scss';
+
+.main_page_wrapper {
+  display: flex;
+  width: 90%;
+  height: 100vh;
+  background-color: $bcg-gray-light;
+}
