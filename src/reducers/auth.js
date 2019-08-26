@@ -27,6 +27,8 @@ export default handleActions(
     [types.LOGIN_FAILURE]: loginFailure,
     [types.GOOGLE_LOGIN_SUCCESS]: loginSuccess,
     [types.GOOGLE_LOGIN_FAILURE]: loginFailure,
+    [types.LINKEDIN_LOGIN_SUCCESS]: loginSuccess,
+    [types.LINKEDIN_LOGIN_FAILURE]: loginFailure,
   },
   initialState
 );

@@ -15,6 +15,12 @@ const googleLoginSuccess = createAction(types.GOOGLE_LOGIN_SUCCESS);
 
 const googleLoginFailure = createAction(types.GOOGLE_LOGIN_FAILURE);
 
+const linkedInLoginRequest = createAction(types.LINKEDIN_LOGIN_REQUEST);
+
+const linkedInLoginSuccess = createAction(types.LINKEDIN_LOGIN_SUCCESS);
+
+const linkedInLoginFailure = createAction(types.LINKEDIN_LOGIN_FAILURE);
+
 export {
   registerRequest,
   loginRequest,
@@ -23,4 +29,7 @@ export {
   googleLoginFailure,
   googleLoginSuccess,
   googleLoginRequest,
+  linkedInLoginRequest,
+  linkedInLoginSuccess,
+  linkedInLoginFailure,
 };
