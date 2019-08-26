@@ -27,6 +27,7 @@
 
     .row {
         display: flex;
+        flex-wrap: wrap;
         margin: 15px 0 0 0;
     }
 
@@ -38,16 +39,20 @@
         justify-content: flex-end;
     }
 
+    .big_size_message {
+        font-size: 2em;
+    }
 
     .successMessage {
         color: $green;
-        font-size: 2em;
     }
 
     .errorMessage {
         color: $pink;
-        font-size: 2em;
     }
+
+    input:invalid {border-color: red;}
+    input:valid {border-color: green;}
 
     .btn {
         @include primary-button;
