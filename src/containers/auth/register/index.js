@@ -83,7 +83,7 @@ class Register extends Component {
     } = this.state;
     const { modalStatus } = this.props;
     return (
-      <Fragment>
+      <>
         <Modal
           isOpen={modalStatus}
           onAfterOpen={this.afterOpenModal}
@@ -155,7 +155,7 @@ class Register extends Component {
             </button>
           </form>
         </Modal>
-      </Fragment>
+      </>
     );
   }
 }

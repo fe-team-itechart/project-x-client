@@ -1,8 +1,13 @@
 @import './shared/fonts.scss';
+@import './shared/colors.scss';
 
 #root {
   display: flex;
   flex-direction: column;
   height: 100%;
   font-family: $primary-font;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $white;
 }
