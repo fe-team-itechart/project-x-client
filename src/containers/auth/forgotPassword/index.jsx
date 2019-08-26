@@ -23,7 +23,6 @@ class ForgotPassword extends PureComponent {
 
   send = async (email) => {
     const response = await forgotPasswordRequest({ email });
-    console.log(response);
     const { data, status } = response;
     this.setState({
         status,
@@ -96,7 +95,7 @@ class ForgotPassword extends PureComponent {
           {
             (status >= 300) && (
               <>
-                <div className={`${row} ${rowTop} ${successMessage}`}>
+                <div className={`${row} ${rowTop} ${errorMessage}`}>
                   {data}
                 </div>
               </>

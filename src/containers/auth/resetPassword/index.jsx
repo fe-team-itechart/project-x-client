@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import styles from './styles.module.scss';
 import { resetApprove, resetPassword } from '../../../services/auth';
-import validateAuth from '../../../validation/auth';
 
 class ResetPassword extends PureComponent {
     state = {
