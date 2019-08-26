@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
 import { FaTimes } from 'react-icons/fa';
 import GoogleLogin from 'react-google-login';
-
 import { loginRequest, googleLoginRequest } from '../../../actions/auth';
 import styles from '../styles.module.scss';
 import validateAuth from '../../../validation/auth';
@@ -60,9 +59,9 @@ class Login extends Component {
 
   render() {
     const { email, password, errors } = this.state;
-    const { modalStatus, onModalCloseForgotPass } = this.props;
+    const { modalStatus } = this.props;
     return (
-      <>
+      <Fragment>
         <Modal
           isOpen={modalStatus}
           onAfterOpen={this.afterOpenModal}
@@ -96,25 +95,17 @@ class Login extends Component {
             <GoogleLogin
               clientId={process.env.CLIENT_ID}
               onSuccess={this.handleGoogleResponse}
-              buttonText="Login with Google Account"
+              buttonText="Login"
               className={styles.googleButton}
               cookiePolicy={'single_host_origin'}
             />
+            ,
             <button type="submit" className={styles.submit}>
               Sign In
             </button>
-            <span 
-              onClick={() => {
-                this.closeModal();
-                onModalCloseForgotPass(true);
-              }}
-              className={styles.linkForgot}
-            >
-              Forgot Password?
-            </span>
           </form>
         </Modal>
-      </>
+      </Fragment>
     );
   }
 }
