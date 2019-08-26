@@ -3,10 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Layout } from '../layout';
 import { GettingStarted } from '../help/gettingStarted';
-import { Profile } from '../../containers/profile';
+import { ProfileRouters } from '../../containers/profile';
 import { Trobleshooting } from '../help/troubleshooting';
 import { CourseTaking } from '../help/courseTaking'
 import ResetPassword from '../../containers/auth/resetPassword';
+import Sources from '../../containers/sources';
+import Categories from '../../containers/categories';
 
 export const Main = ({match}) => {
   console.log(match);
@@ -14,8 +16,10 @@ export const Main = ({match}) => {
     <>
     <Switch>
       <Route exact path="/" component={Layout} />
+      <Route path="/sources" component={Sources} />
+      <Route path="/categories" component={Categories} />
       <Route path="/getting-started" component={GettingStarted} />
-      <Route path="/profile" component={Profile} />
+      <Route path="/profile" component={ProfileRouters} />
       <Route path="/troubleshooting" component={Trobleshooting} />
       <Route path="/course-taking" component={CourseTaking} />
       <Route path="/reset" component={ResetPassword}/>

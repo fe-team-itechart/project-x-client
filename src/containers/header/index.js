@@ -48,10 +48,10 @@ const Header = () => {
             <MdSearch className={styles.icon} />
           </div>
           <div className={styles.menu}>
-            <NavLink to="/" className={styles.link}>
+            <NavLink to="/sources" className={styles.link}>
               Sources
             </NavLink>
-            <NavLink to="/" className={styles.link}>
+            <NavLink to="/categories" className={styles.link}>
               Categories
             </NavLink>
             <div className={styles.button} onClick={() => openModalLog()}>
