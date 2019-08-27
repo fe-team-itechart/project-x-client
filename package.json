@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config config/webpack.config.dev.js",
-    "storybook": "start-storybook"
+    "start": "webpack-dev-server --config config/webpack.config.dev.js"
   },
   "keywords": [],
   "author": "",

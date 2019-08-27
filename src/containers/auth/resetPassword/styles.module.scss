@@ -1,6 +1,6 @@
 @import '../../../scss/combineStyles.scss';
 
-.wrapperF {
+.wrapper_f {
   font-family: $primary-font;
   color: $white;
   width: 100%;
@@ -21,11 +21,11 @@
     margin: 15px 0 0 0;
   }
 
-  .rowTop {
+  .row_top {
     margin: 25px 0 0 0;
   }
 
-  .rowFlexEnd {
+  .row_flex_end {
     justify-content: flex-end;
   }
 
@@ -33,11 +33,11 @@
     font-size: 2em;
   }
 
-  .successMessage {
+  .success_message {
     color: $green;
   }
 
-  .errorMessage {
+  .error_message {
     color: $pink;
   }
 
@@ -49,18 +49,5 @@
   .input {
     @include primary-input;
     width: 100%;
-  }
-
-  .closeModal {
-    color: white;
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    padding: 0;
-    background: none;
-    border: none;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
   }
 }

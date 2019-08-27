@@ -76,10 +76,10 @@ class ResetPassword extends PureComponent {
       btn,
       form,
       row,
-      rowFlexEnd,
-      wrapperF,
-      errorMessage,
-      successMessage,
+      row_flex_end: rowFlexEnd,
+      wrapper_f: wrapperF,
+      error_message: errorMessage,
+      success_message: successMessage,
       big_size_message: bigSizeMessage,
     } = styles;
 

@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import { FaTimes } from 'react-icons/fa';
 import { IoIosCheckmarkCircle } from 'react-icons/io';
 import { CircleSpinner } from 'react-spinners-kit';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 import styles from './styles.module.scss';
 import { forgotPasswordRequest } from '../../../services/auth';
@@ -13,7 +13,6 @@ import ShowMessage from '../showMessage/index';
 Modal.setAppElement('#root');
 
 class ForgotPassword extends PureComponent {
-
   state = {
     status: null,
     data: null,
@@ -76,12 +75,12 @@ class ForgotPassword extends PureComponent {
     const { onModalClose } = this.props;
     this.onCloseModalSetDefault();
     onModalClose(false);
-  }
+  };
 
   onRequestClose = () => {
     const { onModalClose } = this.props;
     onModalClose(false);
-  }
+  };
 
   render() {
     const {
@@ -90,11 +89,11 @@ class ForgotPassword extends PureComponent {
       modal,
       form,
       row,
-      rowFlexEnd,
+      row_flex_end: rowFlexEnd,
       row_top: rowTop,
       close_modal: closeModal,
-      successMessage,
-      errorMessage,
+      success_message: successMessage,
+      error_message: errorMessage,
       big_size_message: bigSizeMessage,
     } = styles;
 
@@ -107,14 +106,12 @@ class ForgotPassword extends PureComponent {
         isOpen={modalStatus}
         onAfterOpen={this.afterOpenModal}
         onRequestClose={this.onRequestClose}
-        className={modal}
-      >
-        <FaTimes
-          onClick={this.modalClose}
-          className={closeModal}
-        />
+        className={modal}>
+        <FaTimes onClick={this.modalClose} className={closeModal} />
         <form className={form}>
-          <ShowMessage classStyle={`${row} ${rowTop}`} condition={(!status) && (!pending)}>
+          <ShowMessage
+            classStyle={`${row} ${rowTop}`}
+            condition={!status && !pending}>
             <input
               type="email"
               name="forgotPassWordEmail"
@@ -130,53 +127,30 @@ class ForgotPassword extends PureComponent {
               {message}
             </ShowMessage>
           </ShowMessage>
-          <ShowMessage classStyle={`${row} ${rowFlexEnd}`}
-            condition={(!status) && (!pending)}
-          >
-            <button
-              type="submit"
-              className={btn}
-              onClick={this.onSubmit}
-            >
+          <ShowMessage
+            classStyle={`${row} ${rowFlexEnd}`}
+            condition={!status && !pending}>
+            <button type="submit" className={btn} onClick={this.onSubmit}>
               Push
             </button>
           </ShowMessage>
           <ShowMessage classStyle={`${row} ${rowTop}`} condition={pending}>
-            <CircleSpinner
-              size={40}
-              color="#fff"
-              loading={pending}
-            />
+            <CircleSpinner size={40} color="#fff" loading={pending} />
           </ShowMessage>
 
           <ShowMessage
             classStyle={`
-              ${
-              row} ${
-              rowTop
-              } ${
-              successMessage
-              } ${
-              bigSizeMessage}`}
-            condition={status < 300}
-          >
+              ${row} ${rowTop} ${successMessage} ${bigSizeMessage}`}
+            condition={status < 300}>
             <IoIosCheckmarkCircle hidden={!status} />
             {data}
           </ShowMessage>
           <ShowMessage
             classStyle={`
-              ${
-              row} ${
-              rowTop
-              } ${
-              errorMessage
-              } ${
-              bigSizeMessage}`}
-              condition={status >= 300}
-          >
+              ${row} ${rowTop} ${errorMessage} ${bigSizeMessage}`}
+            condition={status >= 300}>
             {data}
           </ShowMessage>
-
         </form>
       </Modal>
     );
@@ -186,6 +160,6 @@ class ForgotPassword extends PureComponent {
 ForgotPassword.propTypes = {
   modalStatus: PropTypes.bool.isRequired,
   onModalClose: PropTypes.func.isRequired,
-}
+};
 
 export default ForgotPassword;
