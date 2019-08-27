@@ -1,20 +1,19 @@
-/**
- * TODO: import prop-types package
- */
-// import PropTypes from 'prop-types'
 import React, { PureComponent } from 'react';
 import Modal from 'react-modal';
 import { FaTimes } from 'react-icons/fa';
 import { IoIosCheckmarkCircle } from 'react-icons/io';
+import { CircleSpinner } from 'react-spinners-kit';
+import PropTypes from 'prop-types'
 
 import styles from './styles.module.scss';
 import { forgotPasswordRequest } from '../../../services/auth';
 import validateAuth from '../../../validation/auth';
-import Spinner from '../../../components/spinner/index';
+import ShowMessage from '../showMessage/index';
 
 Modal.setAppElement('#root');
 
 class ForgotPassword extends PureComponent {
+
   state = {
     status: null,
     data: null,
@@ -23,34 +22,30 @@ class ForgotPassword extends PureComponent {
     pending: false,
   };
 
-  refInput = React.createRef();
-
   send = async email => {
     const errors = validateAuth({ email });
     this.setState({
       pending: true,
     });
-    const response = !errors.email && (await forgotPasswordRequest({ email }));
-    const { data, status } = !errors.email && response;
-    let answer =
-      !errors.email &&
+    if (!errors.email) {
+      const response = await forgotPasswordRequest({ email });
+      const { data, status } = response;
       this.setState({
         status,
         data,
       });
-    answer =
-      errors.email &&
+    } else {
       this.setState({
         message: errors.email,
       });
+    }
     this.setState({
       pending: false,
     });
-    return answer;
   };
 
-  onChangeInput = () => {
-    const email = this.refInput.current.value;
+  onChangeInput = e => {
+    const email = e.target.value;
     this.setState({
       email,
     });
@@ -66,6 +61,28 @@ class ForgotPassword extends PureComponent {
     });
   };
 
+  onSubmit = e => {
+    e.preventDefault();
+    const { email } = this.state;
+    this.send(email);
+  };
+
+  onInput = () =>
+    this.setState({
+      message: null,
+    });
+
+  modalClose = () => {
+    const { onModalClose } = this.props;
+    this.onCloseModalSetDefault();
+    onModalClose(false);
+  }
+
+  onRequestClose = () => {
+    const { onModalClose } = this.props;
+    onModalClose(false);
+  }
+
   render() {
     const {
       input,
@@ -74,89 +91,101 @@ class ForgotPassword extends PureComponent {
       form,
       row,
       rowFlexEnd,
-      rowTop,
-      closeModal,
+      row_top: rowTop,
+      close_modal: closeModal,
       successMessage,
       errorMessage,
-      big_size_message,
+      big_size_message: bigSizeMessage,
     } = styles;
 
-    const { status, data, email, message, pending } = this.state;
+    const { status, data, message, pending } = this.state;
 
-    const { modalStatus, onModalClose } = this.props;
+    const { modalStatus } = this.props;
 
     return (
       <Modal
         isOpen={modalStatus}
         onAfterOpen={this.afterOpenModal}
-        onRequestClose={() => {
-          onModalClose(false);
-        }}
-        className={modal}>
+        onRequestClose={this.onRequestClose}
+        className={modal}
+      >
         <FaTimes
-          onClick={() => {
-            this.onCloseModalSetDefault();
-            onModalClose(false);
-          }}
+          onClick={this.modalClose}
           className={closeModal}
         />
         <form className={form}>
-          {(!status) && (!pending) && (
-            <div className={`${row} ${rowTop}`}>
-              <input
-                type="email"
-                name="forgotPassWordEmail"
-                id="forgotPassWordEmail"
-                className={input}
-                ref={this.refInput}
-                placeholder="Enter email"
-                onChange={this.onChangeInput}
-                onInput={() =>
-                  this.setState({
-                    message: null,
-                  })
-                }
-                required
-              />
-              <br />
-              <p className={`${errorMessage} `}>{!!message && message}</p>
-            </div>
-          )}
-          {
-            (pending) && (
-              <div className={`${row} ${rowTop}`}>
-                <Spinner />
-              </div>
-            )
-          }
-          {status < 300 && (
-            <>
-              <div className={`${row} ${rowTop} ${successMessage} ${big_size_message}`}>
-                <IoIosCheckmarkCircle hidden={!status} />
-                {data}
-              </div>
-            </>
-          )}
-          {status >= 300 && (
-            <>
-              <div className={`${row} ${rowTop} ${errorMessage} ${big_size_message}`}>{data}</div>
-            </>
-          )}
-          <div className={`${row} ${rowFlexEnd}`}>
+          <ShowMessage classStyle={`${row} ${rowTop}`} condition={(!status) && (!pending)}>
+            <input
+              type="email"
+              name="forgotPassWordEmail"
+              id="forgotPassWordEmail"
+              className={input}
+              placeholder="Enter email"
+              onChange={this.onChangeInput}
+              onInput={this.onInput}
+              required
+            />
+            <br />
+            <ShowMessage classStyle={`${errorMessage} `} condition={!!message}>
+              {message}
+            </ShowMessage>
+          </ShowMessage>
+          <ShowMessage classStyle={`${row} ${rowFlexEnd}`}
+            condition={(!status) && (!pending)}
+          >
             <button
               type="submit"
               className={btn}
-              onClick={e => {
-                e.preventDefault();
-                this.send(email);
-              }}>
+              onClick={this.onSubmit}
+            >
               Push
             </button>
-          </div>
+          </ShowMessage>
+          <ShowMessage classStyle={`${row} ${rowTop}`} condition={pending}>
+            <CircleSpinner
+              size={40}
+              color="#fff"
+              loading={pending}
+            />
+          </ShowMessage>
+
+          <ShowMessage
+            classStyle={`
+              ${
+              row} ${
+              rowTop
+              } ${
+              successMessage
+              } ${
+              bigSizeMessage}`}
+            condition={status < 300}
+          >
+            <IoIosCheckmarkCircle hidden={!status} />
+            {data}
+          </ShowMessage>
+          <ShowMessage
+            classStyle={`
+              ${
+              row} ${
+              rowTop
+              } ${
+              errorMessage
+              } ${
+              bigSizeMessage}`}
+              condition={status >= 300}
+          >
+            {data}
+          </ShowMessage>
+
         </form>
       </Modal>
     );
   }
+}
+
+ForgotPassword.propTypes = {
+  modalStatus: PropTypes.bool.isRequired,
+  onModalClose: PropTypes.func.isRequired,
 }
 
 export default ForgotPassword;

@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import 'normalize.css';
 import { App } from './components/app';
 
-
 import './scss/base.scss';
 import { configureStore } from './store/index';
 
