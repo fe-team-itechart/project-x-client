@@ -3,7 +3,6 @@ import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
 import { FaTimes } from 'react-icons/fa';
-import queryString from 'query-string';
 import ReactQueryParams from 'react-query-params';
 import {
   loginRequest,
@@ -22,20 +21,13 @@ class Login extends ReactQueryParams {
     errors: {},
   };
 
-  componentDidMount() {
-    if (this.queryParams.code) {
-      const { code } = this.queryParams;
-      this.props.linkedInLoginRequest(code);
-    }
-  }
-
   componentWillMount() {
-    const query = queryString.parse(this.props.location.search);
-    this.props.googleLoginRequest(query.token)
-    // if (query.token) {
-    //   window.localStorage.setItem('jwt', query.token);
-    //   this.props.history.push('/');
-    // }
+    if (this.queryParams.tokenGoogle) {
+      this.props.googleLoginRequest(this.queryParams.tokenGoogle);
+    }
+    if (this.queryParams.tokenLinkedin) {
+      this.props.linkedInLoginRequest(this.queryParams.tokenLinkedin);
+    }
   }
 
   closeModal = () => {
@@ -74,9 +66,8 @@ class Login extends ReactQueryParams {
   render() {
     const { email, password, errors } = this.state;
     const { modalStatus } = this.props;
-    const authurl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${
-      process.env.CLIENT_ID_LINKEDIN
-    }&redirect_uri=http://localhost:3000&state=2522abcde12345&scope=r_basicprofile`;
+    const linkedInURL = `http://localhost:8080/api/users/auth/linkedin`;
+    const googleURL = `http://localhost:8080/api/users/auth/google`;
 
     return (
       <Fragment>
@@ -115,7 +106,7 @@ class Login extends ReactQueryParams {
               Sign In
             </button>
           </form>
-          <a href="http://localhost:8080/api/users/auth/google">
+          <a href={googleURL}>
             <div className={styles.googleButton}>
               <span className={styles.googleButtonIcon}>
                 <svg viewBox="0 0 366 372" xmlns="http://www.w3.org/2000/svg">
@@ -146,7 +137,7 @@ class Login extends ReactQueryParams {
             </div>
           </a>
           <div>
-            <a href={authurl}>
+            <a href={linkedInURL}>
               <img alt="Sign in with Linkedin" />
             </a>
           </div>
