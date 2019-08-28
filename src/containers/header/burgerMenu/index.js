@@ -25,10 +25,10 @@ class Burger extends Component {
           <>
             <div className={styles.click_outside} onClick={this.burgerHandle} />
             <div className={styles.menu}>
-              <NavLink className={styles.menu_item} to="/">
+              <NavLink className={styles.menu_item} to="/sources">
                 Sources
               </NavLink>
-              <NavLink className={styles.menu_item} to="/">
+              <NavLink className={styles.menu_item} to="/categories">
                 Categories
               </NavLink>
               <div

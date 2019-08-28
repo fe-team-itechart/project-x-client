@@ -12,10 +12,6 @@ export const App = () => {
     <div className={styles.page}>
       <Router>
         <Header />
-        {/* <Switch>
-          <Main />
-          <Route exact path='/change-password' component={ChangePassword}/>
-        </Switch> */}
         <Main />
         <Footer />
       </Router>
