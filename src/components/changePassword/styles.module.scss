@@ -20,7 +20,7 @@
   form {
     display: flex;
     flex-direction: column;
-    width: 555px;
+    width: 550px;
 
     @media screen and (max-width: $width-sm) {
       width: 80%;
@@ -38,7 +38,7 @@
       align-self: flex-end;
     }
 
-    .invalidFeedback {
+    .invalid_feedback {
       color: $pink;
       width: 75%;
     }

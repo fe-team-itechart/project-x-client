@@ -1,8 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+
 import { isEmpty } from 'lodash';
-import styles from './styles.module.scss';
+
 import validateAuth from '../../validation/auth';
 import { changePassword } from '../../services/auth';
+
+import styles from './styles.module.scss';
 
 class ChangePassword extends Component {
   state = {
@@ -53,7 +56,7 @@ class ChangePassword extends Component {
             onChange={this.onChange}
           />
           {errors.password && (
-            <span className={styles.invalidFeedback}>{errors.password}</span>
+            <span className={styles.invalid_feedback}>{errors.password}</span>
           )}
           <input
             type="password"

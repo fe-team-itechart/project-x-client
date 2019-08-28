@@ -1,12 +1,15 @@
 import React, { Component, Fragment } from 'react';
-import Modal from 'react-modal';
 import { connect } from 'react-redux';
-import { isEmpty } from 'lodash';
+
+import Modal from 'react-modal';
 import { FaTimes } from 'react-icons/fa';
+import { isEmpty } from 'lodash';
 import GoogleLogin from 'react-google-login';
+
 import { loginRequest, googleLoginRequest } from '../../../actions/auth';
-import styles from '../styles.module.scss';
 import validateAuth from '../../../validation/auth';
+
+import styles from '../styles.module.scss';
 
 Modal.setAppElement('#root');
 
@@ -79,7 +82,7 @@ class Login extends Component {
               onChange={this.onChange}
             />
             {errors.email && (
-              <span className={styles.invalidFeedback}>{errors.email}</span>
+              <span className={styles.invalid_feedback}>{errors.email}</span>
             )}
             <input
               type="password"
@@ -90,7 +93,7 @@ class Login extends Component {
               onChange={this.onChange}
             />
             {errors.password && (
-              <span className={styles.invalidFeedback}>{errors.password}</span>
+              <span className={styles.invalid_feedback}>{errors.password}</span>
             )}
             <GoogleLogin
               clientId={process.env.CLIENT_ID}
