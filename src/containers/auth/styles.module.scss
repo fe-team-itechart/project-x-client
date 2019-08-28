@@ -46,14 +46,14 @@
       color: $pink;
       width: 75%;
     }
-  }
 
-  .submit {
-    @include primary-button;
+    .submit {
+      @include primary-button;
+    }
   }
 
   .closeModal {
-    color: white;
+    color: $white;
     position: absolute;
     right: 15px;
     top: 15px;

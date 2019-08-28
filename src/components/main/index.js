@@ -6,6 +6,7 @@ import { GettingStarted } from '../help/gettingStarted';
 import { Profile } from '../../containers/profile';
 import { Trobleshooting } from '../help/troubleshooting';
 import { CourseTaking } from '../help/courseTaking'
+import ChangePassword from '../changePassword';
 
 export const Main = () => {
   return (
@@ -15,6 +16,7 @@ export const Main = () => {
       <Route path="/profile" component={Profile} />
       <Route path="/troubleshooting" component={Trobleshooting} />
       <Route path="/course-taking" component={CourseTaking} />
+      <Route path="/change-password"  component={ChangePassword}/>
     </Switch>
   );
 };

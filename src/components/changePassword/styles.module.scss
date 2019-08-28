@@ -1,0 +1,46 @@
+@import '../../scss/mixins/input.scss';
+@import '../../scss/shared/colors.scss';
+@import '../../scss/mixins/button.scss';
+@import '../../scss/shared/fonts.scss';
+@import '../../scss/shared/breakpoints.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+
+  h3 {
+    color: $orange;
+    font-size: 36px;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 555px;
+
+    @media screen and (max-width: $width-sm) {
+      width: 80%;
+    }
+
+    input {
+      @include primary-input;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .submit {
+      @include primary-button;
+      width: 25%;
+      align-self: flex-end;
+    }
+
+    .invalidFeedback {
+      color: $pink;
+      width: 75%;
+    }
+  }
+}

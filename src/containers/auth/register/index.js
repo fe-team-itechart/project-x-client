@@ -7,7 +7,7 @@ import { FaTimes } from 'react-icons/fa';
 import { registerRequest } from '../../../actions/auth';
 import styles from '../styles.module.scss';
 import validateAuth from '../../../validation/auth';
-import axios from 'axios';
+
 
 Modal.setAppElement('#root');
 

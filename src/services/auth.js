@@ -35,3 +35,8 @@ export const googleLoginRequest = async data => {
   setAuthToken(token);
   return decoded;
 };
+
+export const changePassword = async data => {
+  const res = await axios.put('api/users/change-password', data);
+  return res;
+}
