@@ -42,20 +42,22 @@
 
   .big_size_message {
     font-size: 2em;
-  }
 
-  .success_message {
-    color: $green;
-  }
+    .success_message {
+      color: $green;
+    }
 
-  .error_message {
-    color: $pink;
+    .error_message {
+      color: $pink;
+    }
   }
 
   input {
+
     &:invalid {
       border-color: red;
     }
+
     &:valid {
       border-color: green;
     }

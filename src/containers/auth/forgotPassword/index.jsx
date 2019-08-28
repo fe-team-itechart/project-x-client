@@ -44,9 +44,8 @@ class ForgotPassword extends PureComponent {
   };
 
   onChangeInput = e => {
-    const email = e.target.value;
     this.setState({
-      email,
+      email: e.target.value,
     });
   };
 
@@ -62,8 +61,7 @@ class ForgotPassword extends PureComponent {
 
   onSubmit = e => {
     e.preventDefault();
-    const { email } = this.state;
-    this.send(email);
+    this.send(this.state.email);
   };
 
   onInput = () =>
@@ -72,14 +70,12 @@ class ForgotPassword extends PureComponent {
     });
 
   modalClose = () => {
-    const { onModalClose } = this.props;
     this.onCloseModalSetDefault();
-    onModalClose(false);
+    this.props.onModalClose(false);
   };
 
   onRequestClose = () => {
-    const { onModalClose } = this.props;
-    onModalClose(false);
+    this.props.onModalClose(false);
   };
 
   render() {
@@ -123,7 +119,7 @@ class ForgotPassword extends PureComponent {
               required
             />
             <br />
-            <ShowMessage classStyle={`${errorMessage} `} condition={!!message}>
+            <ShowMessage classStyle={`${errorMessage} `} condition={message}>
               {message}
             </ShowMessage>
           </ShowMessage>

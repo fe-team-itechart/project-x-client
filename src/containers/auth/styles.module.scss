@@ -42,7 +42,7 @@
       margin: 0 40px 40px 40px;
     }
 
-    .invalidFeedback {
+    .invalid_feedback {
       color: $pink;
       width: 75%;
     }
@@ -54,7 +54,7 @@
     margin-bottom: 5px;
   }
 
-  .closeModal {
+  .close_modal {
     color: $white;
     position: absolute;
     right: 15px;
@@ -67,7 +67,7 @@
     outline: inherit;
   }
 
-  .linkForgot {
+  .link_forgot {
     font-size: .7em;
     color: $white;
     opacity: 0.6;
@@ -93,7 +93,7 @@
   outline: 1px solid $orange;
 }
 
-.googleButton {
+.google_button {
   width: 75%;
   margin: 5px !important;
 }
