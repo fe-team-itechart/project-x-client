@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import { isEmpty } from 'lodash';
+import queryString from 'query-string';
 import { FaTimes } from 'react-icons/fa';
-import ReactQueryParams from 'react-query-params';
 
 import {
   loginRequest,
@@ -17,7 +18,7 @@ import styles from '../styles.module.scss';
 
 Modal.setAppElement('#root');
 
-class Login extends ReactQueryParams {
+class Login extends Component {
   state = {
     email: '',
     password: '',
@@ -25,12 +26,15 @@ class Login extends ReactQueryParams {
   };
 
   componentDidMount() {
-    if (this.queryParams.tokenGoogle) {
-      this.props.googleLoginRequest(this.queryParams.tokenGoogle);
-      browserHistory.push('/');
+    const { location, history } = this.props;
+    const parsed = queryString.parse(location.search);
+    if (parsed.tokenGoogle) {
+      this.props.googleLoginRequest(parsed.tokenGoogle);
+      history.push('/');
     }
-    if (this.queryParams.tokenLinkedin) {
-      this.props.linkedInLoginRequest(this.queryParams.tokenLinkedin);
+    if (parsed.tokenLinkedin) {
+      this.props.linkedInLoginRequest(parsed.tokenLinkedin);
+      history.push('/');
     }
   }
 
@@ -171,7 +175,9 @@ const mapDispatchToProps = {
   linkedInLoginRequest,
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Login);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(Login)
+);
