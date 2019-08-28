@@ -91,7 +91,7 @@ class Register extends Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           className={styles.modal}>
-          <FaTimes onClick={this.closeModal} className={styles.closeModal} />
+          <FaTimes onClick={this.closeModal} className={styles.close_modal} />
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Sign Up</h2>
           <form onSubmit={this.onSubmit} noValidate>
             <input
