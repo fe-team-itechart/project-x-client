@@ -1,16 +1,19 @@
 import React, { Fragment } from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
+
 import { isEmpty } from 'lodash';
 import { FaTimes } from 'react-icons/fa';
 import ReactQueryParams from 'react-query-params';
+
 import {
   loginRequest,
   googleLoginRequest,
   linkedInLoginRequest,
 } from '../../../actions/auth';
-import styles from '../styles.module.scss';
 import validateAuth from '../../../validation/auth';
+
+import styles from '../styles.module.scss';
 
 Modal.setAppElement('#root');
 
@@ -21,7 +24,7 @@ class Login extends ReactQueryParams {
     errors: {},
   };
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.queryParams.tokenGoogle) {
       this.props.googleLoginRequest(this.queryParams.tokenGoogle);
     }
@@ -66,8 +69,8 @@ class Login extends ReactQueryParams {
   render() {
     const { email, password, errors } = this.state;
     const { modalStatus } = this.props;
-    const linkedInURL = `http://localhost:8080/api/users/auth/linkedin`;
-    const googleURL = `http://localhost:8080/api/users/auth/google`;
+    const linkedInURL = `api/users/auth/linkedin`;
+    const googleURL = `api/users/auth/google`;
 
     return (
       <Fragment>
@@ -102,8 +105,8 @@ class Login extends ReactQueryParams {
               <span className={styles.invalidFeedback}>{errors.password}</span>
             )}
             <a href={googleURL}>
-              <div className={styles.googleButton}>
-                <span className={styles.googleButtonIcon}>
+              <div className={styles.google_button}>
+                <span className={styles.google_button_icon}>
                   <svg viewBox="0 0 366 372" xmlns="http://www.w3.org/2000/svg">
                     <path
                       d="M125.9 10.2c40.2-13.9 85.3-13.6 125.3 1.1 22.2 8.2 42.5 21 59.9 37.1-5.8 6.3-12.1 12.2-18.1 18.3l-34.2 34.2c-11.3-10.8-25.1-19-40.1-23.6-17.6-5.3-36.6-6.1-54.6-2.2-21 4.5-40.5 15.5-55.6 30.9-12.2 12.3-21.4 27.5-27 43.9-20.3-15.8-40.6-31.5-61-47.3 21.5-43 60.1-76.9 105.4-92.4z"
@@ -126,14 +129,14 @@ class Login extends ReactQueryParams {
                     />
                   </svg>
                 </span>
-                <span className={styles.googleButtonText}>
+                <span className={styles.google_button_text}>
                   Sign in with Google
                 </span>
               </div>
             </a>
             <a href={linkedInURL}>
-              <div className={styles.googleButton}>
-                <span className={styles.googleButtonIcon}>
+              <div className={styles.google_button}>
+                <span className={styles.google_button_icon}>
                   <svg viewBox="0 0 30 30" version="1.1">
                     <path
                       d="M3.44222222,0 C5.34,0 6.88,1.54111111 6.88,3.44 C6.88,5.34 5.34,6.88111111 3.44222222,6.88111111 C1.53666667,6.88111111 0,5.34 0,3.44 C0,1.54111111 1.53666667,0 3.44222222,0 L3.44222222,0 Z M0.471111111,9.48888889 L6.41,9.48888889 L6.41,28.5777778 L0.471111111,28.5777778 L0.471111111,9.48888889 Z"
@@ -145,7 +148,7 @@ class Login extends ReactQueryParams {
                     />
                   </svg>
                 </span>
-                <span className={styles.googleButtonText}>
+                <span className={styles.google_button_text}>
                   Sign in with Linked In
                 </span>
               </div>
@@ -160,7 +163,7 @@ class Login extends ReactQueryParams {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = null;
 
 const mapDispatchToProps = {
   loginRequest,
