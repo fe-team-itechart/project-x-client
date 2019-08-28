@@ -50,8 +50,8 @@ export const forgotPasswordRequest = async data => {
 
 export const resetApprove = async linkId => {
   try {
-    const l = encodeURIComponent(linkId);
-    const response = await axios.post(`api/users/reset/${l}`, {});
+    const link = encodeURIComponent(linkId);
+    const response = await axios.post(`api/users/reset/${link}`, {});
     return response;
   } catch (e) {
     return {

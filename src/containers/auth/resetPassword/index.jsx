@@ -77,14 +77,14 @@ class ResetPassword extends PureComponent {
       form,
       row,
       row_flex_end: rowFlexEnd,
-      wrapper_f: wrapperF,
+      wrapper_form: wrapperForm,
       error_message: errorMessage,
       success_message: successMessage,
       big_size_message: bigSizeMessage,
     } = styles;
 
     return (
-      <div className={wrapperF}>
+      <div className={wrapperForm}>
         {status && status < 300 && !success && (
           <form name="resetPasswordForm" className={form}>
             <div className={row}>

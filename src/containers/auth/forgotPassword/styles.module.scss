@@ -52,12 +52,13 @@
     color: $pink;
   }
 
-  input:invalid {
-    border-color: red;
-  }
-
-  input:valid {
-    border-color: green;
+  input {
+    &:invalid {
+      border-color: red;
+    }
+    &:valid {
+      border-color: green;
+    }
   }
 
   .btn {

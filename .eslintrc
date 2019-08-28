@@ -24,7 +24,7 @@
     "import/prefer-default-export": 0,
     "import/imports-first": ["error", "absolute-first"],
     "import/newline-after-import": "error",
-    "react/state-in-constructor": ["warn", "never"]
+    "react/state-in-constructor": 0,
   },
   "globals": {
     "window": true,
