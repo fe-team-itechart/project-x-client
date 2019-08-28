@@ -27,6 +27,7 @@ class Login extends ReactQueryParams {
   componentDidMount() {
     if (this.queryParams.tokenGoogle) {
       this.props.googleLoginRequest(this.queryParams.tokenGoogle);
+      browserHistory.push('/');
     }
     if (this.queryParams.tokenLinkedin) {
       this.props.linkedInLoginRequest(this.queryParams.tokenLinkedin);
@@ -51,7 +52,7 @@ class Login extends ReactQueryParams {
   onSubmit = event => {
     event.preventDefault();
     const { email, password } = this.state;
-    const { loginRequest } = this.props;
+    const { loginRequest, onModalClose } = this.props;
 
     const errors = validateAuth({
       email,
@@ -63,6 +64,7 @@ class Login extends ReactQueryParams {
     } else {
       this.setState({ errors: {} });
       loginRequest({ email, password });
+      onModalClose(false);
     }
   };
 
@@ -163,8 +165,6 @@ class Login extends ReactQueryParams {
   }
 }
 
-const mapStateToProps = null;
-
 const mapDispatchToProps = {
   loginRequest,
   googleLoginRequest,
@@ -172,6 +172,6 @@ const mapDispatchToProps = {
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Login);

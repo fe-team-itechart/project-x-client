@@ -53,10 +53,11 @@
   position: absolute;
   width: 250px;
   text-align: center;
-  right: 0;
-  top: 81px;
+  right: 5%;
+  top: 105px;
   overflow: hidden;
   z-index: 1000;
+  box-sizing: border-box;
 
   .menu_item {
     box-sizing: border-box;
@@ -68,9 +69,8 @@
     color: $white;
     font-size: 18px;
     text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    background-color: rgb(158, 157, 157);
-    z-index: 100000000;
+    border-bottom: 1px solid $bcg-gray-dark;
+    background-color: $gray-input;
   }
 
   .search {
@@ -80,16 +80,18 @@
     flex: 1 1 auto;
     cursor: pointer;
     background-color: $gray-input;
+    height: 50px;
 
     input {
       @include primary-input;
       width: 100%;
+      padding: 0 5%;
     }
 
     .icon {
       position: absolute;
       font-size: 25px;
-      right: 0;
+      right: 5%;
       cursor: pointer;
       transition: 0.3s;
     }
