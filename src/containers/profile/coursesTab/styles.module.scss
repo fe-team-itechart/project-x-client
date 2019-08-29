@@ -1,0 +1,139 @@
+@import '../../../scss/shared/colors.scss';
+@import '../../../scss/mixins/button.scss';
+@import '../../../scss/shared/breakpoints.scss';
+
+.separator {
+  width: 40%;
+  height: 3px;
+  background: $gradient;
+  margin: 15px 30%;
+}
+
+.courses {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+
+  a {
+    text-decoration: none;
+  }
+
+  .card {
+    width: 250px;
+    background-color: $bcg-gray-dark;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 15px;
+
+    .card_type {
+      position: absolute;
+      height: 50px;
+      width: 50px;
+      background: $gradient;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $white;
+      margin: 5px;
+      border-radius: 50%;
+    }
+
+    .img_block {
+      height: 200px;
+      width: 100%;
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: 0.3s;
+    }
+
+    &:hover .img_block {
+      background-size: auto 110%;
+      transition: 0.3s;
+    }
+
+    .course_name {
+      margin: 15px;
+      color: $white;
+      text-align: center;
+    }
+
+    .progress_bar {
+      height: 25px;
+      background-color: $bcg-gray-light;
+      background: linear-gradient(135deg, #ff8c0552 0%, #d61a5e59 100%);
+      margin: 15px 5px;
+      border-radius: 2px;
+      overflow: hidden;
+
+      .current_progress {
+        height: 100%;
+        background: $gradient;
+      }
+    }
+
+    .button {
+      margin: 5px;
+      @include primary-button;
+    }
+  }
+
+  .find_new_course_card {
+    height: 342px;
+  }
+
+  .add_new_course_card {
+    height: 300px;
+  }
+
+  .add_new_course_card,
+  .find_new_course_card {
+    background-color: $bcg-gray-dark;
+    width: 250px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: $bcg-gray-dark;
+    flex-direction: column;
+
+    div {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      font-size: 100px;
+      color: $white;
+      background: $gradient;
+      cursor: pointer;
+    }
+
+    &:hover div p {
+      transform: rotate(90deg);
+      transition: 0.4s;
+    }
+
+    p {
+      transform: rotate(0deg);
+      transition: 0.4s;
+      color: $white;
+    }
+  }
+
+  @media screen and (min-width: $width-xs) {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+  }
+  
+  @media screen and (min-width: $width-xl) {
+    display: flex;
+    justify-content: start;
+    max-width: 560px;
+  }
+}
