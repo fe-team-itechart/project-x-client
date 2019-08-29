@@ -2,13 +2,14 @@ import React, { PureComponent } from 'react';
 import Modal from 'react-modal';
 import { FaTimes } from 'react-icons/fa';
 import { IoIosCheckmarkCircle } from 'react-icons/io';
-import { CircleSpinner } from 'react-spinners-kit';
+
 import PropTypes from 'prop-types';
 
 import styles from './styles.module.scss';
 import { forgotPasswordRequest } from '../../../services/auth';
 import validateAuth from '../../../validation/auth';
-import ShowMessage from '../showMessage/index';
+import ShowMessage from '../showMessage';
+import Spinner from '../../../components/spinner';
 
 Modal.setAppElement('#root');
 
@@ -97,6 +98,13 @@ class ForgotPassword extends PureComponent {
 
     const { modalStatus } = this.props;
 
+    let showValidationMessage = !!message;
+    let showForm = !status && !pending;
+    let showSpinner = pending;
+    let showErrorMessage = (status >= 300);
+    let showSuccessMessage = (status < 300);
+    let showCheckMark = !status;
+
     return (
       <Modal
         isOpen={modalStatus}
@@ -107,7 +115,7 @@ class ForgotPassword extends PureComponent {
         <form className={form}>
           <ShowMessage
             classStyle={`${row} ${rowTop}`}
-            condition={!status && !pending}>
+            condition={showForm}>
             <input
               type="email"
               name="forgotPassWordEmail"
@@ -119,32 +127,31 @@ class ForgotPassword extends PureComponent {
               required
             />
             <br />
-            <ShowMessage classStyle={`${errorMessage} `} condition={message}>
+            <ShowMessage classStyle={`${errorMessage} `} condition={showValidationMessage}>
               {message}
             </ShowMessage>
           </ShowMessage>
           <ShowMessage
             classStyle={`${row} ${rowFlexEnd}`}
-            condition={!status && !pending}>
+            condition={showForm}>
             <button type="submit" className={btn} onClick={this.onSubmit}>
               Push
             </button>
           </ShowMessage>
-          <ShowMessage classStyle={`${row} ${rowTop}`} condition={pending}>
-            <CircleSpinner size={40} color="#fff" loading={pending} />
+          <ShowMessage classStyle={`${row} ${rowTop}`} condition={showSpinner}>
+            <Spinner loading={showSpinner} />
           </ShowMessage>
-
           <ShowMessage
             classStyle={`
               ${row} ${rowTop} ${successMessage} ${bigSizeMessage}`}
-            condition={status < 300}>
-            <IoIosCheckmarkCircle hidden={!status} />
+            condition={showSuccessMessage}>
+            <IoIosCheckmarkCircle hidden={showCheckMark} />
             {data}
           </ShowMessage>
           <ShowMessage
             classStyle={`
               ${row} ${rowTop} ${errorMessage} ${bigSizeMessage}`}
-            condition={status >= 300}>
+            condition={showErrorMessage}>
             {data}
           </ShowMessage>
         </form>

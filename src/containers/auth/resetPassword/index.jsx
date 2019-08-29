@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
-import { CircleSpinner } from 'react-spinners-kit';
 
 import styles from './styles.module.scss';
 import { resetApprove, resetPassword } from '../../../services/auth';
 import { passwordValidation } from '../../../validation/auth';
 import ShowMessage from '../showMessage/index';
+import Spinner from '../../../components/spinner';
 
 class ResetPassword extends PureComponent {
   state = {
@@ -83,6 +83,11 @@ class ResetPassword extends PureComponent {
       big_size_message: bigSizeMessage,
     } = styles;
 
+    let showErrorNotification = !!message;
+    let showLinkIncorrect = !!status && !success && (status > 300);
+    let showSpinner = !status && !success;
+    let showSuccessMessage = !!success;
+
     return (
       <div className={wrapperForm}>
         {status && status < 300 && !success && (
@@ -110,7 +115,7 @@ class ResetPassword extends PureComponent {
               />
             </div>
 
-            <ShowMessage classStyle={`${errorMessage}`} condition={!!message}>
+            <ShowMessage classStyle={`${errorMessage}`} condition={showErrorNotification}>
               <p>&nbsp;{message}</p>
             </ShowMessage>
             <div className={`${row} ${rowFlexEnd}`}>
@@ -122,17 +127,17 @@ class ResetPassword extends PureComponent {
         )}
         <ShowMessage
           classStyle={`${bigSizeMessage} ${errorMessage}`}
-          condition={status && !success && status > 300}>
+          condition={showLinkIncorrect}>
           Link is uncorrected
         </ShowMessage>
         <ShowMessage
           classStyle={`${bigSizeMessage} ${errorMessage}`}
-          condition={!status && !success}>
-          <CircleSpinner color="#fff" size={40} loading={!status && !success} />
+          condition={showSpinner}>
+          <Spinner loading={showSpinner} />
         </ShowMessage>
         <ShowMessage
           classStyle={`${bigSizeMessage} ${successMessage}`}
-          condition={success}>
+          condition={showSuccessMessage}>
           Password is Updated
         </ShowMessage>
       </div>

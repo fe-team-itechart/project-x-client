@@ -69,7 +69,7 @@ class Login extends Component {
       submit,
       link_forgot: linkForgot,
       invalid_feedback: invalidFeedback,
-      close_modal: closeModal,
+      close_modal: closeModalStyle,
       google_button: googleButton,
     } = styles;
     return (
@@ -79,7 +79,7 @@ class Login extends Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           className={modal}>
-          <FaTimes onClick={this.closeModal} className={closeModal} />
+          <FaTimes onClick={this.closeModal} className={closeModalStyle} />
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Sign In</h2>
           <form onSubmit={this.onSubmit} noValidate>
             <input
@@ -114,7 +114,7 @@ class Login extends Component {
             <button type="submit" className={submit}>
               Sign In
             </button>
-            <span onClick={closeModal} className={linkForgot}>
+            <span onClick={this.closeModal} className={linkForgot}>
               Forgot Password?
             </span>
           </form>
