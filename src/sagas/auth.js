@@ -3,8 +3,7 @@ import types from '../actions/types';
 import * as actions from '../actions/auth';
 
 import {
-  googleLoginRequest,
-  linkedInLoginRequest,
+  socialLoginRequest,
   registerRequest,
   loginRequest,
 } from '../services/auth';
@@ -27,26 +26,17 @@ function* login({ payload }) {
   }
 }
 
-function* googleLogin(payload) {
+function* socialLogin(payload) {
   try {
-    const response = yield call(googleLoginRequest, payload);
-    yield put(actions.googleLoginSuccess(response));
+    const response = yield call(socialLoginRequest, payload);
+    yield put(actions.socialLoginSuccess(response));
   } catch (err) {
-    yield put(actions.googleLoginFailure());
+    yield put(actions.socialLoginFailure());
   }
 }
 
-function* linkedInLogin(res) {
-  try {
-    const response = yield call(linkedInLoginRequest, res);
-    yield put(actions.linkedInLoginSuccess(response));
-  } catch (err) {
-    yield put(actions.linkedInLoginFailure());
-  }
-}
 export default function*() {
   yield takeEvery(types.LOGIN_REQUEST, login);
   yield takeEvery(types.REGISTER_REQUEST, register);
-  yield takeEvery(types.GOOGLE_LOGIN_REQUEST, googleLogin);
-  yield takeEvery(types.LINKEDIN_LOGIN_REQUEST, linkedInLogin);
+  yield takeEvery(types.SOCIAL_LOGIN_REQUEST, socialLogin);
 }

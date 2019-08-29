@@ -7,11 +7,7 @@ import { isEmpty } from 'lodash';
 import queryString from 'query-string';
 import { FaTimes } from 'react-icons/fa';
 
-import {
-  loginRequest,
-  googleLoginRequest,
-  linkedInLoginRequest,
-} from '../../../actions/auth';
+import { loginRequest, socialLoginRequest } from '../../../actions/auth';
 import validateAuth from '../../../validation/auth';
 
 import styles from '../styles.module.scss';
@@ -28,12 +24,8 @@ class Login extends Component {
   componentDidMount() {
     const { location, history } = this.props;
     const parsed = queryString.parse(location.search);
-    if (parsed.tokenGoogle) {
-      this.props.googleLoginRequest(parsed.tokenGoogle);
-      history.push('/');
-    }
-    if (parsed.tokenLinkedin) {
-      this.props.linkedInLoginRequest(parsed.tokenLinkedin);
+    if (parsed.token) {
+      this.props.socialLoginRequest(parsed.token);
       history.push('/');
     }
   }
@@ -171,8 +163,7 @@ class Login extends Component {
 
 const mapDispatchToProps = {
   loginRequest,
-  googleLoginRequest,
-  linkedInLoginRequest,
+  socialLoginRequest,
 };
 
 export default withRouter(
