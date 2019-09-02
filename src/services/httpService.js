@@ -3,30 +3,58 @@ import axios from 'axios';
 class HttpService {
   constructor(baseUrl) {
     this.baseUrl = baseUrl;
+    this.service = axios.create();
   }
 
-  get = ({ url, params = {}, config = {} }) => {
+  get = async ({ url, params = {}, config = {} }) => {
     const path = this.baseUrl + url;
 
-    return axios.get(path, params, config);
+    const response = await this.service.request({
+      method: 'get',
+      url: path,
+      params,
+      ...config,
+    });
+
+    return response;
   };
 
-  post = ({ url, data, config = {} }) => {
+  post = async ({ url, data, config = {} }) => {
     const path = this.baseUrl + url;
 
-    return axios.post(path, data, config);
+    const response = await this.service.request({
+      method: 'post',
+      url: path,
+      data,
+      ...config,
+    });
+
+    return response;
   };
 
-  put = ({ url, id, data, config = {} }) => {
+  put = async ({ url, id, data, config = {} }) => {
     const path = `${this.baseUrl + url}/${id}`;
 
-    return axios.put(path, data, config);
+    const response = await this.service.request({
+      method: 'put',
+      url: path,
+      data,
+      ...config,
+    });
+
+    return response;
   };
 
-  delete = ({ url, id, config = {} }) => {
+  delete = async ({ url, id, config = {} }) => {
     const path = `${this.baseUrl + url}/${id}`;
 
-    return axios.delete(path, config);
+    const response = await this.service.request({
+      method: 'delete',
+      url: path,
+      ...config,
+    });
+
+    return response;
   };
 }
 
