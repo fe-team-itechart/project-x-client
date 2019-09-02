@@ -6,27 +6,27 @@ class HttpService {
   }
 
   get = ({ url, params = {}, config = {} }) => {
-    const route = this.baseUrl + url;
+    const path = this.baseUrl + url;
 
-    return axios.get(route, params, config);
+    return axios.get(path, params, config);
   };
 
   post = ({ url, data, config = {} }) => {
-    const route = this.baseUrl + url;
+    const path = this.baseUrl + url;
 
-    return axios.post(route, data, config);
+    return axios.post(path, data, config);
   };
 
   put = ({ url, id, data, config = {} }) => {
-    const route = `${this.baseUrl + url}/${id}`;
+    const path = `${this.baseUrl + url}/${id}`;
 
-    return axios.put(route, data, config);
+    return axios.put(path, data, config);
   };
 
   delete = ({ url, id, config = {} }) => {
-    const route = `${this.baseUrl + url}/${id}`;
+    const path = `${this.baseUrl + url}/${id}`;
 
-    return axios.delete(route, config);
+    return axios.delete(path, config);
   };
 }
 
