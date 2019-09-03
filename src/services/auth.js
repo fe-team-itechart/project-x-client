@@ -13,7 +13,6 @@ export const socialLoginRequest = res => {
   return decoded;
 };
 
-
 export const registerRequest = async data => {
   const {
     data: { token },
