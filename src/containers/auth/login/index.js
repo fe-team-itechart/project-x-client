@@ -10,7 +10,7 @@ import { FaTimes } from 'react-icons/fa';
 import { loginRequest, socialLoginRequest } from '../../../actions/auth';
 import validateAuth from '../../../validation/auth';
 import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
-import { ReactComponent as LinkedIn } from '../../../assets/linkedin.svg';
+import { ReactComponent as LinkedInIcon } from '../../../assets/linkedin.svg';
 
 import styles from '../styles.module.scss';
 
@@ -117,7 +117,7 @@ class Login extends Component {
             <a href={linkedInURL}>
               <div className={styles.google_button}>
                 <span className={styles.google_button_icon}>
-                  <LinkedIn />
+                  <LinkedInIcon />
                 </span>
                 <span className={styles.google_button_text}>
                   Sign in with Linked In

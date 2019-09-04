@@ -10,6 +10,7 @@ export const socialLoginRequest = res => {
   const decoded = jwt_decode(res.payload);
   localStorage.setItem('token', res.payload);
   setAuthToken(res.payload);
+
   return decoded;
 };
 
@@ -20,6 +21,7 @@ export const registerRequest = async data => {
   const decoded = jwt_decode(token);
   localStorage.setItem('token', token);
   setAuthToken(token);
+
   return decoded;
 };
 
@@ -30,5 +32,6 @@ export const loginRequest = async data => {
   const decoded = jwt_decode(token);
   localStorage.setItem('token', token);
   setAuthToken(token);
+  
   return decoded;
 };
