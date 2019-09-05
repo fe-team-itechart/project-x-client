@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import styles from './styles.module.scss';
 
-export const CreatedCourseCard = ({ course }) => {
+export const CreatedCourseCard = ({ course}) => {
   const { card, card_type, img_block, course_name, button } = styles;
   const { type, img, name, link } = course;
 

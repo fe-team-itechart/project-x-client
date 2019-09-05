@@ -43,15 +43,19 @@ export const CoursesTab = () => {
   return (
     <div>
       <div className={styles.courses}>
-        {subscribedCourses.map(course => (
-          <CourseCard course={course} subscribed={true} />
+        {subscribedCourses.map((course, key) => (
+          <div key={key}>
+            <CourseCard course={course} subscribed={true} />
+          </div>
         ))}
         <CourseCard findCourse={true} />
       </div>
       <div className={styles.separator} />
       <div className={styles.courses}>
-        {createdCourses.map(course => (
-          <CourseCard course={course} created={true} />
+        {createdCourses.map((course, key) => (
+          <div key={key}>
+            <CourseCard course={course} created={true} />
+          </div>
         ))}
         <CourseCard addCourse={true} />
       </div>
