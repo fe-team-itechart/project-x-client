@@ -1,9 +1,11 @@
 import React from 'react';
-import styles from './styles.module.scss';
 import { Link } from 'react-router-dom';
 
-export const YourCourseCard = ({ type, img, name, link }) => {
+import styles from './styles.module.scss';
+
+export const CreatedCourseCard = ({ course }) => {
   const { card, card_type, img_block, course_name, button } = styles;
+  const { type, img, name, link } = course;
 
   return (
     <div className={card}>

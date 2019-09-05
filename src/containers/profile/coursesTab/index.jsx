@@ -1,87 +1,59 @@
 import React from 'react';
+
+import { CourseCard } from './CourseCard';
+
 import styles from './styles.module.scss';
-import { CoursesCard } from './courseCard';
-import { YourCourseCard } from './yourCourseCard';
 
 export const CoursesTab = () => {
-  const {
-    courses,
-    add_new_course_card,
-    find_new_course_card,
-    separator,
-  } = styles;
-
-  const currentCourses = [
+  const subscribedCourses = [
     {
-      courseType: 'Lab',
-      courseImg:
+      type: 'Lab',
+      img:
         'https://www.valuecoders.com/blog/wp-content/uploads/2016/08/react.png',
-      courseName: 'React js',
-      courseProgress: '70%',
-      courseLink: '',
+      name: 'React js',
+      progress: '70%',
+      link: '',
     },
     {
-      courseType: 'Lab',
-      courseImg: 'https://proglib.io/wp-content/uploads/2017/08/jstips.jpg',
-      courseName: 'JavaScript',
-      courseProgress: '15%',
-      courseLink: '',
+      type: 'Lab',
+      img: 'https://proglib.io/wp-content/uploads/2017/08/jstips.jpg',
+      name: 'JavaScript',
+      progress: '15%',
+      link: '',
     },
     {
-      courseType: 'C',
-      courseImg:
+      type: 'C',
+      img:
         'https://go.tiny.cloud/wp-content/uploads/2018/02/toptal-blog-image-1518187252525-03f6db7b1c131066061024c236c7e3ff.png',
-      courseName: 'Angular 7',
-      courseProgress: '30%',
-      courseLink: '',
+      name: 'Angular 7',
+      progress: '30%',
+      link: '',
     },
   ];
 
   const createdCourses = [
     {
-      courseType: 'Y',
-      courseImg: 'https://proglib.io/wp-content/uploads/2017/08/jstips.jpg',
-      courseName: 'JavaScript',
-      courseLink: '',
+      type: 'Y',
+      img: 'https://proglib.io/wp-content/uploads/2017/08/jstips.jpg',
+      name: 'JavaScript',
+      link: '',
     },
   ];
 
   return (
     <div>
-      <div className={courses}>
-        {currentCourses.map(course => (
-          <CoursesCard
-            type={course.courseType}
-            img={course.courseImg}
-            name={course.courseName}
-            progress={course.courseProgress}
-            link={course.courseLink}
-          />
+      <div className={styles.courses}>
+        {subscribedCourses.map(course => (
+          <CourseCard course={course} subscribed={true} />
         ))}
-
-        <div className={find_new_course_card}>
-          <div>
-            <p>+</p>
-          </div>
-          <p>Find new course</p>
-        </div>
+        <CourseCard findCourse={true} />
       </div>
-      <div className={separator} />
-      <div className={courses}>
+      <div className={styles.separator} />
+      <div className={styles.courses}>
         {createdCourses.map(course => (
-          <YourCourseCard
-            type={course.courseType}
-            img={course.courseImg}
-            name={course.courseName}
-            link={course.courseLink}
-          />
+          <CourseCard course={course} created={true} />
         ))}
-        <div className={add_new_course_card}>
-          <div>
-            <p>+</p>
-          </div>
-          <p>Add new course</p>
-        </div>
+        <CourseCard addCourse={true} />
       </div>
     </div>
   );
