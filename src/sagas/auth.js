@@ -1,10 +1,12 @@
-import { call, put, takeLatest, takeEvery, all } from 'redux-saga/effects';
-import jwt_decode from 'jwt-decode';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import types from '../actions/types';
 import * as actions from '../actions/auth';
-import setAuthToken from '../services/setAuthToken';
-import { registerRequest, loginRequest } from '../services/auth';
-import { googleLoginRequest } from '../services/auth';
+
+import {
+  socialLoginRequest,
+  registerRequest,
+  loginRequest,
+} from '../services/auth';
 
 function* register({ payload }) {
   try {
@@ -24,16 +26,17 @@ function* login({ payload }) {
   }
 }
 
-function* googleLogin(payload) {
+function* socialLogin(payload) {
   try {
-    const response = yield call(googleLoginRequest, payload);
-    yield put(actions.googleLoginSuccess(response));
+    const response = yield call(socialLoginRequest, payload);
+    yield put(actions.socialLoginSuccess(response));
   } catch (err) {
-    yield put(actions.googleLoginFailure());
+    yield put(actions.socialLoginFailure());
   }
 }
+
 export default function*() {
   yield takeEvery(types.LOGIN_REQUEST, login);
   yield takeEvery(types.REGISTER_REQUEST, register);
-  yield takeEvery(types.GOOGLE_LOGIN_REQUEST, googleLogin);
+  yield takeEvery(types.SOCIAL_LOGIN_REQUEST, socialLogin);
 }
