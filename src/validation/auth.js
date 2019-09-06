@@ -84,7 +84,7 @@ const schemas = {
   password: Joi.string()
     .min(8)
     .max(32)
-    .regex(/^[a-zA-Z0-9!@#$%^&*?]/)
+    .regex(/(?=.*[0-9])(?=.*[!@#$%^&*?])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/)
     .required(),
   passwordConfirm: Joi.ref('password'),
 };

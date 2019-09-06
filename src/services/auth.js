@@ -67,7 +67,7 @@ export const resetPassword = async ({
   passwordConfirm,
 }) => {
   try {
-    const response = await axios.post(`api/users/resetPassword`, {
+    const response = await axios.post(`api/users/reset-password`, {
       linkId,
       password,
       passwordConfirm,
