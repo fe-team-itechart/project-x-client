@@ -1,13 +1,29 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
+=======
+import React, { Fragment, Component } from 'react';
+>>>>>>> dev
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import { isEmpty } from 'lodash';
+import queryString from 'query-string';
 import { FaTimes } from 'react-icons/fa';
+<<<<<<< HEAD
 import GoogleLogin from 'react-google-login';
 
 import { loginRequest, googleLoginRequest } from '../../../actions/auth';
 import styles from '../styles.module.scss';
+=======
+
+import { loginRequest, socialLoginRequest } from '../../../actions/auth';
+>>>>>>> dev
 import validateAuth from '../../../validation/auth';
+import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
+import { ReactComponent as LinkedInIcon } from '../../../assets/linkedin.svg';
+
+import styles from '../styles.module.scss';
 
 Modal.setAppElement('#root');
 
@@ -17,6 +33,15 @@ class Login extends Component {
     password: '',
     errors: {},
   };
+
+  componentDidMount() {
+    const { location, history } = this.props;
+    const parsed = queryString.parse(location.search);
+    if (parsed.token) {
+      this.props.socialLoginRequest(parsed.token);
+      history.push('/');
+    }
+  }
 
   closeModal = () => {
     const { onModalClose, onModalCloseForgotPass } = this.props;
@@ -54,12 +79,6 @@ class Login extends Component {
     }
   };
 
-  handleGoogleResponse = response => {
-    const { googleLoginRequest, onModalClose } = this.props;
-    googleLoginRequest(response);
-    onModalClose(false);
-  };
-
   render() {
     const { email, password, errors } = this.state;
     const { modalStatus } = this.props;
@@ -72,6 +91,9 @@ class Login extends Component {
       close_modal: closeModalStyle,
       google_button: googleButton,
     } = styles;
+    const linkedInURL = `api/users/auth/linkedin`;
+    const googleURL = `api/users/auth/google`;
+
     return (
       <>
         <Modal
@@ -104,6 +126,7 @@ class Login extends Component {
             {errors.password && (
               <span className={invalidFeedback}>{errors.password}</span>
             )}
+<<<<<<< HEAD
             <GoogleLogin
               clientId={process.env.CLIENT_ID}
               onSuccess={this.handleGoogleResponse}
@@ -112,6 +135,29 @@ class Login extends Component {
               cookiePolicy={'single_host_origin'}
             />
             <button type="submit" className={submit}>
+=======
+            <a href={googleURL}>
+              <div className={styles.google_button}>
+                <span className={styles.google_button_icon}>
+                  <GoogleIcon />
+                </span>
+                <span className={styles.google_button_text}>
+                  Sign in with Google
+                </span>
+              </div>
+            </a>
+            <a href={linkedInURL}>
+              <div className={styles.google_button}>
+                <span className={styles.google_button_icon}>
+                  <LinkedInIcon />
+                </span>
+                <span className={styles.google_button_text}>
+                  Sign in with Linked In
+                </span>
+              </div>
+            </a>
+            <button type="submit" className={styles.submit}>
+>>>>>>> dev
               Sign In
             </button>
             <span onClick={this.closeModal} className={linkForgot}>
@@ -126,10 +172,19 @@ class Login extends Component {
 
 const mapDispatchToProps = {
   loginRequest,
-  googleLoginRequest,
+  socialLoginRequest,
 };
 
+<<<<<<< HEAD
 export default connect(
   null,
   mapDispatchToProps
 )(Login);
+=======
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(Login)
+);
+>>>>>>> dev
