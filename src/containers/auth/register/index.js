@@ -1,13 +1,17 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import { isEmpty } from 'lodash';
-import GoogleLogin from 'react-google-login';
+import queryString from 'query-string';
+import { withRouter } from 'react-router-dom';
+
 import { FaTimes } from 'react-icons/fa';
-import { registerRequest } from '../../../actions/auth';
-import styles from '../styles.module.scss';
+import { registerRequest, socialLoginRequest } from '../../../actions/auth';
+import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
+import { ReactComponent as LinkedInIcon } from '../../../assets/linkedin.svg';
 import validateAuth from '../../../validation/auth';
-import axios from 'axios';
+
+import styles from '../styles.module.scss';
 
 Modal.setAppElement('#root');
 
@@ -20,6 +24,15 @@ class Register extends Component {
     confirmPassword: '',
     errors: {},
   };
+
+  componentDidMount() {
+    const { location, history } = this.props;
+    const parsed = queryString.parse(location.search);
+    if (parsed.token) {
+      this.props.socialLoginRequest(parsed.token);
+      history.push('/');
+    }
+  }
 
   closeModal = () => {
     this.props.onModalClose(false);
@@ -82,6 +95,8 @@ class Register extends Component {
       errors,
     } = this.state;
     const { modalStatus } = this.props;
+    const linkedInURL = `api/users/auth/linkedin`;
+    const googleURL = `api/users/auth/google`;
     return (
       <Fragment>
         <Modal
@@ -144,12 +159,26 @@ class Register extends Component {
               placeholder="Confirm Password"
               onChange={this.onChange}
             />
-            <GoogleLogin
-              clientId={process.env.CLIENT_ID}
-              buttonText="Login"
-              className={styles.googleButton}
-              cookiePolicy={'single_host_origin'}
-            />
+            <a href={googleURL}>
+              <div className={styles.google_button}>
+                <span className={styles.google_button_icon}>
+                  <GoogleIcon />
+                </span>
+                <span className={styles.google_button_text}>
+                  Sign in with Google
+                </span>
+              </div>
+            </a>
+            <a href={linkedInURL}>
+              <div className={styles.google_button}>
+                <span className={styles.google_button_icon}>
+                  <LinkedInIcon />
+                </span>
+                <span className={styles.google_button_text}>
+                  Sign in with Linked In
+                </span>
+              </div>
+            </a>
             <button type="submit" className={styles.submit}>
               Sign Up
             </button>
@@ -160,13 +189,14 @@ class Register extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
-
 const mapDispatchToProps = {
   registerRequest,
+  socialLoginRequest,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Register);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(Register)
+);
