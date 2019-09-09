@@ -32,7 +32,7 @@ export const loginRequest = async data => {
   const decoded = jwt_decode(token);
   localStorage.setItem('token', token);
   setAuthToken(token);
-  
+
   return decoded;
 };
 
@@ -51,7 +51,13 @@ export const forgotPasswordRequest = async data => {
 export const resetApprove = async linkId => {
   try {
     const link = encodeURIComponent(linkId);
-    const response = await axios.post(`api/users/reset/${link}`, {});
+    const response = await axios.post(
+      `api/users/reset/${link}`,
+      {},
+      {
+        validateStatus: status => status >= 200 && status < 500,
+      }
+    );
     return response;
   } catch (e) {
     return {
@@ -61,17 +67,19 @@ export const resetApprove = async linkId => {
   }
 };
 
-export const resetPassword = async ({
-  linkId,
-  password,
-  passwordConfirm,
-}) => {
+export const resetPassword = async ({ linkId, password, passwordConfirm }) => {
   try {
-    const response = await axios.post(`api/users/reset-password`, {
-      linkId,
-      password,
-      passwordConfirm,
-    });
+    const response = await axios.post(
+      `api/users/reset-password`,
+      {
+        linkId,
+        password,
+        passwordConfirm,
+      },
+      {
+        validateStatus: status => status >= 200 && status < 500,
+      }
+    );
     return response;
   } catch (e) {
     return {

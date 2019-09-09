@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { Component } from 'react';
-=======
 import React, { Fragment, Component } from 'react';
->>>>>>> dev
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -10,15 +6,8 @@ import { withRouter } from 'react-router-dom';
 import { isEmpty } from 'lodash';
 import queryString from 'query-string';
 import { FaTimes } from 'react-icons/fa';
-<<<<<<< HEAD
-import GoogleLogin from 'react-google-login';
-
-import { loginRequest, googleLoginRequest } from '../../../actions/auth';
-import styles from '../styles.module.scss';
-=======
 
 import { loginRequest, socialLoginRequest } from '../../../actions/auth';
->>>>>>> dev
 import validateAuth from '../../../validation/auth';
 import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
 import { ReactComponent as LinkedInIcon } from '../../../assets/linkedin.svg';
@@ -126,16 +115,6 @@ class Login extends Component {
             {errors.password && (
               <span className={invalidFeedback}>{errors.password}</span>
             )}
-<<<<<<< HEAD
-            <GoogleLogin
-              clientId={process.env.CLIENT_ID}
-              onSuccess={this.handleGoogleResponse}
-              buttonText="Login with Google Account"
-              className={googleButton}
-              cookiePolicy={'single_host_origin'}
-            />
-            <button type="submit" className={submit}>
-=======
             <a href={googleURL}>
               <div className={styles.google_button}>
                 <span className={styles.google_button_icon}>
@@ -157,7 +136,6 @@ class Login extends Component {
               </div>
             </a>
             <button type="submit" className={styles.submit}>
->>>>>>> dev
               Sign In
             </button>
             <span onClick={this.closeModal} className={linkForgot}>
@@ -175,16 +153,9 @@ const mapDispatchToProps = {
   socialLoginRequest,
 };
 
-<<<<<<< HEAD
-export default connect(
-  null,
-  mapDispatchToProps
-)(Login);
-=======
 export default withRouter(
   connect(
     null,
     mapDispatchToProps
   )(Login)
 );
->>>>>>> dev

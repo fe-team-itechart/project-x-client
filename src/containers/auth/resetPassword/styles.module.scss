@@ -3,30 +3,25 @@
 .wrapper_form {
   font-family: $primary-font;
   color: $white;
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: center;
 
   .form {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
     max-width: 640px;
     padding: 15px;
     box-sizing: border-box;
   }
 
   .row {
-    display: flex;
     margin: 15px 0 0 0;
   }
 
   .row_top {
     margin: 25px 0 0 0;
-  }
-
-  .row_flex_end {
-    justify-content: flex-end;
   }
 
   .big_size_message {
@@ -44,6 +39,14 @@
   .btn {
     @include primary-button;
     width: 20%;
+  }
+
+  .btn_right_position {
+    align-self: flex-end;
+  }
+
+  .btn_margin_top {
+    margin-top: 25px;
   }
 
   .input {
