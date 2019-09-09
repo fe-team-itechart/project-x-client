@@ -5,7 +5,11 @@
   color: $white;
   width: 90%;
   display: flex;
+  height: calc(100vh - 120px - 198px);
   justify-content: center;
+  @media (max-width: $width-xl) {
+    height: calc(100vh - 120px - 367px);
+  }
 
   .form {
     display: flex;

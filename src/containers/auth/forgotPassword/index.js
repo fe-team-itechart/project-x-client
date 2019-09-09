@@ -141,7 +141,7 @@ class ForgotPassword extends PureComponent {
           classStyle={`
               ${row} ${rowTop} ${successMessage} ${bigSizeMessage}`}
           condition={successShow}>
-          <IoIosCheckmarkCircle hidden={successShow} />
+          <IoIosCheckmarkCircle hidden={!successShow} />
           {message}
         </ShowMessage>
         <ShowMessage

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 
 import styles from './styles.module.scss';
 import { resetApprove, resetPassword } from '../../../services/auth';
@@ -9,8 +9,9 @@ import Form from '../../../components/form';
 import Input from '../../../components/input';
 import Button from '../../../components/button';
 
-class ResetPassword extends PureComponent {
+class ResetPassword extends Component {
   state = {
+    height: 0,
     pending: false,
     message: null,
     showNotifications: {
@@ -59,7 +60,10 @@ class ResetPassword extends PureComponent {
   preValidateForm = ({ password, passwordConfirm }) => {
     const errors = passwordValidation({ password, passwordConfirm });
     if (errors.error) {
-      this.showCurrentMessage(['formShow', 'validationShow'], errors.error.details[0].message);
+      this.showCurrentMessage(
+        ['formShow', 'validationShow'],
+        errors.error.details[0].message
+      );
       return false;
     }
     return true;
@@ -98,7 +102,7 @@ class ResetPassword extends PureComponent {
   };
 
   render() {
-    const { pending, message, showNotifications } = this.state;
+    const { pending, message, showNotifications, height } = this.state;
 
     const {
       validationShow,
@@ -121,7 +125,7 @@ class ResetPassword extends PureComponent {
     } = styles;
 
     return (
-      <div className={wrapperForm}>
+      <div className={wrapperForm} >
         {formShow && (
           <Form name="resetPasswordForm" className={form}>
             <Input

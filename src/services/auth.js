@@ -50,7 +50,7 @@ export const googleLoginRequest = async data => {
 
 export const forgotPasswordRequest = async data => {
   try {
-    const response = await axios.post('api/users/reset', data);
+    const response = await httpService.post({ url: 'users/reset', data });
     return response;
   } catch (e) {
     return {
@@ -63,13 +63,13 @@ export const forgotPasswordRequest = async data => {
 export const resetApprove = async linkId => {
   try {
     const link = encodeURIComponent(linkId);
-    const response = await axios.post(
-      `api/users/reset/${link}`,
-      {},
-      {
+    const response = await httpService.post({
+      url: `users/reset/${link}`,
+      data: {},
+      config: {
         validateStatus: status => status >= 200 && status < 500,
-      }
-    );
+      },
+    });
     return response;
   } catch (e) {
     return {
@@ -81,17 +81,17 @@ export const resetApprove = async linkId => {
 
 export const resetPassword = async ({ linkId, password, passwordConfirm }) => {
   try {
-    const response = await axios.post(
-      `api/users/reset-password`,
-      {
+    const response = await httpService.post({
+      url: `users/reset-password`,
+      data: {
         linkId,
         password,
         passwordConfirm,
       },
-      {
+      config: {
         validateStatus: status => status >= 200 && status < 500,
       }
-    );
+    });
     return response;
   } catch (e) {
     return {
