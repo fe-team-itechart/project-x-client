@@ -1,0 +1,131 @@
+@import '../../../../scss/shared/breakpoints.scss';
+@import '../../../../scss/shared/fonts.scss';
+@import '../../../../scss/shared/colors.scss';
+@import '../../../../scss/mixins/button.scss';
+@import '../../../../scss/mixins/input.scss';
+
+.hidden_text {
+  display: none;
+}
+
+.close_button {
+
+  svg {
+    font-size: 12px;
+    color: $orange;
+  }
+
+  &:hover svg {
+    color: $bcg-gray-light;
+  }
+}
+
+.photo {
+  width: 100px;
+  height: 100px;
+  background-image: url(https://www.ktk.kz/getimage/mainpagebig/111099);
+  margin: 15px;
+  margin-top: 0px;
+  position: relative;
+  left: 50%;
+  margin-left: -50px;
+  background-size: auto 100%;
+  border-radius: 50%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: $bcg-gray-dark;
+  border: 2px $bcg-gray-light solid;
+}
+
+.menu,
+.mobile_menu {
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  button {
+    width: 100%;
+    height: 100px;
+    background-color: $bcg-gray-light;
+    border: none;
+    border-top: 3px $bcg-gray-dark solid;
+    color: $white;
+
+    &.active {
+      background: $gradient;
+    }
+
+    &:hover {
+      background: $gradient;
+      cursor: pointer;
+    }
+  }
+
+  .user {
+    text-align: center;
+    margin-bottom: 15px;
+
+    .name {
+      color: $white;
+      font-size: 12px;
+      font-weight: 100;
+    }
+
+    .role {
+      font-size: 12px;
+      color: $gray-input;
+    }
+  }
+}
+
+.mobile_burger {
+  display: block;
+  text-align: center;
+  padding: 15px 0;
+
+  button {
+    font-size: 12px;
+    background-color: transparent;
+    border: none;
+    color: $white;
+
+    &:focus {
+      outline: 0;
+    }
+    cursor: pointer;
+
+    div {
+      font-size: 12px;
+    }
+  }
+}
+
+.menu {
+  display: none;
+}
+
+.mobile_menu {
+  width: 180px;
+  margin: 0 15px;
+  display: block;
+  padding: 0px;
+  position: absolute;
+  overflow-x: auto;
+  background-color: $bcg-gray-dark;
+  left: 0;
+  transition: 0.3s;
+  z-index: 1;
+  bottom: 20px;
+
+  button {
+    height: 30px;
+    font-size: 12px;
+  }
+}
+
+.main {
+  width: 100%;
+}
