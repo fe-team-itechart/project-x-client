@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { isEmpty } from 'lodash';
 
-import validateAuth from '../../validation/auth';
+import { changePasswordValidate } from '../../validation/auth';
 import { changePassword } from '../../services/auth';
 
 import styles from './styles.module.scss';
@@ -15,23 +16,21 @@ class ChangePassword extends Component {
   };
 
   onSubmit = event => {
-    const email = 'universezxcv@gmail.com';
-    /* 
-      Hard code, email will be received form forgotPassword component
-    */
     event.preventDefault();
+    const {
+      user: {
+        user: { id },
+      },
+    } = this.props;
     const { password, confirmPassword } = this.state;
-    const errors = validateAuth({ password });
+
+    const errors = changePasswordValidate(password, confirmPassword);
+
     if (!isEmpty(errors)) {
       this.setState({ errors });
-    } else if (password !== confirmPassword) {
-      this.setState(state => {
-        state.errors.password = 'Password do not match';
-        return state;
-      });
     } else {
       this.setState({ errors: {} });
-      changePassword({ email, password });
+      changePassword(id, { password });
     }
   };
 
@@ -75,4 +74,11 @@ class ChangePassword extends Component {
   }
 }
 
-export default ChangePassword;
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(ChangePassword);

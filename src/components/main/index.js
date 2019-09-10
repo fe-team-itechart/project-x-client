@@ -6,7 +6,7 @@ import { GettingStarted } from '../help/gettingStarted';
 import { ProfileRouters } from '../../containers/profile';
 import { Trobleshooting } from '../help/troubleshooting';
 import { CourseTaking } from '../help/courseTaking'
-import ChangePassword from '../changePassword';
+import ChangePassword from '../../containers/changePassword';
 import Sources from '../../containers/sources';
 import Categories from '../../containers/categories';
 
