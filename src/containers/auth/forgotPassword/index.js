@@ -18,6 +18,7 @@ Modal.setAppElement('#root');
 
 class ForgotPassword extends PureComponent {
   state = {
+    email: null,
     pending: false,
     message: null,
     showNotifications: {
@@ -64,7 +65,7 @@ class ForgotPassword extends PureComponent {
   send = async e => {
     e.preventDefault();
     this.showCurrentMessage([''], null, true);
-    const email = document.getElementById('forgot-password-id').value;
+    const email = this.state.email;
     const valid = this.preValidateForm({ email });
     if (valid) {
       const response = await forgotPasswordRequest({ email });
@@ -79,6 +80,12 @@ class ForgotPassword extends PureComponent {
     this.showCurrentMessage(['formShow'], null);
     onModalClose(false);
   };
+
+  onChangeInput = e => {
+    this.setState({
+      email: e.target.value
+    });
+  }
 
   render() {
     const {
@@ -121,6 +128,7 @@ class ForgotPassword extends PureComponent {
               name="forgot-password-id"
               id="forgot-password-id"
               type="email"
+              onChange={this.onChangeInput}
               required
             />
             <ShowMessage classStyle={errorMessage} condition={validationShow}>

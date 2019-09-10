@@ -11,6 +11,8 @@ import Button from '../../../components/button';
 
 class ResetPassword extends Component {
   state = {
+    password: null,
+    passwordConfirm: null,
     height: 0,
     pending: false,
     message: null,
@@ -83,9 +85,7 @@ class ResetPassword extends Component {
   sendReset = async e => {
     e.preventDefault();
     this.showCurrentMessage([''], null, true);
-    const { linkId } = this.state;
-    const password = document.getElementById('password').value;
-    const passwordConfirm = document.getElementById('passwordConfirm').value;
+    const { linkId, passwordConfirm, password } = this.state;
     const valid = this.preValidateForm({ password, passwordConfirm });
     if (valid) {
       const { status, data } = await resetPassword({
@@ -100,6 +100,12 @@ class ResetPassword extends Component {
       }
     }
   };
+
+  onChangeInput = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
 
   render() {
     const { pending, message, showNotifications, height } = this.state;
@@ -134,6 +140,7 @@ class ResetPassword extends Component {
               id="password"
               placeholder="Enter Password"
               className={`${input} ${row}`}
+              onChange={this.onChangeInput}
               required
             />
             <Input
@@ -142,6 +149,7 @@ class ResetPassword extends Component {
               id="passwordConfirm"
               placeholder="Confirm Password"
               className={`${input} ${row}`}
+              onChange={this.onChangeInput}
               required
             />
             <ShowMessage
