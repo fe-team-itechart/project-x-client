@@ -71,6 +71,10 @@ class Burger extends Component {
                   </button>
                 </>
               )}
+              <div className={styles.search}>
+                <input type="text" placeholder="search" />
+                <MdSearch className={styles.icon} />
+              </div>
             </div>
           </>
         )}

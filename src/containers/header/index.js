@@ -36,8 +36,7 @@ const Header = props => {
     setModalStatusReg(true);
   };
 
-  const { isAuthenticated } = props;
-  const { logOutRequest } = props;
+  const { isAuthenticated, logOutRequest } = props;
 
   return (
     <header className={styles.header}>
