@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+
 import { MdSearch } from 'react-icons/md';
+
 import { logOutRequest } from '../../actions/auth';
 import Burger from './burgerMenu';
-import styles from './styles.module.scss';
 import Login from '../auth/login';
 import Register from '../auth/register';
 
-const Header = data => {
+import styles from './styles.module.scss';
+
+const Header = props => {
   const [width, setWidth] = useState(window.innerWidth);
   const [isOpenLog, setModalStatusLog] = useState(false);
   const [isOpenReg, setModalStatusReg] = useState(false);
@@ -34,8 +36,8 @@ const Header = data => {
     setModalStatusReg(true);
   };
 
-  const { isAuthenticated } = data.props.user;
-  const { logOutRequest } = data;
+  const { isAuthenticated } = props;
+  const { logOutRequest } = props;
 
   return (
     <header className={styles.header}>
@@ -59,25 +61,35 @@ const Header = data => {
             </NavLink>
 
             {isAuthenticated ? (
-              <div className={styles.button} onClick={() => logOutRequest()}>
+              <button
+                type="button"
+                className={styles.button}
+                onClick={logOutRequest}>
                 Log out
-              </div>
+              </button>
             ) : (
               <>
-                <div className={styles.button} onClick={() => openModalLog()}>
+                <button
+                  type="button"
+                  className={styles.button}
+                  onClick={openModalLog}>
                   Log in
-                </div>
-                <div className={styles.button} onClick={() => openModalReg()}>
+                </button>
+                <button
+                  type="button"
+                  className={styles.button}
+                  onClick={openModalReg}>
                   Register
-                </div>
+                </button>
               </>
             )}
           </div>
         </>
       ) : (
         <Burger
-          log={() => openModalLog()}
-          reg={() => openModalReg()}
+          login={openModalLog}
+          register={openModalReg}
+          logout={logOutRequest}
           isAuth={isAuthenticated}
         />
       )}
@@ -87,7 +99,9 @@ const Header = data => {
   );
 };
 
-const mapStateToProps = state => ({ props: state });
+const mapStateToProps = state => ({
+  isAuthenticated: state.user.isAuthenticated,
+});
 
 const mapDispatchToProps = { logOutRequest };
 

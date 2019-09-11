@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { MdSearch } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
+
+import { MdSearch } from 'react-icons/md';
+
 import styles from './styles.module.scss';
 
 class Burger extends Component {
@@ -12,16 +14,31 @@ class Burger extends Component {
     this.setState(state => ({ menuIsActive: !state.menuIsActive }));
   };
 
+  register = () => {
+    this.props.register();
+    this.burgerHandle();
+  };
+
+  login = () => {
+    this.props.login();
+    this.burgerHandle();
+  };
+
+  logout = () => {
+    this.props.logout();
+    this.burgerHandle();
+  };
+
   render() {
     const { menuIsActive } = this.state;
-    const { log, reg } = this.props;
+    const { isAuth } = this.props;
     return (
       <>
         <div
           className={menuIsActive ? styles.burger_active : styles.burger}
           onClick={this.burgerHandle}
         />
-        {menuIsActive ? (
+        {menuIsActive && (
           <>
             <div className={styles.click_outside} onClick={this.burgerHandle} />
             <div className={styles.menu}>
@@ -31,29 +48,32 @@ class Burger extends Component {
               <NavLink className={styles.menu_item} to="/categories">
                 Categories
               </NavLink>
-              <div
-                className={styles.button}
-                onClick={() => {
-                  log();
-                  this.burgerHandle();
-                }}>
-                Log in
-              </div>
-              <div
-                className={styles.button}
-                onClick={() => {
-                  reg();
-                  this.burgerHandle();
-                }}>
-                Register
-              </div>
-              <div className={styles.search}>
-                <input type="text" placeholder="search" />
-                <MdSearch className={styles.icon} />
-              </div>
+              {isAuth ? (
+                <button
+                  type="button"
+                  className={styles.button}
+                  onClick={this.logout}>
+                  Logout
+                </button>
+              ) : (
+                <>
+                  <button
+                    type="button"
+                    className={styles.button}
+                    onClick={this.login}>
+                    Log in
+                  </button>
+                  <button
+                    type="button"
+                    className={styles.button}
+                    onClick={this.register}>
+                    Register
+                  </button>
+                </>
+              )}
             </div>
           </>
-        ) : null}
+        )}
       </>
     );
   }

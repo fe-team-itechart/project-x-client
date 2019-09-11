@@ -8,7 +8,7 @@ import queryString from 'query-string';
 import { FaTimes } from 'react-icons/fa';
 
 import { loginRequest, socialLoginRequest } from '../../../actions/auth';
-import validateAuth from '../../../validation/auth';
+import { loginValidate } from '../../../validation/auth';
 import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
 import { ReactComponent as LinkedInIcon } from '../../../assets/linkedin.svg';
 
@@ -52,10 +52,7 @@ class Login extends Component {
     const { email, password } = this.state;
     const { loginRequest, onModalClose } = this.props;
 
-    const errors = validateAuth({
-      email,
-      password,
-    });
+    const errors = loginValidate(email, password);
 
     if (!isEmpty(errors)) {
       this.setState({ errors });
@@ -79,7 +76,7 @@ class Login extends Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           className={styles.modal}>
-          <FaTimes onClick={this.closeModal} className={styles.closeModal} />
+          <FaTimes onClick={this.closeModal} className={styles.close_modal} />
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Sign In</h2>
           <form onSubmit={this.onSubmit} noValidate>
             <input
@@ -91,7 +88,7 @@ class Login extends Component {
               onChange={this.onChange}
             />
             {errors.email && (
-              <span className={styles.invalidFeedback}>{errors.email}</span>
+              <span className={styles.invalid_feedback}>{errors.email}</span>
             )}
             <input
               type="password"
@@ -102,7 +99,7 @@ class Login extends Component {
               onChange={this.onChange}
             />
             {errors.password && (
-              <span className={styles.invalidFeedback}>{errors.password}</span>
+              <span className={styles.invalid_feedback}>{errors.password}</span>
             )}
             <a href={googleURL}>
               <div className={styles.google_button}>
