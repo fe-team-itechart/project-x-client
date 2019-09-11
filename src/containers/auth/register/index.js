@@ -9,7 +9,8 @@ import { FaTimes } from 'react-icons/fa';
 import { registerRequest, socialLoginRequest } from '../../../actions/auth';
 import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
 import { ReactComponent as LinkedInIcon } from '../../../assets/linkedin.svg';
-import validateAuth from '../../../validation/auth';
+
+import { registerValidate } from '../../../validation/auth';
 
 import styles from '../styles.module.scss';
 
@@ -63,17 +64,19 @@ class Register extends Component {
     } = this.state;
     const { registerRequest, onModalClose } = this.props;
 
-    const errors = validateAuth({ firstName, lastName, email, password });
+    const errors = registerValidate(
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword
+    );
 
     if (!isEmpty(errors)) {
       this.setState({ errors });
-    } else if (password !== confirmPassword) {
-      this.setState(state => {
-        state.errors.password = 'Password do not match';
-        return state;
-      });
     } else {
       this.setState({ errors: {} });
+
       registerRequest({
         firstName,
         lastName,
@@ -81,6 +84,7 @@ class Register extends Component {
         password,
         confirmPassword,
       });
+      
       onModalClose(false);
     }
   };
@@ -105,7 +109,7 @@ class Register extends Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           className={styles.modal}>
-          <FaTimes onClick={this.closeModal} className={styles.closeModal} />
+          <FaTimes onClick={this.closeModal} className={styles.close_modal} />
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Sign Up</h2>
           <form onSubmit={this.onSubmit} noValidate>
             <input
@@ -117,7 +121,9 @@ class Register extends Component {
               onChange={this.onChange}
             />
             {errors.firstName && (
-              <span className={styles.invalidFeedback}>{errors.firstName}</span>
+              <span className={styles.invalid_feedback}>
+                {errors.firstName}
+              </span>
             )}
             <input
               type="text"
@@ -128,7 +134,7 @@ class Register extends Component {
               onChange={this.onChange}
             />
             {errors.lastName && (
-              <span className={styles.invalidFeedback}>{errors.lastName}</span>
+              <span className={styles.invalid_feedback}>{errors.lastName}</span>
             )}
             <input
               type="email"
@@ -139,7 +145,7 @@ class Register extends Component {
               onChange={this.onChange}
             />
             {errors.email && (
-              <span className={styles.invalidFeedback}>{errors.email}</span>
+              <span className={styles.invalid_feedback}>{errors.email}</span>
             )}
             <input
               type="password"
@@ -150,7 +156,7 @@ class Register extends Component {
               onChange={this.onChange}
             />
             {errors.password && (
-              <span className={styles.invalidFeedback}>{errors.password}</span>
+              <span className={styles.invalid_feedback}>{errors.password}</span>
             )}
             <input
               type="password"

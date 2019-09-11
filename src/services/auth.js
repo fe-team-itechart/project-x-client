@@ -19,7 +19,7 @@ export const socialLoginRequest = res => {
 export const registerRequest = async data => {
   const {
     data: { token },
-  } = await axios.post('api/users/registration', data, config);
+  } = await httpService.post({ url: 'users/registration', data, config });
   const decoded = jwt_decode(token);
   localStorage.setItem('token', token);
   setAuthToken(token);
@@ -34,15 +34,11 @@ export const loginRequest = async data => {
   const decoded = jwt_decode(token);
   localStorage.setItem('token', token);
   setAuthToken(token);
+
   return decoded;
 };
 
-export const googleLoginRequest = async data => {
-  const {
-    data: { token },
-  } = await axios.post('api/users/login', data, config);
-  const decoded = jwt_decode(token);
-  localStorage.setItem('token', token);
-  setAuthToken(token);
-  return decoded;
+export const changePassword = async (id, data) => {
+  const res = await httpService.put({ url: 'users/change-password', id, data });
+  return res;
 };

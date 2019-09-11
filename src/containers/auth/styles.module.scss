@@ -42,17 +42,17 @@
       margin: 0 40px 40px 40px;
     }
 
-    .invalidFeedback {
+    .invalid_feedback {
       color: $pink;
       width: 75%;
     }
+
+    .submit {
+      @include primary-button;
+    }
   }
 
-  .submit {
-    @include primary-button;
-  }
-
-  .closeModal {
+  .close_modal {
     color: $white;
     position: absolute;
     right: 15px;
