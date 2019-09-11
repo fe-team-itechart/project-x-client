@@ -6,6 +6,7 @@ import {
   socialLoginRequest,
   registerRequest,
   loginRequest,
+  logOutRequest,
 } from '../services/auth';
 
 function* register({ payload }) {
@@ -35,8 +36,14 @@ function* socialLogin(payload) {
   }
 }
 
+function* logout() {
+  yield call(logOutRequest);
+  yield put(actions.logOutSuccess());
+}
+
 export default function*() {
   yield takeEvery(types.LOGIN_REQUEST, login);
   yield takeEvery(types.REGISTER_REQUEST, register);
   yield takeEvery(types.SOCIAL_LOGIN_REQUEST, socialLogin);
+  yield takeEvery(types.LOGOUT_REQUEST, logout);
 }
