@@ -34,7 +34,7 @@ class HttpService {
 
   put = async ({ url, id, data, config = {} }) => {
     const path = `${this.baseUrl + url}/${id}`;
-
+    
     const response = await this.service.request({
       method: 'put',
       url: path,
