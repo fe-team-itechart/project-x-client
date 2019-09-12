@@ -24,7 +24,7 @@ export const SubscribedCourseCard = ({ course }) => {
         <div className={current_progress} style={{ width: progress }} />
       </div>
       <Link to={link}>
-        <div className={button}>Continue</div>
+        <button type='button' className={button}>Continue</button>
       </Link>
     </div>
   );

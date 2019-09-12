@@ -13,7 +13,7 @@ export const CreatedCourseCard = ({ course}) => {
       <div className={img_block} style={{ backgroundImage: `url(${img})` }} />
       <p className={course_name}>{name}</p>
       <Link to={link}>
-        <div className={button}>Continue</div>
+        <button type='button' className={button}>Continue</button>
       </Link>
     </div>
   );

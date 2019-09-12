@@ -72,8 +72,9 @@
     }
 
     .button {
-      margin: 5px;
       @include primary-button;
+      margin: 0px;
+      width: 100%;
     }
   }
 
