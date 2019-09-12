@@ -40,7 +40,7 @@ class MainPage extends Component {
           <div className={left_block}>
             <div className={text_header}>
               <h1>
-                Hi, it's <b>Tech</b>courses
+                <b>Tech</b>courses
               </h1>
               <p>description</p>
             </div>
