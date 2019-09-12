@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import queryString from 'query-string';
+
 import styles from './styles.module.scss';
 import { resetApprove, resetPassword } from '../../../services/auth';
 import { passwordValidation } from '../../../validation/auth';
@@ -8,6 +10,7 @@ import Spinner from '../../../components/spinner';
 import Form from '../../../components/form';
 import Input from '../../../components/input';
 import Button from '../../../components/button';
+
 
 class ResetPassword extends Component {
   state = {
@@ -25,16 +28,16 @@ class ResetPassword extends Component {
   };
 
   componentDidMount() {
-    const params = new URLSearchParams(location.search);
-    this.sendApprove(params.get('id'));
+    const params = queryString.parse(location.search);
+    this.sendApprove(params.id);
   }
 
-  showCurrentMessage = (
+  showCurrentMessage = ({
     keys = [],
-    message,
+    message = '',
     pending = false,
-    additionalInjections = {}
-  ) => {
+    additionalInjections = {},
+  }) => {
     const defaultMessages = {
       validationShow: false,
       successShow: false,
@@ -72,19 +75,28 @@ class ResetPassword extends Component {
   };
 
   sendApprove = async linkId => {
-    this.showCurrentMessage([''], null, true);
+    this.showCurrentMessage({ message: null, pending: true });
     const { status, data } = await resetApprove(linkId);
 
     if (status < 300) {
-      this.showCurrentMessage(['formShow'], data.toString(), false, { linkId });
+      this.showCurrentMessage({
+        keys: ['formShow'],
+        message: data.toString(),
+        pending: false,
+        additionalInjections: { linkId },
+      });
     } else {
-      this.showCurrentMessage(['errorShow'], data.message, false);
+      this.showCurrentMessage({
+        keys: ['errorShow'],
+        message: data.message,
+        pending: false,
+      });
     }
   };
 
   sendReset = async e => {
     e.preventDefault();
-    this.showCurrentMessage([''], null, true);
+    this.showCurrentMessage({ message: null, pending: true });
     const { linkId, passwordConfirm, password } = this.state;
     const valid = this.preValidateForm({ password, passwordConfirm });
     if (valid) {
@@ -94,18 +106,26 @@ class ResetPassword extends Component {
         passwordConfirm,
       });
       if (status < 300) {
-        this.showCurrentMessage(['successShow'], data, false);
+        this.showCurrentMessage({
+          keys: ['successShow'],
+          message: data,
+          pending: false,
+        });
       } else {
-        this.showCurrentMessage(['errorShow'], data.toString(), false);
+        this.showCurrentMessage({
+          keys: ['errorShow'],
+          message: data.toString(),
+          pending: false,
+        });
       }
     }
   };
 
   onChangeInput = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
-  }
+  };
 
   render() {
     const { pending, message, showNotifications, height } = this.state;
@@ -131,7 +151,7 @@ class ResetPassword extends Component {
     } = styles;
 
     return (
-      <div className={wrapperForm} >
+      <div className={wrapperForm}>
         {formShow && (
           <Form name="resetPasswordForm" className={form}>
             <Input

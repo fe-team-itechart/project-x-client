@@ -1,5 +1,3 @@
 import React from 'react';
 
-export default function index(props) {
-  return <input {...props} />;
-}
+export default props => <input {...props} />;

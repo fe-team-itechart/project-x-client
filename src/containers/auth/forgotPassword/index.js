@@ -4,6 +4,7 @@ import { FaTimes } from 'react-icons/fa';
 import { IoIosCheckmarkCircle } from 'react-icons/io';
 
 import PropTypes from 'prop-types';
+import { isEmpty } from 'lodash';
 
 import styles from './styles.module.scss';
 import { forgotPasswordRequest } from '../../../services/auth';
@@ -13,6 +14,7 @@ import Spinner from '../../../components/spinner';
 import Form from '../../../components/form';
 import Input from '../../../components/input';
 import Button from '../../../components/button';
+
 
 Modal.setAppElement('#root');
 
@@ -29,7 +31,7 @@ class ForgotPassword extends PureComponent {
     },
   };
 
-  showCurrentMessage = (keys = [], message, pending = false) => {
+  showCurrentMessage = ({ keys = [], message = '', pending = false }) => {
     const defaultMessages = {
       validationShow: false,
       successShow: false,
@@ -55,8 +57,11 @@ class ForgotPassword extends PureComponent {
 
   preValidateForm = ({ email }) => {
     const errors = validateAuth({ email });
-    if (Object.keys(errors).length > 0) {
-      this.showCurrentMessage(['formShow', 'validationShow'], errors.email);
+    if (!isEmpty(errors)) {
+      this.showCurrentMessage({
+        keys: ['formShow', 'validationShow'],
+        message: errors.email,
+      });
       return false;
     }
     return true;
@@ -64,28 +69,28 @@ class ForgotPassword extends PureComponent {
 
   send = async e => {
     e.preventDefault();
-    this.showCurrentMessage([''], null, true);
+    this.showCurrentMessage({ message: null, pending: true });
     const email = this.state.email;
     const valid = this.preValidateForm({ email });
     if (valid) {
       const response = await forgotPasswordRequest({ email });
       const { status, data } = response;
       const shownMessage = status < 300 ? 'successShow' : 'errorShow';
-      this.showCurrentMessage([shownMessage], data);
+      this.showCurrentMessage({ keys: [shownMessage], message: data });
     }
   };
 
   modalClose = () => {
     const { onModalClose } = this.props;
-    this.showCurrentMessage(['formShow'], null);
+    this.showCurrentMessage({ keys: ['formShow'], message: null });
     onModalClose(false);
   };
 
   onChangeInput = e => {
     this.setState({
-      email: e.target.value
+      email: e.target.value,
     });
-  }
+  };
 
   render() {
     const {
