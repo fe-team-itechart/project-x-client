@@ -19,15 +19,13 @@
 
     .left_block {
       width: 100%;
-      margin: 0;
 
       .text_header {
 
         h1 {
           font-size: 70px;
           color: $white;
-          margin: 0;
-          padding: 0;
+          margin-bottom: 0px;
 
           b {
             color: $red;
@@ -35,10 +33,9 @@
         }
 
         p {
-          margin: 0;
-          padding: 0;
           color: $text-gray-light;
           font-size: 20px;
+          margin: 0;
         }
       }
 
@@ -52,7 +49,6 @@
 
           ul {
             list-style: none;
-            margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
@@ -62,14 +58,16 @@
             li {
               height: 120px;
               width: 120px;
+
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
               color: $white;
               background: $bcg-gray-dark;
               border-radius: 50%;
-              align-items: center;
-              justify-content: center;
-              display: flex;
               font-size: 60px;
-              margin: 25px 15px 25px;
+              margin: 25px 15px;
               transition: 0.3s;
               cursor: pointer;
 
@@ -78,7 +76,7 @@
                 transition: 0.3s;
                 height: 124px;
                 width: 124px;
-                margin: 23px 13px 23px;
+                margin: 23px 13px;
                 background: $gradient;
               }
             }
@@ -112,9 +110,9 @@
       display: none;
       width: 60%;
       position: relative;
+      -ms-overflow-style: none;
 
       .pc_block {
-        background-image: url(../../assets/Laptop.png);
         width: 750px;
         height: 450px;
         position: absolute;
@@ -153,18 +151,16 @@
           left: 0;
           height: 100%;
         }
-        background-color: $bcg-gray-light;
-        border-radius: 30px;
-        background-image: url(../../assets/iPhone.png);
-        bottom: 100px;
+        position: absolute;
         width: 160px;
         height: 350px;
-        position: absolute;
+        bottom: 100px;
         border: 0%;
-        margin-left: 0px;
+        border-radius: 30px;
+        background-color: $bcg-gray-light;
         background-size: 100% 100%;
+        margin-left: 0px;
         padding: 26px 25px 20px 25px;
-        color: #fff;
         overflow: hidden;
 
         .phone_context {
@@ -176,8 +172,8 @@
           box-sizing: content-box;
 
           input {
-            width: 100%;
             @include primary-input;
+            width: 100%;
             font-size: 12px;
           }
 
@@ -242,7 +238,6 @@
         width: 40%;
       }
       .right_block {
-        display: block;
 
         .pc_block {
           display: block;

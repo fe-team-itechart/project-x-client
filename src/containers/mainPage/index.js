@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { FaLaptopCode, FaCode, FaAngleDoubleDown } from 'react-icons/fa';
+import { IoIosRocket } from 'react-icons/io';
 import { ProfileIphone } from './iPhoneComponent';
 
 import styles from './styles.module.scss';
-import { FaLaptopCode, FaCode, FaAngleDoubleDown } from 'react-icons/fa';
-import { IoIosRocket } from 'react-icons/io';
 
 class MainPage extends Component {
   state = {
@@ -17,7 +17,6 @@ class MainPage extends Component {
   };
 
   render() {
-    const { activeTab } = this.state;
     const {
       left_block,
       text_header,
@@ -41,7 +40,7 @@ class MainPage extends Component {
           <div className={left_block}>
             <div className={text_header}>
               <h1>
-                Lorem <b>text</b>
+                Hi, it's <b>Tech</b>courses
               </h1>
               <p>description</p>
             </div>
@@ -49,23 +48,23 @@ class MainPage extends Component {
               <div className={tabs}>
                 <ul>
                   <li
-                    className={this.state.activeTab == 0 ? styles.active : ''}
+                    className={this.state.activeTab === 0 ? styles.active : ''}
                     onClick={() => this.tabsHandler(0)}>
                     <FaCode />
                   </li>
                   <li
-                    className={this.state.activeTab == 1 ? styles.active : ''}
+                    className={this.state.activeTab === 1 ? styles.active : ''}
                     onClick={() => this.tabsHandler(1)}>
                     <IoIosRocket />
                   </li>
                   <li
-                    className={this.state.activeTab == 2 ? styles.active : ''}
+                    className={this.state.activeTab === 2 ? styles.active : ''}
                     onClick={() => this.tabsHandler(2)}>
                     <FaLaptopCode />
                   </li>
                 </ul>
               </div>
-              {activeTab == 0 && (
+              {this.state.activeTab === 0 && (
                 <div className={tab_context}>
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
@@ -75,7 +74,7 @@ class MainPage extends Component {
                   also the leap into electronic 1
                 </div>
               )}
-              {activeTab == 1 && (
+              {this.state.activeTab === 1 && (
                 <div className={tab_context}>
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
@@ -85,7 +84,7 @@ class MainPage extends Component {
                   also the leap into electronic 2
                 </div>
               )}
-              {activeTab == 2 && (
+              {this.state.activeTab === 2 && (
                 <div className={tab_context}>
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
@@ -101,12 +100,12 @@ class MainPage extends Component {
             </div>
           </div>
           <div className={right_block}>
-            <div className={pc_block}>
+            <div className={pc_block} style={{backgroundImage:'url(src/assets/Laptop.png)'}}>
               <div className={pc_context}>
                 <img src="\src\assets\laptopScreen.png" alt="Laptop"/>
               </div>
             </div>
-            <div className={phone_block}>
+            <div className={phone_block} style={{backgroundImage:'url(src/assets/iPhone.png)'}}>
               <img src="src\assets\iPhoneLeft.png" alt="iPhone" />
               <div className={phone_context}>
                 <ProfileIphone />

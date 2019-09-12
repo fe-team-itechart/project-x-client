@@ -4,8 +4,6 @@
 @import '../../../../scss/mixins/input.scss';
 
 .profile {
-  margin: 0 15;
-  margin-top: 0px;
 
   input {
     @include primary-input;
@@ -29,7 +27,6 @@
   }
 
   .description {
-    margin-top: 5px;
     margin: 5px;
 
     input {
@@ -42,7 +39,6 @@
   .social {
     margin: 5px;
   
-
     div {
       margin: 15px 0;
       display: flex;
@@ -78,16 +74,17 @@
 
   button {
     @include primary-button;
-    background: $gradient;
     width: 60px;
     height: 35px;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    color: $white;
-    border: none;
     float: left;
+
+    color: $white;
+    background: $gradient;
+    text-align: center;
     font-size: 12px;
-    margin-right: 15px;
+    border: none;
+
+    padding: 0;
+    margin: 0 15px 0 0;
   }
 }

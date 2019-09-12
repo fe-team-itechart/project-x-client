@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import styles from './styles.module.scss';
 
 export const ProfilePhoto = () => {
-  const [menus, setMenu] = useState({ marginLeft: '-105%' });
+  const [menu, setMenu] = useState('-105%');
 
   const {
     mobile_burger,
@@ -17,10 +17,10 @@ export const ProfilePhoto = () => {
   } = styles;
 
   const toggleMenu = () => {
-    if (menus.marginLeft === '15px') {
-      setMenu({ marginLeft: '-105%' });
+    if (menu === '15px') {
+      setMenu('-105%' );
     } else {
-      setMenu({ marginLeft: '15px' });
+      setMenu('15px' );
     }
   };
 
@@ -33,7 +33,7 @@ export const ProfilePhoto = () => {
           <div className={role}>student</div>
         </button>
       </div>
-      <nav className={mobile_menu} style={menus}>
+      <nav className={mobile_menu} style={{ marginLeft: menu}}>
         <ul>
           <li>
             <Link to="/profile/public">
@@ -59,7 +59,7 @@ export const ProfilePhoto = () => {
             <button
               type="button"
               className={close_button}
-              onClick={() => setMenu({ marginLeft: '-105%' })}>
+              onClick={() => setMenu('-105%' )}>
               <FaWindowClose />
             </button>
           </li>
