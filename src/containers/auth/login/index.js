@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
-import { isEmpty } from 'lodash';
-import { FaTimes } from 'react-icons/fa';
-import GoogleLogin from 'react-google-login';
+import { withRouter } from 'react-router-dom';
 
-import { loginRequest, googleLoginRequest } from '../../../actions/auth';
+import { isEmpty } from 'lodash';
+import queryString from 'query-string';
+import { FaTimes } from 'react-icons/fa';
+
+import { loginRequest, socialLoginRequest } from '../../../actions/auth';
+import { loginValidate } from '../../../validation/auth';
+import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
+import { ReactComponent as LinkedInIcon } from '../../../assets/linkedin.svg';
+
 import styles from '../styles.module.scss';
-import validateAuth from '../../../validation/auth';
 
 Modal.setAppElement('#root');
 
@@ -17,6 +22,15 @@ class Login extends Component {
     password: '',
     errors: {},
   };
+
+  componentDidMount() {
+    const { location, history } = this.props;
+    const parsed = queryString.parse(location.search);
+    if (parsed.token) {
+      this.props.socialLoginRequest(parsed.token);
+      history.push('/');
+    }
+  }
 
   closeModal = () => {
     this.props.onModalClose(false);
@@ -38,10 +52,7 @@ class Login extends Component {
     const { email, password } = this.state;
     const { loginRequest, onModalClose } = this.props;
 
-    const errors = validateAuth({
-      email,
-      password,
-    });
+    const errors = loginValidate(email, password);
 
     if (!isEmpty(errors)) {
       this.setState({ errors });
@@ -52,15 +63,12 @@ class Login extends Component {
     }
   };
 
-  handleGoogleResponse = response => {
-    const { googleLoginRequest, onModalClose } = this.props;
-    googleLoginRequest(response);
-    onModalClose(false);
-  };
-
   render() {
     const { email, password, errors } = this.state;
-    const { modalStatus, onModalCloseForgotPass } = this.props;
+    const { modalStatus } = this.props;
+    const linkedInURL = `api/users/auth/linkedin`;
+    const googleURL = `api/users/auth/google`;
+
     return (
       <>
         <Modal
@@ -68,7 +76,7 @@ class Login extends Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           className={styles.modal}>
-          <FaTimes onClick={this.closeModal} className={styles.closeModal} />
+          <FaTimes onClick={this.closeModal} className={styles.close_modal} />
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Sign In</h2>
           <form onSubmit={this.onSubmit} noValidate>
             <input
@@ -80,7 +88,7 @@ class Login extends Component {
               onChange={this.onChange}
             />
             {errors.email && (
-              <span className={styles.invalidFeedback}>{errors.email}</span>
+              <span className={styles.invalid_feedback}>{errors.email}</span>
             )}
             <input
               type="password"
@@ -91,15 +99,28 @@ class Login extends Component {
               onChange={this.onChange}
             />
             {errors.password && (
-              <span className={styles.invalidFeedback}>{errors.password}</span>
+              <span className={styles.invalid_feedback}>{errors.password}</span>
             )}
-            <GoogleLogin
-              clientId={process.env.CLIENT_ID}
-              onSuccess={this.handleGoogleResponse}
-              buttonText="Login with Google Account"
-              className={styles.googleButton}
-              cookiePolicy={'single_host_origin'}
-            />
+            <a href={googleURL}>
+              <div className={styles.google_button}>
+                <span className={styles.google_button_icon}>
+                  <GoogleIcon />
+                </span>
+                <span className={styles.google_button_text}>
+                  Sign in with Google
+                </span>
+              </div>
+            </a>
+            <a href={linkedInURL}>
+              <div className={styles.google_button}>
+                <span className={styles.google_button_icon}>
+                  <LinkedInIcon />
+                </span>
+                <span className={styles.google_button_text}>
+                  Sign in with Linked In
+                </span>
+              </div>
+            </a>
             <button type="submit" className={styles.submit}>
               Sign In
             </button>
@@ -119,14 +140,14 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
-
 const mapDispatchToProps = {
   loginRequest,
-  googleLoginRequest,
+  socialLoginRequest,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(Login)
+);
