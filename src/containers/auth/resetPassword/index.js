@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 
 import queryString from 'query-string';
+import { isEmpty } from 'lodash';
 
 import styles from './styles.module.scss';
 import { resetApprove, resetPassword } from '../../../services/auth';
-import { passwordValidation } from '../../../validation/auth';
+import { changePasswordValidate } from '../../../validation/auth';
 import ShowMessage from '../showMessage';
 import Spinner from '../../../components/spinner';
 import Form from '../../../components/form';
 import Input from '../../../components/input';
 import Button from '../../../components/button';
+
 
 
 class ResetPassword extends Component {
@@ -63,12 +65,12 @@ class ResetPassword extends Component {
   };
 
   preValidateForm = ({ password, passwordConfirm }) => {
-    const errors = passwordValidation({ password, passwordConfirm });
-    if (errors.error) {
-      this.showCurrentMessage(
-        ['formShow', 'validationShow'],
-        errors.error.details[0].message
-      );
+    const errors = changePasswordValidate(password, passwordConfirm);
+    if (!isEmpty(errors)) {
+      this.showCurrentMessage({
+        keys: ['formShow', 'validationShow'],
+        message: errors.password
+      });
       return false;
     }
     return true;

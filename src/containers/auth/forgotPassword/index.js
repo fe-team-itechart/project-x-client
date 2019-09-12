@@ -8,13 +8,13 @@ import { isEmpty } from 'lodash';
 
 import styles from './styles.module.scss';
 import { forgotPasswordRequest } from '../../../services/auth';
-import validateAuth from '../../../validation/auth';
+import { emailValidate } from '../../../validation/auth';
+
 import ShowMessage from '../showMessage';
 import Spinner from '../../../components/spinner';
 import Form from '../../../components/form';
 import Input from '../../../components/input';
 import Button from '../../../components/button';
-
 
 Modal.setAppElement('#root');
 
@@ -56,7 +56,7 @@ class ForgotPassword extends PureComponent {
   };
 
   preValidateForm = ({ email }) => {
-    const errors = validateAuth({ email });
+    const errors = emailValidate(email);
     if (!isEmpty(errors)) {
       this.showCurrentMessage({
         keys: ['formShow', 'validationShow'],

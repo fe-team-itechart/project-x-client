@@ -1,48 +1,79 @@
 import Joi from 'joi-browser';
 
-const validateAuth = ({ firstName, lastName, email, password }) => {
+const firstNameSchema = Joi.string()
+  .min(2)
+  .max(20)
+  .required();
+
+const lastNameSchema = Joi.string()
+  .required()
+  .min(2)
+  .max(20);
+
+const emailSchema = Joi.string()
+  .required()
+  .email()
+  .max(64);
+
+const passwordSchema = Joi.string()
+  .required()
+  .min(8)
+  .max(32);
+
+const passwordConfirmSchema = Joi.object().keys({
+  password: Joi.string()
+    .required()
+    .min(8)
+    .max(32),
+  confirmPassword: Joi.any()
+    .valid(Joi.ref('password'))
+    .required()
+    .options({ language: { any: { allowOnly: '!!Passwords do not match' } } }),
+});
+
+export const loginValidate = (email, password) => {
   let errors = {};
 
-  const firstNameSchema = Joi.object().keys({
-    firstName: Joi.string()
-      .min(2)
-      .max(20)
-      .required(),
-  });
-
-  const lastNameSchema = Joi.object().keys({
-    lastName: Joi.string()
-      .required()
-      .min(2)
-      .max(20),
-  });
-
-  const emailSchema = Joi.object().keys({
-    email: Joi.string()
-      .required()
-      .email()
-      .max(64),
-  });
-
-  const passwordSchema = Joi.object().keys({
-    password: Joi.string()
-      .required()
-      .min(8)
-      .max(32),
-  });
-
-  const emailValidate =
-    email !== undefined ? Joi.validate({ email }, emailSchema) : '';
-  const passwordValidate =
-    password !== undefined ? Joi.validate({ password }, passwordSchema) : '';
-  const firstNameValidate =
-    firstName !== undefined ? Joi.validate({ firstName }, firstNameSchema) : '';
-  const lastNameValidate =
-    lastName !== undefined ? Joi.validate({ lastName }, lastNameSchema) : '';
+  const emailValidate = Joi.validate(email, emailSchema);
+  const passwordValidate = Joi.validate(password, passwordSchema);
 
   if (emailValidate.error) {
     errors.email = emailValidate.error.details[0].message.replace(
-      '"email"',
+      '"value"',
+      'Email'
+    );
+  }
+
+  if (passwordValidate.error) {
+    errors.password = passwordValidate.error.details[0].message.replace(
+      '"value"',
+      'Password'
+    );
+  }
+
+  return errors;
+};
+
+export const registerValidate = (
+  firstName,
+  lastName,
+  email,
+  password,
+  confirmPassword
+) => {
+  let errors = {};
+
+  const firstNameValidate = Joi.validate(firstName, firstNameSchema);
+  const lastNameValidate = Joi.validate(lastName, lastNameSchema);
+  const emailValidate = Joi.validate(email, emailSchema);
+  const passwordValidate = Joi.validate(
+    { password, confirmPassword },
+    passwordConfirmSchema
+  );
+
+  if (emailValidate.error) {
+    errors.email = emailValidate.error.details[0].message.replace(
+      '"value"',
       'Email'
     );
   }
@@ -56,61 +87,49 @@ const validateAuth = ({ firstName, lastName, email, password }) => {
 
   if (firstNameValidate.error) {
     errors.firstName = firstNameValidate.error.details[0].message.replace(
-      '"firstName"',
+      '"value"',
       'First name'
     );
   }
 
   if (lastNameValidate.error) {
     errors.lastName = lastNameValidate.error.details[0].message.replace(
-      '"lastName"',
-      'Last Name'
+      '"value"',
+      'Last name'
     );
   }
+
   return errors;
 };
 
-const schemas = {
-  firstName: Joi.string()
-    .min(1)
-    .max(20),
-  lastName: Joi.string()
-    .min(1)
-    .max(20),
-  email: Joi.string()
-    .max(255)
-    .email({ minDomainSegments: 2 })
-    .required(),
-  password: Joi.string()
-    .min(8)
-    .max(32)
-    .regex(/(?=.*[0-9])(?=.*[!@#$%^&*?])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/)
-    .required(),
-  passwordConfirm: Joi.ref('password'),
+export const changePasswordValidate = (password, confirmPassword) => {
+  let errors = {};
+
+  const passwordValidate = Joi.validate(
+    { password, confirmPassword },
+    passwordConfirmSchema
+  );
+
+  if (passwordValidate.error) {
+    errors.password = passwordValidate.error.details[0].message.replace(
+      '"password"',
+      'Password'
+    );
+  }
+
+  return errors;
 };
 
-export const registrationSchema = Joi.object().keys(schemas);
-export const loginSchema = Joi.object()
-  .keys(schemas)
-  .optionalKeys('firstName', 'lastName', 'passwordConfirm');
-export const emailSchema = loginSchema.optionalKeys('password');
-export const passwordSchema = Joi.object()
-  .keys(schemas)
-  .optionalKeys('firstName', 'lastName', 'email');
 
-export const passwordValidation = ({ password, passwordConfirm }) => {
-  let answer = null;
-  if (password !== passwordConfirm) {
-    answer = {
-      error: {
-        details: [{ message: 'Passwords are not equal' }],
-      },
-    };
-  }
-  if (password === passwordConfirm) {
-    answer = passwordSchema.validate({ password, passwordConfirm });
-  }
-  return answer;
-};
+export const emailValidate = (email) => {
+  let errors = {};
+  const emailValidate = Joi.validate(email, emailSchema);
 
-export default validateAuth;
+  if (emailValidate.error) {
+    errors.email = emailValidate.error.details[0].message.replace(
+      '"email"',
+      'Email'
+    );
+  }
+  return errors;
+}

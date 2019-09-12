@@ -8,7 +8,7 @@ import queryString from 'query-string';
 import { FaTimes } from 'react-icons/fa';
 
 import { loginRequest, socialLoginRequest } from '../../../actions/auth';
-import validateAuth from '../../../validation/auth';
+import { loginValidate } from '../../../validation/auth';
 import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
 import { ReactComponent as LinkedInIcon } from '../../../assets/linkedin.svg';
 
@@ -54,10 +54,7 @@ class Login extends Component {
     const { email, password } = this.state;
     const { loginRequest, onModalClose } = this.props;
 
-    const errors = validateAuth({
-      email,
-      password,
-    });
+    const errors = loginValidate(email, password);
 
     if (!isEmpty(errors)) {
       this.setState({ errors });
