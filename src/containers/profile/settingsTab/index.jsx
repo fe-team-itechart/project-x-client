@@ -7,6 +7,7 @@ export const SettingsTab = () => {
     styled_checkbox,
     localization,
   } = styles;
+
   return (
     <div className={settings}>
       <div className={localization}>
@@ -15,20 +16,20 @@ export const SettingsTab = () => {
           <option value="" >RUS</option>
         </select>
       </div>
-      <button>
+      <button type='button'>
         Teacher request
       </button>
       <ul>
         <li>
-          <input className={styled_checkbox} id="styled-checkbox-1" type="checkbox" value="value1" />
+          <input className={styled_checkbox} id="styled-checkbox-1" type="checkbox" />
           <label htmlFor="styled-checkbox-1">Checkbox 1</label>
         </li>
         <li>
-          <input className={styled_checkbox} id="styled-checkbox-2" type="checkbox" value="value1" />
+          <input className={styled_checkbox} id="styled-checkbox-2" type="checkbox" />
           <label htmlFor="styled-checkbox-2">Checkbox 2</label>
         </li>
       </ul>
-      <button>
+      <button type='button'>
         save
       </button>
     </div>
