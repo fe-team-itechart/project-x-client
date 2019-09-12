@@ -9,18 +9,24 @@ const loginSuccess = createAction(types.LOGIN_SUCCESS);
 
 const loginFailure = createAction(types.LOGIN_FAILURE);
 
-const googleLoginRequest = createAction(types.GOOGLE_LOGIN_REQUEST);
+const logOutRequest = createAction(types.LOGOUT_REQUEST);
 
-const googleLoginSuccess = createAction(types.GOOGLE_LOGIN_SUCCESS);
+const logOutSuccess = createAction(types.LOGOUT_SUCCESS);
 
-const googleLoginFailure = createAction(types.GOOGLE_LOGIN_FAILURE);
+const socialLoginRequest = createAction(types.SOCIAL_LOGIN_REQUEST);
+
+const socialLoginSuccess = createAction(types.SOCIAL_LOGIN_SUCCESS);
+
+const socialLoginFailure = createAction(types.SOCIAL_LOGIN_FAILURE);
 
 export {
   registerRequest,
   loginRequest,
   loginSuccess,
   loginFailure,
-  googleLoginFailure,
-  googleLoginSuccess,
-  googleLoginRequest,
+  logOutRequest,
+  logOutSuccess,
+  socialLoginRequest,
+  socialLoginSuccess,
+  socialLoginFailure,
 };
