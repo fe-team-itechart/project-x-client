@@ -27,23 +27,23 @@
 
     .card_type {
       position: absolute;
-      height: 50px;
-      width: 50px;
-      background: $gradient;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: $white;
+
+      height: 50px;
+      width: 50px;
       margin: 5px;
       border-radius: 50%;
+
+      background: $gradient;
+      color: $white;
     }
 
     .img_block {
       height: 200px;
       width: 100%;
-      background-size: auto 100%;
-      background-repeat: no-repeat;
-      background-position: center;
+      background: center / auto 100% no-repeat;
       transition: 0.3s;
     }
 
@@ -60,10 +60,9 @@
 
     .progress_bar {
       height: 25px;
-      background-color: $bcg-gray-light;
-      background: linear-gradient(135deg, #ff8c0552 0%, #d61a5e59 100%);
       margin: 15px 5px;
       border-radius: 2px;
+      background: linear-gradient(135deg, #ff8c0552 0%, #d61a5e59 100%);
       overflow: hidden;
 
       .current_progress {
@@ -80,40 +79,47 @@
 
   .add_new_course_card,
   .find_new_course_card {
-    background-color: $bcg-gray-dark;
-    width: 250px;
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
-    background-color: $bcg-gray-dark;
     flex-direction: column;
+    overflow: hidden;
+
+    background-color: $bcg-gray-dark;
+
+    width: 250px;
+    margin: 15px;
+    border-radius: 5px;
+    border: none;
 
     div {
-      width: 100px;
-      height: 100px;
       display: flex;
       justify-content: center;
       align-items: center;
+
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       font-size: 100px;
+
       color: $white;
       background: $gradient;
       cursor: pointer;
-    }
 
-    &:hover div p {
-      transform: rotate(90deg);
-      transition: 0.4s;
+      span {
+        transform: rotate(0deg);
+        transition: 0.4s;
+        color: $white;
+      }
     }
 
     p {
-      transform: rotate(0deg);
-      transition: 0.4s;
       color: $white;
+    }
+
+    &:hover div span {
+      transform: rotate(90deg);
+      transition: 0.4s;
     }
   }
 
@@ -122,7 +128,7 @@
     justify-content: center;
     max-width: 100%;
   }
-  
+
   @media screen and (min-width: $width-xl) {
     display: flex;
     justify-content: start;
