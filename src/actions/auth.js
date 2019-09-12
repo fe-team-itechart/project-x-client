@@ -9,6 +9,10 @@ const loginSuccess = createAction(types.LOGIN_SUCCESS);
 
 const loginFailure = createAction(types.LOGIN_FAILURE);
 
+const logOutRequest = createAction(types.LOGOUT_REQUEST);
+
+const logOutSuccess = createAction(types.LOGOUT_SUCCESS);
+
 const socialLoginRequest = createAction(types.SOCIAL_LOGIN_REQUEST);
 
 const socialLoginSuccess = createAction(types.SOCIAL_LOGIN_SUCCESS);
@@ -20,6 +24,8 @@ export {
   loginRequest,
   loginSuccess,
   loginFailure,
+  logOutRequest,
+  logOutSuccess,
   socialLoginRequest,
   socialLoginSuccess,
   socialLoginFailure,

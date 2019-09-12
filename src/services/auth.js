@@ -1,5 +1,4 @@
 import jwt_decode from 'jwt-decode';
-import axios from 'axios';
 
 import setAuthToken from './setAuthToken';
 import { httpService } from './httpService';
@@ -36,6 +35,10 @@ export const loginRequest = async data => {
   setAuthToken(token);
 
   return decoded;
+};
+
+export const logOutRequest = () => {
+  localStorage.removeItem('token');
 };
 
 export const changePassword = async (id, data) => {
