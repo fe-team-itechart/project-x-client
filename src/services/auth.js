@@ -59,42 +59,28 @@ export const forgotPasswordRequest = async data => {
 };
 
 export const resetApprove = async linkId => {
-  try {
-    const link = encodeURIComponent(linkId);
-    const response = await httpService.post({
-      url: `users/reset/${link}`,
-      data: {},
-      config: {
-        validateStatus: status => status >= 200 && status < 500,
-      },
-    });
-    return response;
-  } catch (e) {
-    return {
-      status: 400,
-      data: 'Link is uncorrected',
-    };
-  }
+  const link = encodeURIComponent(linkId);
+  const response = await httpService.post({
+    url: `users/reset/${link}`,
+    data: {},
+    config: {
+      validateStatus: status => status >= 200 && status < 500,
+    },
+  });
+  return response;
 };
 
 export const resetPassword = async ({ linkId, password, passwordConfirm }) => {
-  try {
-    const response = await httpService.post({
-      url: `users/reset-password`,
-      data: {
-        linkId,
-        password,
-        passwordConfirm,
-      },
-      config: {
-        validateStatus: status => status >= 200 && status < 500,
-      }
-    });
-    return response;
-  } catch (e) {
-    return {
-      status: 400,
-      data: 'Something is wrong',
-    };
-  }
+  const response = await httpService.post({
+    url: `users/reset-password`,
+    data: {
+      linkId,
+      password,
+      passwordConfirm,
+    },
+    config: {
+      validateStatus: status => status >= 200 && status < 500,
+    },
+  });
+  return response;
 };

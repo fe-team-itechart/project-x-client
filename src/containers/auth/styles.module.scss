@@ -72,8 +72,7 @@
       opacity: 0.6;
       cursor: pointer;
       margin-bottom: 25px;
-      transition-property: all;
-      transition-duration: 0.1s;
+      transition: all 0.1s;
 
       &:hover {
         color: $orange;

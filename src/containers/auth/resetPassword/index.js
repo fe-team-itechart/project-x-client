@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import queryString from 'query-string';
 import { isEmpty } from 'lodash';
 
-import styles from './styles.module.scss';
 import { resetApprove, resetPassword } from '../../../services/auth';
 import { changePasswordValidate } from '../../../validation/auth';
 import ShowMessage from '../showMessage';
@@ -12,9 +11,9 @@ import Form from '../../../components/form';
 import Input from '../../../components/input';
 import Button from '../../../components/button';
 
+import styles from './styles.module.scss';
 
-
-class ResetPassword extends Component {
+class ResetPassword extends PureComponent {
   state = {
     password: null,
     passwordConfirm: null,

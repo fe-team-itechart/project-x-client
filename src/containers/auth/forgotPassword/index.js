@@ -6,7 +6,6 @@ import { IoIosCheckmarkCircle } from 'react-icons/io';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 
-import styles from './styles.module.scss';
 import { forgotPasswordRequest } from '../../../services/auth';
 import { emailValidate } from '../../../validation/auth';
 
@@ -15,6 +14,8 @@ import Spinner from '../../../components/spinner';
 import Form from '../../../components/form';
 import Input from '../../../components/input';
 import Button from '../../../components/button';
+
+import styles from './styles.module.scss';
 
 Modal.setAppElement('#root');
 
