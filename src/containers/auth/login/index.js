@@ -83,6 +83,7 @@ class Login extends Component {
     return (
       <>
         <Modal
+          style={{overlay: {zIndex: 3}}}
           isOpen={modalStatus}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
