@@ -11,6 +11,10 @@ export const AccountTab = () => {
     payment_btn_block,
   } = styles;
 
+  const updatePassword = () => {
+    setUpdate(!update);
+  }
+
   return ( 
     <div className={account}>
       <form>
@@ -21,11 +25,11 @@ export const AccountTab = () => {
           <input type="text" placeholder="confirm password" disabled={update} />
         </div>
         <div className={buttons_block}>
-          {update && <button onClick={() => setUpdate(!update)}>update password</button>}
+          {update && <button onClick={updatePassword}>update password</button>}
           {!update && (
             <>
-              <button type='submit'  onClick={() => setUpdate(!update)}>save</button>
-              <button type='button' onClick={() => setUpdate(!update)}>close</button>
+              <button type='submit'  onClick={updatePassword}>save</button>
+              <button type='button' onClick={updatePassword}>close</button>
             </>
           )}
         </div>
