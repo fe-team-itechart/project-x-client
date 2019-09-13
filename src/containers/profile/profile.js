@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaWindowClose } from 'react-icons/fa';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 import styles from './styles.module.scss';
 import './buttons.scss';

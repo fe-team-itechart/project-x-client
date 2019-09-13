@@ -8,6 +8,7 @@ import { logOutRequest } from '../../actions/auth';
 import Burger from './burgerMenu';
 import Login from '../auth/login';
 import Register from '../auth/register';
+import ForgotPassword from '../auth/forgotPassword';
 
 import styles from './styles.module.scss';
 
@@ -15,6 +16,7 @@ const Header = props => {
   const [width, setWidth] = useState(window.innerWidth);
   const [isOpenLog, setModalStatusLog] = useState(false);
   const [isOpenReg, setModalStatusReg] = useState(false);
+  const [isOpenForgotPass, setModalForgotPass] = useState(false);
 
   useEffect(() => {
     const handleWidth = () => setWidth(window.innerWidth);
@@ -92,8 +94,14 @@ const Header = props => {
           isAuth={isAuthenticated}
         />
       )}
-      <Login modalStatus={isOpenLog} onModalClose={closeLoginModal} />
+      <Login 
+        modalStatus={isOpenLog} 
+        onModalClose={closeLoginModal}
+        modalStatusForgotPass={isOpenForgotPass}
+        onModalCloseForgotPass={setModalForgotPass}
+      />
       <Register modalStatus={isOpenReg} onModalClose={closeRegModal} />
+      <ForgotPassword modalStatus={isOpenForgotPass} onModalClose={setModalForgotPass}/>
     </header>
   );
 };
