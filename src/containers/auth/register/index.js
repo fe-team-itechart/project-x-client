@@ -102,7 +102,7 @@ class Register extends Component {
     const linkedInURL = `api/users/auth/linkedin`;
     const googleURL = `api/users/auth/google`;
     return (
-      <Fragment>
+      <>
         <Modal
           isOpen={modalStatus}
           onAfterOpen={this.afterOpenModal}
@@ -190,7 +190,7 @@ class Register extends Component {
             </button>
           </form>
         </Modal>
-      </Fragment>
+      </>
     );
   }
 }

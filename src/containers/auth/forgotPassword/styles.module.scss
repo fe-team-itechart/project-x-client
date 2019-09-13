@@ -1,0 +1,98 @@
+@import '../../../scss/combineStyles.scss';
+
+.modal {
+  font-family: $primary-font;
+  background-color: $bcg-gray-dark;
+  width: 380px;
+  min-height: 200px;
+  border-radius: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+
+  @media screen and (max-width: $width-sm) {
+    width: 100%;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    padding: 15px;
+  }
+
+  .row_top {
+    margin-top: 25px;
+  }
+
+  .row_flex_end {
+    justify-content: flex-end;
+  }
+
+  .big_size_message {
+    font-size: 2em;
+  }
+
+  .success_message {
+    color: $green;
+  }
+
+  .error_message {
+    color: $pink;
+  }
+
+  input {
+
+    &:invalid {
+      border-color: red;
+    }
+
+    &:valid {
+      border-color: green;
+    }
+  }
+
+  .btn {
+    @include primary-button;
+    width: 20%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 15px;
+  }
+
+  .btn_margin_top_10px {
+    margin-top: 10px;
+  }
+
+  .input {
+    @include primary-input;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+
+  .close_modal {
+    color: $white;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    padding: 0;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+}

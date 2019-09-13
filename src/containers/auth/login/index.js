@@ -33,7 +33,9 @@ class Login extends Component {
   }
 
   closeModal = () => {
-    this.props.onModalClose(false);
+    const { onModalClose, onModalCloseForgotPass } = this.props;
+    onModalClose(false);
+    onModalCloseForgotPass(true);
     this.setState({
       email: '',
       password: '',
@@ -66,17 +68,26 @@ class Login extends Component {
   render() {
     const { email, password, errors } = this.state;
     const { modalStatus } = this.props;
+
+    const {
+      modal,
+      submit,
+      link_forgot: linkForgot,
+      invalid_feedback: invalidFeedback,
+      close_modal: closeModalStyle,
+      google_button: googleButton,
+    } = styles;
     const linkedInURL = `api/users/auth/linkedin`;
     const googleURL = `api/users/auth/google`;
 
     return (
-      <Fragment>
+      <>
         <Modal
           isOpen={modalStatus}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
-          className={styles.modal}>
-          <FaTimes onClick={this.closeModal} className={styles.close_modal} />
+          className={modal}>
+          <FaTimes onClick={this.closeModal} className={closeModalStyle} />
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Sign In</h2>
           <form onSubmit={this.onSubmit} noValidate>
             <input
@@ -88,7 +99,7 @@ class Login extends Component {
               onChange={this.onChange}
             />
             {errors.email && (
-              <span className={styles.invalid_feedback}>{errors.email}</span>
+              <span className={invalidFeedback}>{errors.email}</span>
             )}
             <input
               type="password"
@@ -99,7 +110,7 @@ class Login extends Component {
               onChange={this.onChange}
             />
             {errors.password && (
-              <span className={styles.invalid_feedback}>{errors.password}</span>
+              <span className={invalidFeedback}>{errors.password}</span>
             )}
             <a href={googleURL}>
               <div className={styles.google_button}>
@@ -124,9 +135,12 @@ class Login extends Component {
             <button type="submit" className={styles.submit}>
               Sign In
             </button>
+            <span onClick={this.closeModal} className={linkForgot}>
+              Forgot Password?
+            </span>
           </form>
         </Modal>
-      </Fragment>
+      </>
     );
   }
 }

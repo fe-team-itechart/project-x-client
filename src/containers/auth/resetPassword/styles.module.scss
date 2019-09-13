@@ -1,0 +1,60 @@
+@import '../../../scss/combineStyles.scss';
+
+.wrapper_form {
+  font-family: $primary-font;
+  color: $white;
+  width: 90%;
+  display: flex;
+  height: calc(100vh - 120px - 198px);
+  justify-content: center;
+  @media (max-width: $width-xl) {
+    height: calc(100vh - 120px - 367px);
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 640px;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  .row {
+    margin: 15px 0 0 0;
+  }
+
+  .row_top {
+    margin: 25px 0 0 0;
+  }
+
+  .big_size_message {
+    font-size: 2em;
+  }
+
+  .success_message {
+    color: $green;
+  }
+
+  .error_message {
+    color: $pink;
+  }
+
+  .btn {
+    @include primary-button;
+    width: 20%;
+  }
+
+  .btn_right_position {
+    align-self: flex-end;
+  }
+
+  .btn_margin_top {
+    margin-top: 25px;
+  }
+
+  .input {
+    @include primary-input;
+    width: 100%;
+  }
+}
