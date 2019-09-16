@@ -1,0 +1,55 @@
+@import '../../scss/mixins/input.scss';
+@import '../../scss/shared/colors.scss';
+@import '../../scss/mixins/button.scss';
+@import '../../scss/shared/fonts.scss';
+@import '../../scss/shared/breakpoints.scss';
+
+.carousel_container {
+  display: flex;
+  align-items: center;
+  height: 375px;
+  background-color: $bcg-gray-light;
+  margin: 15px 0;
+  width: 90%;
+
+  .alice-carousel__prev-btn {
+    position: absolute;
+  }
+
+  .alice-carousel {
+    width: 90% !important;
+  }
+
+  .course_card_container {
+    height: 285px;
+    background-color: $bcg-gray-dark;
+
+    .image {
+      margin: 0;
+      width: 100%;
+      height: 130px;
+      background: url('https://www.scnsoft.com/blog-pictures/cover-pics/react_js.png')
+        center / cover;
+      border-radius: 5px;
+    }
+
+    .name {
+      color: $white;
+      margin: 10px auto;
+      width: 220px;
+    }
+
+    .duration {
+      color: $light-gray;
+      margin: 10px auto;
+      width: 220px;
+    }
+
+    button {
+      @include primary-button;
+      margin: auto;
+      width: 220px;
+      height: 70px;
+    }
+  }
+}
