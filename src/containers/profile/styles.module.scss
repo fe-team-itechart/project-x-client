@@ -15,15 +15,15 @@
     background: transparent;
     outline: none;
     cursor: pointer;
+
+    &:hover {
+      background: $gradient;
+      transition: 0.3s;
+    }
   }
 
   .active_button {
     background: $gradient;
-  }
-
-  .button:hover {
-    background: $gradient;
-    transition: 0.3s;
   }
 
   .hidden_text {

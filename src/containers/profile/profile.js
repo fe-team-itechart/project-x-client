@@ -45,7 +45,7 @@ export const Profile = () => {
         account
       </h3>
       <div className={mobile_burger}>
-        <button type="button" onClick={() => toggleMenu()}>
+        <button type="button" onClick={toggleMenu}>
           <div className={photo} />
           <div className={name}>John Doe</div>
           <div className={role}>student</div>
@@ -101,7 +101,7 @@ export const Profile = () => {
             <button
               type="button"
               className={close_button}
-              onClick={() => setMenu({ marginLeft: '-105%' })}>
+              onClick={toggleMenu}>
               <FaWindowClose />
             </button>
           </li>
