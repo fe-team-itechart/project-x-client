@@ -17,7 +17,7 @@ export const Help = () => {
         </div>
       </Link>
 
-      <Link to="/profile" className={styles.card_link}>
+      <Link to="/profile-public" className={styles.card_link}>
         <div className={styles.card_wrapper}>
           <FaUser />
           <h3>Account/Profile</h3>
