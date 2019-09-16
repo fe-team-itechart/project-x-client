@@ -3,11 +3,14 @@ import axios from 'axios';
 class HttpService {
   constructor(baseUrl) {
     this.baseUrl = baseUrl;
-    this.service = axios.create();
+    this.baseConfig = {
+      responseType: 'json',
+    };
+    this.service = axios.create({ ...this.baseConfig });
   }
 
-  get = async ({ url, params = {}, config = {} }) => {
-    const path = this.baseUrl + url;
+  get = async ({ url, id, params = {}, config = {} }) => {
+    const path = id ? `${this.baseUrl + url}/${id}` : `${this.baseUrl + url}`;
 
     const response = await this.service.request({
       method: 'get',
@@ -33,8 +36,8 @@ class HttpService {
   };
 
   put = async ({ url, id, data, config = {} }) => {
-    const path = `${this.baseUrl + url}/${id}`;
-    
+    const path = id ? `${this.baseUrl + url}/${id}` : `${this.baseUrl + url}`;
+
     const response = await this.service.request({
       method: 'put',
       url: path,
@@ -46,7 +49,7 @@ class HttpService {
   };
 
   delete = async ({ url, id, config = {} }) => {
-    const path = `${this.baseUrl + url}/${id}`;
+    const path = id ? `${this.baseUrl + url}/${id}` : `${this.baseUrl + url}`;
 
     const response = await this.service.request({
       method: 'delete',
