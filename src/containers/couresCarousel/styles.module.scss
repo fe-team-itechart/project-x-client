@@ -5,8 +5,6 @@
 @import '../../scss/shared/breakpoints.scss';
 
 .carousel_container {
-  display: flex;
-  align-items: center;
   height: 375px;
   background-color: $bcg-gray-light;
   margin: 15px 0;
@@ -14,10 +12,6 @@
 
   .alice-carousel__prev-btn {
     position: absolute;
-  }
-
-  .alice-carousel {
-    width: 90% !important;
   }
 
   .course_card_container {

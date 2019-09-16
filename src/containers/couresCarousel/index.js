@@ -6,52 +6,53 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import styles from './styles.module.scss';
 
 class CoursesCarousel extends Component {
-  state = { currentIndex: 0 };
-
-  slideNext = () =>
-    this.setState({ currentIndex: this.state.currentIndex + 1 });
-
-  slidePrev = () =>
-    this.setState({ currentIndex: this.state.currentIndex - 1 });
-
-  slideTo = i => this.setState({ currentIndex: i });
-
-  onSlideChanged = e => this.setState({ currentIndex: e.item });
+  state = { 
+    currentIndex: 0 
+  };
 
   galleryItems = () => {
-    return Array(7)
+    return Array(12)
       .fill()
       .map((item, i) => (
         <div className={styles.course_card_container}>
           <figure className={styles.image} />
           <p className={styles.name}>React js</p>
-          <p className={styles.duration}>Duration: 35d</p>
+          <p className={styles.duration}>Duration: 35d {i}</p>
           <button type="button">View</button>
         </div>
       ));
   };
 
+  nextItem = () => {
+    this.Carousel.slideNext();
+  }
+  
+  prevItem = () => {
+    this.Carousel.slidePrev();
+  }
+
   render() {
     const responsive = {
-      0: {
+      1024: {
         items: 5,
       },
     };
 
     return (
       <section className={styles.carousel_container}>
-        <AliceCarousel
-          items={this.galleryItems()}
-          mouseDragEnabled
-          infinite={false}
-          responsive={responsive}
-          dotsDisabled={true}
-          onSlideChanged={this.onSlideChanged}
-        />
-        <div>
-          <button onClick={() => this.slidePrev()}>Prev button</button>
-          <button onClick={() => this.slideNext()}>Next button</button>
+        <button style={{width: '5%', float: 'left'}} type='button' onClick={this.prevItem}>Prev button</button>
+        <div style={{width: '90%', float: 'left'}}>
+          <AliceCarousel
+            items={this.galleryItems()}
+            mouseDragEnabled
+            infinite={false}
+            responsive={responsive}
+            dotsDisabled
+            buttonsDisabled
+            ref={(el) => (this.Carousel = el)}
+          />
         </div>
+        <button style={{width: '5%', float: 'left'}} type='button' onClick={this.nextItem}>Next button</button>
       </section>
     );
   }
