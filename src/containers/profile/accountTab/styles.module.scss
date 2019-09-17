@@ -5,11 +5,17 @@
 .account {
   margin-top: 50px;
 
-  .password {
+  .pass {
 
     input {
       @include primary-input;
       padding: 15px 0;
+      margin: 0 5%;
+      width: 90%;
+    }
+
+    .invalid_feedback {
+      color: $pink;
       margin: 0 5%;
       width: 90%;
     }

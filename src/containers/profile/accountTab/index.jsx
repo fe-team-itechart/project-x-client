@@ -1,47 +1,140 @@
-import React, { useState } from 'react';
-import styles from './styles.module.scss';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { isEmpty } from 'lodash';
 
 import { Profile } from '../profile';
 
-export const AccountTab = () => {
-  const [update, setUpdate] = useState(true);
-  const {
-    account,
-    password,
-    buttons_block,
-    payment_btn,
-    payment_btn_block,
-  } = styles;
+import { changePasswordValidate } from '../../../validation/auth';
+import { changePassword } from '../../../services/auth';
 
-  const updatePassword = () => {
-    setUpdate(!update);
+import styles from './styles.module.scss';
+
+class AccountTab extends Component {
+  state = {
+    password: '',
+    confirmPassword: '',
+    update: true,
+    errors: {},
+  };
+
+  onSubmit = event => {
+    event.preventDefault();
+    const {
+      user: {
+        user: { id },
+      },
+    } = this.props;
+    const { password, confirmPassword } = this.state;
+
+    const errors = changePasswordValidate(password, confirmPassword);
+
+    if (!isEmpty(errors)) {
+      this.setState({ errors });
+    } else {
+      this.setState({ update: !this.state.update });
+      this.setState({ 
+        password: '',
+        confirmPassword: '',
+        errors: {} 
+      });
+      changePassword(id, { password });
+    }
+  };
+
+  onChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  updatePassword = () => {
+    this.setState({ update: !this.state.update });
+  };
+
+  closeUpdate = () => {
+    this.setState({ 
+      password: '',
+      confirmPassword: '',
+      update: !this.state.update,
+      errors: {} 
+    });
   }
 
-  return ( 
-    <>
-      <Profile />
-      <div className={account}>
-        <form>
-          <div className={password}>
-            <input type="text" placeholder="password" disabled={update} />
+  render() {
+    const { password, confirmPassword, errors, update } = this.state;
+    const {
+      account,
+      pass,
+      buttons_block,
+      payment_btn,
+      payment_btn_block,
+      invalid_feedback,
+    } = styles;
+
+    return (
+      <>
+        <Profile />
+        <div className={account}>
+          <form onSubmit={this.onSubmit}>
+            <div className={pass}>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                placeholder="Password"
+                disabled={update}
+                onChange={this.onChange}
+              />
+              {errors.password && (
+                <span className={invalid_feedback}>
+                  {errors.password}
+                </span>
+              )}
+            </div>
+            <div className={pass}>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                value={confirmPassword}
+                placeholder="Confirm Password"
+                disabled={update}
+                onChange={this.onChange}
+              />
+            </div>
+            <div className={buttons_block}>
+              {update && (
+                <button type='button' onClick={this.updatePassword}>update password</button>
+              )}
+              {!update && (
+                <>
+                  <button type="submit">
+                    save
+                  </button>
+                  <button type="button" onClick={this.closeUpdate}>
+                    close
+                  </button>
+                </>
+              )}
+            </div>
+          </form>
+          <div className={payment_btn_block}>
+            <button type="button" className={payment_btn}>
+              Add payment data
+            </button>
           </div>
-          <div className={password}>
-            <input type="text" placeholder="confirm password" disabled={update} />
-          </div>
-          <div className={buttons_block}>
-            {update && <button onClick={updatePassword}>update password</button>}
-            {!update && (
-              <>
-                <button type='submit'  onClick={updatePassword}>save</button>
-                <button type='button' onClick={updatePassword}>close</button>
-              </>
-            )}
-          </div>
-        </form>
-        <div className={payment_btn_block}>
-          <button type='button' className={payment_btn}>Add payment data</button>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 }
+
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(AccountTab);
