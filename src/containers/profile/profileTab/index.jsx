@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 
+import { Profile } from '../profile';
+
 import styles from './styles.module.scss';
 
 export const ProfileTab = () => {
@@ -20,72 +22,75 @@ export const ProfileTab = () => {
   }
 
   return (
-    <div className={profile}>
-      <div className={user_fio}>
-        <input
-          type="text"
-          placeholder="First name"
-          disabled={update}
-          defaultValue="John"
-        />
-        <input
-          type="text"
-          placeholder="Last name"
-          disabled={update}
-          defaultValue="Doe"
-        />
-      </div>
-      <div className={description}>
-        <input type="text" placeholder="Description" disabled={update} />
-      </div>
-      <div className={social}>
-        <div>
-          <span>
-            <FaTwitter className={twitter_icon} />
-            http://twitter.com/
-          </span>
+    <>
+      <Profile />
+      <div className={profile}>
+        <div className={user_fio}>
           <input
             type="text"
-            placeholder="twitter nick"
+            placeholder="First name"
             disabled={update}
-            defaultValue="johntwitt"
+            defaultValue="John"
           />
-        </div>
-        <div>
-          <span>
-            <FaFacebookF className={facebook_icon} />
-            https://www.facebook.com/
-          </span>
           <input
             type="text"
-            placeholder="facebook nick"
+            placeholder="Last name"
             disabled={update}
-            defaultValue="jhondoe"
+            defaultValue="Doe"
           />
         </div>
-        <div>
-          <span>
-            <FaLinkedinIn className={linkedin_icon} />
-            https://www.linkedin.com/
-          </span>
-          <input type="text" placeholder="linkedin nick" disabled={update} />
+        <div className={description}>
+          <input type="text" placeholder="Description" disabled={update} />
         </div>
+        <div className={social}>
+          <div>
+            <span>
+              <FaTwitter className={twitter_icon} />
+              http://twitter.com/
+            </span>
+            <input
+              type="text"
+              placeholder="twitter nick"
+              disabled={update}
+              defaultValue="johntwitt"
+            />
+          </div>
+          <div>
+            <span>
+              <FaFacebookF className={facebook_icon} />
+              https://www.facebook.com/
+            </span>
+            <input
+              type="text"
+              placeholder="facebook nick"
+              disabled={update}
+              defaultValue="jhondoe"
+            />
+          </div>
+          <div>
+            <span>
+              <FaLinkedinIn className={linkedin_icon} />
+              https://www.linkedin.com/
+            </span>
+            <input type="text" placeholder="linkedin nick" disabled={update} />
+          </div>
+        </div>
+        {update && (
+          <button type="button" onClick={updateProfile}>
+            Update
+          </button>
+        )}
+        {!update && (
+          <>
+            <button type="button" onClick={updateProfile}>
+              Save
+            </button>
+            <button type="button" onClick={updateProfile}>
+              Close
+            </button>
+          </>
+        )}
       </div>
-      {update && (
-        <button type="button" onClick={updateProfile}>
-          Update
-        </button>
-      )}
-      {!update && (
-        <>
-          <button type="button" onClick={updateProfile}>
-            Save
-          </button>
-          <button type="button" onClick={updateProfile}>
-            Close
-          </button>
-        </>
-      )}
-    </div>
+    </>
   );
 };

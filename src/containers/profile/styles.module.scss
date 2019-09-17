@@ -7,6 +7,25 @@
 .profile {
   background-color: $bcg-gray-light;
 
+  * {
+    outline: none;
+  }
+
+  .button {
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      background: $gradient;
+      transition: 0.3s;
+    }
+  }
+
+  .active_button {
+    background: $gradient;
+  }
+
   .hidden_text {
     display: none;
   }
@@ -104,6 +123,7 @@
       display: block;
       width: 100%;
       padding: 0px;
+      margin-left: -105%;
       position: absolute;
       overflow-x: auto;
       background-color: $bcg-gray-dark;

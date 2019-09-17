@@ -2,6 +2,7 @@
 @import '../../scss/shared/fonts.scss';
 @import '../../scss/mixins/button.scss';
 @import '../../scss/mixins/input.scss';
+@import '../../scss/shared/breakpoints.scss';
 
 .main_page_wrapper {
   position: relative;
@@ -29,6 +30,10 @@
 
           b {
             color: $red;
+          }
+          
+          @media screen and (max-width: $width-sm) {
+            font-size: 40px;
           }
         }
 
@@ -212,7 +217,6 @@
       margin: 25px 0;
     }
   }
-
   @media screen and (min-width: 900px) {
 
     .main_block {

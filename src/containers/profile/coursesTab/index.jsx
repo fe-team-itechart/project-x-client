@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { CourseCard } from './CourseCard';
+import { Profile } from '../profile';
 
 import styles from './styles.module.scss';
 
@@ -41,24 +42,27 @@ export const CoursesTab = () => {
   ];
 
   return (
-    <div>
-      <div className={styles.courses}>
-        {subscribedCourses.map((course, key) => (
-          <div key={key}>
-            <CourseCard course={course} subscribed={true} />
-          </div>
-        ))}
-        <CourseCard findCourse={true} />
+    <>
+      <Profile />
+      <div>
+        <div className={styles.courses}>
+          {subscribedCourses.map((course, key) => (
+            <div key={key}>
+              <CourseCard course={course} subscribed={true} />
+            </div>
+          ))}
+          <CourseCard findCourse={true} />
+        </div>
+        <div className={styles.separator} />
+        <div className={styles.courses}>
+          {createdCourses.map((course, key) => (
+            <div key={key}>
+              <CourseCard course={course} created={true} />
+            </div>
+          ))}
+          <CourseCard addCourse={true} />
+        </div>
       </div>
-      <div className={styles.separator} />
-      <div className={styles.courses}>
-        {createdCourses.map((course, key) => (
-          <div key={key}>
-            <CourseCard course={course} created={true} />
-          </div>
-        ))}
-        <CourseCard addCourse={true} />
-      </div>
-    </div>
+    </>
   );
 };
