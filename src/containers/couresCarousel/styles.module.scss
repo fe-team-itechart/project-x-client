@@ -9,14 +9,39 @@
   background-color: $bcg-gray-light;
   margin: 15px 0;
   width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  .alice-carousel__prev-btn {
-    position: absolute;
+  .nav_button {
+    width: 5%;
+    background: Transparent no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    height: 100%;
+  }
+
+  .carousel {
+    width: 85%;
   }
 
   .course_card_container {
     height: 285px;
+    width: 270px;
     background-color: $bcg-gray-dark;
+    position: relative;
+
+    .adding_button {
+      position: absolute;
+      border-radius: 50%;
+      line-height: 40px;
+      width: 30px;
+      height: 40px;
+      top: 10px;
+      right: 10px;
+    }
 
     .image {
       margin: 0;
