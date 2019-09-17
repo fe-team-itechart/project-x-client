@@ -35,6 +35,8 @@ export default handleActions(
     [types.SOCIAL_LOGIN_SUCCESS]: loginSuccess,
     [types.SOCIAL_LOGIN_FAILURE]: loginFailure,
     [types.LOGOUT_SUCCESS]: logOutSuccess,
+    [types.REFRESH_LOGIN_SUCCESS]: loginSuccess,
+    [types.REFRESH_LOGIN_FAILURE]: loginFailure,
   },
   initialState
 );
