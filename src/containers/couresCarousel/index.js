@@ -6,6 +6,24 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import styles from './styles.module.scss';
 
+const responsive = {
+  1650: {
+    items: 5,
+  },
+  1430: {
+    items: 4,
+  },
+  1070: {
+    items: 3,
+  },
+  730: {
+    items: 2,
+  },
+  350: {
+    items: 1,
+  },
+};
+
 class CoursesCarousel extends Component {
   state = {};
 
@@ -34,24 +52,6 @@ class CoursesCarousel extends Component {
   };
 
   render() {
-    const responsive = {
-      1650: {
-        items: 5,
-      },
-      1430: {
-        items: 4,
-      },
-      1070: {
-        items: 3,
-      },
-      730: {
-        items: 2,
-      },
-      350: {
-        items: 1,
-      },
-    };
-
     return (
       <section className={styles.carousel_container}>
         <button
