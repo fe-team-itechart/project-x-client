@@ -1,24 +1,27 @@
-@import '../../scss/shared/colors.scss';
-@import '../../scss/mixins/input.scss';
-@import '../../scss/mixins/button.scss';
-@import '../../scss/shared/breakpoints.scss';
+@import '../../../../scss/shared/colors.scss';
+@import '../../../../scss/mixins/input.scss';
+@import '../../../../scss/mixins/button.scss';
+@import '../../../../scss/shared/breakpoints.scss';
 
 .header {
+  margin-top: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: $bcg-gray-light;
-  padding: 20px 0;
   color: $white;
-  height: 50px;
-  font-size: 16px;
-  width: 90%;
-  margin: 15px 0;
   @media (max-width: $width-lg) {
     justify-content: space-around;
   }
+  .burger{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    background: linear-gradient(to bottom, white 15%, transparent 16%, transparent 43.5%, white 44.5%, white 58.5%, transparent 59.5%, transparent 86%, white 87%);
+  }
 
   .logo {
+    width: 80px;
     flex: 0.3 1 auto;
     display: flex;
     align-items: center;
@@ -29,7 +32,6 @@
 
     img {
       cursor: pointer;
-      height: 32px;
     }
   }
 

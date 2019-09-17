@@ -1,43 +1,42 @@
 @import '../../../scss/combineStyles.scss';
 
-.wrapperF {
+.wrapper_form {
   font-family: $primary-font;
   color: $white;
-  width: 100%;
+  width: 90%;
   display: flex;
+  height: calc(100vh - 120px - 198px);
   justify-content: center;
+  @media (max-width: $width-xl) {
+    height: calc(100vh - 120px - 367px);
+  }
 
   .form {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
     max-width: 640px;
     padding: 15px;
     box-sizing: border-box;
   }
 
   .row {
-    display: flex;
     margin: 15px 0 0 0;
   }
 
-  .rowTop {
+  .row_top {
     margin: 25px 0 0 0;
-  }
-
-  .rowFlexEnd {
-    justify-content: flex-end;
   }
 
   .big_size_message {
     font-size: 2em;
   }
 
-  .successMessage {
+  .success_message {
     color: $green;
   }
 
-  .errorMessage {
+  .error_message {
     color: $pink;
   }
 
@@ -46,21 +45,16 @@
     width: 20%;
   }
 
+  .btn_right_position {
+    align-self: flex-end;
+  }
+
+  .btn_margin_top {
+    margin-top: 25px;
+  }
+
   .input {
     @include primary-input;
     width: 100%;
-  }
-
-  .closeModal {
-    color: white;
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    padding: 0;
-    background: none;
-    border: none;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
   }
 }

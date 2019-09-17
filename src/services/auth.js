@@ -48,7 +48,7 @@ export const changePassword = async (id, data) => {
 
 export const forgotPasswordRequest = async data => {
   try {
-    const response = await axios.post('api/users/reset', data);
+    const response = await httpService.post({ url: 'users/reset', data });
     return response;
   } catch (e) {
     return {
@@ -59,34 +59,28 @@ export const forgotPasswordRequest = async data => {
 };
 
 export const resetApprove = async linkId => {
-  try {
-    const l = encodeURIComponent(linkId);
-    const response = await axios.post(`api/users/reset/${l}`, {});
-    return response;
-  } catch (e) {
-    return {
-      status: 400,
-      data: 'Link is uncorrected',
-    };
-  }
+  const link = encodeURIComponent(linkId);
+  const response = await httpService.post({
+    url: `users/reset/${link}`,
+    data: {},
+    config: {
+      validateStatus: status => status >= 200 && status < 500,
+    },
+  });
+  return response;
 };
 
-export const resetPassword = async ({
-  linkId,
-  password,
-  passwordConfirm,
-}) => {
-  try {
-    const response = await axios.post(`api/users/resetPassword`, {
+export const resetPassword = async ({ linkId, password, passwordConfirm }) => {
+  const response = await httpService.post({
+    url: `users/reset-password`,
+    data: {
       linkId,
       password,
       passwordConfirm,
-    });
-    return response;
-  } catch (e) {
-    return {
-      status: 400,
-      data: 'Something is wrong',
-    };
-  }
+    },
+    config: {
+      validateStatus: status => status >= 200 && status < 500,
+    },
+  });
+  return response;
 };

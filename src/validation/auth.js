@@ -119,3 +119,17 @@ export const changePasswordValidate = (password, confirmPassword) => {
 
   return errors;
 };
+
+
+export const emailValidate = (email) => {
+  let errors = {};
+  const emailValidate = Joi.validate(email, emailSchema);
+
+  if (emailValidate.error) {
+    errors.email = emailValidate.error.details[0].message.replace(
+      '"email"',
+      'Email'
+    );
+  }
+  return errors;
+}

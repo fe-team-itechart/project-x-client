@@ -15,6 +15,10 @@ export const ProfileTab = () => {
     linkedin_icon,
   } = styles;
 
+  const updateProfile = () => {
+    setUpdate(!update);
+  }
+
   return (
     <div className={profile}>
       <div className={user_fio}>
@@ -68,16 +72,16 @@ export const ProfileTab = () => {
         </div>
       </div>
       {update && (
-        <button type="button" onClick={() => setUpdate(!update)}>
+        <button type="button" onClick={updateProfile}>
           Update
         </button>
       )}
       {!update && (
         <>
-          <button type="button" onClick={() => setUpdate(!update)}>
+          <button type="button" onClick={updateProfile}>
             Save
           </button>
-          <button type="button" onClick={() => setUpdate(!update)}>
+          <button type="button" onClick={updateProfile}>
             Close
           </button>
         </>
