@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { FaWindowClose } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 import styles from './styles.module.scss';
+import './menu.scss';
 
 export const Profile = () => {
-  const [menus, setMenu] = useState({ marginLeft: '-105%' });
 
   const {
     mobile_burger,
@@ -30,12 +30,12 @@ export const Profile = () => {
     settings: '/profile-settings',
   };
 
+  useEffect(() => {
+    const toggle_menu = document.querySelector('#toggle_menu');
+  })
+
   const toggleMenu = () => {
-    if (menus.marginLeft === '0') {
-      setMenu({ marginLeft: '-105%' });
-    } else {
-      setMenu({ marginLeft: '0' });
-    }
+    toggle_menu.classList.toggle('menu_is_open');
   };
 
   return (
@@ -51,7 +51,7 @@ export const Profile = () => {
           <div className={role}>student</div>
         </button>
       </div>
-      <nav className={mobile_menu} style={menus}>
+      <nav id='toggle_menu' className={mobile_menu}>
         <ul>
           <li>
             <Link to="/profile-public">
