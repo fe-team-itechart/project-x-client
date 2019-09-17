@@ -32,12 +32,18 @@
     width: 270px;
     background-color: $bcg-gray-dark;
     position: relative;
+    left: 50%;
+    margin-left: -135px;
 
     .adding_button {
       position: absolute;
       border-radius: 50%;
-      line-height: 40px;
-      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      padding: 0;
+      width: 40px;
       height: 40px;
       top: 10px;
       right: 10px;

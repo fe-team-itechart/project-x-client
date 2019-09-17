@@ -15,7 +15,7 @@ class CoursesCarousel extends Component {
       .map((item, i) => (
         <div className={styles.course_card_container}>
           <button type="button" className={styles.adding_button}>
-            <span>+</span>
+            +
           </button>
           <figure className={styles.image} />
           <p className={styles.name}>React js</p>
@@ -46,6 +46,9 @@ class CoursesCarousel extends Component {
       },
       730: {
         items: 2,
+      },
+      350: {
+        items: 1,
       },
     };
 
