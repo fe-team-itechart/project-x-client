@@ -38,10 +38,6 @@
       margin: 15px;
     }
 
-    button {
-      margin: 0 40px 40px 40px;
-    }
-
     .invalid_feedback {
       color: $pink;
       width: 75%;
@@ -49,8 +45,8 @@
 
     .submit {
       @include primary-button;
-      width: 75%;
-      margin-bottom: 5px;
+      width: 210px;
+      margin: 5px 0 15px 0;
     }
 
     .close_modal {
