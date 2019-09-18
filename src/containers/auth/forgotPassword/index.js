@@ -123,7 +123,7 @@ class ForgotPassword extends PureComponent {
       <Modal
         isOpen={modalStatus}
         onAfterOpen={this.afterOpenModal}
-        onRequestClose={this.onRequestClose}
+        onRequestClose={this.modalClose}
         className={modal}>
         <FaTimes onClick={this.modalClose} className={closeModal} />
         <ShowMessage classStyle={`${row} ${rowTop}`} condition={formShow}>
