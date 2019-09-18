@@ -32,10 +32,10 @@ class AccountTab extends Component {
       this.setState({ errors });
     } else {
       this.setState({ update: !this.state.update });
-      this.setState({ 
+      this.setState({
         password: '',
         confirmPassword: '',
-        errors: {} 
+        errors: {},
       });
       changePassword(id, { password });
     }
@@ -48,17 +48,19 @@ class AccountTab extends Component {
   };
 
   updatePassword = () => {
-    this.setState({ update: !this.state.update });
+    this.setState({
+      update: false,
+    });
   };
 
   closeUpdate = () => {
-    this.setState({ 
+    this.setState({
       password: '',
       confirmPassword: '',
-      update: !this.state.update,
-      errors: {} 
+      update: true,
+      errors: {},
     });
-  }
+  };
 
   render() {
     const { password, confirmPassword, errors, update } = this.state;
@@ -87,9 +89,7 @@ class AccountTab extends Component {
                 onChange={this.onChange}
               />
               {errors.password && (
-                <span className={invalid_feedback}>
-                  {errors.password}
-                </span>
+                <div className={invalid_feedback}>{errors.password}</div>
               )}
             </div>
             <div className={pass}>
@@ -104,14 +104,18 @@ class AccountTab extends Component {
               />
             </div>
             <div className={buttons_block}>
-              {update && (
-                <button type='button' onClick={this.updatePassword}>update password</button>
-              )}
-              {!update && (
-                <>
-                  <button type="submit">
-                    save
+              {update ? (
+                <div>
+                  <button type="button" onClick={this.updatePassword}>
+                    update password
                   </button>
+                  <button type="button" className={payment_btn}>
+                    Add payment data
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <button type="submit">save</button>
                   <button type="button" onClick={this.closeUpdate}>
                     close
                   </button>
@@ -119,11 +123,6 @@ class AccountTab extends Component {
               )}
             </div>
           </form>
-          <div className={payment_btn_block}>
-            <button type="button" className={payment_btn}>
-              Add payment data
-            </button>
-          </div>
         </div>
       </>
     );

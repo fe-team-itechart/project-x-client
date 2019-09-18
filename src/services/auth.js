@@ -4,7 +4,10 @@ import setAuthToken from './setAuthToken';
 import { httpService } from './httpService';
 
 const config = {
-  headers: { 'Content-Type': 'application/json' },
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization' : localStorage.token,
+  },
 };
 
 export const socialLoginRequest = res => {
@@ -42,7 +45,7 @@ export const logOutRequest = () => {
 };
 
 export const changePassword = async (id, data) => {
-  const res = await httpService.put({ url: 'users/change-password', id, data });
+  const res = await httpService.put({ url: 'users/change-password', id, data, config });
   return res;
 };
 
