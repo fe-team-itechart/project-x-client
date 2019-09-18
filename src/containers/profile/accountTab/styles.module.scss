@@ -6,7 +6,7 @@
 .account {
   margin-top: 50px;
 
-  .pass {
+  .password_class {
 
     input {
       @include primary-input;
@@ -44,16 +44,13 @@
     }
   }
 
-  .payment_btn_block {
-
-    .payment_btn {
-      @include primary-button;
-      height: 50px;
-      text-align: center;
-      margin: 45px 15px 15px 5%;
-      color: $white;
-      border: none;
-    }
+  .payment_btn {
+    @include primary-button;
+    height: 50px;
+    text-align: center;
+    margin: 45px 15px 15px 5%;
+    color: $white;
+    border: none;
   }
 
   @media screen and (min-width: $width-xl) {

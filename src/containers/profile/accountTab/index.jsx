@@ -31,11 +31,11 @@ class AccountTab extends Component {
     if (!isEmpty(errors)) {
       this.setState({ errors });
     } else {
-      this.setState({ update: !this.state.update });
       this.setState({
         password: '',
         confirmPassword: '',
         errors: {},
+        update: !this.state.update
       });
       changePassword(id, { password });
     }
@@ -66,10 +66,9 @@ class AccountTab extends Component {
     const { password, confirmPassword, errors, update } = this.state;
     const {
       account,
-      pass,
+      password_class,
       buttons_block,
       payment_btn,
-      payment_btn_block,
       invalid_feedback,
     } = styles;
 
@@ -78,7 +77,7 @@ class AccountTab extends Component {
         <Profile />
         <div className={account}>
           <form onSubmit={this.onSubmit}>
-            <div className={pass}>
+            <div className={password_class}>
               <input
                 type="password"
                 id="password"
@@ -92,7 +91,7 @@ class AccountTab extends Component {
                 <div className={invalid_feedback}>{errors.password}</div>
               )}
             </div>
-            <div className={pass}>
+            <div className={password_class}>
               <input
                 type="password"
                 id="confirmPassword"
