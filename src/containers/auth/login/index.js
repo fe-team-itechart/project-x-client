@@ -81,7 +81,6 @@ class Login extends Component {
       link_forgot: linkForgot,
       invalid_feedback: invalidFeedback,
       close_modal: closeModalStyle,
-      google_button: googleButton,
     } = styles;
     const linkedInURL = `api/users/auth/linkedin`;
     const googleURL = `api/users/auth/google`;
@@ -134,11 +133,11 @@ class Login extends Component {
               </div>
             </a>
             <a href={linkedInURL}>
-              <div className={styles.google_button}>
-                <span className={styles.google_button_icon}>
+              <div className={styles.linkedin_button}>
+                <span className={styles.linkedin_button_icon}>
                   <LinkedInIcon />
                 </span>
-                <span className={styles.google_button_text}>
+                <span className={styles.linkedin_button_text}>
                   Sign in with Linked In
                 </span>
               </div>
@@ -161,13 +160,9 @@ const mapDispatchToProps = {
   socialLoginRequest,
 };
 
-const mapStateToProps = state => ({
-  errors: state.user.errors,
-});
-
 export default withRouter(
   connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
   )(Login)
 );
