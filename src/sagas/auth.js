@@ -22,8 +22,10 @@ function* login({ payload }) {
   try {
     const response = yield call(loginRequest, payload);
     yield put(actions.loginSuccess(response));
+    yield payload.resolve();
   } catch (err) {
-    yield put(actions.loginFailure(err));
+    yield put(actions.loginFailure());
+    yield payload.reject(err);
   }
 }
 

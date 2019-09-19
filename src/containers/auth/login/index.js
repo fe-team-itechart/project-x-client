@@ -59,19 +59,25 @@ class Login extends Component {
     if (!isEmpty(errors)) {
       this.setState({ errors });
     } else {
-      this.setState({ errors: {} });
-      loginRequest({ email, password });
-      onModalClose(false);
+      const request = new Promise((resolve, reject) => {
+        loginRequest({ email, password, resolve, reject });
+      });
+      request.then(
+        () => {
+          onModalClose(false);
+        },
+        errors => {
+          this.setState({ errors });
+        }
+      );
     }
   };
-
   render() {
     const { email, password, errors } = this.state;
     const { modalStatus } = this.props;
 
     const {
       modal,
-      submit,
       link_forgot: linkForgot,
       invalid_feedback: invalidFeedback,
       close_modal: closeModalStyle,
@@ -83,7 +89,7 @@ class Login extends Component {
     return (
       <>
         <Modal
-          style={{overlay: {zIndex: 3}}}
+          style={{ overlay: { zIndex: 3 } }}
           isOpen={modalStatus}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
@@ -99,8 +105,10 @@ class Login extends Component {
               placeholder="Email Address"
               onChange={this.onChange}
             />
-            {errors.email && (
-              <span className={invalidFeedback}>{errors.email}</span>
+            {(errors.email || errors.type === 'email') && (
+              <span className={invalidFeedback}>
+                {errors.email ? errors.email : errors.message}
+              </span>
             )}
             <input
               type="password"
@@ -110,8 +118,10 @@ class Login extends Component {
               placeholder="Password"
               onChange={this.onChange}
             />
-            {errors.password && (
-              <span className={invalidFeedback}>{errors.password}</span>
+            {(errors.password || errors.type === 'password') && (
+              <span className={invalidFeedback}>
+                {errors.password ? errors.password : errors.message}
+              </span>
             )}
             <a href={googleURL}>
               <div className={styles.google_button}>
@@ -151,9 +161,13 @@ const mapDispatchToProps = {
   socialLoginRequest,
 };
 
+const mapStateToProps = state => ({
+  errors: state.user.errors,
+});
+
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(Login)
 );

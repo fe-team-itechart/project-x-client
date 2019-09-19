@@ -19,6 +19,7 @@ const loginFailure = state => ({
   ...state,
   isAuthenticated: false,
   loading: false,
+  user: null,
 });
 
 const logOutSuccess = state => ({
