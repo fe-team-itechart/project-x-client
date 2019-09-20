@@ -4,7 +4,10 @@ import { firstNameSchema, lastNameSchema } from './auth';
 
 const descriptionSchema = Joi.string().max(255);
 
-const socialSchema = Joi.string().uri();
+const socialSchema = Joi.string()
+  .uri()
+  .allow('')
+  .optional();
 
 export const publicProfileValidate = profile => {
   let errors = {};
@@ -16,7 +19,6 @@ export const publicProfileValidate = profile => {
     facebookLink,
     linkedInLink,
   } = profile;
-
 
   const firstNameValidate = Joi.validate(firstName, firstNameSchema);
   const lastNameValidate = Joi.validate(lastName, lastNameSchema);

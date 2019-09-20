@@ -52,7 +52,7 @@ function* refreshLogin() {
       yield put(actions.refreshLoginFailure());
       return;
     }
-
+    
     yield put(actions.refreshLoginSuccess(user));
     return;
   }

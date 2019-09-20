@@ -46,6 +46,8 @@ export default handleActions(
     [auth.SOCIAL_LOGIN_SUCCESS]: loginSuccess,
     [auth.SOCIAL_LOGIN_FAILURE]: loginFailure,
     [auth.LOGOUT_SUCCESS]: logOutSuccess,
+    [auth.REFRESH_LOGIN_SUCCESS]: loginSuccess,
+    [auth.REFRESH_LOGIN_FAILURE]: loginFailure,
     [profile.GET_PROFILE_SUCCESS]: profileSuccess,
     [profile.GET_PROFILE_FAILURE]: profileFailure,
     [profile.UPDATE_PROFILE_SUCCESS]: profileSuccess,
