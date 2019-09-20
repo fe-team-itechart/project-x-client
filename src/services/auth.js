@@ -26,7 +26,6 @@ export const registerRequest = async data => {
 
     return decoded;
   } catch (err) {
-    console.log(err.response.data);
     throw err.response.data;
   }
 };
