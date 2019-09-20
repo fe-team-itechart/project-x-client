@@ -5,7 +5,6 @@ import { httpService } from './httpService';
 
 const config = {
   headers: { 'Content-Type': 'application/json' },
-  Authorization: localStorage.token,
 };
 
 export const socialLoginRequest = res => {
