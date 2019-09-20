@@ -75,17 +75,25 @@ class Register extends Component {
     if (!isEmpty(errors)) {
       this.setState({ errors });
     } else {
-      this.setState({ errors: {} });
-
-      registerRequest({
-        firstName,
-        lastName,
-        email,
-        password,
-        confirmPassword,
+      const request = new Promise((resolve, reject) => {
+        registerRequest({
+          firstName,
+          lastName,
+          email,
+          password,
+          confirmPassword,
+          resolve,
+          reject,
+        });
       });
-      
-      onModalClose(false);
+      request.then(
+        () => {
+          onModalClose(false);
+        },
+        errors => {
+          this.setState({ errors });
+        }
+      );
     }
   };
 
@@ -104,7 +112,7 @@ class Register extends Component {
     return (
       <>
         <Modal
-          style={{overlay: {zIndex: 3}}}
+          style={{ overlay: { zIndex: 3 } }}
           isOpen={modalStatus}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
@@ -144,8 +152,10 @@ class Register extends Component {
               placeholder="Email Address"
               onChange={this.onChange}
             />
-            {errors.email && (
-              <span className={styles.invalid_feedback}>{errors.email}</span>
+            {(errors.email || errors.type === 'email') && (
+              <span className={styles.invalid_feedback}>
+                {errors.email ? errors.email : errors.message}
+              </span>
             )}
             <input
               type="password"
@@ -156,7 +166,7 @@ class Register extends Component {
               onChange={this.onChange}
             />
             {errors.password && (
-              <span className={styles.invalid_feedback}>{errors.password}</span>
+              <span className={styles.invalidFeedback}>{errors.password}</span>
             )}
             <input
               type="password"
@@ -177,11 +187,11 @@ class Register extends Component {
               </div>
             </a>
             <a href={linkedInURL}>
-              <div className={styles.google_button}>
-                <span className={styles.google_button_icon}>
+              <div className={styles.linkedin_button}>
+                <span className={styles.linkedin_button_icon}>
                   <LinkedInIcon />
                 </span>
-                <span className={styles.google_button_text}>
+                <span className={styles.linkedin_button_text}>
                   Sign in with Linked In
                 </span>
               </div>

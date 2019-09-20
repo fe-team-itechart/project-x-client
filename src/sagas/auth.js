@@ -13,8 +13,10 @@ function* register({ payload }) {
   try {
     const response = yield call(registerRequest, payload);
     yield put(actions.loginSuccess(response));
+    yield payload.resolve();
   } catch (err) {
     yield put(actions.loginFailure(err));
+    yield payload.reject(err);
   }
 }
 
