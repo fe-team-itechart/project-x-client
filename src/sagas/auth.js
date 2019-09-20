@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import types from '../actions/types';
+import { auth } from '../actions/types';
 import * as actions from '../actions/auth';
 import {
   socialLoginRequest,
@@ -42,8 +42,8 @@ function* logout() {
 }
 
 export default function*() {
-  yield takeEvery(types.LOGIN_REQUEST, login);
-  yield takeEvery(types.REGISTER_REQUEST, register);
-  yield takeEvery(types.SOCIAL_LOGIN_REQUEST, socialLogin);
-  yield takeEvery(types.LOGOUT_REQUEST, logout);
+  yield takeEvery(auth.LOGIN_REQUEST, login);
+  yield takeEvery(auth.REGISTER_REQUEST, register);
+  yield takeEvery(auth.SOCIAL_LOGIN_REQUEST, socialLogin);
+  yield takeEvery(auth.LOGOUT_REQUEST, logout);
 }

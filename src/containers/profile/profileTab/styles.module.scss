@@ -5,7 +5,7 @@
 @import '../../../scss/mixins/input.scss';
 
 .profile {
-  margin: 0 15;
+  margin: 0 15px;
   margin-top: 40px;
 
   input {
@@ -21,43 +21,55 @@
   .user_fio {
     display: flex;
 
-    input {
-      @include primary-input;
+    div {
       width: 50%;
-      padding: 15px 5px;
-      margin: 0 5px;
+
+      &:first-child {
+        margin-right: 15px;
+      }
+
+      span {
+        display: block;
+        word-wrap: break-word;
+        width: 90%;
+      }
+
+      input {
+        @include primary-input;
+        width: 95%;
+        padding: 6px 5px;
+        margin: 15px 0;
+      }
     }
   }
 
   .description {
-    margin-top: 25px;
+    margin-top: 15px;
 
     input {
       @include primary-input;
       width: 100%;
-      padding: 15px 5px;
+      padding: 6px 5px;
+      margin: 15px 0;
     }
     margin-right: 12px;
   }
 
   .social {
-    margin-top: 25px;
+    margin-top: 15px;
 
     div {
 
-      span {
-        display: inline-block;
-        width: 250px;
-        padding: 15px 5px;
-        background: $bcg-gray-light;
-        color: $white;
-        margin: 5px 10px 5px 0;
-      }
-
       input {
         @include primary-input;
-        padding: 15px 5px;
-        width: 238px;
+        width: 90% !important;
+      }
+
+      span {
+        display: block;
+        width: 100%;
+        background: $bcg-gray-light;
+        color: $white;
       }
     }
 
@@ -90,6 +102,12 @@
     border: none;
     float: left;
   }
+
+  .invalid_feedback {
+    color: $pink !important;
+    width: 75%;
+  }
+
   @media screen and (min-width: $width-xs) {
 
     .social {
@@ -98,11 +116,9 @@
 
         span {
           width: 95%;
-          padding: 15px 2.5%;
         }
 
         input {
-          padding: 15px 2.5%;
           width: 95%;
         }
       }
@@ -115,13 +131,12 @@
       div {
 
         span {
-          width: 250px;
-          padding: 15px 5px;
-          margin: 5px 10px 5px 0;
+          margin-left: 30px;
         }
 
         input {
-          padding: 15px 5px;
+          padding: 6px 5px;
+          margin: 15px 0;
           width: 238px;
         }
       }

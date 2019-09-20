@@ -1,7 +1,8 @@
-import { fork } from 'redux-saga/effects';
+import { fork, all } from 'redux-saga/effects';
 
 import auth from './auth';
+import profile from './profile';
 
 export default function*() {
-  yield fork(auth);
+  yield all([fork(auth), fork(profile)]);
 }

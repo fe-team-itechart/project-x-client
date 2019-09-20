@@ -1,11 +1,11 @@
 import Joi from 'joi-browser';
 
-const firstNameSchema = Joi.string()
+export const firstNameSchema = Joi.string()
   .min(2)
   .max(20)
   .required();
 
-const lastNameSchema = Joi.string()
+export const lastNameSchema = Joi.string()
   .required()
   .min(2)
   .max(20);
@@ -120,8 +120,7 @@ export const changePasswordValidate = (password, confirmPassword) => {
   return errors;
 };
 
-
-export const emailValidate = (email) => {
+export const emailValidate = email => {
   let errors = {};
   const emailValidate = Joi.validate(email, emailSchema);
 
@@ -132,4 +131,4 @@ export const emailValidate = (email) => {
     );
   }
   return errors;
-}
+};

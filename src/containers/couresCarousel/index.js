@@ -58,7 +58,7 @@ class CoursesCarousel extends Component {
           className={styles.nav_button}
           type="button"
           onClick={this.prevItem}>
-          <IoIosArrowBack color="white" size="large" />
+          <IoIosArrowBack color="white" size="50px" />
         </button>
         <div className={styles.carousel}>
           <AliceCarousel
@@ -75,7 +75,7 @@ class CoursesCarousel extends Component {
           className={styles.nav_button}
           type="button"
           onClick={this.nextItem}>
-          <IoIosArrowForward color="white" size="large" />
+          <IoIosArrowForward color="white" size="50px" />
         </button>
       </section>
     );
