@@ -151,7 +151,7 @@
 
         & > img {
           position: absolute;
-          z-index: 2;
+          z-index: 0;
           top: 0;
           left: 0;
           height: 100%;
@@ -241,13 +241,15 @@
       .left_block {
         width: 40%;
       }
+
       .right_block {
 
         .pc_block {
           display: block;
           top: 50px;
         }
-        .phone_block{
+
+        .phone_block {
           left: 0;
         }
       }

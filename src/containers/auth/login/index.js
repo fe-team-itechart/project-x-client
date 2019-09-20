@@ -33,6 +33,16 @@ class Login extends Component {
   }
 
   closeModal = () => {
+    const { onModalClose } = this.props;
+    onModalClose(false);
+    this.setState({
+      email: '',
+      password: '',
+      errors: {},
+    });
+  };
+
+  openForgotPasswordModal = () => {
     const { onModalClose, onModalCloseForgotPass } = this.props;
     onModalClose(false);
     onModalCloseForgotPass(true);
@@ -41,7 +51,7 @@ class Login extends Component {
       password: '',
       errors: {},
     });
-  };
+  }
 
   onChange = event => {
     this.setState({
@@ -136,7 +146,7 @@ class Login extends Component {
             <button type="submit" className={styles.submit}>
               Sign In
             </button>
-            <span onClick={this.closeModal} className={linkForgot}>
+            <span onClick={this.openForgotPasswordModal} className={linkForgot}>
               Forgot Password?
             </span>
           </form>
