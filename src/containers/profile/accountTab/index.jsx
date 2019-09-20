@@ -21,7 +21,7 @@ class AccountTab extends Component {
     event.preventDefault();
     const {
       user: {
-        user: { id },
+        data: { id },
       },
     } = this.props;
     const { password, confirmPassword } = this.state;
@@ -64,20 +64,13 @@ class AccountTab extends Component {
 
   render() {
     const { password, confirmPassword, errors, update } = this.state;
-    const {
-      account,
-      password_class,
-      buttons_block,
-      payment_btn,
-      invalid_feedback,
-    } = styles;
 
     return (
       <>
         <Profile />
-        <div className={account}>
+        <div className={styles.account}>
           <form onSubmit={this.onSubmit}>
-            <div className={password_class}>
+            <div className={styles.password_class}>
               <input
                 type="password"
                 id="password"
@@ -88,10 +81,10 @@ class AccountTab extends Component {
                 onChange={this.onChange}
               />
               {errors.password && (
-                <div className={invalid_feedback}>{errors.password}</div>
+                <div className={styles.invalid_feedback}>{errors.password}</div>
               )}
             </div>
-            <div className={password_class}>
+            <div className={styles.password_class}>
               <input
                 type="password"
                 id="confirmPassword"
@@ -102,21 +95,21 @@ class AccountTab extends Component {
                 onChange={this.onChange}
               />
             </div>
-            <div className={buttons_block}>
+            <div className={styles.buttons_block}>
               {update ? (
                 <div>
                   <button type="button" onClick={this.updatePassword}>
-                    update password
+                    Update password
                   </button>
-                  <button type="button" className={payment_btn}>
+                  <button type="button" className={styles.payment_btn}>
                     Add payment data
                   </button>
                 </div>
               ) : (
                 <>
-                  <button type="submit">save</button>
+                  <button type="submit">Save</button>
                   <button type="button" onClick={this.closeUpdate}>
-                    close
+                    Close
                   </button>
                 </>
               )}
