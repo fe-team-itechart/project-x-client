@@ -69,23 +69,28 @@ class Login extends Component {
     if (!isEmpty(errors)) {
       this.setState({ errors });
     } else {
-      this.setState({ errors: {} });
-      loginRequest({ email, password });
-      onModalClose(false);
+      const request = new Promise((resolve, reject) => {
+        loginRequest({ email, password, resolve, reject });
+      });
+      request.then(
+        () => {
+          onModalClose(false);
+        },
+        errors => {
+          this.setState({ errors });
+        }
+      );
     }
   };
-
   render() {
     const { email, password, errors } = this.state;
     const { modalStatus } = this.props;
 
     const {
       modal,
-      submit,
       link_forgot: linkForgot,
       invalid_feedback: invalidFeedback,
       close_modal: closeModalStyle,
-      google_button: googleButton,
     } = styles;
     const linkedInURL = `api/users/auth/linkedin`;
     const googleURL = `api/users/auth/google`;
@@ -109,8 +114,10 @@ class Login extends Component {
               placeholder="Email Address"
               onChange={this.onChange}
             />
-            {errors.email && (
-              <span className={invalidFeedback}>{errors.email}</span>
+            {(errors.email || errors.status === 404) && (
+              <span className={invalidFeedback}>
+                {errors.email ? errors.email : errors.message}
+              </span>
             )}
             <input
               type="password"
@@ -120,8 +127,10 @@ class Login extends Component {
               placeholder="Password"
               onChange={this.onChange}
             />
-            {errors.password && (
-              <span className={invalidFeedback}>{errors.password}</span>
+            {(errors.password || errors.status === 403) && (
+              <span className={invalidFeedback}>
+                {errors.password ? errors.password : errors.message}
+              </span>
             )}
             <a href={googleURL}>
               <div className={styles.google_button}>
@@ -134,11 +143,11 @@ class Login extends Component {
               </div>
             </a>
             <a href={linkedInURL}>
-              <div className={styles.google_button}>
-                <span className={styles.google_button_icon}>
+              <div className={styles.linkedin_button}>
+                <span className={styles.linkedin_button_icon}>
                   <LinkedInIcon />
                 </span>
-                <span className={styles.google_button_text}>
+                <span className={styles.linkedin_button_text}>
                   Sign in with Linked In
                 </span>
               </div>
