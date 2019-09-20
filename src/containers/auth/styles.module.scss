@@ -17,6 +17,19 @@
   margin-right: -50%;
   transform: translate(-50%, -50%);
 
+  .close_modal {
+    color: $white;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    padding: 0;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: none;
+  }
+
   @media screen and (max-width: $width-sm) {
     width: 100%;
   }
@@ -38,10 +51,6 @@
       margin: 15px;
     }
 
-    button {
-      margin: 0 40px 40px 40px;
-    }
-
     .invalid_feedback {
       color: $pink;
       width: 75%;
@@ -49,21 +58,8 @@
 
     .submit {
       @include primary-button;
-      width: 75%;
-      margin-bottom: 5px;
-    }
-
-    .close_modal {
-      color: $white;
-      position: absolute;
-      right: 15px;
-      top: 15px;
-      padding: 0;
-      background: none;
-      border: none;
-      font: inherit;
-      cursor: pointer;
-      outline: inherit;
+      width: 210px;
+      margin: 5px 0 15px 0;
     }
 
     .link_forgot {

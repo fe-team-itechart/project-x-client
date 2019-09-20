@@ -1,5 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
+import jwtDecode from 'jwt-decode';
+
 import { auth } from '../actions/types';
 import * as actions from '../actions/auth';
 import {
@@ -41,9 +43,26 @@ function* logout() {
   yield put(actions.logOutSuccess());
 }
 
+function* refreshLogin() {
+  if (localStorage.token) {
+    const user = jwtDecode(localStorage.token);
+    const currentTime = Date.now() / 1000;
+
+    if (user.exp < currentTime) {
+      yield put(actions.refreshLoginFailure());
+      return;
+    }
+
+    yield put(actions.refreshLoginSuccess(user));
+    return;
+  }
+  yield put(actions.refreshLoginFailure());
+}
+
 export default function*() {
   yield takeEvery(auth.LOGIN_REQUEST, login);
   yield takeEvery(auth.REGISTER_REQUEST, register);
   yield takeEvery(auth.SOCIAL_LOGIN_REQUEST, socialLogin);
+  yield takeEvery(auth.REFRESH_LOGIN_REQUEST, refreshLogin);
   yield takeEvery(auth.LOGOUT_REQUEST, logout);
 }

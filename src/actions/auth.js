@@ -19,6 +19,12 @@ const socialLoginSuccess = createAction(auth.SOCIAL_LOGIN_SUCCESS);
 
 const socialLoginFailure = createAction(auth.SOCIAL_LOGIN_FAILURE);
 
+const refreshLoginRequest = createAction(auth.REFRESH_LOGIN_REQUEST);
+
+const refreshLoginSuccess = createAction(auth.REFRESH_LOGIN_SUCCESS);
+
+const refreshLoginFailure = createAction(auth.REFRESH_LOGIN_FAILURE);
+
 export {
   registerRequest,
   loginRequest,
@@ -29,4 +35,7 @@ export {
   socialLoginRequest,
   socialLoginSuccess,
   socialLoginFailure,
+  refreshLoginRequest,
+  refreshLoginSuccess,
+  refreshLoginFailure,
 };
