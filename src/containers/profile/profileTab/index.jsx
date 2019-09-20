@@ -5,13 +5,15 @@ import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import { isEmpty } from 'lodash';
 
 import { publicProfileValidate } from '../../../validation/profile';
-import { getProfileRequest, updateProfileRequest } from '../../../actions/profile';
+import {
+  getProfileRequest,
+  updateProfileRequest,
+} from '../../../actions/profile';
 import { Profile } from '../profile';
 
 import styles from './styles.module.scss';
 
 const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
-
   const [checked, setCheck] = useState(true);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -19,7 +21,7 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
     description: '',
     twitterLink: '',
     facebookLink: '',
-    linkedInLink: ''
+    linkedInLink: '',
   });
 
   const [errors, setErrors] = useState({
@@ -28,7 +30,7 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
     description: '',
     twitterLink: '',
     facebookLink: '',
-    linkedInLink: ''
+    linkedInLink: '',
   });
 
   const {
@@ -37,19 +39,8 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
     description,
     twitterLink,
     facebookLink,
-    linkedInLink
+    linkedInLink,
   } = formData;
-
-  const {
-    profile: profile_class,
-    user_fio,
-    description: description_class,
-    social,
-    twitter_icon,
-    facebook_icon,
-    linkedin_icon,
-    invalid_feedback,
-  } = styles;
 
   useEffect(() => {
     getProfileRequest();
@@ -59,7 +50,7 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
     if (profile) {
       setFormData(profile);
     }
-  }, [profile])
+  }, [profile]);
 
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -77,17 +68,17 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
       setCheck(!checked);
       updateProfileRequest(formData);
     }
-  }
+  };
 
   const onCheck = () => {
     setCheck(!checked);
-  }
+  };
 
   return (
     <>
       <Profile />
-      <form className={profile_class} onSubmit={onSubmit} noValidate>
-        <div className={user_fio}>
+      <form className={styles.profile} onSubmit={onSubmit} noValidate>
+        <div className={styles.user_fio}>
           <div>
             <input
               type="text"
@@ -98,7 +89,7 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
               onChange={onChange}
             />
             {errors.firstName && (
-              <span className={invalid_feedback}>
+              <span className={styles.invalid_feedback}>
                 {errors.firstName}
               </span>
             )}
@@ -113,15 +104,14 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
               onChange={onChange}
             />
             {errors.lastName && (
-              <span className={invalid_feedback}>
-                {errors.lastName}
-              </span>
+              <span className={styles.invalid_feedback}>{errors.lastName}</span>
             )}
           </div>
         </div>
-        <div className={description_class}>
-          <input
+        <div className={styles.description}>
+          <textarea
             type="text"
+            rows="4"
             name="description"
             value={description}
             placeholder="Description"
@@ -129,14 +119,14 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
             onChange={onChange}
           />
           {errors.description && (
-            <span className={invalid_feedback}>
+            <span className={styles.invalid_feedback}>
               {errors.description}
             </span>
           )}
         </div>
-        <div className={social}>
+        <div className={styles.social}>
           <div>
-            <FaTwitter className={twitter_icon} />
+            <FaTwitter className={styles.twitter_icon} />
             <input
               type="url"
               name="twitterLink"
@@ -145,14 +135,14 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
               disabled={checked}
               onChange={onChange}
             />
-            {errors.twitterLink && (
-              <span className={invalid_feedback}>
-                {errors.twitterLink}
-              </span>
-            )}
           </div>
+          {errors.twitterLink && (
+            <span className={styles.invalid_feedback}>
+              {errors.twitterLink}
+            </span>
+          )}
           <div>
-            <FaFacebookF className={facebook_icon} />
+            <FaFacebookF className={styles.facebook_icon} />
             <input
               type="url"
               name="facebookLink"
@@ -161,14 +151,14 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
               disabled={checked}
               onChange={onChange}
             />
-            {errors.facebookLink && (
-              <span className={invalid_feedback}>
-                {errors.facebookLink}
-              </span>
-            )}
           </div>
+          {errors.facebookLink && (
+            <span className={styles.invalid_feedback}>
+              {errors.facebookLink}
+            </span>
+          )}
           <div>
-            <FaLinkedinIn className={linkedin_icon} />
+            <FaLinkedinIn className={styles.linkedin_icon} />
             <input
               type="url"
               name="linkedInLink"
@@ -177,36 +167,37 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
               disabled={checked}
               onChange={onChange}
             />
-            {errors.linkedInLink && (
-              <span className={invalid_feedback}>
-                {errors.linkedInLink}
-              </span>
-            )}
           </div>
+          {errors.linkedInLink && (
+            <span className={styles.invalid_feedback}>
+              {errors.linkedInLink}
+            </span>
+          )}
         </div>
         {checked ? (
           <button type="button" onClick={onCheck}>
             Update
           </button>
         ) : (
-            <>
-              <button type="submit">
-                Save
-              </button>
-              <button type="button" onClick={onCheck}>
-                Close
-              </button>
-            </>
-          )}
+          <>
+            <button type="submit">Save</button>
+            <button type="button" onClick={onCheck}>
+              Close
+            </button>
+          </>
+        )}
       </form>
     </>
   );
 };
 
 const mapStateToProps = state => ({
-  profile: state.user.profile
+  profile: state.user.profile,
 });
 
 const mapDispatchToProps = { getProfileRequest, updateProfileRequest };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileTab);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfileTab);
