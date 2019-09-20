@@ -1,17 +1,17 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
-import { isEmpty } from 'lodash';
-import queryString from 'query-string';
 import { withRouter } from 'react-router-dom';
 
+import { isEmpty } from 'lodash';
+import queryString from 'query-string';
 import { FaTimes } from 'react-icons/fa';
-import { registerRequest, socialLoginRequest } from '../../../actions/auth';
-import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
-import { ReactComponent as LinkedInIcon } from '../../../assets/linkedin.svg';
 
 import { registerValidate } from '../../../validation/auth';
 
+import { registerRequest, socialLoginRequest } from '../../../actions/auth';
+import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
+import { ReactComponent as LinkedInIcon } from '../../../assets/linkedin.svg';
 import styles from '../styles.module.scss';
 
 Modal.setAppElement('#root');
