@@ -19,25 +19,33 @@ export const socialLoginRequest = res => {
 };
 
 export const registerRequest = async data => {
-  const {
-    data: { token },
-  } = await httpService.post({ url: 'users/registration', data, config });
-  const decoded = jwt_decode(token);
-  localStorage.setItem('token', token);
-  setAuthToken(token);
+  try {
+    const {
+      data: { token },
+    } = await httpService.post({ url: 'users/registration', data, config });
+    const decoded = jwt_decode(token);
+    localStorage.setItem('token', token);
+    setAuthToken(token);
 
-  return decoded;
+    return decoded;
+  } catch (err) {
+    throw err.response.data;
+  }
 };
 
 export const loginRequest = async data => {
-  const {
-    data: { token },
-  } = await httpService.post({ url: 'users/login', data, config });
-  const decoded = jwt_decode(token);
-  localStorage.setItem('token', token);
-  setAuthToken(token);
+  try {
+    const {
+      data: { token },
+    } = await httpService.post({ url: 'users/login', data, config });
+    const decoded = jwt_decode(token);
+    localStorage.setItem('token', token);
+    setAuthToken(token);
 
-  return decoded;
+    return decoded;
+  } catch (err) {
+    throw err.response.data;
+  }
 };
 
 export const logOutRequest = () => {

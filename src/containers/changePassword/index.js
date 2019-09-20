@@ -19,7 +19,7 @@ class ChangePassword extends Component {
     event.preventDefault();
     const {
       user: {
-        user: { id },
+        data: { id },
       },
     } = this.props;
     const { password, confirmPassword } = this.state;

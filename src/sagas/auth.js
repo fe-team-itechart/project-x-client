@@ -1,6 +1,8 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import types from '../actions/types';
+import jwtDecode from 'jwt-decode';
+
+import { auth } from '../actions/types';
 import * as actions from '../actions/auth';
 import {
   socialLoginRequest,
@@ -13,8 +15,10 @@ function* register({ payload }) {
   try {
     const response = yield call(registerRequest, payload);
     yield put(actions.loginSuccess(response));
+    yield payload.resolve();
   } catch (err) {
     yield put(actions.loginFailure(err));
+    yield payload.reject(err);
   }
 }
 
@@ -22,8 +26,10 @@ function* login({ payload }) {
   try {
     const response = yield call(loginRequest, payload);
     yield put(actions.loginSuccess(response));
+    yield payload.resolve();
   } catch (err) {
-    yield put(actions.loginFailure(err));
+    yield put(actions.loginFailure());
+    yield payload.reject(err);
   }
 }
 
@@ -41,9 +47,26 @@ function* logout() {
   yield put(actions.logOutSuccess());
 }
 
+function* refreshLogin() {
+  if (localStorage.token) {
+    const user = jwtDecode(localStorage.token);
+    const currentTime = Date.now() / 1000;
+
+    if (user.exp < currentTime) {
+      yield put(actions.refreshLoginFailure());
+      return;
+    }
+    
+    yield put(actions.refreshLoginSuccess(user));
+    return;
+  }
+  yield put(actions.refreshLoginFailure());
+}
+
 export default function*() {
-  yield takeEvery(types.LOGIN_REQUEST, login);
-  yield takeEvery(types.REGISTER_REQUEST, register);
-  yield takeEvery(types.SOCIAL_LOGIN_REQUEST, socialLogin);
-  yield takeEvery(types.LOGOUT_REQUEST, logout);
+  yield takeEvery(auth.LOGIN_REQUEST, login);
+  yield takeEvery(auth.REGISTER_REQUEST, register);
+  yield takeEvery(auth.SOCIAL_LOGIN_REQUEST, socialLogin);
+  yield takeEvery(auth.REFRESH_LOGIN_REQUEST, refreshLogin);
+  yield takeEvery(auth.LOGOUT_REQUEST, logout);
 }

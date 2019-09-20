@@ -17,6 +17,19 @@
   margin-right: -50%;
   transform: translate(-50%, -50%);
 
+  .close_modal {
+    color: $white;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    padding: 0;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: none;
+  }
+
   @media screen and (max-width: $width-sm) {
     width: 100%;
   }
@@ -35,35 +48,19 @@
     input {
       @include primary-input;
       width: 75%;
-      margin: 15px;
-    }
-
-    button {
-      margin: 0 40px 40px 40px;
+      margin: 15px 15px 0;
     }
 
     .invalid_feedback {
       color: $pink;
       width: 75%;
+      padding: 5px 0;
     }
 
     .submit {
       @include primary-button;
-      width: 75%;
-      margin-bottom: 5px;
-    }
-
-    .close_modal {
-      color: $white;
-      position: absolute;
-      right: 15px;
-      top: 15px;
-      padding: 0;
-      background: none;
-      border: none;
-      font: inherit;
-      cursor: pointer;
-      outline: inherit;
+      width: 210px;
+      margin: 5px 0 15px 0;
     }
 
     .link_forgot {
@@ -89,8 +86,8 @@
     outline: 1px solid $orange;
   }
 
-  .google_button {
-    margin: 5px 0;
+  .google_button,
+  .linkedin_button {
     width: 210px;
     height: 40px;
     border-width: 0;
@@ -115,7 +112,8 @@
       transition-duration: 10ms;
     }
 
-    .google_button_icon {
+    .google_button_icon,
+    .linkedin_button_icon {
       display: inline-block;
       vertical-align: middle;
       margin: 8px 0 8px 8px;
@@ -124,7 +122,8 @@
       box-sizing: border-box;
     }
 
-    .google_button_text {
+    .google_button_text,
+    .linkedin_button_text {
       display: inline-block;
       vertical-align: middle;
       padding: 0 24px;
@@ -132,5 +131,13 @@
       font-weight: 800;
       font-family: $primary-font;
     }
+  }
+
+  .google_button {
+    margin: 15px 0 5px;
+  }
+
+  .linkedin_button {
+    margin: 5px 0;
   }
 }
