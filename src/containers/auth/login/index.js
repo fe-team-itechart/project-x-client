@@ -104,7 +104,7 @@ class Login extends Component {
               placeholder="Email Address"
               onChange={this.onChange}
             />
-            {(errors.email || errors.type === 'email') && (
+            {(errors.email || errors.status === 404) && (
               <span className={invalidFeedback}>
                 {errors.email ? errors.email : errors.message}
               </span>
@@ -117,7 +117,7 @@ class Login extends Component {
               placeholder="Password"
               onChange={this.onChange}
             />
-            {(errors.password || errors.type === 'password') && (
+            {(errors.password || errors.status === 403) && (
               <span className={invalidFeedback}>
                 {errors.password ? errors.password : errors.message}
               </span>

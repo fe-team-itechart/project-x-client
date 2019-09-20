@@ -152,7 +152,7 @@ class Register extends Component {
               placeholder="Email Address"
               onChange={this.onChange}
             />
-            {(errors.email || errors.type === 'email') && (
+            {(errors.email || errors.status === 400) && (
               <span className={styles.invalid_feedback}>
                 {errors.email ? errors.email : errors.message}
               </span>
