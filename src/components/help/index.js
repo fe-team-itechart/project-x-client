@@ -7,34 +7,34 @@ import styles from './styles.module.scss';
 
 export const Help = () => {
   return (
-    <section className={styles.cards_wrapper}>
+    <section className={styles.cardsWrapper}>
       <h2>Help</h2>
-      <Link to="/getting-started" className={styles.card_link}>
-        <div className={styles.card_wrapper}>
+      <Link to="/getting-started" className={styles.cardLink}>
+        <div className={styles.cardWrapper}>
           <FaClipboardList />
           <h3>Getting Started</h3>
           <p>Learn how our courses works and how to start learning</p>
         </div>
       </Link>
 
-      <Link to="/profile-public" className={styles.card_link}>
-        <div className={styles.card_wrapper}>
+      <Link to="/profile-public" className={styles.cardLink}>
+        <div className={styles.cardWrapper}>
           <FaUser />
           <h3>Account/Profile</h3>
           <p>Manage your account settings</p>
         </div>
       </Link>
 
-      <Link to="/troubleshooting" className={styles.card_link}>
-        <div className={styles.card_wrapper}>
+      <Link to="/troubleshooting" className={styles.cardLink}>
+        <div className={styles.cardWrapper}>
           <FaCogs />
           <h3>Troubleshooting</h3>
           <p>Experiencing a bug? Check here</p>
         </div>
       </Link>
 
-      <Link to="/course-taking" className={styles.card_link}>
-        <div className={styles.card_wrapper}>
+      <Link to="/course-taking" className={styles.cardLink}>
+        <div className={styles.cardWrapper}>
           <FaBook />
           <h3>Course Taking</h3>
           <p>Everything about taking our course</p>

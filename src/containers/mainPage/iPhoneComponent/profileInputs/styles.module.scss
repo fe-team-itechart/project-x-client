@@ -15,7 +15,7 @@
     }
   }
 
-  .user_fio {
+  .userFio {
     display: flex;
 
     input {
@@ -38,10 +38,11 @@
 
   .social {
     margin: 5px;
-  
+
     div {
       margin: 15px 0;
       display: flex;
+
       span {
         padding: 0;
         font-size: 12px;
@@ -59,15 +60,15 @@
       margin: 0 5px;
     }
 
-    .facebook_icon {
+    .facebookIcon {
       color: $facebook;
     }
 
-    .twitter_icon {
+    .twitterIcon {
       color: $twitter;
     }
 
-    .linkedin_icon {
+    .linkedinIcon {
       color: $linked-in;
     }
   }

@@ -4,7 +4,7 @@
 @import '../../scss/mixins/input.scss';
 @import '../../scss/shared/breakpoints.scss';
 
-.main_page_wrapper {
+.mainPageWrapper {
   position: relative;
   display: flex;
   width: 90%;
@@ -12,16 +12,16 @@
   background-color: $bcg-gray-light;
   margin-bottom: 20px;
 
-  .main_block {
+  .mainBlock {
     display: flex;
     flex-direction: row;
     padding: 15px;
     text-align: center;
 
-    .left_block {
+    .leftBlock {
       width: 100%;
 
-      .text_header {
+      .textHeader {
 
         h1 {
           font-size: 70px;
@@ -31,7 +31,7 @@
           b {
             color: $red;
           }
-          
+
           @media screen and (max-width: $width-sm) {
             font-size: 40px;
           }
@@ -44,7 +44,7 @@
         }
       }
 
-      .pagination_block {
+      .paginationBlock {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -88,14 +88,14 @@
           }
         }
 
-        .tab_context {
+        .tabContext {
           color: $text-gray-light;
           max-width: 500px;
           text-align: justify;
         }
       }
 
-      .buttons_block {
+      .buttonsBlock {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -111,13 +111,13 @@
       }
     }
 
-    .right_block {
+    .rightBlock {
       display: none;
       width: 60%;
       position: relative;
       -ms-overflow-style: none;
 
-      .pc_block {
+      .pcBlock {
         width: 750px;
         height: 450px;
         position: absolute;
@@ -133,7 +133,7 @@
           width: 100%;
         }
 
-        .pc_context {
+        .pcContext {
           overflow-y: scroll;
           box-sizing: content-box;
           margin: 33px 0px 0px 95px;
@@ -147,7 +147,7 @@
         }
       }
 
-      .phone_block {
+      .phoneBlock {
 
         & > img {
           position: absolute;
@@ -168,7 +168,7 @@
         padding: 26px 25px 20px 25px;
         overflow: hidden;
 
-        .phone_context {
+        .phoneContext {
           border: 50px;
           width: 100%;
           height: 100%;
@@ -194,7 +194,7 @@
     }
   }
 
-  .arrow_down {
+  .arrowDown {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -219,16 +219,16 @@
   }
   @media screen and (min-width: 900px) {
 
-    .main_block {
+    .mainBlock {
 
-      .right_block {
+      .rightBlock {
         display: block;
         position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
 
-        .phone_block {
+        .phoneBlock {
           top: 50px;
         }
       }
@@ -236,20 +236,20 @@
   }
   @media screen and (min-width: 1500px) {
 
-    .main_block {
+    .mainBlock {
 
-      .left_block {
+      .leftBlock {
         width: 40%;
       }
 
-      .right_block {
+      .rightBlock {
 
-        .pc_block {
+        .pcBlock {
           display: block;
           top: 50px;
         }
 
-        .phone_block {
+        .phoneBlock {
           left: 0;
         }
       }

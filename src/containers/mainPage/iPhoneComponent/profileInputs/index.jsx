@@ -20,8 +20,8 @@ export const ProfileInputs = () => {
   }
 
   return (
-      <div className={profile}>
-        <div className={user_fio}>
+      <div className={styles.profile}>
+        <div className={styles.userFio}>
           <input
             type="text"
             placeholder="First name"
@@ -35,13 +35,13 @@ export const ProfileInputs = () => {
             defaultValue="Doe"
           />
         </div>
-        <div className={description}>
+        <div className={styles.description}>
           <input type="text" placeholder="Description" disabled={update} />
         </div>
-        <div className={social}>
+        <div className={styles.social}>
           <div>
             <span>
-              <FaTwitter className={twitter_icon} />
+              <FaTwitter className={styles.twitterIcon} />
             </span>
             <input
               type="text"
@@ -52,7 +52,7 @@ export const ProfileInputs = () => {
           </div>
           <div>
             <span>
-              <FaFacebookF className={facebook_icon} />
+              <FaFacebookF className={styles.facebookIcon} />
             </span>
             <input
               type="text"
@@ -63,7 +63,7 @@ export const ProfileInputs = () => {
           </div>
           <div>
             <span>
-              <FaLinkedinIn className={linkedin_icon} />
+              <FaLinkedinIn className={styles.linkedinIcon} />
             </span>
             <input type="text" placeholder="linkedin nick" disabled={update} />
           </div>

@@ -20,7 +20,7 @@
   );
 }
 
-.burger_active {
+.burgerActive {
   width: 15px;
   height: 15px;
   background: linear-gradient(
@@ -40,7 +40,7 @@
   list-style-type: none;
 }
 
-.click_outside {
+.clickOutside {
   position: absolute;
   left: 0;
   top: 0;
@@ -59,7 +59,7 @@
   z-index: 7;
   box-sizing: border-box;
 
-  .menu_item {
+  .menuItem {
     box-sizing: border-box;
     display: flex;
     justify-content: center;

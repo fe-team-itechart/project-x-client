@@ -7,15 +7,6 @@ import styles from './styles.module.scss';
 export const ProfilePhoto = () => {
   const [menu, setMenu] = useState('-105%');
 
-  const {
-    mobile_burger,
-    mobile_menu,
-    photo,
-    name,
-    role,
-    close_button,
-  } = styles;
-
   const toggleMenu = () => {
     if (menu === '15px') {
       setMenu('-105%' );
@@ -26,14 +17,14 @@ export const ProfilePhoto = () => {
 
   return (
     <>
-      <div className={mobile_burger}>
+      <div className={styles.mobileBurger}>
         <button type="button" onClick={() => toggleMenu()}>
-          <div className={photo} />
-          <div className={name}>John Doe</div>
-          <div className={role}>student</div>
+          <div className={styles.photo} />
+          <div className={styles.name}>John Doe</div>
+          <div className={styles.role}>student</div>
         </button>
       </div>
-      <nav className={mobile_menu} style={{ marginLeft: menu}}>
+      <nav className={styles.mobileMenu} style={{ marginLeft: menu}}>
         <ul>
           <li>
             <Link to="/profile/public">
@@ -58,7 +49,7 @@ export const ProfilePhoto = () => {
           <li>
             <button
               type="button"
-              className={close_button}
+              className={styles.closeButton}
               onClick={() => setMenu('-105%' )}>
               <FaWindowClose />
             </button>
