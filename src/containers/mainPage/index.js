@@ -17,35 +17,18 @@ class MainPage extends Component {
   };
 
   render() {
-    const {
-      left_block,
-      text_header,
-      pagination_block,
-      tabs,
-      tab_context,
-      buttons_block,
-      button,
-      right_block,
-      pc_block,
-      phone_block,
-      main_page_wrapper,
-      arrow_down,
-      main_block,
-      phone_context,
-      pc_context
-    } = styles;
     return (
-      <main className={main_page_wrapper}>
-        <div className={main_block}>
-          <div className={left_block}>
-            <div className={text_header}>
+      <main className={styles.mainPageWrapper}>
+        <div className={styles.mainBlock}>
+          <div className={styles.leftBlock}>
+            <div className={styles.textHeader}>
               <h1>
                 <b>Tech</b>courses
               </h1>
               <p>description</p>
             </div>
-            <div className={pagination_block}>
-              <div className={tabs}>
+            <div className={styles.paginationBlock}>
+              <div className={styles.tabs}>
                 <ul>
                   <li
                     className={this.state.activeTab === 0 ? styles.active : ''}
@@ -65,7 +48,7 @@ class MainPage extends Component {
                 </ul>
               </div>
               {this.state.activeTab === 0 && (
-                <div className={tab_context}>
+                <div className={styles.tabContext}>
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown
@@ -75,7 +58,7 @@ class MainPage extends Component {
                 </div>
               )}
               {this.state.activeTab === 1 && (
-                <div className={tab_context}>
+                <div className={styles.tabContext}>
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown
@@ -85,7 +68,7 @@ class MainPage extends Component {
                 </div>
               )}
               {this.state.activeTab === 2 && (
-                <div className={tab_context}>
+                <div className={styles.tabContext}>
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown
@@ -95,25 +78,25 @@ class MainPage extends Component {
                 </div>
               )}
             </div>
-            <div className={buttons_block}>
-              <div className={button}>Start now</div>
+            <div className={styles.buttonsBlock}>
+              <div className={styles.button}>Start now</div>
             </div>
           </div>
-          <div className={right_block}>
-            <div className={pc_block} style={{backgroundImage:'url(src/assets/Laptop.png)'}}>
-              <div className={pc_context}>
+          <div className={styles.rightBlock}>
+            <div className={styles.pcBlock} style={{backgroundImage:'url(src/assets/Laptop.png)'}}>
+              <div className={styles.pcContext}>
                 <img src="\src\assets\laptopScreen.png" alt="Laptop"/>
               </div>
             </div>
-            <div className={phone_block} style={{backgroundImage:'url(src/assets/iPhone.png)'}}>
+            <div className={styles.phoneBlock} style={{backgroundImage:'url(src/assets/iPhone.png)'}}>
               <img src="src\assets\iPhoneLeft.png" alt="iPhone" />
-              <div className={phone_context}>
+              <div className={styles.phoneContext}>
                 <ProfileIphone />
               </div>
             </div>
           </div>
         </div>
-        <div className={arrow_down}> 
+        <div className={styles.arrowDown}> 
           <FaAngleDoubleDown />
         </div>
       </main>

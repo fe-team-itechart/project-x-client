@@ -4,7 +4,7 @@ import '../../../scss/common/helpPage.scss';
 
 export const Trobleshooting = () => {
   return (
-    <div className="help_page">
+    <div className="helpPage">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
