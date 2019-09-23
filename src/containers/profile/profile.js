@@ -16,11 +16,11 @@ export const Profile = () => {
   };
 
   useEffect(() => {
-    const toggle_menu = document.querySelector('#toggle_menu');
+    const toggleMenu = document.querySelector('#toggleMenu');
   });
 
   const toggleMenu = () => {
-    toggle_menu.classList.toggle('menu_is_open');
+    toggleMenu.classList.toggle('menuIsOpen');
   };
 
   return (
@@ -36,7 +36,7 @@ export const Profile = () => {
           <div className={styles.role}>student</div>
         </button>
       </div>
-      <nav id="toggle_menu" className={styles.mobileMenu}>
+      <nav id="toggleMenu" className={styles.mobileMenu}>
         <ul>
           <li>
             <Link to="/profile-public">
