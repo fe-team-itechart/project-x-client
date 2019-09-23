@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 
 import { Profile } from '../profile';
-
 import { changePasswordValidate } from '../../../validation/auth';
 import { changePassword } from '../../../services/auth';
 
@@ -120,6 +121,10 @@ class AccountTab extends Component {
     );
   }
 }
+
+AccountTab.propTypes = {
+  user: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
   user: state.user,

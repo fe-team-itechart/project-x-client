@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import ProfileTab from "./profileTab";
 import { SettingsTab } from './settingsTab';
-import { AccountTab } from './accountTab';
+import AccountTab from './accountTab';
 import { CoursesTab } from './coursesTab';
 
 

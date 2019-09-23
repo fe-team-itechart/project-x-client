@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import { SubscribedCourseCard } from './subscribedCourseCard';
 import { CreatedCourseCard } from './createdCourseCard';
 import { FindNewCourseCard } from './findNewCourseCard';
@@ -15,4 +17,12 @@ export const CourseCard = courseProps => {
       {findCourse && <FindNewCourseCard />}
     </>
   );
+};
+
+CourseCard.propTypes = {
+  course: PropTypes.object,
+  subscribed: PropTypes.bool,
+  created: PropTypes.bool,
+  addCourse: PropTypes.bool,
+  findCourse: PropTypes.bool,
 };

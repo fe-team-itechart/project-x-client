@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import { isEmpty } from 'lodash';
 
@@ -201,6 +202,12 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
       </form>
     </>
   );
+};
+
+ProfileTab.propTypes = {
+  getProfileRequest: PropTypes.func.isRequired,
+  updateProfileRequest: PropTypes.func.isRequired,
+  profile: PropTypes.object
 };
 
 const mapStateToProps = state => ({
