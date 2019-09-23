@@ -2,142 +2,102 @@
 @import '../../scss/shared/colors.scss';
 @import '../../scss/mixins/button.scss';
 @import '../../scss/shared/fonts.scss';
-@import '../../scss/shared/breakpoints.scss';
 
-.modal {
-  font-family: $primary-font;
-  background-color: $bcg-gray-dark;
-  width: 380px;
-  border-radius: 6px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  right: auto;
-  bottom: auto;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+.title {
+  color: $orange;
+  font-size: 28px;
+  text-align: center;
+}
 
-  .closeModal {
-    color: $white;
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    padding: 0;
-    background: none;
-    border: none;
-    font: inherit;
-    cursor: pointer;
-    outline: none;
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  input {
+    @include primary-input;
+    width: 75%;
+    margin: 15px 15px 0;
   }
 
-  @media screen and (max-width: $width-sm) {
-    width: 100%;
+  .invalidFeedback {
+    color: $pink;
+    width: 75%;
+    padding: 5px 0;
   }
 
-  h2 {
-    color: $orange;
-    font-size: 28px;
-    text-align: center;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    input {
-      @include primary-input;
-      width: 75%;
-      margin: 15px 15px 0;
-    }
-
-    .invalidFeedback {
-      color: $pink;
-      width: 75%;
-      padding: 5px 0;
-    }
-
-    .submit {
-      @include primary-button;
-      width: 210px;
-      margin: 5px 0 15px 0;
-    }
-
-    .linkForgot {
-      font-size: 0.7em;
-      color: $white;
-      opacity: 0.6;
-      cursor: pointer;
-      margin-bottom: 25px;
-      transition: all 0.1s;
-
-      &:hover {
-        color: $orange;
-        opacity: 1;
-      }
-    }
-  }
-
-  .modal:focus {
-    outline: 0;
-  }
-
-  .modal button:focus {
-    outline: 1px solid $orange;
-  }
-
-  .googleButton,
-  .linkedinButton {
+  .submit {
+    @include primary-button;
     width: 210px;
-    height: 40px;
-    border-width: 0;
-    background: $white;
-    color: $light-gray;
-    border-radius: 5px;
-    white-space: nowrap;
-    box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.05);
-    transition-property: background-color, box-shadow;
-    transition-duration: 150ms;
-    transition-timing-function: ease-in-out;
-    padding: 0;
+    margin: 5px 0 15px 0;
+  }
 
-    &:focus,
+  .linkForgot {
+    font-size: 0.7em;
+    color: $white;
+    opacity: 0.6;
+    cursor: pointer;
+    margin-bottom: 25px;
+    transition: all 0.1s;
+
     &:hover {
-      box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.1);
-    }
-
-    &:active {
-      background-color: $white;
-      box-shadow: none;
-      transition-duration: 10ms;
-    }
-
-    .googleButtonIcon,
-    .linkedinButtonIcon {
-      display: inline-block;
-      vertical-align: middle;
-      margin: 8px 0 8px 8px;
-      width: 18px;
-      height: 18px;
-      box-sizing: border-box;
-    }
-
-    .googleButtonText,
-    .linkedinButtonText {
-      display: inline-block;
-      vertical-align: middle;
-      padding: 0 24px;
-      font-size: 14px;
-      font-weight: 800;
-      font-family: $primary-font;
+      color: $orange;
+      opacity: 1;
     }
   }
+}
 
-  .googleButton {
-    margin: 15px 0 5px;
+.googleButton,
+.linkedinButton {
+  width: 210px;
+  height: 40px;
+  border-width: 0;
+  background: $white;
+  color: $light-gray;
+  border-radius: 5px;
+  white-space: nowrap;
+  box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.05);
+  transition-property: background-color, box-shadow;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+  padding: 0;
+
+  &:focus,
+  &:hover {
+    box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.1);
   }
 
-  .linkedinButton {
-    margin: 5px 0;
+  &:active {
+    background-color: $white;
+    box-shadow: none;
+    transition-duration: 10ms;
   }
+
+  .googleButtonIcon,
+  .linkedinButtonIcon {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 8px 0 8px 8px;
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+  }
+
+  .googleButtonText,
+  .linkedinButtonText {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 24px;
+    font-size: 14px;
+    font-weight: 800;
+    font-family: $primary-font;
+  }
+}
+
+.googleButton {
+  margin: 15px 0 5px;
+}
+
+.linkedinButton {
+  margin: 5px 0;
 }

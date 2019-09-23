@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import queryString from 'query-string';
-import { FaTimes } from 'react-icons/fa';
 
+import { Modal } from '../../../components/modal';
 import { registerValidate } from '../../../validation/auth';
-
 import { registerRequest, socialLoginRequest } from '../../../actions/auth';
 import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
 import { ReactComponent as LinkedInIcon } from '../../../assets/linkedin.svg';
-import styles from '../styles.module.scss';
 
-Modal.setAppElement('#root');
+import styles from '../styles.module.scss';
 
 class Register extends Component {
   state = {
@@ -112,14 +109,8 @@ class Register extends Component {
     const googleURL = `api/users/auth/google`;
     return (
       <>
-        <Modal
-          style={{ overlay: { zIndex: 3 } }}
-          isOpen={modalStatus}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
-          className={styles.modal}>
-          <FaTimes onClick={this.closeModal} className={styles.closeModal} />
-          <h2 ref={subtitle => (this.subtitle = subtitle)}>Sign Up</h2>
+        <Modal open={modalStatus} onClose={this.closeModal}>
+          <h2 className={styles.title}>Sign Up</h2>
           <form onSubmit={this.onSubmit} noValidate>
             <input
               type="text"
@@ -130,9 +121,7 @@ class Register extends Component {
               onChange={this.onChange}
             />
             {errors.firstName && (
-              <span className={styles.invalidFeedback}>
-                {errors.firstName}
-              </span>
+              <span className={styles.invalidFeedback}>{errors.firstName}</span>
             )}
             <input
               type="text"

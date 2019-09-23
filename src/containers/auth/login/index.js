@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import queryString from 'query-string';
-import { FaTimes } from 'react-icons/fa';
 
+import { Modal } from '../../../components/modal';
 import { loginRequest, socialLoginRequest } from '../../../actions/auth';
 import { loginValidate } from '../../../validation/auth';
 import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
 import { ReactComponent as LinkedInIcon } from '../../../assets/linkedin.svg';
 
 import styles from '../styles.module.scss';
-
-Modal.setAppElement('#root');
 
 class Login extends Component {
   state = {
@@ -92,17 +89,8 @@ class Login extends Component {
 
     return (
       <>
-        <Modal
-          style={{ overlay: { zIndex: 3 } }}
-          isOpen={modalStatus}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
-          className={styles.modal}>
-          <FaTimes
-            onClick={this.closeModal}
-            className={styles.closeModalStyle}
-          />
-          <h2 ref={subtitle => (this.subtitle = subtitle)}>Sign In</h2>
+        <Modal open={modalStatus} onClose={this.closeModal}>
+          <h2 className={styles.title}>Sign In</h2>
           <form onSubmit={this.onSubmit} noValidate>
             <input
               type="email"
