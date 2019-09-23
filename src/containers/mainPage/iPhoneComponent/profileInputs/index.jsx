@@ -5,15 +5,6 @@ import styles from './styles.module.scss';
 
 export const ProfileInputs = () => {
   const [update, setUpdate] = useState(true);
-  const {
-    profile,
-    user_fio,
-    description,
-    social,
-    twitter_icon,
-    facebook_icon,
-    linkedin_icon,
-  } = styles;
 
   const updateProfile = () => {
     setUpdate(!update);
