@@ -18,10 +18,10 @@ export const Main = () => {
       <Route path="/sources" component={Sources} />
       <Route path="/categories" component={Categories} />
       <Route path="/getting-started" component={GettingStarted} />
-      <ProfileRouters/>
       <Route path="/troubleshooting" component={Trobleshooting} />
       <Route path="/course-taking" component={CourseTaking} />
       <Route path="/reset" component={ResetPassword} />
+      <ProfileRouters/>
     </Switch>
   );
 };
