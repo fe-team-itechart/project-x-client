@@ -13,11 +13,22 @@
   @media (max-width: $width-lg) {
     justify-content: space-around;
   }
-  .burger{
+
+  .burger {
     width: 15px;
     height: 15px;
     cursor: pointer;
-    background: linear-gradient(to bottom, white 15%, transparent 16%, transparent 43.5%, white 44.5%, white 58.5%, transparent 59.5%, transparent 86%, white 87%);
+    background: linear-gradient(
+      to bottom,
+      white 15%,
+      transparent 16%,
+      transparent 43.5%,
+      white 44.5%,
+      white 58.5%,
+      transparent 59.5%,
+      transparent 86%,
+      white 87%
+    );
   }
 
   .logo {
@@ -46,7 +57,8 @@
       @include primary-input;
       padding: 0;
       width: 100%;
-      &::placeholder{
+
+      &::placeholder {
         color: $gray-input;
       }
     }

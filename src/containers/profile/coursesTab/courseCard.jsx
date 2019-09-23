@@ -8,7 +8,7 @@ import { FindNewCourseCard } from './findNewCourseCard';
 import { AddNewCourseCard } from './addNewCourseCard';
 
 export const CourseCard = courseProps => {
-  const { course, subscribed, created, addCourse, findCourse, key } = courseProps;
+  const { course, subscribed, created, addCourse, findCourse } = courseProps;
   return (
     <>
       {subscribed && <SubscribedCourseCard course={course} />}

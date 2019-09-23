@@ -5,17 +5,16 @@ import PropTypes from 'prop-types';
 
 import styles from './styles.module.scss';
 
-export const CreatedCourseCard = ({ course }) => {
-  const { card, card_type, img_block, course_name, button } = styles;
+export const CreatedCourseCard = ({ course}) => {
   const { type, img, name, link } = course;
 
   return (
-    <div className={card}>
-      <div className={card_type}>{type}</div>
-      <div className={img_block} style={{ backgroundImage: `url(${img})` }} />
-      <p className={course_name}>{name}</p>
+    <div className={styles.card}>
+      <div className={styles.cardType}>{type}</div>
+      <div className={styles.imgBlock} style={{ backgroundImage: `url(${img})` }} />
+      <p className={styles.courseName}>{name}</p>
       <Link to={link}>
-        <button type='button' className={button}>Continue</button>
+        <button type='button' className={styles.button}>Continue</button>
       </Link>
     </div>
   );
