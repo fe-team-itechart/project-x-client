@@ -31,8 +31,8 @@ class CoursesCarousel extends Component {
     return Array(12)
       .fill()
       .map((item, i) => (
-        <div className={styles.course_card_container}>
-          <button type="button" className={styles.adding_button}>
+        <div className={styles.courseCardContainer}>
+          <button type="button" className={styles.addingButton}>
             +
           </button>
           <figure className={styles.image} />
@@ -53,9 +53,9 @@ class CoursesCarousel extends Component {
 
   render() {
     return (
-      <section className={styles.carousel_container}>
+      <section className={styles.carouselContainer}>
         <button
-          className={styles.nav_button}
+          className={styles.navButton}
           type="button"
           onClick={this.prevItem}>
           <IoIosArrowBack color="white" size="50px" />
@@ -72,7 +72,7 @@ class CoursesCarousel extends Component {
           />
         </div>
         <button
-          className={styles.nav_button}
+          className={styles.navButton}
           type="button"
           onClick={this.nextItem}>
           <IoIosArrowForward color="white" size="50px" />

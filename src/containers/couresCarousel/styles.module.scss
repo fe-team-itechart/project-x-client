@@ -4,7 +4,7 @@
 @import '../../scss/shared/fonts.scss';
 @import '../../scss/shared/breakpoints.scss';
 
-.carousel_container {
+.carouselContainer {
   height: 375px;
   background-color: $bcg-gray-light;
   margin: 15px 0;
@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: space-between;
 
-  .nav_button {
+  .navButton {
     width: 5%;
     background: Transparent no-repeat;
     border: none;
@@ -27,7 +27,7 @@
     width: 85%;
   }
 
-  .course_card_container {
+  .courseCardContainer {
     height: 285px;
     width: 270px;
     background-color: $bcg-gray-dark;
@@ -35,7 +35,7 @@
     left: 50%;
     margin-left: -135px;
 
-    .adding_button {
+    .addingButton {
       position: absolute;
       border-radius: 50%;
       display: flex;

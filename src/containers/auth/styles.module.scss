@@ -17,7 +17,7 @@
   margin-right: -50%;
   transform: translate(-50%, -50%);
 
-  .close_modal {
+  .closeModal {
     color: $white;
     position: absolute;
     right: 15px;
@@ -51,7 +51,7 @@
       margin: 15px 15px 0;
     }
 
-    .invalid_feedback {
+    .invalidFeedback {
       color: $pink;
       width: 75%;
       padding: 5px 0;
@@ -63,7 +63,7 @@
       margin: 5px 0 15px 0;
     }
 
-    .link_forgot {
+    .linkForgot {
       font-size: 0.7em;
       color: $white;
       opacity: 0.6;
@@ -86,8 +86,8 @@
     outline: 1px solid $orange;
   }
 
-  .google_button,
-  .linkedin_button {
+  .googleButton,
+  .linkedinButton {
     width: 210px;
     height: 40px;
     border-width: 0;
@@ -112,8 +112,8 @@
       transition-duration: 10ms;
     }
 
-    .google_button_icon,
-    .linkedin_button_icon {
+    .googleButtonIcon,
+    .linkedinButtonIcon {
       display: inline-block;
       vertical-align: middle;
       margin: 8px 0 8px 8px;
@@ -122,8 +122,8 @@
       box-sizing: border-box;
     }
 
-    .google_button_text,
-    .linkedin_button_text {
+    .googleButtonText,
+    .linkedinButtonText {
       display: inline-block;
       vertical-align: middle;
       padding: 0 24px;
@@ -133,11 +133,11 @@
     }
   }
 
-  .google_button {
+  .googleButton {
     margin: 15px 0 5px;
   }
 
-  .linkedin_button {
+  .linkedinButton {
     margin: 5px 0;
   }
 }

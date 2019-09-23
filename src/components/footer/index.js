@@ -11,7 +11,7 @@ export const Footer = () => {
         <p>We are remarkable</p>
         <p>© 2019 :iTechArt All Rights Reserved.</p>
       </div>
-      <div className={styles.social_media_container}>
+      <div className={styles.socialMediaContainer}>
         <h2>Follow us on</h2>
         <ul>
           <li>
@@ -19,7 +19,7 @@ export const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               href="https://vk.com/itechart.group">
-              <span className={styles.social_media}>
+              <span className={styles.socialMedia}>
                 <FaVk />
               </span>
             </a>
@@ -29,7 +29,7 @@ export const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.youtube.com/user/iTechArt">
-              <span className={styles.social_media}>
+              <span className={styles.socialMedia}>
                 <FaYoutube />
               </span>
             </a>
@@ -39,7 +39,7 @@ export const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.facebook.com/iTechArt.Group/">
-              <span className={styles.social_media}>
+              <span className={styles.socialMedia}>
                 <FaFacebookSquare />
               </span>
             </a>

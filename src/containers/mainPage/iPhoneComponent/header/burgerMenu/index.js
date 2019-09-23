@@ -35,17 +35,17 @@ class Burger extends Component {
     return (
       <>
         <div
-          className={menuIsActive ? styles.burger_active : styles.burger}
+          className={menuIsActive ? styles.burgerActive : styles.burger}
           onClick={this.burgerHandle}
         />
         {menuIsActive && (
           <>
-            <div className={styles.click_outside} onClick={this.burgerHandle} />
+            <div className={styles.clickOutside} onClick={this.burgerHandle} />
             <div className={styles.menu}>
-              <NavLink className={styles.menu_item} to="/sources">
+              <NavLink className={styles.menuItem} to="/sources">
                 Sources
               </NavLink>
-              <NavLink className={styles.menu_item} to="/categories">
+              <NavLink className={styles.menuItem} to="/categories">
                 Categories
               </NavLink>
               {isAuth ? (

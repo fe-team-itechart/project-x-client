@@ -1,7 +1,7 @@
 @import '../../scss/shared/colors.scss';
 @import '../../scss/shared/breakpoints.scss';
 
-.cards_wrapper {
+.cardsWrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -17,7 +17,7 @@
     display: none;
   }
 
-  .card_link {
+  .cardLink {
     display: block;
     width: 340px;
     text-decoration: none;
@@ -31,7 +31,7 @@
       width: 90%;
     }
 
-    .card_wrapper {
+    .cardWrapper {
       display: flex;
       flex-direction: column;
       align-items: center;

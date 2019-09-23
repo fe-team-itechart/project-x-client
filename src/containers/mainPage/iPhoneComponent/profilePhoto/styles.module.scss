@@ -4,11 +4,11 @@
 @import '../../../../scss/mixins/button.scss';
 @import '../../../../scss/mixins/input.scss';
 
-.hidden_text {
+.hiddenText {
   display: none;
 }
 
-.close_button {
+.closeButton {
 
   svg {
     font-size: 12px;
@@ -35,8 +35,7 @@
     url(https://www.ktk.kz/getimage/mainpagebig/111099) $bcg-gray-dark;
 }
 
-.menu,
-.mobile_menu {
+.mobileMenu {
 
   ul {
     list-style: none;
@@ -80,7 +79,7 @@
   }
 }
 
-.mobile_burger {
+.mobileBurger {
   display: block;
   text-align: center;
   padding: 15px 0;
@@ -102,11 +101,7 @@
   }
 }
 
-.menu {
-  display: none;
-}
-
-.mobile_menu {
+.mobileMenu {
   display: block;
   position: absolute;
   overflow-x: auto;
@@ -117,7 +112,7 @@
   width: 180px;
   margin: 0 15px;
   padding: 0px;
-  
+
   background-color: $bcg-gray-dark;
   transition: 0.3s;
 

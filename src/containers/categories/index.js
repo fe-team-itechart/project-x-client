@@ -7,7 +7,7 @@ class Categories extends Component {
   state = {};
 
   render() {
-    return <main className={styles.main_page_wrapper}>Categories</main>;
+    return <main className={styles.mainPageWrapper}>Categories</main>;
   }
 }
 

@@ -117,7 +117,7 @@ class Register extends Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           className={styles.modal}>
-          <FaTimes onClick={this.closeModal} className={styles.close_modal} />
+          <FaTimes onClick={this.closeModal} className={styles.closeModal} />
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Sign Up</h2>
           <form onSubmit={this.onSubmit} noValidate>
             <input
@@ -129,7 +129,7 @@ class Register extends Component {
               onChange={this.onChange}
             />
             {errors.firstName && (
-              <span className={styles.invalid_feedback}>
+              <span className={styles.invalidFeedback}>
                 {errors.firstName}
               </span>
             )}
@@ -142,7 +142,7 @@ class Register extends Component {
               onChange={this.onChange}
             />
             {errors.lastName && (
-              <span className={styles.invalid_feedback}>{errors.lastName}</span>
+              <span className={styles.invalidFeedback}>{errors.lastName}</span>
             )}
             <input
               type="email"
@@ -153,7 +153,7 @@ class Register extends Component {
               onChange={this.onChange}
             />
             {(errors.email || errors.status === 400) && (
-              <span className={styles.invalid_feedback}>
+              <span className={styles.invalidFeedback}>
                 {errors.email ? errors.email : errors.message}
               </span>
             )}
@@ -177,21 +177,21 @@ class Register extends Component {
               onChange={this.onChange}
             />
             <a href={googleURL}>
-              <div className={styles.google_button}>
-                <span className={styles.google_button_icon}>
+              <div className={styles.googleButton}>
+                <span className={styles.googleButtonIcon}>
                   <GoogleIcon />
                 </span>
-                <span className={styles.google_button_text}>
+                <span className={styles.googleButtonText}>
                   Sign in with Google
                 </span>
               </div>
             </a>
             <a href={linkedInURL}>
-              <div className={styles.linkedin_button}>
-                <span className={styles.linkedin_button_icon}>
+              <div className={styles.linkedinButton}>
+                <span className={styles.linkedinButtonIcon}>
                   <LinkedInIcon />
                 </span>
-                <span className={styles.linkedin_button_text}>
+                <span className={styles.linkedinButtonText}>
                   Sign in with Linked In
                 </span>
               </div>

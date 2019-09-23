@@ -51,7 +51,7 @@ class Login extends Component {
       password: '',
       errors: {},
     });
-  }
+  };
 
   onChange = event => {
     this.setState({
@@ -86,12 +86,6 @@ class Login extends Component {
     const { email, password, errors } = this.state;
     const { modalStatus } = this.props;
 
-    const {
-      modal,
-      link_forgot: linkForgot,
-      invalid_feedback: invalidFeedback,
-      close_modal: closeModalStyle,
-    } = styles;
     const linkedInURL = `api/users/auth/linkedin`;
     const googleURL = `api/users/auth/google`;
 
@@ -102,8 +96,11 @@ class Login extends Component {
           isOpen={modalStatus}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
-          className={modal}>
-          <FaTimes onClick={this.closeModal} className={closeModalStyle} />
+          className={styles.modal}>
+          <FaTimes
+            onClick={this.closeModal}
+            className={styles.closeModalStyle}
+          />
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Sign In</h2>
           <form onSubmit={this.onSubmit} noValidate>
             <input
@@ -115,7 +112,7 @@ class Login extends Component {
               onChange={this.onChange}
             />
             {(errors.email || errors.status === 404) && (
-              <span className={invalidFeedback}>
+              <span className={styles.invalidFeedback}>
                 {errors.email ? errors.email : errors.message}
               </span>
             )}
@@ -128,26 +125,26 @@ class Login extends Component {
               onChange={this.onChange}
             />
             {(errors.password || errors.status === 403) && (
-              <span className={invalidFeedback}>
+              <span className={styles.invalidFeedback}>
                 {errors.password ? errors.password : errors.message}
               </span>
             )}
             <a href={googleURL}>
-              <div className={styles.google_button}>
-                <span className={styles.google_button_icon}>
+              <div className={styles.googleButton}>
+                <span className={styles.googleButtonIcon}>
                   <GoogleIcon />
                 </span>
-                <span className={styles.google_button_text}>
+                <span className={styles.googleButtonText}>
                   Sign in with Google
                 </span>
               </div>
             </a>
             <a href={linkedInURL}>
-              <div className={styles.linkedin_button}>
-                <span className={styles.linkedin_button_icon}>
+              <div className={styles.linkedinButton}>
+                <span className={styles.linkedinButtonIcon}>
                   <LinkedInIcon />
                 </span>
-                <span className={styles.linkedin_button_text}>
+                <span className={styles.linkedinButtonText}>
                   Sign in with Linked In
                 </span>
               </div>
@@ -155,7 +152,9 @@ class Login extends Component {
             <button type="submit" className={styles.submit}>
               Sign In
             </button>
-            <span onClick={this.openForgotPasswordModal} className={linkForgot}>
+            <span
+              onClick={this.openForgotPasswordModal}
+              className={styles.linkForgot}>
               Forgot Password?
             </span>
           </form>
