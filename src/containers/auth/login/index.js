@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-=======
-import Modal from 'react-modal';
->>>>>>> 2e08b7a68ac1f0f20f1bddfe923eacf589357c44
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 

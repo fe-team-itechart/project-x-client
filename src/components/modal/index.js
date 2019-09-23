@@ -2,6 +2,7 @@ import React from 'react';
 
 import SimpleModal from 'react-modal';
 import { FaTimes } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 import styles from './styles.module.scss';
 
@@ -17,4 +18,9 @@ export const Modal = ({ open, onClose, children }) => {
       {children}
     </SimpleModal>
   );
+};
+
+Modal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
