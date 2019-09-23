@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { FaVk, FaYoutube, FaFacebookSquare } from 'react-icons/fa';
+import { links } from '../../utils/constants';
+
 import styles from './styles.module.scss';
 
 export const Footer = () => {
@@ -15,10 +17,7 @@ export const Footer = () => {
         <h2>Follow us on</h2>
         <ul>
           <li>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://vk.com/itechart.group">
+            <a target="_blank" rel="noopener noreferrer" href={links.ITechVK}>
               <span className={styles.social_media}>
                 <FaVk />
               </span>
@@ -28,7 +27,7 @@ export const Footer = () => {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://www.youtube.com/user/iTechArt">
+              href={links.ITechYoutube}>
               <span className={styles.social_media}>
                 <FaYoutube />
               </span>
@@ -38,7 +37,7 @@ export const Footer = () => {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://www.facebook.com/iTechArt.Group/">
+              href={links.ITechFacebook}>
               <span className={styles.social_media}>
                 <FaFacebookSquare />
               </span>

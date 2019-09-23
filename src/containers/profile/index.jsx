@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import ProfileTab from "./profileTab";
-import { SettingsTab } from './settingsTab';
-import { AccountTab } from './accountTab';
-import { CoursesTab } from './coursesTab';
+import { Profile } from "./profile";
+import { Settings } from './settings';
+import  Account  from './account';
+import { Courses } from './courses';
 
 
 import styles from './styles.module.scss';
@@ -14,10 +14,10 @@ export class ProfileRouters extends Component {
     return (
       <section className={styles.profile}>
         <Switch>
-          <Route path="/profile-public" component={ProfileTab} />
-          <Route path="/profile-courses" component={CoursesTab} />
-          <Route path="/profile-account" component={AccountTab} />
-          <Route path="/profile-settings" component={SettingsTab} />
+          <Route path="/profile-public" component={Profile} />
+          <Route path="/profile-courses" component={Courses} />
+          <Route path="/profile-account" component={Account} />
+          <Route path="/profile-settings" component={Settings} />
         </Switch>
       </section>
     );

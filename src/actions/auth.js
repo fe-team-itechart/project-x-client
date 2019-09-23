@@ -1,4 +1,5 @@
 import { createAction } from 'redux-actions';
+
 import { auth } from './types';
 
 const registerRequest = createAction(auth.REGISTER_REQUEST);

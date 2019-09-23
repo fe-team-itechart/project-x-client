@@ -1,9 +1,10 @@
 import React from 'react'
-import styles from './styles.module.scss';
 
 import { Profile } from '../profile';
 
-export const SettingsTab = () => {
+import styles from './styles.module.scss';
+
+export const Settings = () => {
   const {
     settings,
     styled_checkbox,

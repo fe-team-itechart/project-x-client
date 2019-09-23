@@ -60,7 +60,7 @@
     .submit {
       @include primary-button;
       width: 210px;
-      margin: 5px 0 15px 0;
+      margin: 10px 0 15px 0;
     }
 
     .link_forgot {
@@ -88,8 +88,11 @@
 
   .google_button,
   .linkedin_button {
-    width: 210px;
+    width: 40px;
     height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-width: 0;
     background: $white;
     color: $light-gray;
@@ -116,28 +119,16 @@
     .linkedin_button_icon {
       display: inline-block;
       vertical-align: middle;
-      margin: 8px 0 8px 8px;
       width: 18px;
       height: 18px;
       box-sizing: border-box;
     }
-
-    .google_button_text,
-    .linkedin_button_text {
-      display: inline-block;
-      vertical-align: middle;
-      padding: 0 24px;
-      font-size: 14px;
-      font-weight: 800;
-      font-family: $primary-font;
-    }
   }
 
-  .google_button {
-    margin: 15px 0 5px;
-  }
-
-  .linkedin_button {
-    margin: 5px 0;
+  .socialButtonsContainer {
+    display: flex;
+    justify-content: space-around;
+    width: 105px;
+    margin-top: 10px;
   }
 }

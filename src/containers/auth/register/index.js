@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import Modal from 'react-modal';
 import { isEmpty } from 'lodash';
 import queryString from 'query-string';
 import { FaTimes } from 'react-icons/fa';
@@ -10,6 +10,7 @@ import { FaTimes } from 'react-icons/fa';
 import { registerValidate } from '../../../validation/auth';
 
 import { registerRequest, socialLoginRequest } from '../../../actions/auth';
+import { links } from '../../../utils/constants';
 import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
 import { ReactComponent as LinkedInIcon } from '../../../assets/linkedin.svg';
 import styles from '../styles.module.scss';
@@ -107,8 +108,7 @@ class Register extends Component {
       errors,
     } = this.state;
     const { modalStatus } = this.props;
-    const linkedInURL = `api/users/auth/linkedin`;
-    const googleURL = `api/users/auth/google`;
+
     return (
       <>
         <Modal
@@ -176,26 +176,22 @@ class Register extends Component {
               placeholder="Confirm Password"
               onChange={this.onChange}
             />
-            <a href={googleURL}>
-              <div className={styles.google_button}>
-                <span className={styles.google_button_icon}>
-                  <GoogleIcon />
-                </span>
-                <span className={styles.google_button_text}>
-                  Sign in with Google
-                </span>
-              </div>
-            </a>
-            <a href={linkedInURL}>
-              <div className={styles.linkedin_button}>
-                <span className={styles.linkedin_button_icon}>
-                  <LinkedInIcon />
-                </span>
-                <span className={styles.linkedin_button_text}>
-                  Sign in with Linked In
-                </span>
-              </div>
-            </a>
+            <div className={styles.socialButtonsContainer}>
+              <a href={links.googleURL}>
+                <div className={styles.google_button}>
+                  <span className={styles.google_button_icon}>
+                    <GoogleIcon />
+                  </span>
+                </div>
+              </a>
+              <a href={links.linkedInURL}>
+                <div className={styles.linkedin_button}>
+                  <span className={styles.linkedin_button_icon}>
+                    <LinkedInIcon />
+                  </span>
+                </div>
+              </a>
+            </div>
             <button type="submit" className={styles.submit}>
               Sign Up
             </button>

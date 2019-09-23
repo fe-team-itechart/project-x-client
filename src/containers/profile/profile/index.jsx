@@ -10,7 +10,7 @@ import { Profile } from '../profile';
 
 import styles from './styles.module.scss';
 
-const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
+const Profile = ({ profile, getProfileRequest, updateProfileRequest }) => {
 
   const [checked, setCheck] = useState(true);
   const [formData, setFormData] = useState({
@@ -209,4 +209,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { getProfileRequest, updateProfileRequest };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileTab);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

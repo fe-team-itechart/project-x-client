@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+
 import { CircleSpinner } from 'react-spinners-kit';
 
 class Spinner extends PureComponent {

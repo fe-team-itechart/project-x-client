@@ -11,7 +11,6 @@ import ChangePassword from '../../containers/changePassword';
 import Sources from '../../containers/sources';
 import Categories from '../../containers/categories';
 
-
 export const Main = () => {
   return (
     <Switch>
