@@ -1,11 +1,12 @@
 @import '../../../scss/shared/colors.scss';
 @import '../../../scss/mixins/button.scss';
 @import '../../../scss/mixins/input.scss';
+@import '../../../scss/shared/breakpoints.scss';
 
 .account {
   margin-top: 50px;
 
-  .password {
+  .password_class {
 
     input {
       @include primary-input;
@@ -13,12 +14,24 @@
       margin: 0 5%;
       width: 90%;
     }
+
+    .invalid_feedback {
+      color: $pink;
+      margin: 5px 5% 0;
+      width: 90%;
+    }
   }
 
   .buttons_block {
     width: 95%;
     display: flex;
+    flex-wrap: wrap;
     margin-left: 5%;
+
+    div {
+      display: flex;
+      flex-wrap: wrap;
+    }
 
     button {
       @include primary-button;
@@ -31,15 +44,16 @@
     }
   }
 
-  .payment_btn_block {
+  .payment_btn {
+    @include primary-button;
+    height: 50px;
+    text-align: center;
+    margin: 45px 15px 15px 5%;
+    color: $white;
+    border: none;
+  }
 
-    .payment_btn {
-      @include primary-button;
-      height: 50px;
-      text-align: center;
-      margin: 45px 15px 15px 5%;
-      color: $white;
-      border: none;
-    }
+  @media screen and (min-width: $width-xl) {
+    width: 570px;
   }
 }

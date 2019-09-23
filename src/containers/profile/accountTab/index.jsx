@@ -1,47 +1,131 @@
-import React, { useState } from 'react';
-import styles from './styles.module.scss';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { isEmpty } from 'lodash';
 
 import { Profile } from '../profile';
 
-export const AccountTab = () => {
-  const [update, setUpdate] = useState(true);
-  const {
-    account,
-    password,
-    buttons_block,
-    payment_btn,
-    payment_btn_block,
-  } = styles;
+import { changePasswordValidate } from '../../../validation/auth';
+import { changePassword } from '../../../services/auth';
 
-  const updatePassword = () => {
-    setUpdate(!update);
-  }
+import styles from './styles.module.scss';
 
-  return ( 
-    <>
-      <Profile />
-      <div className={account}>
-        <form>
-          <div className={password}>
-            <input type="text" placeholder="password" disabled={update} />
-          </div>
-          <div className={password}>
-            <input type="text" placeholder="confirm password" disabled={update} />
-          </div>
-          <div className={buttons_block}>
-            {update && <button onClick={updatePassword}>update password</button>}
-            {!update && (
-              <>
-                <button type='submit'  onClick={updatePassword}>save</button>
-                <button type='button' onClick={updatePassword}>close</button>
-              </>
-            )}
-          </div>
-        </form>
-        <div className={payment_btn_block}>
-          <button type='button' className={payment_btn}>Add payment data</button>
+class AccountTab extends Component {
+  state = {
+    password: '',
+    confirmPassword: '',
+    update: true,
+    errors: {},
+  };
+
+  onSubmit = event => {
+    event.preventDefault();
+    const {
+      user: {
+        data: { id },
+      },
+    } = this.props;
+    const { password, confirmPassword } = this.state;
+
+    const errors = changePasswordValidate(password, confirmPassword);
+
+    if (!isEmpty(errors)) {
+      this.setState({ errors });
+    } else {
+      this.setState({
+        password: '',
+        confirmPassword: '',
+        errors: {},
+        update: !this.state.update
+      });
+      changePassword(id, { password });
+    }
+  };
+
+  onChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  updatePassword = () => {
+    this.setState({
+      update: false,
+    });
+  };
+
+  closeUpdate = () => {
+    this.setState({
+      password: '',
+      confirmPassword: '',
+      update: true,
+      errors: {},
+    });
+  };
+
+  render() {
+    const { password, confirmPassword, errors, update } = this.state;
+
+    return (
+      <>
+        <Profile />
+        <div className={styles.account}>
+          <form onSubmit={this.onSubmit}>
+            <div className={styles.password_class}>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                placeholder="Password"
+                disabled={update}
+                onChange={this.onChange}
+              />
+              {errors.password && (
+                <div className={styles.invalid_feedback}>{errors.password}</div>
+              )}
+            </div>
+            <div className={styles.password_class}>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                value={confirmPassword}
+                placeholder="Confirm Password"
+                disabled={update}
+                onChange={this.onChange}
+              />
+            </div>
+            <div className={styles.buttons_block}>
+              {update ? (
+                <div>
+                  <button type="button" onClick={this.updatePassword}>
+                    Update password
+                  </button>
+                  <button type="button" className={styles.payment_btn}>
+                    Add payment data
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <button type="submit">Save</button>
+                  <button type="button" onClick={this.closeUpdate}>
+                    Close
+                  </button>
+                </>
+              )}
+            </div>
+          </form>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 }
+
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(AccountTab);

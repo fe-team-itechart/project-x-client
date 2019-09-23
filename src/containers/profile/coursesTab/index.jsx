@@ -17,7 +17,7 @@ export const CoursesTab = () => {
     },
     {
       type: 'Lab',
-      img: 'https://proglib.io/wp-content/uploads/2017/08/jstips.jpg',
+      img: 'https://www.valuecoders.com/blog/wp-content/uploads/2016/08/react.png',
       name: 'JavaScript',
       progress: '15%',
       link: '',
@@ -25,7 +25,7 @@ export const CoursesTab = () => {
     {
       type: 'C',
       img:
-        'https://go.tiny.cloud/wp-content/uploads/2018/02/toptal-blog-image-1518187252525-03f6db7b1c131066061024c236c7e3ff.png',
+        'https://www.valuecoders.com/blog/wp-content/uploads/2016/08/react.png',
       name: 'Angular 7',
       progress: '30%',
       link: '',
@@ -35,7 +35,7 @@ export const CoursesTab = () => {
   const createdCourses = [
     {
       type: 'Y',
-      img: 'https://proglib.io/wp-content/uploads/2017/08/jstips.jpg',
+      img: 'https://www.valuecoders.com/blog/wp-content/uploads/2016/08/react.png',
       name: 'JavaScript',
       link: '',
     },

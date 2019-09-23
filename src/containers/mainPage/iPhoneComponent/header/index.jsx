@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-
-import { MdSearch } from 'react-icons/md';
 
 import { logOutRequest } from '../../../../actions/auth';
 import Burger from './burgerMenu';
@@ -12,14 +10,9 @@ import Register from '../../../auth/register';
 import styles from './styles.module.scss';
 
 const Header = props => {
-  const [width, setWidth] = useState(window.innerWidth);
   const [isOpenLog, setModalStatusLog] = useState(false);
   const [isOpenReg, setModalStatusReg] = useState(false);
 
-  useEffect(() => {
-    const handleWidth = () => setWidth(window.innerWidth);
-    window.addEventListener('resize', handleWidth);
-  }, []);
 
   const closeLoginModal = () => {
     setModalStatusLog(false);
