@@ -6,7 +6,8 @@
 .account {
   margin-top: 50px;
 
-  .passwordClass {
+  .password {
+    width: 100%;
 
     input {
       @include primary-input;
