@@ -7,7 +7,7 @@ class Sources extends Component {
   state = {};
 
   render() {
-    return <main className={styles.main_page_wrapper}>Sources</main>;
+    return <main className={styles.mainPageWrapper}>Sources</main>;
   }
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import { isEmpty } from 'lodash';
 
@@ -40,17 +41,6 @@ const Profile = ({ profile, getProfileRequest, updateProfileRequest }) => {
     linkedInLink
   } = formData;
 
-  const {
-    profile: profile_class,
-    user_fio,
-    description: description_class,
-    social,
-    twitter_icon,
-    facebook_icon,
-    linkedin_icon,
-    invalid_feedback,
-  } = styles;
-
   useEffect(() => {
     getProfileRequest();
   }, []);
@@ -86,8 +76,8 @@ const Profile = ({ profile, getProfileRequest, updateProfileRequest }) => {
   return (
     <>
       <Profile />
-      <form className={profile_class} onSubmit={onSubmit} noValidate>
-        <div className={user_fio}>
+      <form className={styles.profile} onSubmit={onSubmit} noValidate>
+        <div className={styles.userFio}>
           <div>
             <input
               type="text"
@@ -98,7 +88,7 @@ const Profile = ({ profile, getProfileRequest, updateProfileRequest }) => {
               onChange={onChange}
             />
             {errors.firstName && (
-              <span className={invalid_feedback}>
+              <span className={styles.invalidFeedback}>
                 {errors.firstName}
               </span>
             )}
@@ -113,13 +103,13 @@ const Profile = ({ profile, getProfileRequest, updateProfileRequest }) => {
               onChange={onChange}
             />
             {errors.lastName && (
-              <span className={invalid_feedback}>
+              <span className={styles.invalidFeedback}>
                 {errors.lastName}
               </span>
             )}
           </div>
         </div>
-        <div className={description_class}>
+        <div className={styles.description}>
           <input
             type="text"
             name="description"
@@ -129,14 +119,14 @@ const Profile = ({ profile, getProfileRequest, updateProfileRequest }) => {
             onChange={onChange}
           />
           {errors.description && (
-            <span className={invalid_feedback}>
+            <span className={styles.invalidFeedback}>
               {errors.description}
             </span>
           )}
         </div>
-        <div className={social}>
+        <div className={styles.social}>
           <div>
-            <FaTwitter className={twitter_icon} />
+            <FaTwitter className={styles.twitterIcon} />
             <input
               type="url"
               name="twitterLink"
@@ -146,13 +136,13 @@ const Profile = ({ profile, getProfileRequest, updateProfileRequest }) => {
               onChange={onChange}
             />
             {errors.twitterLink && (
-              <span className={invalid_feedback}>
+              <span className={styles.invalidFeedback}>
                 {errors.twitterLink}
               </span>
             )}
           </div>
           <div>
-            <FaFacebookF className={facebook_icon} />
+            <FaFacebookF className={styles.facebookIcon} />
             <input
               type="url"
               name="facebookLink"
@@ -162,13 +152,13 @@ const Profile = ({ profile, getProfileRequest, updateProfileRequest }) => {
               onChange={onChange}
             />
             {errors.facebookLink && (
-              <span className={invalid_feedback}>
+              <span className={styles.invalidFeedback}>
                 {errors.facebookLink}
               </span>
             )}
           </div>
           <div>
-            <FaLinkedinIn className={linkedin_icon} />
+            <FaLinkedinIn className={styles.linkedinIcon} />
             <input
               type="url"
               name="linkedInLink"
@@ -178,7 +168,7 @@ const Profile = ({ profile, getProfileRequest, updateProfileRequest }) => {
               onChange={onChange}
             />
             {errors.linkedInLink && (
-              <span className={invalid_feedback}>
+              <span className={styles.invalidFeedback}>
                 {errors.linkedInLink}
               </span>
             )}
@@ -201,6 +191,12 @@ const Profile = ({ profile, getProfileRequest, updateProfileRequest }) => {
       </form>
     </>
   );
+};
+
+ProfileTab.propTypes = {
+  getProfileRequest: PropTypes.func.isRequired,
+  updateProfileRequest: PropTypes.func.isRequired,
+  profile: PropTypes.object
 };
 
 const mapStateToProps = state => ({

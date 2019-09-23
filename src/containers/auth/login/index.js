@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { FaTimes } from 'react-icons/fa';
-import Modal from 'react-modal';
+import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import queryString from 'query-string';
 
+import { Modal } from '../../../components/modal';
 import { loginRequest, socialLoginRequest } from '../../../actions/auth';
 import { loginValidate } from '../../../validation/auth';
 import { links } from '../../../utils/constants';
@@ -15,8 +14,6 @@ import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
 import { ReactComponent as LinkedInIcon } from '../../../assets/linkedin.svg';
 
 import styles from '../styles.module.scss';
-
-Modal.setAppElement('#root');
 
 class Login extends Component {
   state = {
@@ -88,23 +85,10 @@ class Login extends Component {
     const { email, password, errors } = this.state;
     const { modalStatus } = this.props;
 
-    const {
-      modal,
-      link_forgot: linkForgot,
-      invalid_feedback: invalidFeedback,
-      close_modal: closeModalStyle,
-    } = styles;
-
     return (
       <>
-        <Modal
-          style={{ overlay: { zIndex: 3 } }}
-          isOpen={modalStatus}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
-          className={modal}>
-          <FaTimes onClick={this.closeModal} className={closeModalStyle} />
-          <h2 ref={subtitle => (this.subtitle = subtitle)}>Sign In</h2>
+        <Modal open={modalStatus} onClose={this.closeModal}>
+          <h2 className={styles.title}>Sign In</h2>
           <form onSubmit={this.onSubmit} noValidate>
             <input
               type="email"
@@ -115,7 +99,7 @@ class Login extends Component {
               onChange={this.onChange}
             />
             {(errors.email || errors.status === 404) && (
-              <span className={invalidFeedback}>
+              <span className={styles.invalidFeedback}>
                 {errors.email ? errors.email : errors.message}
               </span>
             )}
@@ -128,21 +112,21 @@ class Login extends Component {
               onChange={this.onChange}
             />
             {(errors.password || errors.status === 403) && (
-              <span className={invalidFeedback}>
+              <span className={styles.invalidFeedback}>
                 {errors.password ? errors.password : errors.message}
               </span>
             )}
             <div className={styles.socialButtonsContainer}>
               <a href={links.googleURL}>
-                <div className={styles.google_button}>
-                  <span className={styles.google_button_icon}>
+                <div className={styles.googleButton}>
+                  <span className={styles.googleButtonIcon}>
                     <GoogleIcon />
                   </span>
                 </div>
               </a>
               <a href={links.linkedInURL}>
-                <div className={styles.linkedin_button}>
-                  <span className={styles.linkedin_button_icon}>
+                <div className={styles.linkedinButton}>
+                  <span className={styles.linkedinButtonIcon}>
                     <LinkedInIcon />
                   </span>
                 </div>
@@ -151,7 +135,9 @@ class Login extends Component {
             <button type="submit" className={styles.submit}>
               Sign In
             </button>
-            <span onClick={this.openForgotPasswordModal} className={linkForgot}>
+            <span
+              onClick={this.openForgotPasswordModal}
+              className={styles.linkForgot}>
               Forgot Password?
             </span>
           </form>
@@ -160,6 +146,13 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  loginRequest: PropTypes.func.isRequired,
+  socialLoginRequest: PropTypes.func.isRequired,
+  onModalClose: PropTypes.func.isRequired,
+  modalStatus: PropTypes.bool.isRequired,
+};
 
 const mapDispatchToProps = {
   loginRequest,

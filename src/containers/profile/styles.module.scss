@@ -22,15 +22,15 @@
     }
   }
 
-  .active_button {
+  .activeButton {
     background: $gradient;
   }
 
-  .hidden_text {
+  .hiddenText {
     display: none;
   }
 
-  .close_button {
+  .closeButton {
 
     svg {
       font-size: 30px;
@@ -55,7 +55,7 @@
   }
 
   .menu,
-  .mobile_menu {
+  .mobileMenu {
 
     ul {
       list-style: none;
@@ -98,7 +98,7 @@
     margin: 0 5% 20px 5%;
     padding: 15px;
 
-    .mobile_burger {
+    .mobileBurger {
       display: block;
       text-align: center;
       padding: 15px 0;
@@ -119,7 +119,7 @@
       display: none;
     }
 
-    .mobile_menu {
+    .mobileMenu {
       display: block;
       width: 100%;
       padding: 0px;
@@ -146,11 +146,11 @@
     max-width: 900px;
     margin-bottom: 20px;
 
-    .mobile_burger {
+    .mobileBurger {
       display: none;
     }
 
-    .mobile_menu {
+    .mobileMenu {
       display: none;
     }
 

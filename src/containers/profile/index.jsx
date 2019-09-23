@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { Profile } from "./profile";
+import  Profile  from "./profile";
 import { Settings } from './settings';
 import  Account  from './account';
 import { Courses } from './courses';
-
 
 import styles from './styles.module.scss';
 

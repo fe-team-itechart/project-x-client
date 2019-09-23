@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+
 import { logOutRequest } from '../../../../actions/auth';
 import Burger from './burgerMenu';
 import Login from '../../../auth/login';
@@ -48,6 +50,11 @@ const Header = props => {
       <Register modalStatus={isOpenReg} onModalClose={closeRegModal} />
     </header>
   );
+};
+
+Header.propTypes = {
+  logOutRequest: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = state => ({

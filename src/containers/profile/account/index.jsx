@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 
 import { Profile } from '../profile';
@@ -41,7 +42,7 @@ class Account extends Component {
       changePassword(id, { password });
     }
   };
-
+ 
   onChange = event => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -71,7 +72,7 @@ class Account extends Component {
         <Profile />
         <div className={styles.account}>
           <form onSubmit={this.onSubmit}>
-            <div className={styles.password_class}>
+            <div className={styles.passwordClass}>
               <input
                 type="password"
                 id="password"
@@ -82,10 +83,10 @@ class Account extends Component {
                 onChange={this.onChange}
               />
               {errors.password && (
-                <div className={styles.invalid_feedback}>{errors.password}</div>
+                <div className={styles.invalidFeedback}>{errors.password}</div>
               )}
             </div>
-            <div className={styles.password_class}>
+            <div className={styles.passwordClass}>
               <input
                 type="password"
                 id="confirmPassword"
@@ -96,13 +97,13 @@ class Account extends Component {
                 onChange={this.onChange}
               />
             </div>
-            <div className={styles.buttons_block}>
+            <div className={styles.buttonsBlock}>
               {update ? (
                 <div>
                   <button type="button" onClick={this.updatePassword}>
                     Update password
                   </button>
-                  <button type="button" className={styles.payment_btn}>
+                  <button type="button" className={styles.paymentBtn}>
                     Add payment data
                   </button>
                 </div>
@@ -121,6 +122,10 @@ class Account extends Component {
     );
   }
 }
+
+AccountTab.propTypes = {
+  user: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
   user: state.user,
