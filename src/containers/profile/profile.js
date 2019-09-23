@@ -6,23 +6,8 @@ import styles from './styles.module.scss';
 import './menu.scss';
 
 export const Profile = () => {
-
-  const {
-    mobile_burger,
-    mobile_menu,
-    user,
-    photo,
-    name,
-    role,
-    close_button,
-    menu,
-    hidden_text,
-    button,
-    active_button,
-  } = styles;
-
   const currentTab = window.location.pathname;
-  
+
   const tabs = {
     public: '/profile-public',
     courses: '/profile-courses',
@@ -31,34 +16,34 @@ export const Profile = () => {
   };
 
   useEffect(() => {
-    const toggle_menu = document.querySelector('#toggle_menu');
-  })
+    const toggleMenu = document.querySelector('#toggleMenu');
+  });
 
   const toggleMenu = () => {
-    toggle_menu.classList.toggle('menu_is_open');
+    toggleMenu.classList.toggle('menuIsOpen');
   };
 
   return (
     <>
-      <h3 className={hidden_text}>
+      <h3 className={styles.hiddenText}>
         Profile's page which include courses, settings, public profile, users's
         account
       </h3>
-      <div className={mobile_burger}>
+      <div className={styles.mobileBurger}>
         <button type="button" onClick={toggleMenu}>
-          <div className={photo} />
-          <div className={name}>John Doe</div>
-          <div className={role}>student</div>
+          <div className={styles.photo} />
+          <div className={styles.name}>John Doe</div>
+          <div className={styles.role}>student</div>
         </button>
       </div>
-      <nav id='toggle_menu' className={mobile_menu}>
+      <nav id="toggleMenu" className={styles.mobileMenu}>
         <ul>
           <li>
             <Link to="/profile-public">
               <button
                 type="button"
-                className={`${button} ${
-                  currentTab === tabs.public ? active_button : ''
+                className={`${styles.button} ${
+                  currentTab === tabs.public ? styles.activeButton : ''
                 }`}>
                 Public
               </button>
@@ -68,8 +53,8 @@ export const Profile = () => {
             <Link to="/profile-courses">
               <button
                 type="button"
-                className={`${button} ${
-                  currentTab === tabs.courses ? active_button : ''
+                className={`${styles.button} ${
+                  currentTab === tabs.courses ? styles.activeButton : ''
                 }`}>
                 Courses
               </button>
@@ -79,8 +64,8 @@ export const Profile = () => {
             <Link to="/profile-account">
               <button
                 type="button"
-                className={`${button} ${
-                  currentTab === tabs.account ? active_button : ''
+                className={`${styles.button} ${
+                  currentTab === tabs.account ? styles.activeButton : ''
                 }`}>
                 Account
               </button>
@@ -90,29 +75,26 @@ export const Profile = () => {
             <Link to="/profile-settings">
               <button
                 type="button"
-                className={`${button} ${
-                  currentTab === tabs.settings ? active_button : ''
+                className={`${styles.button} ${
+                  currentTab === tabs.settings ? styles.activeButton : ''
                 }`}>
                 Settings
               </button>
             </Link>
           </li>
           <li>
-            <button
-              type="button"
-              className={close_button}
-              onClick={toggleMenu}>
+            <button type="button" className={styles.closeButton} onClick={toggleMenu}>
               <FaWindowClose />
             </button>
           </li>
         </ul>
       </nav>
 
-      <div className={menu}>
-        <div className={user}>
-          <div className={photo} />
-          <div className={name}>John Doe</div>
-          <div className={role}>student</div>
+      <div className={styles.menu}>
+        <div className={styles.user}>
+          <div className={styles.photo} />
+          <div className={styles.name}>John Doe</div>
+          <div className={styles.role}>student</div>
         </div>
         <nav>
           <ul>
@@ -120,8 +102,8 @@ export const Profile = () => {
               <Link to="/profile-public">
                 <button
                   type="button"
-                  className={`${button} ${
-                    currentTab === tabs.public ? active_button : ''
+                  className={`${styles.button} ${
+                    currentTab === tabs.public ? styles.activeButton : ''
                   }`}>
                   Profile
                 </button>
@@ -131,8 +113,8 @@ export const Profile = () => {
               <Link to="/profile-courses">
                 <button
                   type="button"
-                  className={`${button} ${
-                    currentTab === tabs.courses ? active_button : ''
+                  className={`${styles.button} ${
+                    currentTab === tabs.courses ? styles.activeButton : ''
                   }`}>
                   Courses
                 </button>
@@ -142,8 +124,8 @@ export const Profile = () => {
               <Link to="/profile-account">
                 <button
                   type="button"
-                  className={`${button} ${
-                    currentTab === tabs.account ? active_button : ''
+                  className={`${styles.button} ${
+                    currentTab === tabs.account ? styles.activeButton : ''
                   }`}>
                   Account
                 </button>
@@ -153,8 +135,8 @@ export const Profile = () => {
               <Link to="/profile-settings">
                 <button
                   type="button"
-                  className={`${button} ${
-                    currentTab === tabs.settings ? active_button : ''
+                  className={`${styles.button} ${
+                    currentTab === tabs.settings ? styles.activeButton : ''
                   }`}>
                   Settings
                 </button>
