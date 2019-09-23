@@ -6,7 +6,7 @@
 .account {
   margin-top: 50px;
 
-  .password_class {
+  .passwordClass {
 
     input {
       @include primary-input;
@@ -15,14 +15,14 @@
       width: 90%;
     }
 
-    .invalid_feedback {
+    .invalidFeedback {
       color: $pink;
       margin: 5px 5% 0;
       width: 90%;
     }
   }
 
-  .buttons_block {
+  .buttonsBlock {
     width: 95%;
     display: flex;
     flex-wrap: wrap;
@@ -44,7 +44,7 @@
     }
   }
 
-  .payment_btn {
+  .paymentBtn {
     @include primary-button;
     height: 50px;
     text-align: center;

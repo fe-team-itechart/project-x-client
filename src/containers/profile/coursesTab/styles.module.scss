@@ -25,7 +25,7 @@
     overflow: hidden;
     margin: 15px;
 
-    .card_type {
+    .cardType {
       position: absolute;
       display: flex;
       justify-content: center;
@@ -40,32 +40,32 @@
       color: $white;
     }
 
-    .img_block {
+    .imgBlock {
       height: 200px;
       width: 100%;
       background: center / auto 100% no-repeat;
       transition: 0.3s;
     }
 
-    &:hover .img_block {
+    &:hover .imgBlock {
       background-size: auto 110%;
       transition: 0.3s;
     }
 
-    .course_name {
+    .courseName {
       margin: 15px;
       color: $white;
       text-align: center;
     }
 
-    .progress_bar {
+    .progressBar {
       height: 25px;
       margin: 15px 5px;
       border-radius: 2px;
       background: linear-gradient(135deg, #ff8c0552 0%, #d61a5e59 100%);
       overflow: hidden;
 
-      .current_progress {
+      .currentProgress {
         height: 100%;
         background: $gradient;
       }
@@ -78,8 +78,8 @@
     }
   }
 
-  .add_new_course_card,
-  .find_new_course_card {
+  .addNewCourseCard,
+  .findNewCourseCard {
     display: flex;
     align-items: center;
     justify-content: center;

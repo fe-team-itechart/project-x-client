@@ -40,7 +40,7 @@ class AccountTab extends Component {
       changePassword(id, { password });
     }
   };
-
+ 
   onChange = event => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -70,7 +70,7 @@ class AccountTab extends Component {
         <Profile />
         <div className={styles.account}>
           <form onSubmit={this.onSubmit}>
-            <div className={styles.password_class}>
+            <div className={styles.passwordClass}>
               <input
                 type="password"
                 id="password"
@@ -81,10 +81,10 @@ class AccountTab extends Component {
                 onChange={this.onChange}
               />
               {errors.password && (
-                <div className={styles.invalid_feedback}>{errors.password}</div>
+                <div className={styles.invalidFeedback}>{errors.password}</div>
               )}
             </div>
-            <div className={styles.password_class}>
+            <div className={styles.passwordClass}>
               <input
                 type="password"
                 id="confirmPassword"
@@ -95,13 +95,13 @@ class AccountTab extends Component {
                 onChange={this.onChange}
               />
             </div>
-            <div className={styles.buttons_block}>
+            <div className={styles.buttonsBlock}>
               {update ? (
                 <div>
                   <button type="button" onClick={this.updatePassword}>
                     Update password
                   </button>
-                  <button type="button" className={styles.payment_btn}>
+                  <button type="button" className={styles.paymentBtn}>
                     Add payment data
                   </button>
                 </div>

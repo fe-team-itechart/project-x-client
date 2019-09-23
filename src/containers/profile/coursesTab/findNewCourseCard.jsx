@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 
 export const FindNewCourseCard = () => {
   return (
-    <button type='button' className={styles.find_new_course_card}>
+    <button type='button' className={styles.findNewCourseCard}>
       <div>
         <span>+</span>
       </div>

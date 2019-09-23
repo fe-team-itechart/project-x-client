@@ -17,7 +17,7 @@
     }
   }
 
-  .user_fio {
+  .userFio {
     display: flex;
 
     div {
@@ -77,15 +77,15 @@
       margin: 0 5px;
     }
 
-    .facebook_icon {
+    .facebookIcon {
       color: #3b5998;
     }
 
-    .twitter_icon {
+    .twitterIcon {
       color: #1da1f2;
     }
 
-    .linkedin_icon {
+    .linkedinIcon {
       color: #0073b0;
     }
   }
@@ -102,7 +102,7 @@
     float: left;
   }
 
-  .invalid_feedback {
+  .invalidFeedback {
     color: $pink !important;
     width: 75%;
   }
