@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
 import { MdSearch } from 'react-icons/md';
 
 import styles from './styles.module.scss';
@@ -82,5 +83,12 @@ class Burger extends Component {
     );
   }
 }
+
+Burger.propTypes = {
+  register: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
+  isAuth: PropTypes.bool.isRequired,
+};
 
 export default Burger;

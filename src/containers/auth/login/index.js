@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
+=======
+import Modal from 'react-modal';
+>>>>>>> 2e08b7a68ac1f0f20f1bddfe923eacf589357c44
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import queryString from 'query-string';
 
@@ -151,6 +156,13 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  loginRequest: PropTypes.func.isRequired,
+  socialLoginRequest: PropTypes.func.isRequired,
+  onModalClose: PropTypes.func.isRequired,
+  modalStatus: PropTypes.bool.isRequired,
+};
 
 const mapDispatchToProps = {
   loginRequest,

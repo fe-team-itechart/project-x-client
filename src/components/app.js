@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { BrowserRouter as Router } from 'react-router-dom';
+
+import PropTypes from 'prop-types';
 import { createBrowserHistory } from 'history';
 
 import Header from '../containers/header';
@@ -17,7 +18,7 @@ class App extends Component {
   componentDidMount = () => {
     this.props.refreshLoginRequest();
   };
-  
+
   render() {
     return (
       <div className={styles.page}>
@@ -30,6 +31,10 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  refreshLoginRequest: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = {
   refreshLoginRequest,

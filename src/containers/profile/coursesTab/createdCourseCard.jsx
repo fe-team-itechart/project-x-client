@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+
 import styles from './styles.module.scss';
 
 export const CreatedCourseCard = ({ course}) => {
@@ -16,4 +18,11 @@ export const CreatedCourseCard = ({ course}) => {
       </Link>
     </div>
   );
+};
+
+CreatedCourseCard.propTypes = {
+  type: PropTypes.string,
+  img: PropTypes.string,
+  name: PropTypes.string,
+  link: PropTypes.string,
 };

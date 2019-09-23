@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import queryString from 'query-string';
 
@@ -194,6 +195,13 @@ class Register extends Component {
     );
   }
 }
+
+Register.propTypes = {
+  registerRequest: PropTypes.func.isRequired,
+  socialLoginRequest: PropTypes.func.isRequired,
+  onModalClose: PropTypes.func.isRequired,
+  modalStatus: PropTypes.bool.isRequired,
+};
 
 const mapDispatchToProps = {
   registerRequest,
