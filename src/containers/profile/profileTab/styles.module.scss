@@ -19,6 +19,7 @@
 
   .userFio {
     display: flex;
+    width: 100%;
 
     div {
       width: 50%;
@@ -30,37 +31,38 @@
       span {
         display: block;
         word-wrap: break-word;
-        width: 90%;
+        width: 100%;
       }
 
       input {
-        @include primary-input;
-        width: 95%;
-        padding: 6px 5px;
-        margin: 15px 0;
+        width: 100%;
+        padding: 6px 0;
+        margin: 0;
       }
     }
   }
 
   .description {
     margin-top: 15px;
+    width: 100%;
 
     input {
-      @include primary-input;
       width: 100%;
-      padding: 6px 5px;
-      margin: 15px 0;
+      padding: 6px 0;
+      margin: 0;
     }
-    margin-right: 12px;
   }
 
   .social {
     margin-top: 15px;
+    width: 100%;
 
     div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       input {
-        @include primary-input;
         width: 90% !important;
       }
 
@@ -75,6 +77,7 @@
     svg {
       font-size: 20px;
       margin: 0 5px;
+      width: 10%;
     }
 
     .facebookIcon {
@@ -125,6 +128,7 @@
   }
   @media screen and (min-width: $width-xl) {
     width: 570px;
+
     .social {
 
       div {
