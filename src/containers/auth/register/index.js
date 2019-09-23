@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import queryString from 'query-string';
 import { FaTimes } from 'react-icons/fa';
@@ -205,6 +206,13 @@ class Register extends Component {
     );
   }
 }
+
+Register.propTypes = {
+  registerRequest: PropTypes.func.isRequired,
+  socialLoginRequest: PropTypes.func.isRequired,
+  onModalClose: PropTypes.func.isRequired,
+  modalStatus: PropTypes.bool.isRequired,
+};
 
 const mapDispatchToProps = {
   registerRequest,

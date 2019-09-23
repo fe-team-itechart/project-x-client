@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
 import { MdSearch } from 'react-icons/md';
 
 import { logOutRequest } from '../../actions/auth';
@@ -104,6 +105,11 @@ const Header = props => {
       <ForgotPassword modalStatus={isOpenForgotPass} onModalClose={setModalForgotPass}/>
     </header>
   );
+};
+
+Header.propTypes = {
+  logOutRequest: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
