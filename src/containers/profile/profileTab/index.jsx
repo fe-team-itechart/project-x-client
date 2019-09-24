@@ -6,13 +6,15 @@ import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import { isEmpty } from 'lodash';
 
 import { publicProfileValidate } from '../../../validation/profile';
-import { getProfileRequest, updateProfileRequest } from '../../../actions/profile';
+import {
+  getProfileRequest,
+  updateProfileRequest,
+} from '../../../actions/profile';
 import { Profile } from '../profile';
 
 import styles from './styles.module.scss';
 
 const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
-
   const [checked, setCheck] = useState(true);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -20,7 +22,7 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
     description: '',
     twitterLink: '',
     facebookLink: '',
-    linkedInLink: ''
+    linkedInLink: '',
   });
 
   const [errors, setErrors] = useState({
@@ -29,7 +31,7 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
     description: '',
     twitterLink: '',
     facebookLink: '',
-    linkedInLink: ''
+    linkedInLink: '',
   });
 
   const {
@@ -38,7 +40,7 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
     description,
     twitterLink,
     facebookLink,
-    linkedInLink
+    linkedInLink,
   } = formData;
 
   useEffect(() => {
@@ -49,7 +51,7 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
     if (profile) {
       setFormData(profile);
     }
-  }, [profile])
+  }, [profile]);
 
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -67,11 +69,11 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
       setCheck(!checked);
       updateProfileRequest(formData);
     }
-  }
+  };
 
   const onCheck = () => {
     setCheck(!checked);
-  }
+  };
 
   return (
     <>
@@ -88,9 +90,7 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
               onChange={onChange}
             />
             {errors.firstName && (
-              <span className={styles.invalidFeedback}>
-                {errors.firstName}
-              </span>
+              <span className={styles.invalidFeedback}>{errors.firstName}</span>
             )}
           </div>
           <div>
@@ -103,15 +103,14 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
               onChange={onChange}
             />
             {errors.lastName && (
-              <span className={styles.invalidFeedback}>
-                {errors.lastName}
-              </span>
+              <span className={styles.invalidFeedback}>{errors.lastName}</span>
             )}
           </div>
         </div>
         <div className={styles.description}>
-          <input
+          <textarea
             type="text"
+            rows="4"
             name="description"
             value={description}
             placeholder="Description"
@@ -119,22 +118,22 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
             onChange={onChange}
           />
           {errors.description && (
-            <span className={styles.invalidFeedback}>
-              {errors.description}
-            </span>
+            <span className={styles.invalidFeedback}>{errors.description}</span>
           )}
         </div>
         <div className={styles.social}>
           <div>
-            <FaTwitter className={styles.twitterIcon} />
-            <input
-              type="url"
-              name="twitterLink"
-              value={twitterLink}
-              placeholder="http://twitter.com/"
-              disabled={checked}
-              onChange={onChange}
-            />
+            <div>
+              <FaTwitter className={styles.twitterIcon} />
+              <input
+                type="url"
+                name="twitterLink"
+                value={twitterLink}
+                placeholder="http://twitter.com/"
+                disabled={checked}
+                onChange={onChange}
+              />
+            </div>
             {errors.twitterLink && (
               <span className={styles.invalidFeedback}>
                 {errors.twitterLink}
@@ -142,15 +141,17 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
             )}
           </div>
           <div>
-            <FaFacebookF className={styles.facebookIcon} />
-            <input
-              type="url"
-              name="facebookLink"
-              value={facebookLink}
-              placeholder="https://www.facebook.com/"
-              disabled={checked}
-              onChange={onChange}
-            />
+            <div>
+              <FaFacebookF className={styles.facebookIcon} />
+              <input
+                type="url"
+                name="facebookLink"
+                value={facebookLink}
+                placeholder="https://www.facebook.com/"
+                disabled={checked}
+                onChange={onChange}
+              />
+            </div>
             {errors.facebookLink && (
               <span className={styles.invalidFeedback}>
                 {errors.facebookLink}
@@ -158,15 +159,17 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
             )}
           </div>
           <div>
-            <FaLinkedinIn className={styles.linkedinIcon} />
-            <input
-              type="url"
-              name="linkedInLink"
-              value={linkedInLink}
-              placeholder="https://www.linkedin.com/"
-              disabled={checked}
-              onChange={onChange}
-            />
+            <div>
+              <FaLinkedinIn className={styles.linkedinIcon} />
+              <input
+                type="url"
+                name="linkedInLink"
+                value={linkedInLink}
+                placeholder="https://www.linkedin.com/"
+                disabled={checked}
+                onChange={onChange}
+              />
+            </div>
             {errors.linkedInLink && (
               <span className={styles.invalidFeedback}>
                 {errors.linkedInLink}
@@ -174,20 +177,20 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
             )}
           </div>
         </div>
-        {checked ? (
-          <button type="button" onClick={onCheck}>
-            Update
-          </button>
-        ) : (
+        <div className={styles.buttonsBlock}>
+          {checked ? (
+            <button type="button" onClick={onCheck}>
+              Update
+            </button>
+          ) : (
             <>
-              <button type="submit">
-                Save
-              </button>
+              <button type="submit">Save</button>
               <button type="button" onClick={onCheck}>
                 Close
               </button>
             </>
           )}
+        </div>
       </form>
     </>
   );
@@ -196,13 +199,16 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
 ProfileTab.propTypes = {
   getProfileRequest: PropTypes.func.isRequired,
   updateProfileRequest: PropTypes.func.isRequired,
-  profile: PropTypes.object
+  profile: PropTypes.object,
 };
 
 const mapStateToProps = state => ({
-  profile: state.user.profile
+  profile: state.user.profile,
 });
 
 const mapDispatchToProps = { getProfileRequest, updateProfileRequest };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileTab);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfileTab);

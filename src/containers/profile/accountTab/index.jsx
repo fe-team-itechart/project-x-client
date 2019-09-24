@@ -71,7 +71,7 @@ class AccountTab extends Component {
         <Profile />
         <div className={styles.account}>
           <form onSubmit={this.onSubmit}>
-            <div className={styles.passwordClass}>
+            <div className={styles.password}>
               <input
                 type="password"
                 id="password"
@@ -85,7 +85,7 @@ class AccountTab extends Component {
                 <div className={styles.invalidFeedback}>{errors.password}</div>
               )}
             </div>
-            <div className={styles.passwordClass}>
+            <div className={styles.password}>
               <input
                 type="password"
                 id="confirmPassword"

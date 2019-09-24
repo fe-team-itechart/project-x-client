@@ -7,6 +7,7 @@ import './menu.scss';
 
 export const Profile = () => {
   const currentTab = window.location.pathname;
+  let toggleMenu = null;
 
   const tabs = {
     public: '/profile-public',
@@ -16,10 +17,10 @@ export const Profile = () => {
   };
 
   useEffect(() => {
-    const toggleMenu = document.querySelector('#toggleMenu');
+    toggleMenu = document.querySelector('#toggleMenu');
   });
 
-  const toggleMenu = () => {
+  const toggleMenuFunc = () => {
     toggleMenu.classList.toggle('menuIsOpen');
   };
 
@@ -30,7 +31,7 @@ export const Profile = () => {
         account
       </h3>
       <div className={styles.mobileBurger}>
-        <button type="button" onClick={toggleMenu}>
+        <button type="button" onClick={toggleMenuFunc}>
           <div className={styles.photo} />
           <div className={styles.name}>John Doe</div>
           <div className={styles.role}>student</div>
@@ -83,7 +84,7 @@ export const Profile = () => {
             </Link>
           </li>
           <li>
-            <button type="button" className={styles.closeButton} onClick={toggleMenu}>
+            <button type="button" className={styles.closeButton} onClick={toggleMenuFunc}>
               <FaWindowClose />
             </button>
           </li>
