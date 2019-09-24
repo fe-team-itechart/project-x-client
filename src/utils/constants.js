@@ -2,7 +2,7 @@ export const links = {
   iTechVK: 'https://vk.com/itechart.group',
   iTechYoutube: 'https://www.youtube.com/user/iTechArt',
   iTechFacebook: 'https://www.facebook.com/iTechArt.Group',
-  inkedInURL: 'api/users/auth/linkedin',
+  linkedInURL: 'api/users/auth/linkedin',
   googleURL: 'api/users/auth/google',
   resetRoute: 'users/reset',
   changePasswordRoute: 'users/change-password',
