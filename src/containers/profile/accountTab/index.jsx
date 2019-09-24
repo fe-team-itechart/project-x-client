@@ -38,10 +38,10 @@ class AccountTab extends Component {
         errors: {},
         update: !this.state.update
       });
-      changePassword(id, { password });
+      changePassword({ password });
     }
   };
- 
+
   onChange = event => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -107,13 +107,13 @@ class AccountTab extends Component {
                   </button>
                 </div>
               ) : (
-                <>
-                  <button type="submit">Save</button>
-                  <button type="button" onClick={this.closeUpdate}>
-                    Close
+                  <>
+                    <button type="submit">Save</button>
+                    <button type="button" onClick={this.closeUpdate}>
+                      Close
                   </button>
-                </>
-              )}
+                  </>
+                )}
             </div>
           </form>
         </div>

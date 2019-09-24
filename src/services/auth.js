@@ -6,7 +6,6 @@ import { httpService } from './httpService';
 const config = {
   headers: {
     'Content-Type': 'application/json',
-    'Authorization' : localStorage.token,
   },
 };
 
@@ -52,8 +51,14 @@ export const logOutRequest = () => {
   localStorage.removeItem('token');
 };
 
-export const changePassword = async (id, data) => {
-  const res = await httpService.put({ url: 'users/change-password', id, data, config });
+export const changePassword = async data => {
+  config.headers.Authorization = localStorage.token;
+  
+  const res = await httpService.put({
+    url: 'users/change-password',
+    data,
+    config,
+  });
   return res;
 };
 
