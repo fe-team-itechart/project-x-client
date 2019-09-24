@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 
 import { Profile } from '../profile';
@@ -10,7 +8,7 @@ import { changePassword } from '../../../services/auth';
 
 import styles from './styles.module.scss';
 
-class AccountTab extends Component {
+class Account extends Component {
   state = {
     password: '',
     confirmPassword: '',
@@ -20,11 +18,6 @@ class AccountTab extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const {
-      user: {
-        data: { id },
-      },
-    } = this.props;
     const { password, confirmPassword } = this.state;
 
     const errors = changePasswordValidate(password, confirmPassword);
@@ -122,15 +115,5 @@ class AccountTab extends Component {
   }
 }
 
-AccountTab.propTypes = {
-  user: PropTypes.object.isRequired
-};
 
-const mapStateToProps = state => ({
-  user: state.user,
-});
-
-export default connect(
-  mapStateToProps,
-  null
-)(AccountTab);
+export default Account;

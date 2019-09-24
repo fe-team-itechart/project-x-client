@@ -1,7 +1,7 @@
 import jwt_decode from 'jwt-decode';
 
-import setAuthToken from './setAuthToken';
 import { httpService } from './httpService';
+import { links } from '../utils/constants';
 
 const config = {
   headers: {
@@ -12,7 +12,6 @@ const config = {
 export const socialLoginRequest = res => {
   const decoded = jwt_decode(res.payload);
   localStorage.setItem('token', res.payload);
-  setAuthToken(res.payload);
 
   return decoded;
 };
@@ -21,10 +20,9 @@ export const registerRequest = async data => {
   try {
     const {
       data: { token },
-    } = await httpService.post({ url: 'users/registration', data, config });
+    } = await httpService.post({ url: links.registrationRoute, data, config });
     const decoded = jwt_decode(token);
     localStorage.setItem('token', token);
-    setAuthToken(token);
 
     return decoded;
   } catch (err) {
@@ -36,10 +34,9 @@ export const loginRequest = async data => {
   try {
     const {
       data: { token },
-    } = await httpService.post({ url: 'users/login', data, config });
+    } = await httpService.post({ url: links.loginRoute, data, config });
     const decoded = jwt_decode(token);
     localStorage.setItem('token', token);
-    setAuthToken(token);
 
     return decoded;
   } catch (err) {
@@ -53,9 +50,9 @@ export const logOutRequest = () => {
 
 export const changePassword = async data => {
   config.headers.Authorization = localStorage.token;
-  
+
   const res = await httpService.put({
-    url: 'users/change-password',
+    url: links.changePasswordRoute,
     data,
     config,
   });
@@ -64,7 +61,7 @@ export const changePassword = async data => {
 
 export const forgotPasswordRequest = async data => {
   try {
-    const response = await httpService.post({ url: 'users/reset', data });
+    const response = await httpService.post({ url: links.resetRoute, data });
     return response;
   } catch (e) {
     return {

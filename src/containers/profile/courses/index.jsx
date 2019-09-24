@@ -5,7 +5,7 @@ import { Profile } from '../profile';
 
 import styles from './styles.module.scss';
 
-export const CoursesTab = () => {
+export const Courses = () => {
   const subscribedCourses = [
     {
       type: 'Lab',

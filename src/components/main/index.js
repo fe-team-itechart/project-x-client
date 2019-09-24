@@ -10,7 +10,6 @@ import ResetPassword from '../../containers/auth/resetPassword';
 import Sources from '../../containers/sources';
 import Categories from '../../containers/categories';
 
-
 export const Main = () => {
   return (
     <Switch>
