@@ -129,7 +129,7 @@ class ResetPassword extends PureComponent {
   };
 
   render() {
-    const { pending, message, showNotifications, height } = this.state;
+    const { pending, message, showNotifications } = this.state;
 
     const {
       validationShow,

@@ -9,6 +9,7 @@ import queryString from 'query-string';
 import { Modal } from '../../../components/modal';
 import { loginRequest, socialLoginRequest } from '../../../actions/auth';
 import { loginValidate } from '../../../validation/auth';
+import { links } from '../../../utils/constants';
 import { ReactComponent as GoogleIcon } from '../../../assets/google.svg';
 import { ReactComponent as LinkedInIcon } from '../../../assets/linkedin.svg';
 
@@ -84,9 +85,6 @@ class Login extends Component {
     const { email, password, errors } = this.state;
     const { modalStatus } = this.props;
 
-    const linkedInURL = `api/users/auth/linkedin`;
-    const googleURL = `api/users/auth/google`;
-
     return (
       <>
         <Modal open={modalStatus} onClose={this.closeModal}>
@@ -118,26 +116,22 @@ class Login extends Component {
                 {errors.password ? errors.password : errors.message}
               </span>
             )}
-            <a href={googleURL}>
-              <div className={styles.googleButton}>
-                <span className={styles.googleButtonIcon}>
-                  <GoogleIcon />
-                </span>
-                <span className={styles.googleButtonText}>
-                  Sign in with Google
-                </span>
-              </div>
-            </a>
-            <a href={linkedInURL}>
-              <div className={styles.linkedinButton}>
-                <span className={styles.linkedinButtonIcon}>
-                  <LinkedInIcon />
-                </span>
-                <span className={styles.linkedinButtonText}>
-                  Sign in with Linked In
-                </span>
-              </div>
-            </a>
+            <div className={styles.socialButtonsContainer}>
+              <a href={links.googleURL}>
+                <div className={styles.googleButton}>
+                  <span className={styles.googleButtonIcon}>
+                    <GoogleIcon />
+                  </span>
+                </div>
+              </a>
+              <a href={links.linkedInURL}>
+                <div className={styles.linkedinButton}>
+                  <span className={styles.linkedinButtonIcon}>
+                    <LinkedInIcon />
+                  </span>
+                </div>
+              </a>
+            </div>
             <button type="submit" className={styles.submit}>
               Sign In
             </button>
