@@ -21,7 +21,7 @@ const Info = ({ profile, getProfileRequest, updateProfileRequest }) => {
     description: '',
     twitterLink: '',
     facebookLink: '',
-    linkedInLink: ''
+    linkedInLink: '',
   });
 
   const [errors, setErrors] = useState({
@@ -30,7 +30,7 @@ const Info = ({ profile, getProfileRequest, updateProfileRequest }) => {
     description: '',
     twitterLink: '',
     facebookLink: '',
-    linkedInLink: ''
+    linkedInLink: '',
   });
 
   const {
@@ -39,7 +39,7 @@ const Info = ({ profile, getProfileRequest, updateProfileRequest }) => {
     description,
     twitterLink,
     facebookLink,
-    linkedInLink
+    linkedInLink,
   } = formData;
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const Info = ({ profile, getProfileRequest, updateProfileRequest }) => {
     if (profile) {
       setFormData(profile);
     }
-  }, [profile])
+  }, [profile]);
 
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -68,11 +68,11 @@ const Info = ({ profile, getProfileRequest, updateProfileRequest }) => {
       setCheck(!checked);
       updateProfileRequest(formData);
     }
-  }
+  };
 
   const onCheck = () => {
     setCheck(!checked);
-  }
+  };
 
   return (
     <>
@@ -89,9 +89,7 @@ const Info = ({ profile, getProfileRequest, updateProfileRequest }) => {
               onChange={onChange}
             />
             {errors.firstName && (
-              <span className={styles.invalidFeedback}>
-                {errors.firstName}
-              </span>
+              <span className={styles.invalidFeedback}>{errors.firstName}</span>
             )}
           </div>
           <div>
@@ -104,15 +102,14 @@ const Info = ({ profile, getProfileRequest, updateProfileRequest }) => {
               onChange={onChange}
             />
             {errors.lastName && (
-              <span className={styles.invalidFeedback}>
-                {errors.lastName}
-              </span>
+              <span className={styles.invalidFeedback}>{errors.lastName}</span>
             )}
           </div>
         </div>
         <div className={styles.description}>
-          <input
+          <textarea
             type="text"
+            rows="4"
             name="description"
             value={description}
             placeholder="Description"
@@ -120,9 +117,7 @@ const Info = ({ profile, getProfileRequest, updateProfileRequest }) => {
             onChange={onChange}
           />
           {errors.description && (
-            <span className={styles.invalidFeedback}>
-              {errors.description}
-            </span>
+            <span className={styles.invalidFeedback}>{errors.description}</span>
           )}
         </div>
         <div className={styles.social}>
@@ -175,20 +170,20 @@ const Info = ({ profile, getProfileRequest, updateProfileRequest }) => {
             )}
           </div>
         </div>
-        {checked ? (
-          <button type="button" onClick={onCheck}>
-            Update
-          </button>
-        ) : (
+        <div className={styles.buttonsBlock}>
+          {checked ? (
+            <button type="button" onClick={onCheck}>
+              Update
+            </button>
+          ) : (
             <>
-              <button type="submit">
-                Save
-              </button>
+              <button type="submit">Save</button>
               <button type="button" onClick={onCheck}>
                 Close
               </button>
             </>
           )}
+        </div>
       </form>
     </>
   );
@@ -197,11 +192,11 @@ const Info = ({ profile, getProfileRequest, updateProfileRequest }) => {
 Profile.propTypes = {
   getProfileRequest: PropTypes.func.isRequired,
   updateProfileRequest: PropTypes.func.isRequired,
-  profile: PropTypes.object
+  profile: PropTypes.object,
 };
 
 const mapStateToProps = state => ({
-  profile: state.user.profile
+  profile: state.user.profile,
 });
 
 const mapDispatchToProps = { getProfileRequest, updateProfileRequest };
