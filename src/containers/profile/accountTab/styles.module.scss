@@ -11,23 +11,21 @@
 
     input {
       @include primary-input;
-      padding: 15px 0;
-      margin: 0 5%;
-      width: 90%;
+      width: 100%;
+      margin: 15px 0;
     }
 
     .invalidFeedback {
       color: $pink;
-      margin: 5px 5% 0;
-      width: 90%;
+      margin-top: 5px;
+      width: 100%;
     }
   }
 
   .buttonsBlock {
-    width: 95%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin-left: 5%;
 
     div {
       display: flex;
@@ -55,6 +53,6 @@
   }
 
   @media screen and (min-width: $width-xl) {
-    width: 570px;
+    width: 550px;
   }
 }

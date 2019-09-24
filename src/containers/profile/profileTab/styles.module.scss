@@ -7,7 +7,8 @@
 .profile {
   margin: 40px 15px 0 15px;
 
-  input {
+  input,
+  textarea {
     @include primary-input;
     background-color: transparent;
     color: $white;
@@ -15,6 +16,14 @@
     &::placeholder {
       color: $gray-input;
     }
+  }
+
+  .invalidFeedback {
+    display: block;
+    word-wrap: break-word;
+    margin-top: 10px;
+    width: 100%;
+    color: $pink;
   }
 
   .userFio {
@@ -26,12 +35,6 @@
 
       &:first-child {
         margin-right: 15px;
-      }
-
-      span {
-        display: block;
-        word-wrap: break-word;
-        width: 100%;
       }
 
       input {
@@ -46,10 +49,11 @@
     margin-top: 15px;
     width: 100%;
 
-    input {
+    textarea {
       width: 100%;
       padding: 6px 0;
       margin: 0;
+      resize: none;
     }
   }
 
@@ -58,56 +62,43 @@
     width: 100%;
 
     div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
 
-      input {
-        width: 90% !important;
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+          font-size: 20px;
+          margin: 0 5px;
+          width: 10%;
+        }
+
+        .facebookIcon {
+          color: #3b5998;
+        }
+
+        .twitterIcon {
+          color: #1da1f2;
+        }
+
+        .linkedinIcon {
+          color: #0073b0;
+        }
       }
-
-      span {
-        display: block;
-        width: 100%;
-        background: $bcg-gray-light;
-        color: $white;
-      }
-    }
-
-    svg {
-      font-size: 20px;
-      margin: 0 5px;
-      width: 10%;
-    }
-
-    .facebookIcon {
-      color: #3b5998;
-    }
-
-    .twitterIcon {
-      color: #1da1f2;
-    }
-
-    .linkedinIcon {
-      color: #0073b0;
     }
   }
 
-  button {
-    @include primary-button;
-    background: $gradient;
-    width: 100px;
-    height: 50px;
-    text-align: center;
-    margin: 25px 15px 15px 0;
-    color: $white;
-    border: none;
-    float: left;
-  }
+  .buttonsBlock {
+    width: 100%;
 
-  .invalidFeedback {
-    color: $pink !important;
-    width: 75%;
+    button {
+      @include primary-button;
+      width: 100px;
+      height: 50px;
+      margin: 25px 15px 15px 0;
+      float: left;
+    }
   }
 
   @media screen and (min-width: $width-xs) {
@@ -116,33 +107,14 @@
 
       div {
 
-        span {
-          width: 95%;
-        }
-
         input {
-          width: 95%;
+          width: 100%;
+          margin: 10px 0;
         }
       }
     }
   }
   @media screen and (min-width: $width-xl) {
-    width: 570px;
-
-    .social {
-
-      div {
-
-        span {
-          margin-left: 30px;
-        }
-
-        input {
-          padding: 6px 5px;
-          margin: 15px 0;
-          width: 238px;
-        }
-      }
-    }
+    width: 540px;
   }
 }
