@@ -17,7 +17,7 @@ export const Footer = () => {
         <h2>Follow us on</h2>
         <ul>
           <li>
-            <a target="_blank" rel="noopener noreferrer" href={links.ITechVK}>
+            <a target="_blank" rel="noopener noreferrer" href={links.iTechVK}>
               <span className={styles.socialMedia}>
                 <FaVk />
               </span>
@@ -27,7 +27,7 @@ export const Footer = () => {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={links.ITechYoutube}>
+              href={links.iTechYoutube}>
               <span className={styles.socialMedia}>
                 <FaYoutube />
               </span>
@@ -37,7 +37,7 @@ export const Footer = () => {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href={links.ITechFacebook}>
+              href={links.iTechFacebook}>
               <span className={styles.socialMedia}>
                 <FaFacebookSquare />
               </span>

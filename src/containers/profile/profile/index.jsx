@@ -6,14 +6,16 @@ import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import { isEmpty } from 'lodash';
 
 import { publicProfileValidate } from '../../../validation/profile';
-import { getProfileRequest, updateProfileRequest } from '../../../actions/profile';
-import { links } from "../../../utils/constants";
-import  { Profile }  from '../profile';
+import {
+  getProfileRequest,
+  updateProfileRequest,
+} from '../../../actions/profile';
+import { links } from '../../../utils/constants';
+import { Profile } from '../profile';
 
 import styles from './styles.module.scss';
 
-const Info = ({ profile, getProfileRequest, updateProfileRequest }) => {
-
+const ProfileData = ({ profile, getProfileRequest, updateProfileRequest }) => {
   const [checked, setCheck] = useState(true);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -122,59 +124,63 @@ const Info = ({ profile, getProfileRequest, updateProfileRequest }) => {
         </div>
         <div className={styles.social}>
           <div>
-            <FaTwitter className={styles.twitterIcon} />
-            <input
-              type="url"
-              name="twitterLink"
-              value={twitterLink}
-              placeholder={links.Twitter}
-              disabled={checked}
-              onChange={onChange}
-            />
-            {errors.twitterLink && (
-              <span className={styles.invalidFeedback}>
-                {errors.twitterLink}
-              </span>
-            )}
-          </div>
-          <div>
-            <FaFacebookF className={styles.facebookIcon} />
-            <input
-              type="url"
-              name="facebookLink"
-              value={facebookLink}
-              placeholder={links.Facebook}
-              disabled={checked}
-              onChange={onChange}
-            />
-            {errors.facebookLink && (
-              <span className={styles.invalidFeedback}>
-                {errors.facebookLink}
-              </span>
-            )}
-          </div>
-          <div>
-            <FaLinkedinIn className={styles.linkedinIcon} />
-            <input
-              type="url"
-              name="linkedInLink"
-              value={linkedInLink}
-              placeholder={links.LinkedIn}
-              disabled={checked}
-              onChange={onChange}
-            />
-            {errors.linkedInLink && (
-              <span className={styles.invalidFeedback}>
-                {errors.linkedInLink}
-              </span>
-            )}
+            <div>
+              <FaTwitter className={styles.twitterIcon} />
+              <input
+                type="url"
+                name="twitterLink"
+                value={twitterLink}
+                placeholder={links.twitter}
+                disabled={checked}
+                onChange={onChange}
+              />
+              {errors.twitterLink && (
+                <span className={styles.invalidFeedback}>
+                  {errors.twitterLink}
+                </span>
+              )}
+            </div>
+            <div>
+              <FaFacebookF className={styles.facebookIcon} />
+              <input
+                type="url"
+                name="facebookLink"
+                value={facebookLink}
+                placeholder={links.facebook}
+                disabled={checked}
+                onChange={onChange}
+              />
+              {errors.facebookLink && (
+                <span className={styles.invalidFeedback}>
+                  {errors.facebookLink}
+                </span>
+              )}
+            </div>
+            <div>
+              <FaLinkedinIn className={styles.linkedinIcon} />
+              <input
+                type="url"
+                name="linkedInLink"
+                value={linkedInLink}
+                placeholder={links.linkedIn}
+                disabled={checked}
+                onChange={onChange}
+              />
+              {errors.linkedInLink && (
+                <span className={styles.invalidFeedback}>
+                  {errors.linkedInLink}
+                </span>
+              )}
+            </div>
           </div>
         </div>
         <div className={styles.buttonsBlock}>
           {checked ? (
-            <button type="button" onClick={onCheck}>
-              Update
-            </button>
+            <div>
+              <button type="button" onClick={onCheck}>
+                Update
+              </button>
+            </div>
           ) : (
             <>
               <button type="submit">Save</button>
@@ -189,7 +195,7 @@ const Info = ({ profile, getProfileRequest, updateProfileRequest }) => {
   );
 };
 
-Profile.propTypes = {
+ProfileData.propTypes = {
   getProfileRequest: PropTypes.func.isRequired,
   updateProfileRequest: PropTypes.func.isRequired,
   profile: PropTypes.object,
@@ -201,4 +207,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { getProfileRequest, updateProfileRequest };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Info);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfileData);

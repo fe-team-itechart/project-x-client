@@ -6,7 +6,6 @@ import { links } from '../utils/constants';
 const config = {
   headers: {
     'Content-Type': 'application/json',
-    Authorization: localStorage.token,
   },
 };
 
