@@ -9,4 +9,7 @@ export const links = {
   loginRoute: 'users/login',
   registrationRoute: 'users/registration',
   publicProfileRoute: 'profile/public',
+  Twitter:'http://twitter.com/',
+  Facebook:'https://www.facebook.com/',
+  LinkedIn:'https://www.linkedin.com/',
 };

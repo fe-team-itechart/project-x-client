@@ -123,7 +123,7 @@ class Account extends Component {
   }
 }
 
-AccountTab.propTypes = {
+Account.propTypes = {
   user: PropTypes.object.isRequired
 };
 

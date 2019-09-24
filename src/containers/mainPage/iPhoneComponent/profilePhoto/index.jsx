@@ -24,9 +24,9 @@ export const ProfilePhoto = () => {
     <>
       <div className={styles.mobileBurger}>
         <button type="button" onClick={toggleMenu}>
-          <div className={photo} />
-          <div className={name}>John Doe</div>
-          <div className={role}>student</div>
+          <div className={styles.photo} />
+          <div className={styles.name}>John Doe</div>
+          <div className={styles.role}>student</div>
         </button>
       </div>
       <nav className={styles.mobileMenu} style={{ marginLeft: menu}}>

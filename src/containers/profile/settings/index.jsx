@@ -2,7 +2,9 @@ import React from 'react'
 
 import { Profile } from '../profile';
 
-export const SettingsTab = () => {
+import styles from './styles.module.scss';
+
+export const Settings = () => {
 
   return (
     <>

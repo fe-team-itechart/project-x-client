@@ -7,11 +7,12 @@ import { isEmpty } from 'lodash';
 
 import { publicProfileValidate } from '../../../validation/profile';
 import { getProfileRequest, updateProfileRequest } from '../../../actions/profile';
-import { Profile } from '../profile';
+import { links } from "../../../utils/constants";
+import  { Profile }  from '../profile';
 
 import styles from './styles.module.scss';
 
-const Profile = ({ profile, getProfileRequest, updateProfileRequest }) => {
+const Info = ({ profile, getProfileRequest, updateProfileRequest }) => {
 
   const [checked, setCheck] = useState(true);
   const [formData, setFormData] = useState({
@@ -131,7 +132,7 @@ const Profile = ({ profile, getProfileRequest, updateProfileRequest }) => {
               type="url"
               name="twitterLink"
               value={twitterLink}
-              placeholder="http://twitter.com/"
+              placeholder={links.Twitter}
               disabled={checked}
               onChange={onChange}
             />
@@ -147,7 +148,7 @@ const Profile = ({ profile, getProfileRequest, updateProfileRequest }) => {
               type="url"
               name="facebookLink"
               value={facebookLink}
-              placeholder="https://www.facebook.com/"
+              placeholder={links.Facebook}
               disabled={checked}
               onChange={onChange}
             />
@@ -163,7 +164,7 @@ const Profile = ({ profile, getProfileRequest, updateProfileRequest }) => {
               type="url"
               name="linkedInLink"
               value={linkedInLink}
-              placeholder="https://www.linkedin.com/"
+              placeholder={links.LinkedIn}
               disabled={checked}
               onChange={onChange}
             />
@@ -193,7 +194,7 @@ const Profile = ({ profile, getProfileRequest, updateProfileRequest }) => {
   );
 };
 
-ProfileTab.propTypes = {
+Profile.propTypes = {
   getProfileRequest: PropTypes.func.isRequired,
   updateProfileRequest: PropTypes.func.isRequired,
   profile: PropTypes.object
@@ -205,4 +206,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { getProfileRequest, updateProfileRequest };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Info);

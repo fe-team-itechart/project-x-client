@@ -26,28 +26,57 @@ form {
     padding: 5px 0;
   }
 
-  form {
+  .submit {
+    @include primary-button;
+    width: 210px;
+    margin: 10px 0 15px 0;
+  }
+
+  .socialButtonsContainer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-around;
+    width: 105px;
+    margin-top: 10px;
 
-    input {
-      @include primary-input;
-      width: 75%;
-      margin: 15px 15px 0;
-    }
+    .googleButton,
+    .linkedinButton {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-width: 0;
+      background: $white;
+      color: $light-gray;
+      border-radius: 5px;
+      white-space: nowrap;
+      box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.05);
+      transition-property: background-color, box-shadow;
+      transition-duration: 150ms;
+      transition-timing-function: ease-in-out;
+      padding: 0;
 
-    .invalid_feedback {
-      color: $pink;
-      width: 75%;
-      padding: 5px 0;
-    }
+      &:focus,
+      &:hover {
+        box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.1);
+      }
 
-    .submit {
-      @include primary-button;
-      width: 210px;
-      margin: 10px 0 15px 0;
+      &:active {
+        background-color: $white;
+        box-shadow: none;
+        transition-duration: 10ms;
+      }
+
+      .googleButtonIcon,
+      .linkedinButtonIcon {
+        display: inline-block;
+        vertical-align: middle;
+        width: 18px;
+        height: 18px;
+        box-sizing: border-box;
+      }
     }
+  }
 
   .linkForgot {
     font-size: 0.7em;
@@ -61,79 +90,5 @@ form {
       color: $orange;
       opacity: 1;
     }
-  }
-}
-
-.googleButton,
-.linkedinButton {
-  width: 210px;
-  height: 40px;
-  border-width: 0;
-  background: $white;
-  color: $light-gray;
-  border-radius: 5px;
-  white-space: nowrap;
-  box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.05);
-  transition-property: background-color, box-shadow;
-  transition-duration: 150ms;
-  transition-timing-function: ease-in-out;
-  padding: 0;
-
-  &:focus,
-  &:hover {
-    box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.1);
-  }
-
-  &:active {
-    background-color: $white;
-    box-shadow: none;
-    transition-duration: 10ms;
-  }
-
-  .google_button,
-  .linkedin_button {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-width: 0;
-    background: $white;
-    color: $light-gray;
-    border-radius: 5px;
-    white-space: nowrap;
-    box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.05);
-    transition-property: background-color, box-shadow;
-    transition-duration: 150ms;
-    transition-timing-function: ease-in-out;
-    padding: 0;
-
-    &:focus,
-    &:hover {
-      box-shadow: 1px 4px 5px 1px rgba(0, 0, 0, 0.1);
-    }
-
-    &:active {
-      background-color: $white;
-      box-shadow: none;
-      transition-duration: 10ms;
-    }
-
-    .google_button_icon,
-    .linkedin_button_icon {
-      display: inline-block;
-      vertical-align: middle;
-      width: 18px;
-      height: 18px;
-      box-sizing: border-box;
-    }
-  }
-}
-
-  .socialButtonsContainer {
-    display: flex;
-    justify-content: space-around;
-    width: 105px;
-    margin-top: 10px;
   }
 }
