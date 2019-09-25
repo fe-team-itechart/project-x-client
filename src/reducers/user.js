@@ -3,7 +3,7 @@ import { handleActions } from 'redux-actions';
 import { auth, profile } from '../actions/types';
 
 const initialState = {
-  isAuthenticated: null,
+  isAuthenticated: false,
   loading: true,
   data: null,
   profile: null,

@@ -1,4 +1,5 @@
 import { httpService } from './httpService';
+import { storageWrapper } from './storageService';
 import { links } from '../utils/constants';
 
 const config = {
@@ -8,7 +9,7 @@ const config = {
 };
 
 export const getProfileRequest = async () => {
-  config.headers.Authorization = localStorage.token;
+  config.headers.Authorization = storageWrapper.getToken();
 
   const { data } = await httpService.get({
     url: links.publicProfileRoute,
