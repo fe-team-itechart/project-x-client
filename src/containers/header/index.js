@@ -7,7 +7,6 @@ import { MdSearch } from 'react-icons/md';
 import { FaBars, FaWindowClose } from 'react-icons/fa';
 
 import { logOutRequest } from '../../actions/auth';
-import Burger from './burgerMenu';
 import Login from '../auth/login';
 import Register from '../auth/register';
 import ForgotPassword from '../auth/forgotPassword';
