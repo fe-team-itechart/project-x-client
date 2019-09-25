@@ -18,6 +18,15 @@
     justify-content: space-around;
   }
 
+  .menuIcons {
+    cursor: pointer;
+
+    svg {
+      font-size: 30px;
+      padding: 15px;
+    }
+  }
+
   .logo {
     flex: 0.3 1 auto;
     display: flex;
@@ -87,8 +96,69 @@
       @include primary-button;
       flex-basis: 20%;
       padding: 10px 0px;
+      transition: none;
       @media (max-width: $width-lg) {
         flex-basis: 23%;
+      }
+    }
+  }
+  @media (max-width: $width-md) {
+
+    .menu {
+      position: absolute;
+      display: none;
+      width: 90%;
+      padding: 10px 5%;
+      background-color: #212121;
+      top: 110px;
+      z-index: 1;
+      right: 0;
+
+      div {
+        margin: 15px 0;
+        text-align: center;
+      }
+
+      button {
+        width: 100%;
+        max-width: 200px;
+        margin-top: 5px;
+        position: relative;
+        left: 50%;
+        margin-left: -100px;
+        transition: none;
+      }
+    }
+  }
+  @media (max-width: $width-sm) {
+    display: block;
+    height: auto;
+    padding-bottom: 0;
+
+    .logo {
+      display: block;
+      text-align: center;
+    }
+
+    div {
+      padding: 0 15px;
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .menu {
+      top: 195px;
+    }
+    
+    .search {
+      padding: 0 25px;
+
+      input{
+        padding: 8px 0;
+      }
+
+      svg{
+        right: 25px !important;
       }
     }
   }

@@ -179,9 +179,11 @@ const ProfileTab = ({ profile, getProfileRequest, updateProfileRequest }) => {
         </div>
         <div className={styles.buttonsBlock}>
           {checked ? (
-            <button type="button" onClick={onCheck}>
-              Update
-            </button>
+            <div>
+              <button type="button" onClick={onCheck}>
+                Update
+              </button>
+            </div>
           ) : (
             <>
               <button type="submit">Save</button>

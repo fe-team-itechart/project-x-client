@@ -12,17 +12,33 @@ import Register from '../auth/register';
 import ForgotPassword from '../auth/forgotPassword';
 
 import styles from './styles.module.scss';
+import './menu.scss';
+import { FaBars, FaWindowClose } from 'react-icons/fa';
 
 const Header = props => {
   const [width, setWidth] = useState(window.innerWidth);
   const [isOpenLog, setModalStatusLog] = useState(false);
   const [isOpenReg, setModalStatusReg] = useState(false);
+  const [isOpenMenu, setMenuStatus] = useState(false);
   const [isOpenForgotPass, setModalForgotPass] = useState(false);
 
   useEffect(() => {
     const handleWidth = () => setWidth(window.innerWidth);
     window.addEventListener('resize', handleWidth);
   }, []);
+
+  useEffect(() => {
+    if(width > 768){
+      const toggleMenu = document.querySelector('#menu');
+      toggleMenu.classList.remove('mobileMenuActive');
+      setMenuStatus(false);
+    }
+  });
+
+  const toggleMenuFunc = () => {
+    const toggleMenu = document.querySelector('#menu');
+    toggleMenu.classList.toggle('mobileMenuActive');
+  };
 
   const closeLoginModal = () => {
     setModalStatusLog(false);
@@ -39,6 +55,15 @@ const Header = props => {
     setModalStatusReg(true);
   };
 
+  const checkMobileMenuStatus = () => {
+    toggleMenuFunc();
+    if (isOpenMenu) {
+      setMenuStatus(false);
+    } else {
+      setMenuStatus(true);
+    }
+  };
+
   const { isAuthenticated, logOutRequest } = props;
 
   return (
@@ -48,68 +73,71 @@ const Header = props => {
           <img src="src\assets\logoLight.png" alt="Logo" />
         </NavLink>
       </div>
-      {width > 768 ? (
-        <>
-          <div className={styles.search}>
-            <input type="text" placeholder="search" />
-            <MdSearch className={styles.icon} />
+      <>
+        <div className={styles.search}>
+          <input type="text" placeholder="search" />
+          <MdSearch className={styles.icon} />
+        </div>
+        {width < 768 && (
+          <div className={styles.menuIcons} onClick={checkMobileMenuStatus}>
+            {!isOpenMenu ? <FaBars /> : <FaWindowClose />}
           </div>
-          <div className={styles.menu}>
+        )}
+        <div id="menu" className={styles.menu}>
+          <div>
             <NavLink to="/sources" className={styles.link}>
               Sources
             </NavLink>
+          </div>
+          <div>
             <NavLink to="/categories" className={styles.link}>
               Categories
             </NavLink>
+          </div>
 
-            {isAuthenticated ? (
+          {isAuthenticated ? (
+            <button
+              type="button"
+              className={styles.button}
+              onClick={logOutRequest}>
+              Log out
+            </button>
+          ) : (
+            <>
               <button
                 type="button"
                 className={styles.button}
-                onClick={logOutRequest}>
-                Log out
+                onClick={openModalLog}>
+                Log in
               </button>
-            ) : (
-              <>
-                <button
-                  type="button"
-                  className={styles.button}
-                  onClick={openModalLog}>
-                  Log in
-                </button>
-                <button
-                  type="button"
-                  className={styles.button}
-                  onClick={openModalReg}>
-                  Register
-                </button>
-              </>
-            )}
-          </div>
-        </>
-      ) : (
-        <Burger
-          login={openModalLog}
-          register={openModalReg}
-          logout={logOutRequest}
-          isAuth={isAuthenticated}
-        />
-      )}
-      <Login 
-        modalStatus={isOpenLog} 
+              <button
+                type="button"
+                className={styles.button}
+                onClick={openModalReg}>
+                Register
+              </button>
+            </>
+          )}
+        </div>
+      </>
+      <Login
+        modalStatus={isOpenLog}
         onModalClose={closeLoginModal}
         modalStatusForgotPass={isOpenForgotPass}
         onModalCloseForgotPass={setModalForgotPass}
       />
       <Register modalStatus={isOpenReg} onModalClose={closeRegModal} />
-      <ForgotPassword modalStatus={isOpenForgotPass} onModalClose={setModalForgotPass}/>
+      <ForgotPassword
+        modalStatus={isOpenForgotPass}
+        onModalClose={setModalForgotPass}
+      />
     </header>
   );
 };
 
 Header.propTypes = {
   logOutRequest: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
