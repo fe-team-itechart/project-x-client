@@ -20,7 +20,7 @@ export const Main = () => {
       <Route path="/troubleshooting" component={Trobleshooting} />
       <Route path="/course-taking" component={CourseTaking} />
       <Route path="/reset" component={ResetPassword} />
-      <ProfileRouters/>
+      <ProfileRouters />
     </Switch>
   );
 };

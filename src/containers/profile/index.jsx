@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import  ProfileData  from "./profile/index";
+import { PrivateRoute } from '../../components/privateRoute';
+import ProfileData from './profile/index';
 import { Settings } from './settings';
-import  Account  from './account';
+import Account from './account';
 import { Courses } from './courses';
 
 import styles from './styles.module.scss';
@@ -13,12 +15,12 @@ export class ProfileRouters extends Component {
     return (
       <section className={styles.profile}>
         <Switch>
-          <Route path="/profile-public" component={ProfileData} />
-          <Route path="/profile-courses" component={Courses} />
-          <Route path="/profile-account" component={Account} />
-          <Route path="/profile-settings" component={Settings} />
+          <PrivateRoute path="/profile-public" component={ProfileData} />
+          <PrivateRoute path="/profile-courses" component={Courses} />
+          <PrivateRoute path="/profile-account" component={Account} />
+          <PrivateRoute path="/profile-settings" component={Settings} />
         </Switch>
       </section>
     );
   }
-};
+}
