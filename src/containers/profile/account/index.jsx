@@ -10,7 +10,7 @@ import { changePassword } from '../../../services/auth';
 
 import styles from './styles.module.scss';
 
-class AccountTab extends Component {
+class Account extends Component {
   state = {
     password: '',
     confirmPassword: '',
@@ -25,6 +25,7 @@ class AccountTab extends Component {
         data: { id },
       },
     } = this.props;
+    
     const { password, confirmPassword } = this.state;
 
     const errors = changePasswordValidate(password, confirmPassword);
@@ -122,7 +123,7 @@ class AccountTab extends Component {
   }
 }
 
-AccountTab.propTypes = {
+Account.propTypes = {
   user: PropTypes.object.isRequired
 };
 
@@ -133,4 +134,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   null
-)(AccountTab);
+)(Account);
