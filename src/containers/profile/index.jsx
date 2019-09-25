@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { PrivateRoute } from '../../components/privateRoute';
-import Profile from './profileTab';
-import { SettingsTab } from './settingsTab';
-import Account from './accountTab';
-import { CoursesTab } from './coursesTab';
+import ProfileData from './profile/index';
+import { Settings } from './settings';
+import Account from './account';
+import { Courses } from './courses';
 
 import styles from './styles.module.scss';
 
@@ -15,10 +14,26 @@ class ProfileRouters extends Component {
     return (
       <section className={styles.profile}>
         <Switch>
-          <PrivateRoute isAuthenticated={this.props.isAuthenticated} path="/profile-public" component={Profile} />
-          <PrivateRoute isAuthenticated={this.props.isAuthenticated} path="/profile-courses" component={CoursesTab} />
-          <PrivateRoute isAuthenticated={this.props.isAuthenticated} path="/profile-account" component={Account} />
-          <PrivateRoute isAuthenticated={this.props.isAuthenticated} path="/profile-settings" component={SettingsTab} />
+          <PrivateRoute
+            isAuthenticated={this.props.isAuthenticated}
+            path="/profile-public"
+            component={ProfileData}
+          />
+          <PrivateRoute
+            isAuthenticated={this.props.isAuthenticated}
+            path="/profile-courses"
+            component={Courses}
+          />
+          <PrivateRoute
+            isAuthenticated={this.props.isAuthenticated}
+            path="/profile-account"
+            component={Account}
+          />
+          <PrivateRoute
+            isAuthenticated={this.props.isAuthenticated}
+            path="/profile-settings"
+            component={Settings}
+          />
         </Switch>
       </section>
     );

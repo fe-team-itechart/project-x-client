@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
+
 import Modal from 'react-modal';
 import { FaTimes } from 'react-icons/fa';
 import { IoIosCheckmarkCircle } from 'react-icons/io';
-
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 

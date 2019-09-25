@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import AliceCarousel from 'react-alice-carousel';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 

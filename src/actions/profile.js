@@ -1,4 +1,5 @@
 import { createAction } from 'redux-actions';
+
 import { profile } from './types';
 
 const getProfileRequest = createAction(profile.GET_PROFILE_REQUEST);

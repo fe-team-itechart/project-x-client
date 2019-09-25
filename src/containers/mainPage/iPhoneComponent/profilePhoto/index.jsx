@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { FaWindowClose } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+
+import { FaWindowClose } from 'react-icons/fa';
 
 import styles from './styles.module.scss';
 
@@ -15,10 +16,14 @@ export const ProfilePhoto = () => {
     }
   };
 
+  const closeMenu = () =>{
+    setMenu('-105%')
+  }
+
   return (
     <>
       <div className={styles.mobileBurger}>
-        <button type="button" onClick={() => toggleMenu()}>
+        <button type="button" onClick={toggleMenu}>
           <div className={styles.photo} />
           <div className={styles.name}>John Doe</div>
           <div className={styles.role}>student</div>
@@ -50,7 +55,7 @@ export const ProfilePhoto = () => {
             <button
               type="button"
               className={styles.closeButton}
-              onClick={() => setMenu('-105%' )}>
+              onClick={closeMenu}>
               <FaWindowClose />
             </button>
           </li>
