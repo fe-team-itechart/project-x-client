@@ -85,6 +85,7 @@
       transition: 0.3s;
       text-decoration: none;
       color: $white;
+      margin: 0 5px;
     }
 
     .link:hover {
@@ -94,14 +95,11 @@
 
     .button {
       @include primary-button;
-      flex-basis: 20%;
-      padding: 10px 0px;
+      padding: 10px 20px;
       transition: none;
-      @media (max-width: $width-lg) {
-        flex-basis: 23%;
-      }
     }
   }
+
   @media (max-width: $width-md) {
 
     .menu {
@@ -137,7 +135,7 @@
 
     .logo {
       display: block;
-      text-align: center;
+      text-align: left;
     }
 
     div {
@@ -147,19 +145,42 @@
     }
 
     .menu {
-      top: 195px;
+      top: 150px;
     }
-    
+
     .search {
       padding: 0 25px;
 
-      input{
+      input {
         padding: 8px 0;
       }
 
-      svg{
+      svg {
         right: 25px !important;
       }
+    }
+
+    .menuIcons {
+      position: absolute;
+      z-index: 1;
+      right: 20px;
+      top: 20px;
+    }
+  }
+  
+  @media (min-width: $width-md) {
+
+    .buttonsBlock {
+      width: 200px;
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+
+  @media (min-width: $width-lg) {
+
+    .buttonsBlock {
+      width: 300px;
     }
   }
 }

@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import { MdSearch } from 'react-icons/md';
+import { FaBars, FaWindowClose } from 'react-icons/fa';
 
 import { logOutRequest } from '../../actions/auth';
 import Burger from './burgerMenu';
@@ -13,7 +14,6 @@ import ForgotPassword from '../auth/forgotPassword';
 
 import styles from './styles.module.scss';
 import './menu.scss';
-import { FaBars, FaWindowClose } from 'react-icons/fa';
 
 const Header = props => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -28,7 +28,7 @@ const Header = props => {
   }, []);
 
   useEffect(() => {
-    if(width > 768){
+    if (width > 768) {
       const toggleMenu = document.querySelector('#menu');
       toggleMenu.classList.remove('mobileMenuActive');
       setMenuStatus(false);
@@ -36,8 +36,10 @@ const Header = props => {
   });
 
   const toggleMenuFunc = () => {
-    const toggleMenu = document.querySelector('#menu');
-    toggleMenu.classList.toggle('mobileMenuActive');
+    if (width < 768) {
+      const toggleMenu = document.querySelector('#menu');
+      toggleMenu.classList.toggle('mobileMenuActive');
+    }
   };
 
   const closeLoginModal = () => {
@@ -84,26 +86,28 @@ const Header = props => {
           </div>
         )}
         <div id="menu" className={styles.menu}>
-          <div>
+          <div onClick={checkMobileMenuStatus}>
             <NavLink to="/sources" className={styles.link}>
               Sources
             </NavLink>
           </div>
-          <div>
+          <div onClick={checkMobileMenuStatus}>
             <NavLink to="/categories" className={styles.link}>
               Categories
             </NavLink>
           </div>
 
           {isAuthenticated ? (
-            <button
-              type="button"
-              className={styles.button}
-              onClick={logOutRequest}>
-              Log out
-            </button>
+            <div className={styles.buttonsBlock}>
+              <button
+                type="button"
+                className={styles.button}
+                onClick={logOutRequest}>
+                Log out
+              </button>
+            </div>
           ) : (
-            <>
+            <div className={styles.buttonsBlock}>
               <button
                 type="button"
                 className={styles.button}
@@ -116,7 +120,7 @@ const Header = props => {
                 onClick={openModalReg}>
                 Register
               </button>
-            </>
+            </div>
           )}
         </div>
       </>
