@@ -3,13 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Layout } from '../layout';
 import { GettingStarted } from '../help/gettingStarted';
-import { ProfileRouters } from '../../containers/profile';
+import ProfileRouters from '../../containers/profile';
 import { Trobleshooting } from '../help/troubleshooting';
 import { CourseTaking } from '../help/courseTaking';
 import ResetPassword from '../../containers/auth/resetPassword';
 import Sources from '../../containers/sources';
 import Categories from '../../containers/categories';
-
 
 export const Main = () => {
   return (
@@ -21,7 +20,7 @@ export const Main = () => {
       <Route path="/troubleshooting" component={Trobleshooting} />
       <Route path="/course-taking" component={CourseTaking} />
       <Route path="/reset" component={ResetPassword} />
-      <ProfileRouters/>
+      <ProfileRouters />
     </Switch>
   );
 };
