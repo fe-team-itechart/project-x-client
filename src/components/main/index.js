@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Layout } from '../layout';
 import { GettingStarted } from '../help/gettingStarted';
-import ProfileRouters from '../../containers/profile';
+import { ProfileRouters } from '../../containers/profile';
 import { Trobleshooting } from '../help/troubleshooting';
 import { CourseTaking } from '../help/courseTaking';
 import ResetPassword from '../../containers/auth/resetPassword';

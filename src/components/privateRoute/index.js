@@ -5,12 +5,7 @@ import PropTypes from 'prop-types';
 
 import { isTokenValid } from '../../utils/validToken';
 
-export const PrivateRoute = ({
-  component: Component,
-  isAuthenticated,
-  pathname,
-  ...rest
-}) => {
+export const PrivateRoute = ({ component: Component, pathName, ...rest }) => {
   const valid = isTokenValid();
   return (
     <Route
@@ -21,7 +16,7 @@ export const PrivateRoute = ({
         ) : (
           <Redirect
             to={{
-              pathname,
+              pathName,
               state: { from: props.location },
             }}
           />
@@ -32,10 +27,9 @@ export const PrivateRoute = ({
 };
 
 PrivateRoute.defaultProps = {
-  pathname: '/',
+  pathName: '/',
 };
 
 PrivateRoute.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
-  pathname: PropTypes.string,
+  pathName: PropTypes.string,
 };
