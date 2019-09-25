@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import queryString from 'query-string';
 import { isEmpty } from 'lodash';
 
-import { resetApprove, resetPassword } from '../../../services/auth';
+import { resetPassword } from '../../../services/auth';
 import { changePasswordValidate } from '../../../validation/auth';
 import ShowMessage from '../showMessage';
 import Spinner from '../../../components/spinner';
@@ -17,7 +17,6 @@ class ResetPassword extends PureComponent {
   state = {
     password: null,
     passwordConfirm: null,
-    height: 0,
     pending: false,
     message: null,
     showNotifications: {
@@ -29,8 +28,10 @@ class ResetPassword extends PureComponent {
   };
 
   componentDidMount() {
-    const params = queryString.parse(location.search);
-    this.sendApprove(params.id);
+    const { id: token } = queryString.parse(location.search);
+    this.setState({
+      token
+    });
   }
 
   showCurrentMessage = ({
@@ -75,47 +76,27 @@ class ResetPassword extends PureComponent {
     return true;
   };
 
-  sendApprove = async linkId => {
-    this.showCurrentMessage({ message: null, pending: true });
-    const { status, data } = await resetApprove(linkId);
-
-    if (status < 300) {
-      this.showCurrentMessage({
-        keys: ['formShow'],
-        message: data.toString(),
-        pending: false,
-        additionalInjections: { linkId },
-      });
-    } else {
-      this.showCurrentMessage({
-        keys: ['errorShow'],
-        message: data.message,
-        pending: false,
-      });
-    }
-  };
-
   sendReset = async e => {
     e.preventDefault();
     this.showCurrentMessage({ message: null, pending: true });
-    const { linkId, passwordConfirm, password } = this.state;
+    const { token, passwordConfirm, password } = this.state;
     const valid = this.preValidateForm({ password, passwordConfirm });
     if (valid) {
-      const { status, data } = await resetPassword({
-        linkId,
+      const { status, message } = await resetPassword({
+        token,
         password,
-        passwordConfirm,
+        confirmPassword: passwordConfirm,
       });
       if (status < 300) {
         this.showCurrentMessage({
           keys: ['successShow'],
-          message: data,
+          message,
           pending: false,
         });
       } else {
         this.showCurrentMessage({
           keys: ['errorShow'],
-          message: data.toString(),
+          message,
           pending: false,
         });
       }

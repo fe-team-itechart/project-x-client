@@ -61,38 +61,30 @@ export const changePassword = async (id, data) => {
 export const forgotPasswordRequest = async data => {
   try {
     const response = await httpService.post({ url: links.resetRoute, data });
-    return response;
+    return response.data;
   } catch (e) {
     return {
       status: 400,
-      data: 'Bad email',
+      message: 'Bad email',
     };
   }
 };
 
-export const resetApprove = async linkId => {
-  const link = encodeURIComponent(linkId);
-  const response = await httpService.post({
-    url: `users/reset/${link}`,
-    data: {},
-    config: {
-      validateStatus: status => status >= 200 && status < 500,
-    },
-  });
-  return response;
-};
-
-export const resetPassword = async ({ linkId, password, passwordConfirm }) => {
+export const resetPassword = async ({ token, password, confirmPassword }) => {
   const response = await httpService.post({
     url: `users/reset-password`,
     data: {
-      linkId,
       password,
-      passwordConfirm,
+      confirmPassword,
     },
     config: {
+      ...config,
+      headers: {
+        ...config.headers,
+        authorization: token,
+      },
       validateStatus: status => status >= 200 && status < 500,
     },
   });
-  return response;
+  return response.data;
 };

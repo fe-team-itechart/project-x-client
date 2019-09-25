@@ -75,9 +75,9 @@ class ForgotPassword extends PureComponent {
     const valid = this.preValidateForm({ email });
     if (valid) {
       const response = await forgotPasswordRequest({ email });
-      const { status, data } = response;
-      const shownMessage = status < 300 ? 'successShow' : 'errorShow';
-      this.showCurrentMessage({ keys: [shownMessage], message: data });
+      const { status, message } = response;
+      const shownMessage = status < 300 ? ['successShow'] : ['formShow', 'validationShow'];
+      this.showCurrentMessage({ keys: shownMessage, message });
     }
   };
 
