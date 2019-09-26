@@ -42,7 +42,6 @@ export const loginValidate = (email, password) => {
 
   const emailValidate = Joi.validate(email, emailSchema);
   const passwordValidate = Joi.validate(password, passwordSchema);
-  console.log(passwordValidate);
 
   if (emailValidate.error) {
     errors.email = emailValidate.error.details[0].message.replace(

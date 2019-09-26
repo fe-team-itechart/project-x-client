@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import AliceCarousel from 'react-alice-carousel';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
@@ -83,11 +82,4 @@ class CoursesCarousel extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
-
-const mapDispatchToProps = {};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CoursesCarousel);
+export default CoursesCarousel;
