@@ -28,16 +28,16 @@ const Header = props => {
 
   useEffect(() => {
     if (width > 768) {
-      const toggleMenu = document.querySelector('#menu');
-      toggleMenu.classList.remove('mobileMenuActive');
+      const toggleElement = document.querySelector('#menu');
+      toggleElement.classList.remove('mobileMenuActive');
       setMenuStatus(false);
     }
   });
 
   const toggleMenuFunc = () => {
-    if (width < 768) {
-      const toggleMenu = document.querySelector('#menu');
-      toggleMenu.classList.toggle('mobileMenuActive');
+    if (width <= 768) {
+      const toggleElement = document.querySelector('#menu');
+      toggleElement.classList.toggle('mobileMenuActive');
     }
   };
 
@@ -58,11 +58,7 @@ const Header = props => {
 
   const checkMobileMenuStatus = () => {
     toggleMenuFunc();
-    if (isOpenMenu) {
-      setMenuStatus(false);
-    } else {
-      setMenuStatus(true);
-    }
+    setMenuStatus(!isOpenMenu);
   };
 
   const { isAuthenticated, logOutRequest } = props;
@@ -134,13 +130,14 @@ const Header = props => {
         modalStatus={isOpenForgotPass}
         onModalClose={setModalForgotPass}
       />
+      {width < 768 && isOpenMenu && <div className={styles.outSideMenuClick} onClick={checkMobileMenuStatus}/>}
     </header>
   );
 };
 
 Header.propTypes = {
   logOutRequest: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
