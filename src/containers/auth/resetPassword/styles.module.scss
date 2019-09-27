@@ -1,6 +1,6 @@
 @import '../../../scss/combineStyles.scss';
 
-.wrapper_form {
+.wrapperForm {
   font-family: $primary-font;
   color: $white;
   width: 90%;
@@ -17,6 +17,7 @@
     width: 100%;
     max-width: 640px;
     padding: 15px;
+    align-items: center;
     box-sizing: border-box;
   }
 
@@ -24,19 +25,19 @@
     margin: 15px 0 0 0;
   }
 
-  .row_top {
+  .rowTop {
     margin: 25px 0 0 0;
   }
 
-  .big_size_message {
+  .bigSizeMessage {
     font-size: 2em;
   }
 
-  .success_message {
+  .successMessage {
     color: $green;
   }
 
-  .error_message {
+  .errorMessage {
     color: $pink;
   }
 
@@ -45,11 +46,11 @@
     width: 20%;
   }
 
-  .btn_right_position {
+  .btnRightPosition {
     align-self: flex-end;
   }
 
-  .btn_margin_top {
+  .btnMarginTop {
     margin-top: 25px;
   }
 

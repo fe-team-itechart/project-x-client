@@ -60,15 +60,14 @@ export const changePassword = async (id, data) => {
 };
 
 export const forgotPasswordRequest = async data => {
-  try {
-    const response = await httpService.post({ url: links.resetRoute, data });
-    return response.data;
-  } catch (e) {
-    return {
-      status: 400,
-      message: 'Bad email',
-    };
-  }
+  const response = await httpService.post({ 
+    url: links.resetRoute, 
+    data,
+    config: {
+      validateStatus: status => status >= 200 && status < 500,
+    }
+  });
+  return response.data;
 };
 
 export const resetPassword = async ({ token, password, confirmPassword }) => {
