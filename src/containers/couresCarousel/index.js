@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import AliceCarousel from 'react-alice-carousel';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
@@ -20,7 +19,7 @@ const responsive = {
   730: {
     items: 2,
   },
-  350: {
+  370: {
     items: 1,
   },
 };
@@ -59,7 +58,7 @@ class CoursesCarousel extends Component {
           className={styles.navButton}
           type="button"
           onClick={this.prevItem}>
-          <IoIosArrowBack color="white" size="50px" />
+          <IoIosArrowBack color="white" className={styles.carouselArrows} />
         </button>
         <div className={styles.carousel}>
           <AliceCarousel
@@ -67,7 +66,6 @@ class CoursesCarousel extends Component {
             mouseDragEnabled
             infinite={false}
             responsive={responsive}
-            dotsDisabled
             buttonsDisabled
             ref={el => (this.Carousel = el)}
           />
@@ -76,18 +74,11 @@ class CoursesCarousel extends Component {
           className={styles.navButton}
           type="button"
           onClick={this.nextItem}>
-          <IoIosArrowForward color="white" size="50px" />
+          <IoIosArrowForward color="white" className={styles.carouselArrows} />
         </button>
       </section>
     );
   }
 }
 
-const mapStateToProps = state => ({});
-
-const mapDispatchToProps = {};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CoursesCarousel);
+export default CoursesCarousel;
