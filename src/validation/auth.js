@@ -17,14 +17,18 @@ const emailSchema = Joi.string()
 
 const passwordSchema = Joi.string()
   .required()
-  .regex(/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/)
+  .regex(
+    /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/
+  )
   .min(8)
   .max(32);
 
 const passwordConfirmSchema = Joi.object().keys({
   password: Joi.string()
     .required()
-    .regex(/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/)
+    .regex(
+      /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/
+    )
     .min(8)
     .max(32),
   confirmPassword: Joi.any()
@@ -51,6 +55,15 @@ export const loginValidate = (email, password) => {
       '"value"',
       'Password'
     );
+
+    if (
+      errors.password.includes(
+        '(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}'
+      )
+    ) {
+      errors.password =
+        'Password must contain at least one uppercase letter and one special symbol';
+    }
   }
 
   return errors;
