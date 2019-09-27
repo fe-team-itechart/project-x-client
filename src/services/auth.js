@@ -49,10 +49,11 @@ export const logOutRequest = () => {
   storageWrapper.deleteToken();
 };
 
-export const changePassword = async (id, data) => {
+export const changePassword = async data => {
+  config.headers.Authorization = localStorage.token;
+
   const res = await httpService.put({
     url: links.changePasswordRoute,
-    id,
     data,
     config,
   });
