@@ -66,7 +66,6 @@ class CoursesCarousel extends Component {
             mouseDragEnabled
             infinite={false}
             responsive={responsive}
-            dotsDisabled
             buttonsDisabled
             ref={el => (this.Carousel = el)}
           />
