@@ -84,7 +84,7 @@ const ProfileData = ({ profile, getProfileRequest, updateProfileRequest, isProfi
         <Spinner />
       ) : (
         <form className={styles.profile} onSubmit={onSubmit} noValidate>
-          <div className={styles.userFio}>
+          <div className={styles.userFullName}>
             <div>
               <input
                 type="text"
@@ -209,7 +209,8 @@ const ProfileData = ({ profile, getProfileRequest, updateProfileRequest, isProfi
 ProfileData.propTypes = {
   getProfileRequest: PropTypes.func.isRequired,
   updateProfileRequest: PropTypes.func.isRequired,
-  profile: PropTypes.object,
+  updateProfileRequest: PropTypes.func.isRequired,
+  isProfileLoading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({

@@ -6,7 +6,7 @@ class Spinner extends PureComponent {
   render() {
     return (
       <div className={styles.spinnerWrapper}>
-        <div className={styles.spinner}></div>
+        <div className={styles.spinner} />
       </div>
     );
   }
