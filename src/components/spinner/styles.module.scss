@@ -1,0 +1,39 @@
+@import '../../scss/shared/colors.scss';
+
+.spinnerWrapper {
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000a1;
+
+  .spinner {
+    display: block;
+    width: 70%;
+    max-width: 400px;
+
+    border-radius: 50%;
+    border-top: 10px solid $orange;
+
+    animation: spin 1.5s linear infinite;
+  }
+
+  .spinner:after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+
+  @keyframes spin {
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
