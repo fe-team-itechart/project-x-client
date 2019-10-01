@@ -11,6 +11,7 @@ SimpleModal.setAppElement('#root');
 export const Modal = ({ open, onClose, children }) => {
   return (
     <SimpleModal
+      style={{ overlay: { zIndex: 2 } }}
       isOpen={open}
       onRequestClose={onClose}
       className={styles.modal}>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CourseCard } from './CourseCard';
+import { CourseCard } from './courseCard';
 import { Profile } from '../profile';
 
 import styles from './styles.module.scss';

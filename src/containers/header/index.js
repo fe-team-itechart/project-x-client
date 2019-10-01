@@ -4,25 +4,42 @@ import { NavLink } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import { MdSearch } from 'react-icons/md';
+import { FaBars, FaWindowClose } from 'react-icons/fa';
 
 import { logOutRequest } from '../../actions/auth';
-import Burger from './burgerMenu';
 import Login from '../auth/login';
 import Register from '../auth/register';
 import ForgotPassword from '../auth/forgotPassword';
 
 import styles from './styles.module.scss';
+import './menu.scss';
 
 const Header = props => {
   const [width, setWidth] = useState(window.innerWidth);
   const [isOpenLog, setModalStatusLog] = useState(false);
   const [isOpenReg, setModalStatusReg] = useState(false);
+  const [isOpenMenu, setMenuStatus] = useState(false);
   const [isOpenForgotPass, setModalForgotPass] = useState(false);
 
   useEffect(() => {
     const handleWidth = () => setWidth(window.innerWidth);
     window.addEventListener('resize', handleWidth);
   }, []);
+
+  useEffect(() => {
+    if (width > 768) {
+      const toggleElement = document.querySelector('#menu');
+      toggleElement.classList.remove('mobileMenuActive');
+      setMenuStatus(false);
+    }
+  });
+
+  const toggleMenuFunc = () => {
+    if (width <= 768) {
+      const toggleElement = document.querySelector('#menu');
+      toggleElement.classList.toggle('mobileMenuActive');
+    }
+  };
 
   const closeLoginModal = () => {
     setModalStatusLog(false);
@@ -39,6 +56,11 @@ const Header = props => {
     setModalStatusReg(true);
   };
 
+  const checkMobileMenuStatus = () => {
+    toggleMenuFunc();
+    setMenuStatus(!isOpenMenu);
+  };
+
   const { isAuthenticated, logOutRequest } = props;
 
   return (
@@ -48,68 +70,74 @@ const Header = props => {
           <img src="src\assets\logoLight.png" alt="Logo" />
         </NavLink>
       </div>
-      {width > 768 ? (
-        <>
-          <div className={styles.search}>
-            <input type="text" placeholder="search" />
-            <MdSearch className={styles.icon} />
+      <>
+        <div className={styles.search}>
+          <input type="text" placeholder="search" />
+          <MdSearch className={styles.icon} />
+        </div>
+        {width < 768 && (
+          <div className={styles.menuIcons} onClick={checkMobileMenuStatus}>
+            {!isOpenMenu ? <FaBars /> : <FaWindowClose />}
           </div>
-          <div className={styles.menu}>
+        )}
+        <div id="menu" className={styles.menu}>
+          <div onClick={checkMobileMenuStatus}>
             <NavLink to="/sources" className={styles.link}>
               Sources
             </NavLink>
+          </div>
+          <div onClick={checkMobileMenuStatus}>
             <NavLink to="/categories" className={styles.link}>
               Categories
             </NavLink>
+          </div>
 
-            {isAuthenticated ? (
+          {isAuthenticated ? (
+            <div className={styles.buttonsBlock}>
               <button
                 type="button"
                 className={styles.button}
                 onClick={logOutRequest}>
                 Log out
               </button>
-            ) : (
-              <>
-                <button
-                  type="button"
-                  className={styles.button}
-                  onClick={openModalLog}>
-                  Log in
-                </button>
-                <button
-                  type="button"
-                  className={styles.button}
-                  onClick={openModalReg}>
-                  Register
-                </button>
-              </>
-            )}
-          </div>
-        </>
-      ) : (
-        <Burger
-          login={openModalLog}
-          register={openModalReg}
-          logout={logOutRequest}
-          isAuth={isAuthenticated}
-        />
-      )}
-      <Login 
-        modalStatus={isOpenLog} 
+            </div>
+          ) : (
+            <div className={styles.buttonsBlock}>
+              <button
+                type="button"
+                className={styles.button}
+                onClick={openModalLog}>
+                Log in
+              </button>
+              <button
+                type="button"
+                className={styles.button}
+                onClick={openModalReg}>
+                Register
+              </button>
+            </div>
+          )}
+        </div>
+      </>
+      <Login
+        modalStatus={isOpenLog}
         onModalClose={closeLoginModal}
         modalStatusForgotPass={isOpenForgotPass}
         onModalCloseForgotPass={setModalForgotPass}
       />
       <Register modalStatus={isOpenReg} onModalClose={closeRegModal} />
-      <ForgotPassword modalStatus={isOpenForgotPass} onModalClose={setModalForgotPass}/>
+      <ForgotPassword
+        modalStatus={isOpenForgotPass}
+        onModalClose={setModalForgotPass}
+      />
+      {width < 768 && isOpenMenu && <div className={styles.outSideMenuClick} onClick={checkMobileMenuStatus}/>}
     </header>
   );
 };
 
 Header.propTypes = {
   logOutRequest: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({

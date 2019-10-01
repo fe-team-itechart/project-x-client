@@ -182,13 +182,13 @@ const ProfileData = ({ profile, getProfileRequest, updateProfileRequest }) => {
               </button>
             </div>
           ) : (
-            <>
-              <button type="submit">Save</button>
-              <button type="button" onClick={onCheck}>
-                Close
-              </button>
-            </>
-          )}
+              <>
+                <button type="submit">Save</button>
+                <button type="button" onClick={onCheck}>
+                  Close
+                </button>
+              </>
+            )}
         </div>
       </form>
     </>

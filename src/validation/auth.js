@@ -98,6 +98,14 @@ export const registerValidate = (
       '"password"',
       'Password'
     );
+    if (
+      errors.password.includes(
+        '(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}'
+      )
+    ) {
+      errors.password =
+        'Password must contain at least one uppercase letter and one special symbol';
+    }
   }
 
   if (firstNameValidate.error) {
@@ -130,6 +138,14 @@ export const changePasswordValidate = (password, confirmPassword) => {
       '"password"',
       'Password'
     );
+    if (
+      errors.password.includes(
+        '(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}'
+      )
+    ) {
+      errors.password =
+        'Password must contain at least one uppercase letter and one special symbol';
+    }
   }
 
   return errors;

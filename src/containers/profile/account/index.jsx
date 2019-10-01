@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 
 import { Profile } from '../profile';
@@ -20,12 +18,6 @@ class Account extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const {
-      user: {
-        data: { id },
-      },
-    } = this.props;
-    
     const { password, confirmPassword } = this.state;
 
     const errors = changePasswordValidate(password, confirmPassword);
@@ -39,10 +31,10 @@ class Account extends Component {
         errors: {},
         update: !this.state.update
       });
-      changePassword(id, { password });
+      changePassword({ password });
     }
   };
- 
+
   onChange = event => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -108,13 +100,13 @@ class Account extends Component {
                   </button>
                 </div>
               ) : (
-                <>
-                  <button type="submit">Save</button>
-                  <button type="button" onClick={this.closeUpdate}>
-                    Close
+                  <>
+                    <button type="submit">Save</button>
+                    <button type="button" onClick={this.closeUpdate}>
+                      Close
                   </button>
-                </>
-              )}
+                  </>
+                )}
             </div>
           </form>
         </div>
@@ -123,15 +115,5 @@ class Account extends Component {
   }
 }
 
-Account.propTypes = {
-  user: PropTypes.object.isRequired
-};
 
-const mapStateToProps = state => ({
-  user: state.user,
-});
-
-export default connect(
-  mapStateToProps,
-  null
-)(Account);
+export default Account;
