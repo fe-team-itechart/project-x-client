@@ -1,11 +1,13 @@
 import React, { PureComponent } from 'react';
 
-import { CircleSpinner } from 'react-spinners-kit';
+import styles from './styles.module.scss';
 
 class Spinner extends PureComponent {
   render() {
     return (
-      <CircleSpinner size={40} color="#fff" loading={this.props.loading} />
+      <div className={styles.spinnerWrapper}>
+        <div className={styles.spinner}></div>
+      </div>
     );
   }
 }

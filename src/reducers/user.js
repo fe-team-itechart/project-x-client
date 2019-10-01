@@ -7,6 +7,7 @@ const initialState = {
   loading: true,
   data: null,
   profile: null,
+  isProfileLoading: true,
 };
 
 const loginSuccess = (state, { payload }) => ({
@@ -32,11 +33,13 @@ const logOutSuccess = state => ({
 const profileSuccess = (state, { payload }) => ({
   ...state,
   profile: payload,
+  isProfileLoading: false,
 });
 
 const profileFailure = state => ({
   ...state,
   profile: null,
+  isProfileLoading: false,
 });
 
 export default handleActions(
