@@ -7,7 +7,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import styles from './styles.module.scss';
 
 const responsive = {
-  1650: {
+  1800: {
     items: 5,
   },
   1430: {
