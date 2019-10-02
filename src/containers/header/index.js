@@ -92,15 +92,22 @@ const Header = props => {
             </NavLink>
           </div>
 
-          {isAuthenticated ? (
-            <div className={styles.buttonsBlock}>
-              <button
-                type="button"
-                className={styles.button}
-                onClick={logOutRequest}>
-                Log out
-              </button>
-            </div>
+          {isAuthenticated ? ( 
+            <>     
+              <div className={styles.buttonsBlock}>
+                <div onClick={checkMobileMenuStatus}>
+                  <NavLink to="/profile-public" className={styles.link}>
+                    Account
+                  </NavLink>
+                </div>
+                <button
+                  type="button"
+                  className={styles.button}
+                  onClick={logOutRequest}>
+                  Log out
+                </button>
+              </div>
+            </>
           ) : (
             <div className={styles.buttonsBlock}>
               <button
