@@ -108,7 +108,7 @@ class ResetPassword extends PureComponent {
             </div>
             <button
               type="submit"
-              className={`${styles.btn} ${styles.btnRightPosition} ${styles.btnMarginTop}`}
+              className={`${styles.btn}`}
               onClick={this.sendReset}>
               Push
             </button>
