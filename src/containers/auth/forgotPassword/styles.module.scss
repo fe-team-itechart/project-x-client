@@ -1,4 +1,5 @@
 @import '../../../scss/combineStyles.scss';
+@import '../../../scss/mixins/message.scss';
 
 .form {
   display: flex;
@@ -12,20 +13,19 @@
 }
 
 .successMessage {
-  color: $green;
-}
-
-.bigMessage {
-  font-size: 2em
+  @include message($green, 2em);
 }
 
 .errorMessage {
+  @include message($pink, inherit);
   height: 30px;
-  color: $pink;
 }
 
 
-input {
+.input {
+  @include primary-input;
+  width: 100%;
+  margin-bottom: 10px;
 
   &:invalid {
     border-color: red;
@@ -34,12 +34,6 @@ input {
   &:valid {
     border-color: green;
   }
-}
-
-.input {
-  @include primary-input;
-  width: 100%;
-  margin-bottom: 10px;
 }
 
 .btn {

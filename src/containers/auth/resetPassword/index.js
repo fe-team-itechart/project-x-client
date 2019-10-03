@@ -124,7 +124,7 @@ class ResetPassword extends PureComponent {
         {!pending && success && (
           <>
             <div
-              className={`${styles.form} ${styles.successMessage} ${styles.bigSizeMessage}`}>
+              className={`${styles.form} ${styles.successMessage}`}>
               {message}
             </div>
           </>

@@ -1,4 +1,5 @@
 @import '../../../scss/combineStyles.scss';
+@import '../../../scss/mixins/message.scss';
 
 .wrapperForm {
   font-family: $primary-font;
@@ -30,16 +31,12 @@
     margin: 25px 0 0 0;
   }
 
-  .bigSizeMessage {
-    font-size: 2em;
-  }
-
   .successMessage {
-    color: $green;
+    @include message($green, 2em);
   }
 
   .errorMessage {
-    color: $pink;
+    @include message($pink, inherit);
   }
 
   .btn {
@@ -52,5 +49,13 @@
   .input {
     @include primary-input;
     width: 100%;
+    
+    &:invalid {
+      border-color: red;
+    }
+  
+    &:valid {
+      border-color: green;
+    }
   }
 }

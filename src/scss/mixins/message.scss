@@ -1,0 +1,6 @@
+@import '../shared/colors.scss';
+
+@mixin message($color, $font-size) {
+  font-size: $font-size;
+  color: $color;
+}
