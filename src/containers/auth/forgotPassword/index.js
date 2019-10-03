@@ -95,7 +95,7 @@ class ForgotPassword extends PureComponent {
         )}
 
         {!pending && message && success && (
-          <div className={`${styles.form} ${styles.bigMessage} ${styles.successMessage}`}>{message}</div>
+          <div className={`${styles.form} ${styles.successMessage}`}>{message}</div>
         )}
       </Modal>
     );
