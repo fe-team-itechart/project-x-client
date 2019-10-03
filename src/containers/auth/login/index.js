@@ -74,6 +74,7 @@ class Login extends Component {
       request.then(
         () => {
           onModalClose(false);
+          this.setState({ errors: {} });
         },
         errors => {
           this.setState({ errors });

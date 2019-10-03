@@ -88,6 +88,7 @@ class Register extends Component {
       request.then(
         () => {
           onModalClose(false);
+          this.setState({ errors: {} });
         },
         errors => {
           this.setState({ errors });
