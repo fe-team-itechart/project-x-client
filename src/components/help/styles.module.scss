@@ -4,7 +4,7 @@
 .cardsWrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 90%;
   margin: auto;
   background-color: $bcg-gray-light;
@@ -19,7 +19,8 @@
 
   .cardLink {
     display: block;
-    width: 340px;
+    width: 100%;
+    max-width: 450px;
     text-decoration: none;
     color: $white;
     text-align: center;
