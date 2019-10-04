@@ -10,8 +10,8 @@ import { Modal } from '../../../components/modal';
 import { registerValidate } from '../../../validation/auth';
 import { registerRequest, socialLoginRequest } from '../../../actions/auth';
 import { links } from '../../../utils/constants';
-import GoogleIcon from '../../../assets/google.svg';
-import LinkedInIcon from '../../../assets/linkedin.svg';
+import GoogleIcon from '../../../../public/assets/google.svg';
+import LinkedInIcon from '../../../../public/assets/linkedin.svg';
 
 import styles from '../styles.module.scss';
 

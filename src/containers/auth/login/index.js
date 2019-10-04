@@ -10,8 +10,9 @@ import { Modal } from '../../../components/modal';
 import { loginRequest, socialLoginRequest } from '../../../actions/auth';
 import { loginValidate } from '../../../validation/auth';
 import { links } from '../../../utils/constants';
-import GoogleIcon from '../../../assets/google.svg';
-import LinkedInIcon from '../../../assets/linkedin.svg';
+
+import GoogleIcon from '../../../../public/assets/google.svg';
+import LinkedInIcon from '../../../../public/assets/linkedin.svg';
 
 import styles from '../styles.module.scss';
 
@@ -82,7 +83,7 @@ class Login extends Component {
       );
     }
   };
-  
+
   render() {
     const { email, password, errors } = this.state;
     const { modalStatus } = this.props;

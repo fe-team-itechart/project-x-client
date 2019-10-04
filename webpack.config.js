@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const environment = process.env.NODE_ENV || 'development';
 const isDevelopment = environment === 'development';
@@ -17,6 +18,13 @@ const config = {
   },
 
   mode: environment,
+
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+    minimizer: [new OptimizeCSSAssetsPlugin()],
+  },
 
   module: {
     rules: [
@@ -62,7 +70,7 @@ const config = {
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', '.css', '.scss'],
+    extensions: ['.js', '.jsx', '.css', '.scss', 'svg', 'png'],
   },
 
   plugins: [
