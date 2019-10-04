@@ -4,7 +4,7 @@ export const links = {
   iTechFacebook: 'https://www.facebook.com/iTechArt.Group',
   linkedInURL: 'api/users/auth/linkedin',
   googleURL: 'api/users/auth/google',
-  resetRoute: 'users/reset',
+  resetRoute: 'users/forgot-password',
   changePasswordRoute: 'users/change-password',
   loginRoute: 'users/login',
   registrationRoute: 'users/registration',

@@ -82,6 +82,7 @@ class Login extends Component {
       );
     }
   };
+  
   render() {
     const { email, password, errors } = this.state;
     const { modalStatus } = this.props;

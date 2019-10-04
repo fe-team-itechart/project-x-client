@@ -1,12 +1,14 @@
 @import '../../../scss/combineStyles.scss';
+@import '../../../scss/mixins/message.scss';
 
-.wrapper_form {
+.wrapperForm {
   font-family: $primary-font;
   color: $white;
   width: 90%;
   display: flex;
   height: calc(100vh - 120px - 198px);
   justify-content: center;
+
   @media (max-width: $width-xl) {
     height: calc(100vh - 120px - 367px);
   }
@@ -17,6 +19,7 @@
     width: 100%;
     max-width: 640px;
     padding: 15px;
+    align-items: center;
     box-sizing: border-box;
   }
 
@@ -24,37 +27,31 @@
     margin: 15px 0 0 0;
   }
 
-  .row_top {
-    margin: 25px 0 0 0;
+  .successMessage {
+    @include message($green, 2em);
   }
 
-  .big_size_message {
-    font-size: 2em;
-  }
-
-  .success_message {
-    color: $green;
-  }
-
-  .error_message {
-    color: $pink;
+  .errorMessage {
+    @include message($pink, inherit);
   }
 
   .btn {
     @include primary-button;
     width: 20%;
-  }
-
-  .btn_right_position {
     align-self: flex-end;
-  }
-
-  .btn_margin_top {
     margin-top: 25px;
   }
 
   .input {
     @include primary-input;
     width: 100%;
+    
+    &:invalid {
+      border-color: red;
+    }
+  
+    &:valid {
+      border-color: green;
+    }
   }
 }
