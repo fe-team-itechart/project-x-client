@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import { PrivateRoute } from '../../components/privateRoute';
 import ProfileData from './profile/index';
