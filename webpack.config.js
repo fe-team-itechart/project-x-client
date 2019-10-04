@@ -70,7 +70,7 @@ const config = {
       template: path.resolve(__dirname, 'public/index.html'),
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].module.scss',
+      filename: '[name].css',
     }),
     new LodashModuleReplacementPlugin(),
   ],
