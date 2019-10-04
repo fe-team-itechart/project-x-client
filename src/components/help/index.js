@@ -17,14 +17,6 @@ export const Help = () => {
         </div>
       </Link>
 
-      <Link to="/profile-public" className={styles.cardLink}>
-        <div className={styles.cardWrapper}>
-          <FaUser />
-          <h3>Account/Profile</h3>
-          <p>Manage your account settings</p>
-        </div>
-      </Link>
-
       <Link to="/troubleshooting" className={styles.cardLink}>
         <div className={styles.cardWrapper}>
           <FaCogs />
