@@ -8,30 +8,31 @@ import styles from './styles.module.scss';
 import './dotsStyles.scss';
 
 class MainPage extends Component {
-  
   sliderItems = () => {
     const slides = [
       {
         header: 'Learn ! Potom DasPish !',
-        description: "We are learning the whole world ! If don't believe us you don't believe nobody.",
+        description:
+          "We are learning the whole world ! If don't believe us you don't believe nobody.",
       },
       {
         header: 'Lorem ipsum dolor sit amet consectetur adipisicing.',
-        description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum nobis similique delectus? Dolor, ut aliquid..",
+        description:
+          'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum nobis similique delectus? Dolor, ut aliquid..',
       },
       {
         header: 'Lorem, ipsum dolor. ',
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, incidunt eum sint maiores necessitatibus dolores laudantium quasi quas minus amet.",
+        description:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, incidunt eum sint maiores necessitatibus dolores laudantium quasi quas minus amet.',
       },
-    ]
+    ];
 
-    return slides
-      .map((item, key) => (
-        <div key={key}className={styles.slideContainer}>
-          <h1>{item.header}</h1>
-          <p>{item.description}</p>
-        </div>
-      ));
+    return slides.map((item, key) => (
+      <div key={key} className={styles.slideContainer}>
+        <h1>{item.header}</h1>
+        <p>{item.description}</p>
+      </div>
+    ));
   };
   render() {
     return (
@@ -58,4 +59,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(MainPage);
-
