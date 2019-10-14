@@ -26,8 +26,8 @@ class MainPage extends Component {
     ]
 
     return slides
-      .map((item, i) => (
-        <div className={styles.slideContainer}>
+      .map((item, key) => (
+        <div key={key}className={styles.slideContainer}>
           <h1>{item.header}</h1>
           <p>{item.description}</p>
         </div>
