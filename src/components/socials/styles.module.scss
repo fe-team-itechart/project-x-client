@@ -1,0 +1,75 @@
+@import '../../scss/shared/colors.scss';
+
+.socialsWrapper {
+  position: fixed;
+  z-index: 1;
+  top: 40vh;
+  right: 0;
+  color: #fff;
+  display: flex;
+
+  .arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0.5;
+    height: 56px;
+    width: 50px;
+
+    background: $gradient;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    svg {
+      font-size: 24px;
+      transform: rotate(0deg);
+      transition: 0.3s;
+    }
+
+    &.active {
+      opacity: 1;
+      transition: 0.3s;
+
+      svg {
+        transform: rotate(180deg);
+        transition: 0.3s;
+      }
+    }
+  }
+
+  .socials {
+    background: $bcg-gray-light;
+    width: 0px;
+    transition: 0.3s;
+
+    &.active {
+      width: 54px;
+      transition: 0.3s;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-bottom-left-radius: 8px;
+      overflow: hidden;
+
+      li {
+        padding: 2px;
+
+        &:hover {
+          background: $gradient;
+        }
+
+        svg {
+          padding: 12px;
+          font-size: 24px;
+          color: $white;
+        }
+      }
+    }
+  }
+}
