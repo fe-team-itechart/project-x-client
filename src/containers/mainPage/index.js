@@ -5,6 +5,11 @@ import { FaLaptopCode, FaCode, FaAngleDoubleDown } from 'react-icons/fa';
 import { IoIosRocket } from 'react-icons/io';
 import { ProfileIphone } from './iPhoneComponent';
 
+import laptop from '../../../public/assets/laptop.png';
+import laptopScreen from '../../../public/assets/laptopScreen.png';
+import iPhone from '../../../public/assets/iPhone.png';
+import iPhoneLeft from '../../../public/assets/iPhoneLeft.png';
+
 import styles from './styles.module.scss';
 
 class MainPage extends Component {
@@ -83,20 +88,24 @@ class MainPage extends Component {
             </div>
           </div>
           <div className={styles.rightBlock}>
-            <div className={styles.pcBlock} style={{backgroundImage:'url(src/assets/Laptop.png)'}}>
+            <div
+              className={styles.pcBlock}
+              style={{ backgroundImage: `url(${laptop})` }}>
               <div className={styles.pcContext}>
-                <img src="\src\assets\laptopScreen.png" alt="Laptop"/>
+                <img src={laptopScreen} alt="Laptop" />
               </div>
             </div>
-            <div className={styles.phoneBlock} style={{backgroundImage:'url(src/assets/iPhone.png)'}}>
-              <img src="src\assets\iPhoneLeft.png" alt="iPhone" />
+            <div
+              className={styles.phoneBlock}
+              style={{ backgroundImage: `url(${iPhone})` }}>
+              <img src={iPhoneLeft} alt="iPhone" />
               <div className={styles.phoneContext}>
                 <ProfileIphone />
               </div>
             </div>
           </div>
         </div>
-        <div className={styles.arrowDown}> 
+        <div className={styles.arrowDown}>
           <FaAngleDoubleDown />
         </div>
       </main>

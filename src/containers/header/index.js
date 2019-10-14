@@ -11,6 +11,8 @@ import Login from '../auth/login';
 import Register from '../auth/register';
 import ForgotPassword from '../auth/forgotPassword';
 
+import headerLogo from '../../../public/assets/logoLight.png'
+
 import styles from './styles.module.scss';
 import './menu.scss';
 
@@ -67,7 +69,7 @@ const Header = props => {
     <header className={styles.header}>
       <div className={styles.logo}>
         <NavLink to="/">
-          <img src="src\assets\logoLight.png" alt="Logo" />
+          <img src={headerLogo} alt="Logo" />
         </NavLink>
       </div>
       <>
