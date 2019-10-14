@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 import styles from './styles.module.scss';
 
-class Sources extends Component {
+class Catalogue extends Component {
   state = {};
 
   render() {
-    return <main className={styles.mainPageWrapper}>Sources</main>;
+    return <main className={styles.mainPageWrapper}>Catalogue</main>;
   }
 }
 
@@ -18,4 +18,4 @@ const mapDispatchToProps = {};
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Sources);
+)(Catalogue);
