@@ -1,0 +1,36 @@
+@import '../../scss/shared/colors.scss';
+@import '../../scss/shared/fonts.scss';
+
+.inputRateRatio:checked ~ .inputRateLabel {
+  color: $text-gray-light;
+}
+
+.rateGroup {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+
+  .rateVotes {
+    margin-left: 5px;
+    color: $text-gray-light
+  }
+
+  .inputRateRatio {
+    position: absolute;
+    left: -9990px;
+  }
+
+  .inputRateLabel {
+    color: $orange;
+    margin-left: 5px;
+  }
+
+  &:hover > .inputRateLabel {
+    color: $orange;
+  }
+
+  .inputRateRatio:hover ~ .inputRateLabel {
+    color: $text-gray-light;
+  }
+}
