@@ -1,6 +1,6 @@
 import Joi from 'joi-browser';
 
-import { firstNameSchema, lastNameSchema } from './auth';
+import { userNameSchema } from './auth';
 
 const descriptionSchema = Joi.string().max(255);
 
@@ -12,32 +12,23 @@ const socialSchema = Joi.string()
 export const publicProfileValidate = profile => {
   let errors = {};
   const {
-    firstName,
-    lastName,
+    userName,
     description,
     twitterLink,
     facebookLink,
     linkedInLink,
   } = profile;
 
-  const firstNameValidate = Joi.validate(firstName, firstNameSchema);
-  const lastNameValidate = Joi.validate(lastName, lastNameSchema);
+  const userNameValidate = Joi.validate(userName, userNameSchema);
   const descriptionValidate = Joi.validate(description, descriptionSchema);
   const twitterLinkValidate = Joi.validate(twitterLink, socialSchema);
   const facebookLinkValidate = Joi.validate(facebookLink, socialSchema);
   const linkedInLinkValidate = Joi.validate(linkedInLink, socialSchema);
 
-  if (firstNameValidate.error) {
-    errors.firstName = firstNameValidate.error.details[0].message.replace(
+  if (userNameValidate.error) {
+    errors.firstName = userNameValidate.error.details[0].message.replace(
       '"value"',
-      'First name'
-    );
-  }
-
-  if (lastNameValidate.error) {
-    errors.lastName = lastNameValidate.error.details[0].message.replace(
-      '"value"',
-      'Last name'
+      'Username'
     );
   }
 

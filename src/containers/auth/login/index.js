@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import queryString from 'query-string';
+import { FaEye, FaEyeSlash, FaLock, FaEnvelope } from 'react-icons/fa';
 
 import { Modal } from '../../../components/modal';
 import { loginRequest, socialLoginRequest } from '../../../actions/auth';
@@ -21,6 +22,7 @@ class Login extends Component {
     email: '',
     password: '',
     errors: {},
+    hidden: true,
   };
 
   componentDidMount() {
@@ -40,6 +42,10 @@ class Login extends Component {
       password: '',
       errors: {},
     });
+  };
+
+  passwordVisability = () => {
+    this.setState({ hidden: !this.state.hidden });
   };
 
   openForgotPasswordModal = () => {
@@ -91,33 +97,48 @@ class Login extends Component {
     return (
       <>
         <Modal open={modalStatus} onClose={this.closeModal}>
-          <h2 className={styles.title}>Sign In</h2>
+          <h2 className={styles.title}>Log In to your Das Pish account</h2>
           <form onSubmit={this.onSubmit} noValidate>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              placeholder="Email Address"
-              onChange={this.onChange}
-            />
-            {(errors.email || errors.status === 404) && (
+            <div className={styles.iconInput}>
+              <FaEnvelope />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                placeholder="E-Mail "
+                onChange={this.onChange}
+              />
+            </div>
+            {errors.email || errors.status === 404 ? (
               <span className={styles.invalidFeedback}>
                 {errors.email ? errors.email : errors.message}
               </span>
+            ) : (
+              <div className={styles.reservedPlace}></div>
             )}
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              placeholder="Password"
-              onChange={this.onChange}
-            />
-            {(errors.password || errors.status === 403) && (
+            <div className={styles.iconInput}>
+              <div className={styles.password}>
+                <FaLock />
+                <input
+                  type={this.state.hidden ? 'password' : 'text'}
+                  id="password"
+                  name="password"
+                  value={password}
+                  placeholder="Password"
+                  onChange={this.onChange}
+                />
+              </div>
+              <div className={styles.eyeIcon} onClick={this.passwordVisability}>
+                {this.state.hidden ? <FaEye /> : <FaEyeSlash />}
+              </div>
+            </div>
+            {errors.password || errors.status === 403 ? (
               <span className={styles.invalidFeedback}>
                 {errors.password ? errors.password : errors.message}
               </span>
+            ) : (
+              <div className={styles.reservedPlace}></div>
             )}
             <div className={styles.socialButtonsContainer}>
               <a href={links.googleURL}>
@@ -136,7 +157,7 @@ class Login extends Component {
               </a>
             </div>
             <button type="submit" className={styles.submit}>
-              Sign In
+              Log In
             </button>
             <span
               onClick={this.openForgotPasswordModal}

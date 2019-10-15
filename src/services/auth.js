@@ -61,12 +61,12 @@ export const changePassword = async data => {
 };
 
 export const forgotPasswordRequest = async data => {
-  const response = await httpService.post({ 
-    url: links.resetRoute, 
+  const response = await httpService.post({
+    url: links.resetRoute,
     data,
     config: {
       validateStatus: status => status >= 200 && status < 500,
-    }
+    },
   });
   return response.data;
 };
