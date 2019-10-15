@@ -16,11 +16,15 @@ import Spinner from '../../../components/spinner';
 
 import styles from './styles.module.scss';
 
-const ProfileData = ({ profile, getProfileRequest, updateProfileRequest, isProfileLoading }) => {
+const ProfileData = ({
+  profile,
+  getProfileRequest,
+  updateProfileRequest,
+  isProfileLoading,
+}) => {
   const [checked, setCheck] = useState(true);
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    userName: '',
     description: '',
     twitterLink: '',
     facebookLink: '',
@@ -28,8 +32,7 @@ const ProfileData = ({ profile, getProfileRequest, updateProfileRequest, isProfi
   });
 
   const [errors, setErrors] = useState({
-    firstName: '',
-    lastName: '',
+    userName: '',
     description: '',
     twitterLink: '',
     facebookLink: '',
@@ -37,8 +40,7 @@ const ProfileData = ({ profile, getProfileRequest, updateProfileRequest, isProfi
   });
 
   const {
-    firstName,
-    lastName,
+    userName,
     description,
     twitterLink,
     facebookLink,
@@ -88,30 +90,15 @@ const ProfileData = ({ profile, getProfileRequest, updateProfileRequest, isProfi
             <div>
               <input
                 type="text"
-                name="firstName"
-                value={firstName}
-                placeholder="First name"
+                name="userName"
+                value={userName}
+                placeholder="Username"
                 disabled={checked}
                 onChange={onChange}
               />
-              {errors.firstName && (
+              {errors.userName && (
                 <span className={styles.invalidFeedback}>
-                  {errors.firstName}
-                </span>
-              )}
-            </div>
-            <div>
-              <input
-                type="text"
-                name="lastName"
-                value={lastName}
-                placeholder="Last name"
-                disabled={checked}
-                onChange={onChange}
-              />
-              {errors.lastName && (
-                <span className={styles.invalidFeedback}>
-                  {errors.lastName}
+                  {errors.userName}
                 </span>
               )}
             </div>

@@ -3,13 +3,15 @@ import React from 'react';
 import { FaVk, FaYoutube, FaFacebookSquare } from 'react-icons/fa';
 import { links } from '../../utils/constants';
 
+import footerLogo from '../../../public/assets/logoLight.png';
+
 import styles from './styles.module.scss';
 
 export const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div>
-        <img src="src\assets\logoLight.png" alt="" />
+        <img src={footerLogo} alt="" />
         <p>We are remarkable</p>
         <p>© 2019 :iTechArt All Rights Reserved.</p>
       </div>

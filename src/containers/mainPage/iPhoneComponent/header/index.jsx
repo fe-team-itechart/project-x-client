@@ -9,12 +9,13 @@ import Burger from './burgerMenu';
 import Login from '../../../auth/login';
 import Register from '../../../auth/register';
 
+import headerLogo from '../../../../../public/assets/logoLight.png';
+
 import styles from './styles.module.scss';
 
 const Header = props => {
   const [isOpenLog, setModalStatusLog] = useState(false);
   const [isOpenReg, setModalStatusReg] = useState(false);
-
 
   const closeLoginModal = () => {
     setModalStatusLog(false);
@@ -37,7 +38,7 @@ const Header = props => {
     <header className={styles.header}>
       <div className={styles.logo}>
         <NavLink to="/">
-          <img src="src\assets\logoLight.png" alt="Logo" />
+          <img src={headerLogo} alt="Logo" />
         </NavLink>
       </div>
       <Burger
@@ -54,7 +55,7 @@ const Header = props => {
 
 Header.propTypes = {
   logOutRequest: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
