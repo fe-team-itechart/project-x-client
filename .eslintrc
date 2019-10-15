@@ -25,11 +25,7 @@
     "import/imports-first": ["error", "absolute-first"],
     "import/newline-after-import": "error",
     "react/state-in-constructor": 0,
-    "react/jsx-props-no-spreading": [{
-      "html": "ignore",
-      "custom": "ignore",
-      "exceptions": []
-    }]
+    "react/jsx-props-no-spreading": 1
   },
   "globals": {
     "window": true,

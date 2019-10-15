@@ -13,4 +13,5 @@ export const links = {
   twitter:'http://twitter.com/',
   facebook:'https://www.facebook.com/',
   linkedIn:'https://www.linkedin.com/',
+  coursePreview: 'course/preview/'
 };
