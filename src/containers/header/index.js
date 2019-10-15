@@ -11,7 +11,7 @@ import Login from '../auth/login';
 import Register from '../auth/register';
 import ForgotPassword from '../auth/forgotPassword';
 
-import headerLogo from '../../../public/assets/logoLight.png'
+import headerLogo from '../../../public/assets/logoLight.png';
 
 import styles from './styles.module.scss';
 import './menu.scss';
@@ -94,8 +94,8 @@ const Header = props => {
             </NavLink>
           </div>
 
-          {isAuthenticated ? ( 
-            <>     
+          {isAuthenticated ? (
+            <>
               <div className={styles.buttonsBlock}>
                 <div onClick={checkMobileMenuStatus}>
                   <NavLink to="/profile-public" className={styles.link}>
@@ -134,12 +134,21 @@ const Header = props => {
         modalStatusForgotPass={isOpenForgotPass}
         onModalCloseForgotPass={setModalForgotPass}
       />
-      <Register modalStatus={isOpenReg} onModalClose={closeRegModal} />
+      <Register
+        modalStatus={isOpenReg}
+        onModalClose={closeRegModal}
+        onModalCloseLog={setModalStatusLog}
+      />
       <ForgotPassword
         modalStatus={isOpenForgotPass}
         onModalClose={setModalForgotPass}
       />
-      {width < 768 && isOpenMenu && <div className={styles.outSideMenuClick} onClick={checkMobileMenuStatus}/>}
+      {width < 768 && isOpenMenu && (
+        <div
+          className={styles.outSideMenuClick}
+          onClick={checkMobileMenuStatus}
+        />
+      )}
     </header>
   );
 };

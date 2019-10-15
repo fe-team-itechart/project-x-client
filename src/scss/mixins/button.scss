@@ -15,8 +15,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 
   &:hover {
-    background: linear-gradient(135deg, $orange 20%, $pink 100%); 
+    background: linear-gradient(135deg, $orange 20%, $pink 100%);
   }
 }
