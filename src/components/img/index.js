@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Spinner from './../spinner/index';
+import Skeleton from 'react-loading-skeleton';
+
 
 export default class Img extends Component {
   refImg = React.createRef();
@@ -21,7 +22,6 @@ export default class Img extends Component {
   }
 
   onLoad = () => {
-    console.log('loaded');
     this.setState({
       isLoading: false,
     });
@@ -29,7 +29,6 @@ export default class Img extends Component {
 
   onError = () => {
     const image = this.refImg.current;
-    console.log('error');
     this.setState({
       isLoading: false,
     });
@@ -42,7 +41,7 @@ export default class Img extends Component {
     const { isLoading } = this.state;
     return (
       <>
-        { isLoading && <Spinner /> }
+        { isLoading && <Skeleton  duration={2} width={'100%'} height={'100%'} />}
         <img ref={this.refImg} id={id} {...props} alt='Loading...'/>
       </>
     );

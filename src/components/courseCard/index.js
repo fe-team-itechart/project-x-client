@@ -15,7 +15,7 @@ export default function CourseCard({ item }) {
     setRedirect(true);
   };
 
-  const handlerRating = e => {
+  const handlerRating = (e) => {
     e.stopPropagation();
     if(e.currentTarget.tagName === 'LABEL') {
       return false;
