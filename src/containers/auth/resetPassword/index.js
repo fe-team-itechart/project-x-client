@@ -7,7 +7,7 @@ import { Redirect } from 'react-router-dom';
 
 import { resetPassword } from '../../../services/auth';
 import { changePasswordValidate } from '../../../validation/auth';
-import Spinner from '../../../components/spinner';
+import { Spinner } from '../../../components/spinner';
 
 import styles from './styles.module.scss';
 
@@ -123,8 +123,7 @@ class ResetPassword extends PureComponent {
 
         {!pending && success && (
           <>
-            <div
-              className={`${styles.form} ${styles.successMessage}`}>
+            <div className={`${styles.form} ${styles.successMessage}`}>
               {message}
             </div>
           </>

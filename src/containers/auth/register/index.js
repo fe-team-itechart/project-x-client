@@ -13,6 +13,7 @@ import {
   FaEnvelope,
 } from 'react-icons/fa';
 
+import { Spinner } from '../../../components/spinner';
 import { Modal } from '../../../components/modal';
 import { registerValidate } from '../../../validation/auth';
 import { registerRequest, socialLoginRequest } from '../../../actions/auth';
@@ -30,6 +31,7 @@ class Register extends Component {
     confirmPassword: '',
     errors: {},
     hidden: true,
+    isLoading: false,
   };
 
   componentDidMount() {
@@ -41,7 +43,7 @@ class Register extends Component {
     }
   }
 
-  passwordVisability = () => {
+  passwordVisibility = () => {
     this.setState({ hidden: !this.state.hidden });
   };
 
@@ -78,6 +80,7 @@ class Register extends Component {
       this.setState({ errors });
     } else {
       const request = new Promise((resolve, reject) => {
+        this.setState({ isLoading: true });
         registerRequest({
           userName,
           email,
@@ -90,22 +93,30 @@ class Register extends Component {
       request.then(
         () => {
           onModalClose(false);
-          this.setState({ errors: {} });
+          this.setState({ errors: {}, isLoading: false });
         },
         errors => {
-          this.setState({ errors });
+          this.setState({ errors, isLoading: false });
         }
       );
     }
   };
 
   render() {
-    const { userName, email, password, confirmPassword, errors } = this.state;
+    const {
+      userName,
+      email,
+      password,
+      confirmPassword,
+      errors,
+      isLoading,
+    } = this.state;
     const { modalStatus } = this.props;
 
     return (
       <>
         <Modal open={modalStatus} onClose={this.closeModal}>
+          {isLoading && <Spinner />}
           <h2 className={styles.title}>
             Create account and be a DasPish member!
           </h2>
@@ -210,6 +221,7 @@ class Register extends Component {
               Already have an account?
             </span>
           </form>
+          )}
         </Modal>
       </>
     );
