@@ -28,9 +28,13 @@
     overflow: hidden;
     outline: none;
     height: 100%;
-    
+
     @media screen and (max-width: $width-md) {
       display: none;
+    }
+
+    .disabled {
+      opacity: 0.3;
     }
   }
 
