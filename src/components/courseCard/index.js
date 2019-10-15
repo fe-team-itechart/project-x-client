@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Rating from '../rating/index';
 
-
 import styles from './style.module.scss';
 import { Redirect } from 'react-router-dom';
 import { links } from '../../utils/constants';
@@ -10,14 +9,14 @@ export default function CourseCard({ item }) {
   const { title, author, rate, price, img, id = 1, votes } = item;
   const [redirect, setRedirect] = useState(false);
   const redirection = e => {
-    e.preventDefault()
+    e.preventDefault();
     e.stopPropagation();
     setRedirect(true);
   };
 
-  const handlerRating = (e) => {
+  const handlerRating = e => {
     e.stopPropagation();
-    if(e.currentTarget.tagName === 'LABEL') {
+    if (e.currentTarget.tagName === 'LABEL') {
       return false;
     }
     // the place for onClick rating Handler.
