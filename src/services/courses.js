@@ -9,7 +9,7 @@ const config = {
 
 export const getCoursesForCarousel = async () => {
   const { data } = await httpService.get({
-    url: links.corsesCarouselRoute,
+    url: links.coursesCarouselRoute,
     config,
   });
   return data;

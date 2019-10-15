@@ -9,7 +9,7 @@ export const links = {
   loginRoute: 'users/login',
   registrationRoute: 'users/registration',
   publicProfileRoute: 'profile/public',
-  corsesCarouselRoute:'course/carousel-courses',
+  coursesCarouselRoute:'course/carousel-courses',
   twitter:'http://twitter.com/',
   facebook:'https://www.facebook.com/',
   linkedIn:'https://www.linkedin.com/',
