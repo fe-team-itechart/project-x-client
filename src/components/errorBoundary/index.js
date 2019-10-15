@@ -1,22 +1,24 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import styles from './styles.module.scss'
+import styles from './styles.module.scss';
 
 export class ErrorBoundary extends Component {
-  state = { 
+  state = {
     error: null,
-    errorData: null
+    errorData: null,
   };
-  
+
   componentDidCatch = (error, errorData) => {
-    this.setState({ error, errorData })
-  }
+    this.setState({ error, errorData });
+  };
 
   render() {
     return this.state.errorData ? (
       <div className={styles.errorWrapper}>
         <h1>Server is not responding. Try again later.</h1>
       </div>
-    ) : this.props.children
+    ) : (
+      this.props.children
+    );
   }
 }

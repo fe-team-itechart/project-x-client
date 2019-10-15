@@ -136,7 +136,11 @@ const Header = props => {
         modalStatusForgotPass={isOpenForgotPass}
         onModalCloseForgotPass={setModalForgotPass}
       />
-      <Register modalStatus={isOpenReg} onModalClose={closeRegModal} />
+      <Register
+        modalStatus={isOpenReg}
+        onModalClose={closeRegModal}
+        onModalCloseLog={setModalStatusLog}
+      />
       <ForgotPassword
         modalStatus={isOpenForgotPass}
         onModalClose={setModalForgotPass}
