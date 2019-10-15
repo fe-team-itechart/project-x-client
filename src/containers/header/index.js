@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import { MdSearch } from 'react-icons/md';
@@ -10,8 +10,6 @@ import { logOutRequest } from '../../actions/auth';
 import Login from '../auth/login';
 import Register from '../auth/register';
 import ForgotPassword from '../auth/forgotPassword';
-
-import headerLogo from '../../../public/assets/logoLight.png';
 
 import styles from './styles.module.scss';
 import './menu.scss';
@@ -29,7 +27,7 @@ const Header = props => {
   }, []);
 
   useEffect(() => {
-    if (width > 768) {
+    if (width > 992) {
       const toggleElement = document.querySelector('#menu');
       toggleElement.classList.remove('mobileMenuActive');
       setMenuStatus(false);
@@ -37,7 +35,7 @@ const Header = props => {
   });
 
   const toggleMenuFunc = () => {
-    if (width <= 768) {
+    if (width <= 992) {
       const toggleElement = document.querySelector('#menu');
       toggleElement.classList.toggle('mobileMenuActive');
     }
@@ -67,40 +65,36 @@ const Header = props => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
-        <NavLink to="/">
-          <img src={headerLogo} alt="Logo" />
-        </NavLink>
+      <div className={styles.logoWrapper}>
+        <Link to="/">
+          <span>DP</span>
+          <h1>DasPish</h1>
+        </Link>
       </div>
       <>
         <div className={styles.search}>
           <input type="text" placeholder="search" />
           <MdSearch className={styles.icon} />
         </div>
-        {width < 768 && (
+        {width < 992 && (
           <div className={styles.menuIcons} onClick={checkMobileMenuStatus}>
             {!isOpenMenu ? <FaBars /> : <FaWindowClose />}
           </div>
         )}
         <div id="menu" className={styles.menu}>
           <div onClick={checkMobileMenuStatus}>
-            <NavLink to="/sources" className={styles.link}>
-              Sources
-            </NavLink>
-          </div>
-          <div onClick={checkMobileMenuStatus}>
-            <NavLink to="/categories" className={styles.link}>
-              Categories
-            </NavLink>
+            <Link to="/catalogue" className={styles.link}>
+              Catalogue
+            </Link>
           </div>
 
           {isAuthenticated ? (
             <>
-              <div className={styles.buttonsBlock}>
+              <div className={styles.authButtonsWrapper}>
                 <div onClick={checkMobileMenuStatus}>
-                  <NavLink to="/profile-public" className={styles.link}>
+                  <Link to="/profile-public" className={styles.link}>
                     Account
-                  </NavLink>
+                  </Link>
                 </div>
                 <button
                   type="button"
@@ -111,7 +105,7 @@ const Header = props => {
               </div>
             </>
           ) : (
-            <div className={styles.buttonsBlock}>
+            <div className={styles.authButtonsWrapper}>
               <button
                 type="button"
                 className={styles.button}
@@ -126,6 +120,14 @@ const Header = props => {
               </button>
             </div>
           )}
+          <div>
+            <select name="localization">
+              <option value="ENG" defaultValue>
+                ENG
+              </option>
+              <option value="RUS">RUS</option>
+            </select>
+          </div>
         </div>
       </>
       <Login
@@ -143,7 +145,7 @@ const Header = props => {
         modalStatus={isOpenForgotPass}
         onModalClose={setModalForgotPass}
       />
-      {width < 768 && isOpenMenu && (
+      {width < 992 && isOpenMenu && (
         <div
           className={styles.outSideMenuClick}
           onClick={checkMobileMenuStatus}

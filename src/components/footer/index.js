@@ -1,51 +1,18 @@
 import React from 'react';
-
-import { FaVk, FaYoutube, FaFacebookSquare } from 'react-icons/fa';
-import { links } from '../../utils/constants';
-
-import footerLogo from '../../../public/assets/logoLight.png';
+import { Link } from 'react-router-dom';
 
 import styles from './styles.module.scss';
 
 export const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <div>
-        <img src={footerLogo} alt="" />
-        <p>We are remarkable</p>
-        <p>© 2019 :iTechArt All Rights Reserved.</p>
+      <div className={styles.logoWrapper}>
+        <span>DP</span>
+        <p>Copyright (c) DasPish Corporate</p>
       </div>
-      <div className={styles.socialMediaContainer}>
-        <h2>Follow us on</h2>
-        <ul>
-          <li>
-            <a target="_blank" rel="noopener noreferrer" href={links.iTechVK}>
-              <span className={styles.socialMedia}>
-                <FaVk />
-              </span>
-            </a>
-          </li>
-          <li>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={links.iTechYoutube}>
-              <span className={styles.socialMedia}>
-                <FaYoutube />
-              </span>
-            </a>
-          </li>
-          <li>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={links.iTechFacebook}>
-              <span className={styles.socialMedia}>
-                <FaFacebookSquare />
-              </span>
-            </a>
-          </li>
-        </ul>
+      <div className={styles.termsWrapper}>
+        <Link to="/">Terms</Link>
+        <Link to="/">Privacy Policy and Cookie Policy</Link>
       </div>
     </footer>
   );
