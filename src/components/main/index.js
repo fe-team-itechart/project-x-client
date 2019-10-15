@@ -9,6 +9,7 @@ import { CourseTaking } from '../help/courseTaking';
 import ResetPassword from '../../containers/auth/resetPassword';
 import Sources from '../../containers/sources';
 import Categories from '../../containers/categories';
+import CoursePageDetails from '../../containers/coursePageDetails';
 
 export const Main = () => {
   return (
@@ -20,6 +21,7 @@ export const Main = () => {
       <Route path="/troubleshooting" component={Trobleshooting} />
       <Route path="/course-taking" component={CourseTaking} />
       <Route path="/reset" component={ResetPassword} />
+      <Route path="/course-page-details/:id" component={CoursePageDetails} />
       <ProfileRouters />
     </Switch>
   );
