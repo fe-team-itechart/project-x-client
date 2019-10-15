@@ -32,8 +32,8 @@ class CoursesCarousel extends Component {
   };
 
   async componentDidMount() {
-    const courses = await getCoursesForCarousel();
-    this.setState({ courses });
+    const { data } = await getCoursesForCarousel();
+    this.setState({ courses: data });
   }
 
   galleryItems = () => {
