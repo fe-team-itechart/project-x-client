@@ -129,7 +129,7 @@ class Login extends Component {
                   onChange={this.onChange}
                 />
               </div>
-              <div className={styles.eyeIcon} onClick={this.passwordVisability}>
+              <div className={styles.eyeIcon} onClick={this.passwordVisibility}>
                 {this.state.hidden ? <FaEye /> : <FaEyeSlash />}
               </div>
             </div>
