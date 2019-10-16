@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Skeleton from 'react-loading-skeleton';
+import { links } from '../../utils/constants';
 
-export default class Img extends Component {
+ class Img extends Component {
   refImg = React.createRef();
 
   state = {
@@ -31,18 +32,19 @@ export default class Img extends Component {
     this.setState({
       isLoading: false,
     });
-    image.src = 'http://placeimg.com/640/480/tech';
+    image.src = links.placeHolderImage;
   };
 
   render() {
     const props = this.props;
-    const id = this.id;
     const { isLoading } = this.state;
     return (
       <>
         {isLoading && <Skeleton duration={2} width={'100%'} height={'100%'} />}
-        <img ref={this.refImg} id={id} {...props} alt="Loading..." />
+        <img ref={this.refImg} {...props} alt="Loading..." />
       </>
     );
   }
 }
+
+export default Img;

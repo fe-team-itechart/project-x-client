@@ -1,6 +1,6 @@
 {
   "extends": ["airbnb", "prettier", "prettier/react" ],
-  "plugins": ["prettier", "import", "react", "jsx/a11y" ],
+  "plugins": ["prettier"],
   "rules": {
     "camelcase": 1,
     "no-unused-expressions": 1,
