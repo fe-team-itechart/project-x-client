@@ -23,14 +23,16 @@
 
   .inputRateLabel {
     color: $orange;
-    margin-left: 5px;
+    padding-left: 5px;
   }
+}
 
-  &:hover > .inputRateLabel {
+.rateGroupVoteAble {
+  &:hover .inputRateLabel {
     color: $orange;
   }
 
-  .inputRateRatio:hover ~ .inputRateLabel {
+  .inputRateLabel:hover ~ .inputRateLabel {
     color: $text-gray-light;
   }
 }
