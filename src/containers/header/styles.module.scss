@@ -14,7 +14,7 @@
   font-size: 16px;
   width: 90%;
   margin: 15px 0;
-  
+
   @media (max-width: $width-lg) {
     justify-content: space-around;
   }
@@ -26,7 +26,7 @@
   }
 
   div {
-    @media (max-width: $width-sm) {
+    @media (max-width: $width-md) {
       padding: 0 15px;
       text-align: center;
       margin: 10px 0;
@@ -37,10 +37,13 @@
     cursor: pointer;
 
     @media (max-width: $width-sm) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: absolute;
       z-index: 1;
       right: 20px;
-      top: 20px;
+      top: 50px;
     }
 
     svg {
@@ -49,24 +52,30 @@
     }
   }
 
-  .logo {
-    flex: 0.3 1 auto;
+  .logoWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 20px;
+
+    a {
+      display: flex;
+      text-decoration: none;
+      color: $white;
+
+      span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        font-size: 22px;
+        transform: rotate(-20deg);
+        text-decoration: underline;
+      }
+    }
 
     @media (max-width: $width-md) {
       justify-content: flex-start;
-    }
-
-    @media (max-width: $width-sm) {
-      display: block;
-      text-align: left;
-    }
-
-    img {
-      cursor: pointer;
-      height: 32px;
     }
   }
 
@@ -107,43 +116,49 @@
       right: 0;
       cursor: pointer;
       transition: 0.3s;
-    }
 
-    .icon:hover {
-      color: $orange;
+      &:hover {
+        color: $orange;
+      }
     }
   }
 
   .menu {
-    flex: 2 1 auto;
+    flex: 1 1 auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    list-style-type: none;
 
-    @media (max-width: 767px) {
+    @media (max-width: $width-lg) {
       position: fixed;
       top: 110px;
       z-index: 2;
-      right: 0;
       display: none;
-
       width: 90%;
-      padding: 10px 0%;
-      margin: 0 5%;
       border-radius: 8px;
-
       background-color: $bcg-gray-light;
+      padding: 20px 0;
     }
 
-    @media (max-width: $width-sm) {
-      top: 150px;
+    @media (max-width: $width-md) {
+      flex-direction: column;
     }
 
-    div {
-      @media (max-width: 767px) {
-        margin: 15px 0;
-        text-align: center;
+    select {
+      cursor: pointer;
+      width: 100px;
+      margin: 0 5px;
+      background-color: transparent;
+      padding: 10px;
+      border: 3px $bcg-gray-dark solid;
+      color: $white;
+
+      option {
+        background-color: $bcg-gray-light;
+      }
+
+      @media (max-width: $width-md) {
+        width: 200px;
       }
     }
 
@@ -154,47 +169,34 @@
       text-decoration: none;
       color: $white;
       margin: 0 5px;
-    }
 
-    .link:hover {
-      color: $orange;
-      text-decoration: underline;
+      &:hover {
+        color: $orange;
+        text-decoration: underline;
+      }
     }
 
     .button {
       @include primary-button;
       padding: 10px 20px;
+      min-width: 100px;
       transition: none;
-
-      @media (max-width: 767px) {
-        width: 100%;
-        max-width: 200px;
-        margin: 5px 0 0 -100px;
-        position: relative;
-        left: 50%;
-        transition: none;
-      }
+      margin: 0 20px;
     }
   }
 
-  .buttonsBlock {
-    @media (min-width: $width-md) {
-      width: 200px;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-    }
-    @media (min-width: $width-lg) {
-      width: 300px;
-    }
+  .authButtonsWrapper {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
   }
 
-  .outSideMenuClick{
+  .outSideMenuClick {
     position: fixed;
     width: 100%;
     height: 100%;
     z-index: 1;
-    background-color:rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.75);
     top: 0;
     left: 0;
     margin: 0;

@@ -1,14 +1,9 @@
 import Joi from 'joi-browser';
 
-export const firstNameSchema = Joi.string()
+export const userNameSchema = Joi.string()
   .min(2)
   .max(20)
   .required();
-
-export const lastNameSchema = Joi.string()
-  .required()
-  .min(2)
-  .max(20);
 
 const emailSchema = Joi.string()
   .required()
@@ -70,16 +65,14 @@ export const loginValidate = (email, password) => {
 };
 
 export const registerValidate = (
-  firstName,
-  lastName,
+  userName,
   email,
   password,
   confirmPassword
 ) => {
   let errors = {};
 
-  const firstNameValidate = Joi.validate(firstName, firstNameSchema);
-  const lastNameValidate = Joi.validate(lastName, lastNameSchema);
+  const userNameValidate = Joi.validate(userName, userNameSchema);
   const emailValidate = Joi.validate(email, emailSchema);
   const passwordValidate = Joi.validate(
     { password, confirmPassword },
@@ -108,17 +101,10 @@ export const registerValidate = (
     }
   }
 
-  if (firstNameValidate.error) {
-    errors.firstName = firstNameValidate.error.details[0].message.replace(
+  if (userNameValidate.error) {
+    errors.userName = userNameValidate.error.details[0].message.replace(
       '"value"',
       'First name'
-    );
-  }
-
-  if (lastNameValidate.error) {
-    errors.lastName = lastNameValidate.error.details[0].message.replace(
-      '"value"',
-      'Last name'
     );
   }
 

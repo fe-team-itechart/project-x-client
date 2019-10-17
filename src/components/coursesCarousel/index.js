@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
+import { getCoursesForCarousel } from '../../services/courses';
+
 import 'react-alice-carousel/lib/alice-carousel.css';
 import styles from './styles.module.scss';
 
@@ -25,22 +27,29 @@ const responsive = {
 };
 
 class CoursesCarousel extends Component {
-  state = {};
+  state = {
+    courses: [],
+  };
+
+  async componentDidMount() {
+    const { data } = await getCoursesForCarousel();
+    this.setState({ courses: data });
+  }
 
   galleryItems = () => {
-    return Array(12)
-      .fill()
-      .map((item, i) => (
-        <div className={styles.courseCardContainer}>
-          <button type="button" className={styles.addingButton}>
-            +
-          </button>
-          <figure className={styles.image} />
-          <p className={styles.name}>React js</p>
-          <p className={styles.duration}>Duration: 35d {i}</p>
-          <button type="button">View</button>
-        </div>
-      ));
+    return this.state.courses.map((item, i) => (
+      <div className={styles.courseCardContainer}>
+        <button type="button" className={styles.addingButton}>
+          +
+        </button>
+        <figure className={styles.image} />
+        <p className={styles.name}>{item.title}</p>
+        <p className={styles.duration}>
+          Number of lessons: {item.numberOfLessons}
+        </p>
+        <button type="button">View</button>
+      </div>
+    ));
   };
 
   nextItem = () => {

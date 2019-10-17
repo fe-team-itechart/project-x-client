@@ -14,6 +14,43 @@ form {
   flex-direction: column;
   align-items: center;
 
+  .reservedPlace {
+    height: 51px;
+  }
+
+  .iconInput {
+    @include primary-input;
+    display: flex;
+    width: 75%;
+    margin: 15px 15px 0;
+    align-items: center;
+
+    svg {
+      font-size: 20px;
+      padding: 0 5px 0 0;
+    }
+
+    input {
+      border-bottom: 0;
+      margin: 0;
+      padding: 0;
+      width: 90%;
+
+      &:hover,
+      &:focus {
+        border-bottom: 0;
+      }
+    }
+
+    .password {
+      width: 90%;
+    }
+
+    .eyeIcon {
+      width: 10%;
+    }
+  }
+
   input {
     @include primary-input;
     width: 75%;
@@ -23,7 +60,8 @@ form {
   .invalidFeedback {
     color: $pink;
     width: 75%;
-    padding: 5px 0;
+    padding: 5px 0 0 0;
+    min-height: 46px;
   }
 
   .submit {
