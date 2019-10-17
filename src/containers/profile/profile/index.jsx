@@ -12,7 +12,7 @@ import {
 } from '../../../actions/profile';
 import { links } from '../../../utils/constants';
 import { Profile } from '../profile';
-import Spinner from '../../../components/spinner';
+import { Spinner } from '../../../components/spinner';
 
 import styles from './styles.module.scss';
 
