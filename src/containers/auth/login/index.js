@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import queryString from 'query-string';
 import { FaEye, FaEyeSlash, FaLock, FaEnvelope } from 'react-icons/fa';
+import { withTranslation } from 'react-i18next';
 
 import { Modal } from '../../../components/modal';
 import { loginRequest, socialLoginRequest } from '../../../actions/auth';
@@ -92,12 +93,14 @@ class Login extends Component {
 
   render() {
     const { email, password, errors } = this.state;
-    const { modalStatus } = this.props;
+    const { modalStatus, t } = this.props;
 
     return (
       <>
         <Modal open={modalStatus} onClose={this.closeModal}>
-          <h2 className={styles.title}>Log In to your Das Pish account</h2>
+          <h2 className={styles.title}>{`${t(
+            'Log In to your Das Pish account'
+          )}`}</h2>
           <form onSubmit={this.onSubmit} noValidate>
             <div className={styles.iconInput}>
               <FaEnvelope />
@@ -106,7 +109,7 @@ class Login extends Component {
                 id="email"
                 name="email"
                 value={email}
-                placeholder="E-Mail "
+                placeholder="E-Mail"
                 onChange={this.onChange}
               />
             </div>
@@ -125,7 +128,7 @@ class Login extends Component {
                   id="password"
                   name="password"
                   value={password}
-                  placeholder="Password"
+                  placeholder={`${t('Password')}`}
                   onChange={this.onChange}
                 />
               </div>
@@ -187,5 +190,5 @@ export default withRouter(
   connect(
     null,
     mapDispatchToProps
-  )(Login)
+  )(withTranslation('translations')(Login))
 );

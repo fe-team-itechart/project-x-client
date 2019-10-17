@@ -1,4 +1,10 @@
 {
   "Catalogue": "Каталог",
-  "search": "поиск"
+  "search": "поиск",
+  "Log in": "Войти",
+  "Register": "Регистрация",
+  "Account": "Личный кабинет",
+  "Log out": "Выйти",
+  "Log In to your Das Pish account": "Войдите в ваш Das Pish аккаунт",
+  "Password": "Пароль"
 }
