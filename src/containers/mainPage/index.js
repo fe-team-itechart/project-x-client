@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Socials from '../../components/socials';
+
 import { FaLaptopCode, FaCode, FaAngleDoubleDown } from 'react-icons/fa';
 import { IoIosRocket } from 'react-icons/io';
 import { ProfileIphone } from './iPhoneComponent';
@@ -24,6 +26,7 @@ class MainPage extends Component {
   render() {
     return (
       <main className={styles.mainPageWrapper}>
+        <Socials />
         <div className={styles.mainBlock}>
           <div className={styles.leftBlock}>
             <div className={styles.textHeader}>
