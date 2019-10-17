@@ -7,15 +7,13 @@ import { ProfileRouters } from '../../containers/profile';
 import { Trobleshooting } from '../help/troubleshooting';
 import { CourseTaking } from '../help/courseTaking';
 import ResetPassword from '../../containers/auth/resetPassword';
-import Sources from '../../containers/sources';
-import Categories from '../../containers/categories';
+import Catalogue from '../../containers/catalogue';
 
 export const Main = () => {
   return (
     <Switch>
       <Route exact path="/" component={Layout} />
-      <Route path="/sources" component={Sources} />
-      <Route path="/categories" component={Categories} />
+      <Route path="/catalogue" component={Catalogue} />
       <Route path="/getting-started" component={GettingStarted} />
       <Route path="/troubleshooting" component={Trobleshooting} />
       <Route path="/course-taking" component={CourseTaking} />
