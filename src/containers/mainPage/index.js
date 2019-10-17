@@ -1,117 +1,55 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import AliceCarousel from 'react-alice-carousel';
 import Socials from '../../components/socials';
 
-import { FaLaptopCode, FaCode, FaAngleDoubleDown } from 'react-icons/fa';
-import { IoIosRocket } from 'react-icons/io';
-import { ProfileIphone } from './iPhoneComponent';
 
-import laptop from '../../../public/assets/laptop.png';
-import laptopScreen from '../../../public/assets/laptopScreen.png';
-import iPhone from '../../../public/assets/iPhone.png';
-import iPhoneLeft from '../../../public/assets/iPhoneLeft.png';
-
+import 'react-alice-carousel/lib/alice-carousel.css';
 import styles from './styles.module.scss';
+import './dotsStyles.scss';
 
 class MainPage extends Component {
-  state = {
-    activeTab: 0,
-  };
+  sliderItems = () => {
+    const slides = [
+      {
+        header: 'Learn ! Potom DasPish !',
+        description:
+          "We are learning the whole world ! If don't believe us you don't believe nobody.",
+      },
+      {
+        header: 'Lorem ipsum dolor sit amet consectetur adipisicing.',
+        description:
+          'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum nobis similique delectus? Dolor, ut aliquid..',
+      },
+      {
+        header: 'Lorem, ipsum dolor. ',
+        description:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, incidunt eum sint maiores necessitatibus dolores laudantium quasi quas minus amet.',
+      },
+    ];
 
-  tabsHandler = tabsNum => {
-    this.setState({ activeTab: tabsNum });
+    return slides.map((item, key) => (
+      <div key={key} className={styles.slideContainer}>
+        <h1>{item.header}</h1>
+        <p>{item.description}</p>
+      </div>
+    ));
   };
-
   render() {
     return (
-      <main className={styles.mainPageWrapper}>
+      <section className={`mainPageSlider ${styles.mainPageWrapper}`}>
         <Socials />
-        <div className={styles.mainBlock}>
-          <div className={styles.leftBlock}>
-            <div className={styles.textHeader}>
-              <h1>
-                <b>Tech</b>courses
-              </h1>
-              <p>description</p>
-            </div>
-            <div className={styles.paginationBlock}>
-              <div className={styles.tabs}>
-                <ul>
-                  <li
-                    className={this.state.activeTab === 0 ? styles.active : ''}
-                    onClick={() => this.tabsHandler(0)}>
-                    <FaCode />
-                  </li>
-                  <li
-                    className={this.state.activeTab === 1 ? styles.active : ''}
-                    onClick={() => this.tabsHandler(1)}>
-                    <IoIosRocket />
-                  </li>
-                  <li
-                    className={this.state.activeTab === 2 ? styles.active : ''}
-                    onClick={() => this.tabsHandler(2)}>
-                    <FaLaptopCode />
-                  </li>
-                </ul>
-              </div>
-              {this.state.activeTab === 0 && (
-                <div className={styles.tabContext}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic 1
-                </div>
-              )}
-              {this.state.activeTab === 1 && (
-                <div className={styles.tabContext}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic 2
-                </div>
-              )}
-              {this.state.activeTab === 2 && (
-                <div className={styles.tabContext}>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic 3
-                </div>
-              )}
-            </div>
-            <div className={styles.buttonsBlock}>
-              <div className={styles.button}>Start now</div>
-            </div>
-          </div>
-          <div className={styles.rightBlock}>
-            <div
-              className={styles.pcBlock}
-              style={{ backgroundImage: `url(${laptop})` }}>
-              <div className={styles.pcContext}>
-                <img src={laptopScreen} alt="Laptop" />
-              </div>
-            </div>
-            <div
-              className={styles.phoneBlock}
-              style={{ backgroundImage: `url(${iPhone})` }}>
-              <img src={iPhoneLeft} alt="iPhone" />
-              <div className={styles.phoneContext}>
-                <ProfileIphone />
-              </div>
-            </div>
-          </div>
+        <div className={styles.slider}>
+          <AliceCarousel
+            items={this.sliderItems()}
+            mouseDragEnabled
+            infinite={false}
+            buttonsDisabled
+            ref={el => (this.Carousel = el)}
+          />
         </div>
-        <div className={styles.arrowDown}>
-          <FaAngleDoubleDown />
-        </div>
-      </main>
+      </section>
     );
   }
 }
