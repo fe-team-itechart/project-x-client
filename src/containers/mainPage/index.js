@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import AliceCarousel from 'react-alice-carousel';
+import Socials from '../../components/socials';
+
 
 import 'react-alice-carousel/lib/alice-carousel.css';
 import styles from './styles.module.scss';
@@ -37,6 +39,7 @@ class MainPage extends Component {
   render() {
     return (
       <section className={`mainPageSlider ${styles.mainPageWrapper}`}>
+        <Socials />
         <div className={styles.slider}>
           <AliceCarousel
             items={this.sliderItems()}
