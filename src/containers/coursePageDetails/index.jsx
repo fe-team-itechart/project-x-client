@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import { getCourseDetails } from '../../services/course';
-
 import StarRatings from 'react-star-ratings';
-import Spinner from '../../components/spinner';
+
+import { getCourseDetails } from '../../services/course';
+import { Spinner } from '../../components/spinner';
 
 import styles from './styles.module.scss';
 
@@ -28,7 +28,7 @@ class coursePageDetails extends Component {
 
     if (course.courseReviews.length > showReviewsNum)
       this.setState({ showReviewsNum: showReviewsNum + 2 });
-  }
+  };
 
   render() {
     const {

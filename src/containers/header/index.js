@@ -8,6 +8,7 @@ import { FaBars, FaWindowClose } from 'react-icons/fa';
 import { withTranslation } from 'react-i18next';
 
 import { logOutRequest } from '../../actions/auth';
+import Search from '../../components/search';
 import Login from '../auth/login';
 import Register from '../auth/register';
 import ForgotPassword from '../auth/forgotPassword';
@@ -80,10 +81,7 @@ const Header = props => {
         </Link>
       </div>
       <>
-        <div className={styles.search}>
-          <input type="text" placeholder={`${t('search')}`} />
-          <MdSearch className={styles.icon} />
-        </div>
+        <Search />
         {width < 992 && (
           <div className={styles.menuIcons} onClick={checkMobileMenuStatus}>
             {!isOpenMenu ? <FaBars /> : <FaWindowClose />}

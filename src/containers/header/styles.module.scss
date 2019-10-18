@@ -79,50 +79,6 @@
     }
   }
 
-  .search {
-    display: flex;
-    align-items: center;
-    position: relative;
-    flex: 1 1 auto;
-    cursor: pointer;
-
-    @media (max-width: $width-sm) {
-      padding: 0 25px;
-    }
-
-    input {
-      @include primary-input;
-      padding: 0;
-      width: 100%;
-
-      &::placeholder {
-        color: $gray-input;
-      }
-
-      @media (max-width: $width-sm) {
-        padding: 8px 0;
-      }
-    }
-
-    svg {
-      @media (max-width: $width-sm) {
-        right: 25px;
-      }
-    }
-
-    .icon {
-      position: absolute;
-      font-size: 25px;
-      right: 0;
-      cursor: pointer;
-      transition: 0.3s;
-
-      &:hover {
-        color: $orange;
-      }
-    }
-  }
-
   .menu {
     flex: 1 1 auto;
     display: flex;

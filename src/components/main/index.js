@@ -7,9 +7,8 @@ import { ProfileRouters } from '../../containers/profile';
 import { Trobleshooting } from '../help/troubleshooting';
 import { CourseTaking } from '../help/courseTaking';
 import ResetPassword from '../../containers/auth/resetPassword';
+import { Catalogue } from '../../containers/catalogue';
 import CoursePageDetails from '../../containers/coursePageDetails';
-import Catalogue from '../../containers/catalogue';
-import CourseCard from './../courseCard/index';
 
 export const Main = () => {
   return (
@@ -25,7 +24,6 @@ export const Main = () => {
       <Route exact path='/course/preview/:id' render={({match}) => (<div>Course with id = {match.params.id}</div>)} />
       <ProfileRouters />
     </Switch>
-    <CourseCard></CourseCard>
     </>
   );
 };

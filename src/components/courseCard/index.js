@@ -1,24 +1,16 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import StarRatings from 'react-star-ratings';
+
 import Img from '../img/index';
+import { links } from '../../utils/constants';
 
 import styles from './style.module.scss';
 
-import { links } from '../../utils/constants';
-
-const CourseCard = ({ item }) => {
-  const {
-    title = 'NoTitle',
-    author = 'NoName',
-    rate = 0,
-    price = 'NoPrice',
-    img = '',
-    id = 1,
-    votes = 0,
-  } = item;
+export const CourseCard = course => {
+  const { title, authors, rate, price = 'For free', img = '', id } = course;
 
   return (
     <Link
@@ -32,17 +24,17 @@ const CourseCard = ({ item }) => {
         />
         <section className={styles.courseCardDescription}>
           <h2 className={styles.courseCardTitle}>{title}</h2>
-          <div className={styles.courseCardAuthor}>{author}</div>
+          <div className={styles.courseCardAuthor}>{authors}</div>
           <div className={styles.courseCardRate}>
             <StarRatings
               rating={rate}
               starRatedColor="#ff8c05"
               numberOfStars={5}
-              starDimension='20px'
-              starSpacing='5px'
-              name='rating'
+              starDimension="20px"
+              starSpacing="5px"
+              name="rating"
             />
-            ({votes})
+            ({rate})
           </div>
           <div className={styles.courseCardPrice}>{price}</div>
         </section>
@@ -52,9 +44,9 @@ const CourseCard = ({ item }) => {
 };
 
 CourseCard.propTypes = {
-  item: PropTypes.shape({
+  course: PropTypes.shape({
     title: PropTypes.string,
-    author: PropTypes.string,
+    authors: PropTypes.string,
     rate: PropTypes.number,
     price: PropTypes.string,
     img: PropTypes.string,
@@ -64,15 +56,8 @@ CourseCard.propTypes = {
 };
 
 CourseCard.defaultProps = {
-  item: {
-    title: 'DefaultTitle',
-    author: 'NoName',
-    rate: 4.5,
+  course: {
     price: 'For Free',
     img: '',
-    id: 1,
-    votes: 0,
   },
 };
-
-export default CourseCard;
