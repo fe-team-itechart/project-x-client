@@ -1,8 +1,5 @@
 @import '../../scss/shared/colors.scss';
-@import '../../scss/shared/fonts.scss';
 @import '../../scss/mixins/button.scss';
-@import '../../scss/mixins/input.scss';
-@import '../../scss/shared/breakpoints.scss';
 
 .coursePageDetailsWrapper {
   display: flex;
@@ -12,6 +9,12 @@
 
   & > div {
     padding: 15px 25px;
+  }
+
+  .error {
+    text-align: center;
+    padding: 25px 0;
+    color: $white;
   }
 
   .verticalLine {
@@ -37,7 +40,6 @@
   }
 
   .shortDescription {
-    //color: $text-gray-light;
     color: $white;
     margin: 5px 0;
   }
@@ -51,7 +53,6 @@
 
   .profitList {
     list-style-type: none;
-    //color: $text-gray-light;
     color: $white;
     margin: 0 0 0 15px;
     padding: 0;
@@ -67,7 +68,6 @@
     p {
       margin: 0;
       color: $text-gray-light;
-      //color: $white;
     }
   }
 

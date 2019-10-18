@@ -8,14 +8,27 @@ const config = {
 };
 
 export const getCourseDetails = async id => {
+  let response = {};
+
   try {
-    const response = await httpService.get({
+    const course = await httpService.get({
       url: links.coursePreviewRoute + id,
       config,
     });
 
+    response = {
+      error: false,
+      data: course.data,
+    };
+
     return response;
-  } catch (err) {
-    return err.response.data;
+  } catch (error) {
+
+    response = {
+      error: true,
+      data: error.response.data,
+    };
+
+    return response;
   }
 };

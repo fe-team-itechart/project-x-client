@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { getCourseDetails } from '../../services/course';
+
 import StarRatings from 'react-star-ratings';
+import Spinner from '../../components/spinner';
 
 import styles from './styles.module.scss';
 
@@ -17,25 +19,16 @@ class coursePageDetails extends Component {
   async componentDidMount() {
     const courseId = this.props.match.params.id;
     const response = await getCourseDetails(courseId);
-    if (response.data) {
-      this.setState({
-        course: response.data,
-        isLoading: false,
-      });
-    } else {
-      this.setState({
-        error: response,
-        isLoading: false,
-      });
-    }
+    response.error
+      ? this.setState({ error: response.data, isLoading: false })
+      : this.setState({ course: response.data, isLoading: false });
   }
 
   showMoreReviews() {
     const { course, showReviewsNum } = this.state;
 
-    if (course.courseReviews.length > showReviewsNum) {
+    if (course.courseReviews.length > showReviewsNum)
       this.setState({ showReviewsNum: showReviewsNum + 2 });
-    }
   }
 
   render() {
@@ -53,9 +46,11 @@ class coursePageDetails extends Component {
 
     return (
       <main className={styles.coursePageDetailsWrapper}>
-        {isLoading && <div>is loading</div>}
-        {!isLoading && error && <div>{error.message}</div>}
-        {!isLoading && !error && (
+        {isLoading ? (
+          <Spinner />
+        ) : error ? (
+          <div className={styles.error}>{error.message}</div>
+        ) : (
           <div>
             <h2 className={styles.courseTitle}>{courseName}</h2>
             <p className={styles.shortDescription}>{description}</p>

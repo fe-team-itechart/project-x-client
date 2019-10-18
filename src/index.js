@@ -6,6 +6,7 @@ import App from './components/app';
 import { configureStore } from './store/index';
 
 import 'normalize.css';
+import 'react-toastify/dist/ReactToastify.css';
 import './scss/base.scss';
 
 const store = configureStore();
