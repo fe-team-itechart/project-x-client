@@ -1,7 +1,7 @@
 @import '../../scss/shared/colors.scss';
 @import '../../scss/shared/fonts.scss';
 
-.courseCardWrapper{
+.courseCardWrapper {
   text-decoration: unset;
 }
 
@@ -16,6 +16,7 @@
   color: $white;
   font-family: $primary-font;
   max-width: 280px;
+  max-height: 320px; 
   border: 1px solid $gray-input;
 
   &:hover {
@@ -39,7 +40,13 @@
     width: 100%;
 
     .courseCardTitle {
-      margin-bottom: 10px;
+      text-overflow: ellipsis;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 5px;
     }
 
     .courseCardPrice {
