@@ -20,8 +20,7 @@ export const Main = () => {
       <Route path="/troubleshooting" component={Trobleshooting} />
       <Route path="/course-taking" component={CourseTaking} />
       <Route path="/reset" component={ResetPassword} />
-      <Route path="/course-page-details/:id" component={CoursePageDetails} />
-      <Route exact path='/course/preview/:id' render={({match}) => (<div>Course with id = {match.params.id}</div>)} />
+      <Route path="/course/preview/:id" component={CoursePageDetails} />
       <ProfileRouters />
     </Switch>
     </>

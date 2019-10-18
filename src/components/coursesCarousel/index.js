@@ -46,21 +46,6 @@ class CoursesCarousel extends Component {
     });
   }
 
-  galleryItems() {
-    return this.state.courses
-      ? this.state.courses.map((item, index) => (
-          <div className={styles.courseCardContainer}>
-            <CourseCard
-              key={index}
-              title={item.courseName}
-              authors={item.authors}
-              rate={item.rating}
-            />
-          </div>
-        ))
-      : null;
-  }
-
   slidePrev = () => {
     this.Carousel.slidePrev();
   };
@@ -80,6 +65,22 @@ class CoursesCarousel extends Component {
       lastSlide,
     });
   };
+
+  galleryItems() {
+    return this.state.courses
+      ? this.state.courses.map((course, index) => (
+          <div className={styles.courseCardContainer}>
+            <CourseCard
+              key={index}
+              title={course.courseName}
+              authors={course.authors}
+              rate={course.rating}
+              id={course.id}
+            />
+          </div>
+        ))
+      : null;
+  }
 
   render() {
     const { galleryItems, currentIndex, lastSlide, slide } = this.state;

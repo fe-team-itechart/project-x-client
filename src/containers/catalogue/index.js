@@ -53,6 +53,7 @@ export class Catalogue extends Component {
                     title={course.courseName}
                     authors={course.authors}
                     rate={course.rating}
+                    id={course.id}
                   />
                 ))
               ) : (
