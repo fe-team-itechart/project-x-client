@@ -7,7 +7,7 @@ import { ProfileRouters } from '../../containers/profile';
 import { Trobleshooting } from '../help/troubleshooting';
 import { CourseTaking } from '../help/courseTaking';
 import ResetPassword from '../../containers/auth/resetPassword';
-import Catalogue from '../../containers/catalogue';
+import { Catalogue } from '../../containers/catalogue';
 
 export const Main = () => {
   return (

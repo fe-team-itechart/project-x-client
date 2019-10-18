@@ -1,51 +1,63 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 import queryString from 'query-string';
 
+import { Spinner } from '../../components/spinner';
 import { getCoursesByAttribute } from '../../services/courses';
 
 import styles from './styles.module.scss';
 
-class Catalogue extends Component {
+export class Catalogue extends Component {
   state = {
     courses: [],
-    isLoading: true
+    isLoading: true,
+    searchValue: '',
   };
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     const { location } = this.props;
     const query = queryString.parse(location.search);
 
-    const courses = getCoursesByAttribute(query.search, query.limit);
+    const courses = await getCoursesByAttribute(query.search, query.limit);
 
-    this.setState({ courses });
+    this.setState({ courses, isLoading: false, searchValue: query.search });
   };
 
-  componentDidUpdate = prevProps => {
+  componentDidUpdate = async prevProps => {
     const { location } = this.props;
     const query = queryString.parse(location.search);
 
-    if (query.search !== prevProps.location) {
-      const query = queryString.parse(this.props.location.search);
-      getCoursesByAttribute(query.search, query.limit);
+    if (location.search !== prevProps.location.search) {
+      this.setState({ isLoading: true });
+      const courses = await getCoursesByAttribute(query.search, query.limit);
+      this.setState({ courses, isLoading: false, searchValue: query.search });
     }
   };
 
   render() {
-    console.log(this.state.courses);
-    return <main className={styles.mainPageWrapper}>Catalogue</main>;
+    return (
+      <main className={styles.mainPageWrapper}>
+        {this.state.isLoading ? (
+          <Spinner />
+        ) : (
+          <>
+            <div className={styles.searchValueWrapper}>
+              <h3>/{this.state.searchValue}/</h3>
+            </div>
+            <section className={styles.coursesWrapper}>
+              {this.state.courses.length !== 0 ? (
+                this.state.courses.map((course, index) => (
+                  <h1>{course.courseName}</h1>
+                ))
+              ) : (
+                <h2>
+                  There are no courses with {this.state.searchValue} value
+                </h2>
+              )}
+            </section>
+          </>
+        )}
+      </main>
+    );
   }
 }
-
-const mapStateToProps = state => ({});
-
-const mapDispatchToProps = {};
-
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Catalogue)
-);

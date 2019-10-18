@@ -1,8 +1,4 @@
 @import '../../scss/shared/colors.scss';
-@import '../../scss/shared/fonts.scss';
-@import '../../scss/mixins/button.scss';
-@import '../../scss/mixins/input.scss';
-@import '../../scss/shared/breakpoints.scss';
 
 .mainPageWrapper {
   position: relative;
@@ -11,248 +7,29 @@
   flex-direction: column;
   background-color: $bcg-gray-light;
   margin-bottom: 20px;
+  padding-bottom: 20px;
 
-  .mainBlock {
-    display: flex;
-    flex-direction: row;
-    padding: 15px;
+  .slider {
+    width: 100%;
+  }
+
+  .slideContainer {
+    padding: 25px 25px 0 25px;
+    min-height: 300px;
     text-align: center;
 
-    .leftBlock {
-      width: 100%;
-
-      .textHeader {
-
-        h1 {
-          font-size: 70px;
-          color: $white;
-          margin-bottom: 0px;
-
-          b {
-            color: $red;
-          }
-
-          @media screen and (max-width: $width-sm) {
-            font-size: 40px;
-          }
-        }
-
-        p {
-          color: $text-gray-light;
-          font-size: 20px;
-          margin: 0;
-        }
-      }
-
-      .paginationBlock {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        .tabs {
-
-          ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-
-            li {
-              height: 120px;
-              width: 120px;
-
-              display: flex;
-              align-items: center;
-              justify-content: center;
-
-              color: $white;
-              background: $bcg-gray-dark;
-              border-radius: 50%;
-              font-size: 60px;
-              margin: 25px 15px;
-              transition: 0.3s;
-              cursor: pointer;
-
-              &.active {
-                font-size: 70px;
-                transition: 0.3s;
-                height: 124px;
-                width: 124px;
-                margin: 23px 13px;
-                background: $gradient;
-              }
-            }
-          }
-        }
-
-        .tabContext {
-          color: $text-gray-light;
-          max-width: 500px;
-          text-align: justify;
-        }
-      }
-
-      .buttonsBlock {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .button {
-          @include primary-button;
-          width: 220px;
-          height: 70px;
-          margin: 25px 0;
-          font-size: 30px;
-          padding: 0px;
-        }
-      }
-    }
-
-    .rightBlock {
-      display: none;
-      width: 60%;
-      position: relative;
-      -ms-overflow-style: none;
-
-      .pcBlock {
-        width: 750px;
-        height: 450px;
-        position: absolute;
-        border: 0%;
-        background-size: 100% 100%;
-        overflow: hidden;
-        right: 15px;
-        top: 150px;
-
-        display: none;
-
-        img {
-          width: 100%;
-        }
-
-        .pcContext {
-          overflow-y: scroll;
-          box-sizing: content-box;
-          margin: 33px 0px 0px 95px;
-          background-size: 100%;
-          width: 560px;
-          height: 360px;
-
-          &::-webkit-scrollbar {
-            display: none;
-          }
-        }
-      }
-
-      .phoneBlock {
-
-        & > img {
-          position: absolute;
-          z-index: 0;
-          top: 0;
-          left: 0;
-          height: 100%;
-        }
-        position: absolute;
-        width: 160px;
-        height: 350px;
-        bottom: 100px;
-        border: 0%;
-        border-radius: 30px;
-        background-color: $bcg-gray-light;
-        background-size: 100% 100%;
-        margin-left: 0px;
-        padding: 26px 25px 20px 25px;
-        overflow: hidden;
-
-        .phoneContext {
-          border: 50px;
-          width: 100%;
-          height: 100%;
-          overflow-y: scroll;
-          padding-right: 17px;
-          box-sizing: content-box;
-
-          input {
-            @include primary-input;
-            width: 100%;
-            font-size: 12px;
-          }
-
-          img {
-            width: 100%;
-          }
-
-          &::-webkit-scrollbar {
-            display: none;
-          }
-        }
-      }
-    }
-  }
-
-  .arrowDown {
     display: flex;
-    justify-content: center;
     align-items: center;
-    color: $text-gray-light;
-    font-size: 30px;
-    animation: arrow 2s infinite;
-    cursor: pointer;
-  }
-  @keyframes arrow {
+    justify-content: center;
+    flex-direction: column;
 
-    0% {
-      margin: 25px 0;
+    h1 {
+      font-size: 40px;
     }
 
-    50% {
-      margin: 35px 0 15px 0;
-    }
-
-    100% {
-      margin: 25px 0;
-    }
-  }
-  @media screen and (min-width: 900px) {
-
-    .mainBlock {
-
-      .rightBlock {
-        display: block;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .phoneBlock {
-          top: 50px;
-        }
-      }
-    }
-  }
-  @media screen and (min-width: 1500px) {
-
-    .mainBlock {
-
-      .leftBlock {
-        width: 40%;
-      }
-
-      .rightBlock {
-
-        .pcBlock {
-          display: block;
-          top: 50px;
-        }
-
-        .phoneBlock {
-          left: 0;
-        }
-      }
+    p {
+      color: $text-gray-light;
+      font-size: 32px;
     }
   }
 }
