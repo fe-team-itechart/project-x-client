@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { MdSearch } from 'react-icons/md';
 import { FaBars, FaWindowClose } from 'react-icons/fa';
+import { withTranslation } from 'react-i18next';
 
 import { logOutRequest } from '../../actions/auth';
 import Search from '../../components/search';
@@ -21,6 +22,7 @@ const Header = props => {
   const [isOpenReg, setModalStatusReg] = useState(false);
   const [isOpenMenu, setMenuStatus] = useState(false);
   const [isOpenForgotPass, setModalForgotPass] = useState(false);
+  const [lang, setLang] = useState('en');
 
   useEffect(() => {
     const handleWidth = () => setWidth(window.innerWidth);
@@ -62,7 +64,13 @@ const Header = props => {
     setMenuStatus(!isOpenMenu);
   };
 
-  const { isAuthenticated, logOutRequest } = props;
+  const handleChange = event => {
+    const newLang = event.target.value;
+    setLang(newLang);
+    props.i18n.changeLanguage(newLang);
+  };
+
+  const { isAuthenticated, logOutRequest, t } = props;
 
   return (
     <header className={styles.header}>
@@ -82,7 +90,7 @@ const Header = props => {
         <div id="menu" className={styles.menu}>
           <div onClick={checkMobileMenuStatus}>
             <Link to="/catalogue" className={styles.link}>
-              Catalogue
+              {t('Catalogue')}
             </Link>
           </div>
 
@@ -91,14 +99,14 @@ const Header = props => {
               <div className={styles.authButtonsWrapper}>
                 <div onClick={checkMobileMenuStatus}>
                   <Link to="/profile-public" className={styles.link}>
-                    Account
+                    {t('Account')}
                   </Link>
                 </div>
                 <button
                   type="button"
                   className={styles.button}
                   onClick={logOutRequest}>
-                  Log out
+                  {t('Log out')}
                 </button>
               </div>
             </>
@@ -108,22 +116,22 @@ const Header = props => {
                 type="button"
                 className={styles.button}
                 onClick={openModalLog}>
-                Log in
+                {t('Log In')}
               </button>
               <button
                 type="button"
                 className={styles.button}
                 onClick={openModalReg}>
-                Register
+                {t('Register')}
               </button>
             </div>
           )}
           <div>
-            <select name="localization">
-              <option value="ENG" defaultValue>
+            <select name="localization" onChange={handleChange}>
+              <option value="en" defaultValue>
                 ENG
               </option>
-              <option value="RUS">RUS</option>
+              <option value="ru">RUS</option>
             </select>
           </div>
         </div>
@@ -167,4 +175,4 @@ const mapDispatchToProps = { logOutRequest };
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(withTranslation('translations')(Header));

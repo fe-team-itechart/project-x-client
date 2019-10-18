@@ -11,6 +11,7 @@ export const links = {
   publicProfileRoute: 'profile/public',
   coursesCarouselRoute:'course/carousel',
   searchCourses: 'course',
+  coursePreviewRoute: 'course/preview/',
   twitter:'http://twitter.com/',
   facebook:'https://www.facebook.com/',
   linkedIn:'https://www.linkedin.com/',

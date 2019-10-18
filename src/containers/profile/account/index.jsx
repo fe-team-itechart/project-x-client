@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { isEmpty } from 'lodash';
 
-import { Profile } from '../profile';
+import Profile from '../profile';
 import { changePasswordValidate } from '../../../validation/auth';
 import { changePassword } from '../../../services/auth';
 

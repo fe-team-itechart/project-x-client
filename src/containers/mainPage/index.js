@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import AliceCarousel from 'react-alice-carousel';
-
 import Socials from '../../components/socials';
+import { withTranslation } from 'react-i18next';
 
 import 'react-alice-carousel/lib/alice-carousel.css';
 import styles from './styles.module.scss';
@@ -11,21 +11,26 @@ import './dotsStyles.scss';
 
 class MainPage extends Component {
   sliderItems = () => {
+    const { t } = this.props;
+
     const slides = [
       {
-        header: 'Learn ! Potom DasPish !',
-        description:
-          "We are learning the whole world ! If don't believe us you don't believe nobody.",
+        header: `${t('Learn ! Potom DasPish !')}`,
+        description: `${t(
+          "We are learning the whole world ! If don't believe us you don't believe nobody."
+        )}`,
       },
       {
-        header: 'Lorem ipsum dolor sit amet consectetur adipisicing.',
-        description:
-          'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum nobis similique delectus? Dolor, ut aliquid..',
+        header: `${t('Lorem ipsum dolor sit amet consectetur adipisicing.')}`,
+        description: `${t(
+          'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum nobis similique delectus? Dolor, ut aliquid..'
+        )}`,
       },
       {
-        header: 'Lorem, ipsum dolor. ',
-        description:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, incidunt eum sint maiores necessitatibus dolores laudantium quasi quas minus amet.',
+        header: `${t('Lorem, ipsum dolor.')}`,
+        description: `${t(
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, incidunt eum sint maiores necessitatibus dolores laudantium quasi quas minus amet.'
+        )}`,
       },
     ];
 
@@ -61,4 +66,4 @@ const mapDispatchToProps = {};
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MainPage);
+)(withTranslation('translations')(MainPage));
