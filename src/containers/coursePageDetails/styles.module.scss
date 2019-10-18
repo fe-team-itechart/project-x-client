@@ -1,0 +1,104 @@
+@import '../../scss/shared/colors.scss';
+@import '../../scss/mixins/button.scss';
+
+.coursePageDetailsWrapper {
+  display: flex;
+  width: 90%;
+  background-color: $bcg-gray-light;
+  flex-direction: column;
+
+  & > div {
+    padding: 15px 25px;
+  }
+
+  .error {
+    text-align: center;
+    padding: 25px 0;
+    color: $white;
+  }
+
+  .verticalLine {
+    height: 15px;
+    padding-right: 1px;
+    background-color: $text-gray-light;
+    margin-left: 4px;
+  }
+
+  .stars {
+    display: inline;
+    margin-right: 10px;
+  }
+
+  .courseStats {
+    margin: 10px 0;
+  }
+
+  .courseTitle {
+    font-size: 36px;
+    font-weight: normal;
+    margin: 10px 0;
+  }
+
+  .shortDescription {
+    color: $white;
+    margin: 5px 0;
+  }
+
+  .profitTitle,
+  .reviewsTitle {
+    margin: 10px 0;
+    color: $white;
+    font-size: 24px;
+  }
+
+  .profitList {
+    list-style-type: none;
+    color: $white;
+    margin: 0 0 0 15px;
+    padding: 0;
+
+    li {
+      margin-bottom: 5px;
+    }
+  }
+
+  .reviewWrapper {
+    margin: 10px 0;
+
+    p {
+      margin: 0;
+      color: $text-gray-light;
+    }
+  }
+
+  .buttonWrapper {
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .showMoreButton {
+      @include primary-button;
+      padding: 10px 20px;
+      transition: none;
+    }
+  }
+
+  hr {
+    background-color: $bcg-gray-dark;
+    width: 100%;
+    height: 5px;
+    border: none;
+    margin-top: 15px;
+  }
+
+  span {
+    color: $white;
+    margin-right: 10px;
+
+    font {
+      color: $text-gray-light;
+    }
+  }
+}

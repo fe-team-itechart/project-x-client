@@ -7,6 +7,7 @@ import { ProfileRouters } from '../../containers/profile';
 import { Trobleshooting } from '../help/troubleshooting';
 import { CourseTaking } from '../help/courseTaking';
 import ResetPassword from '../../containers/auth/resetPassword';
+import CoursePageDetails from '../../containers/coursePageDetails';
 import Catalogue from '../../containers/catalogue';
 import CourseCard from './../courseCard/index';
 
@@ -20,6 +21,7 @@ export const Main = () => {
       <Route path="/troubleshooting" component={Trobleshooting} />
       <Route path="/course-taking" component={CourseTaking} />
       <Route path="/reset" component={ResetPassword} />
+      <Route path="/course-page-details/:id" component={CoursePageDetails} />
       <Route exact path='/course/preview/:id' render={({match}) => (<div>Course with id = {match.params.id}</div>)} />
       <ProfileRouters />
     </Switch>
