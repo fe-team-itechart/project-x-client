@@ -8,7 +8,7 @@ import { createBrowserHistory } from 'history';
 
 import Header from '../containers/header';
 import { Main } from './main';
-import { Footer } from './footer/index';
+import Footer from './footer/index';
 import { ErrorBoundary } from './errorBoundary';
 import { refreshLoginRequest } from '../actions/auth';
 

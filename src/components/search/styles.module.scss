@@ -1,0 +1,56 @@
+@import '../../scss/shared/colors.scss';
+@import '../../scss/mixins/input.scss';
+@import '../../scss/mixins/button.scss';
+@import '../../scss/shared/breakpoints.scss';
+
+.search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1 1 auto;
+  cursor: pointer;
+
+  &:hover {
+    color: $orange;
+  }
+
+  @media (max-width: $width-sm) {
+    padding: 0 25px;
+  }
+
+  input {
+    @include primary-input;
+    padding: 0;
+    width: 100%;
+    margin: 0;
+
+    &::placeholder {
+      color: $gray-input;
+    }
+
+    @media (max-width: $width-sm) {
+      padding: 8px 0;
+      margin-bottom: 10px;
+    }
+  }
+
+  button {
+    cursor: pointer;
+    position: absolute;
+    font-size: 24px;
+    right: 0;
+    transition: 0.3s;
+    color: $white;
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    &:hover {
+      color: $orange;
+    }
+
+    @media (max-width: $width-sm) {
+      top: 10px;
+    }
+  }
+}

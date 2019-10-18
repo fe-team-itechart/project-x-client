@@ -3,7 +3,21 @@
 
 .mainPageWrapper {
   display: flex;
+  flex-direction: column;
   width: 90%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: $bcg-gray-light;
+
+  .searchValueWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px;
+  }
+
+  .coursesWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

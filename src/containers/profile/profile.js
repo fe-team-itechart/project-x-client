@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaWindowClose } from 'react-icons/fa';
+import { withTranslation } from 'react-i18next';
 
 import styles from './styles.module.scss';
 import './menu.scss';
 
-export const Profile = () => {
+const Profile = props => {
   const currentTab = window.location.pathname;
   let toggleMenu = null;
 
@@ -27,15 +28,11 @@ export const Profile = () => {
 
   return (
     <>
-      <h3 className={styles.hiddenText}>
-        Profile's page which include courses, settings, public profile, users's
-        account
-      </h3>
       <div className={styles.mobileBurger}>
         <button type="button" onClick={toggleMenuFunc}>
           <div className={styles.photo} />
-          <div className={styles.name}>John Doe</div>
-          <div className={styles.role}>student</div>
+          <div className={styles.name}>{`${props.t('John Doe')}`}</div>
+          <div className={styles.role}>{`${props.t('student')}`}</div>
         </button>
       </div>
       <nav id="toggleMenu" className={styles.mobileMenu}>
@@ -47,7 +44,7 @@ export const Profile = () => {
                 className={`${styles.button} ${
                   currentTab === tabs.public ? styles.activeButton : ''
                 }`}>
-                Public
+                {`${props.t('Public')}`}
               </button>
             </Link>
           </li>
@@ -58,7 +55,7 @@ export const Profile = () => {
                 className={`${styles.button} ${
                   currentTab === tabs.courses ? styles.activeButton : ''
                 }`}>
-                Courses
+                {`${props.t('Courses')}`}
               </button>
             </Link>
           </li>
@@ -69,7 +66,7 @@ export const Profile = () => {
                 className={`${styles.button} ${
                   currentTab === tabs.account ? styles.activeButton : ''
                 }`}>
-                Account
+                {`${props.t('Account')}`}
               </button>
             </Link>
           </li>
@@ -80,12 +77,15 @@ export const Profile = () => {
                 className={`${styles.button} ${
                   currentTab === tabs.settings ? styles.activeButton : ''
                 }`}>
-                Settings
+                {`${props.t('Settings')}`}
               </button>
             </Link>
           </li>
           <li>
-            <button type="button" className={styles.closeButton} onClick={toggleMenuFunc}>
+            <button
+              type="button"
+              className={styles.closeButton}
+              onClick={toggleMenuFunc}>
               <FaWindowClose />
             </button>
           </li>
@@ -95,8 +95,8 @@ export const Profile = () => {
       <div className={styles.menu}>
         <div className={styles.user}>
           <div className={styles.photo} />
-          <div className={styles.name}>John Doe</div>
-          <div className={styles.role}>student</div>
+          <div className={styles.name}>{`${props.t('John Doe')}`}</div>
+          <div className={styles.role}>{`${props.t('student')}`}</div>
         </div>
         <nav>
           <ul>
@@ -107,7 +107,7 @@ export const Profile = () => {
                   className={`${styles.button} ${
                     currentTab === tabs.public ? styles.activeButton : ''
                   }`}>
-                  Profile
+                  {`${props.t('Profile')}`}
                 </button>
               </Link>
             </li>
@@ -118,7 +118,7 @@ export const Profile = () => {
                   className={`${styles.button} ${
                     currentTab === tabs.courses ? styles.activeButton : ''
                   }`}>
-                  Courses
+                  {`${props.t('Courses')}`}
                 </button>
               </Link>
             </li>
@@ -129,7 +129,7 @@ export const Profile = () => {
                   className={`${styles.button} ${
                     currentTab === tabs.account ? styles.activeButton : ''
                   }`}>
-                  Account
+                  {`${props.t('Account')}`}
                 </button>
               </Link>
             </li>
@@ -140,7 +140,7 @@ export const Profile = () => {
                   className={`${styles.button} ${
                     currentTab === tabs.settings ? styles.activeButton : ''
                   }`}>
-                  Settings
+                  {`${props.t('Settings')}`}
                 </button>
               </Link>
             </li>
@@ -150,3 +150,5 @@ export const Profile = () => {
     </>
   );
 };
+
+export default withTranslation('translations')(Profile);

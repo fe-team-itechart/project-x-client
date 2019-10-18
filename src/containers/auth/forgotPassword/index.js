@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
+import { withTranslation } from 'react-i18next';
 
 import { forgotPasswordRequest } from '../../../services/auth';
 import { emailValidate } from '../../../validation/auth';
@@ -66,7 +67,7 @@ class ForgotPassword extends PureComponent {
   render() {
     const { pending, message, errors, success } = this.state;
 
-    const { modalStatus } = this.props;
+    const { modalStatus, t } = this.props;
 
     return (
       <Modal open={modalStatus} onClose={this.modalClose}>
@@ -74,7 +75,7 @@ class ForgotPassword extends PureComponent {
           <form className={styles.form}>
             <input
               className={styles.input}
-              placeholder="Enter Email"
+              placeholder={`${t('Enter E-mail')}`}
               name="forgot-password-id"
               id="forgot-password-id"
               type="email"
@@ -86,7 +87,7 @@ class ForgotPassword extends PureComponent {
               type="button"
               className={`${styles.btn}`}
               onClick={this.send}>
-              Send
+              {`${t('Send')}`}
             </button>
           </form>
         )}
@@ -108,4 +109,4 @@ ForgotPassword.propTypes = {
   onModalClose: PropTypes.func.isRequired,
 };
 
-export default ForgotPassword;
+export default (withTranslation('translations')(ForgotPassword));

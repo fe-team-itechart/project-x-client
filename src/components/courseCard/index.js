@@ -1,16 +1,16 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import StarRatings from 'react-star-ratings';
+
 import Img from '../img/index';
+import { links } from '../../utils/constants';
 
 import styles from './style.module.scss';
 
-import { links } from '../../utils/constants';
-
 export const CourseCard = course => {
-  const { title, authors, rate, price = 'NoPrice', img = '', id } = course;
+  const { title, authors, rate, price = 'For free', img = '', id } = course;
 
   return (
     <Link
@@ -46,7 +46,7 @@ export const CourseCard = course => {
 CourseCard.propTypes = {
   course: PropTypes.shape({
     title: PropTypes.string,
-    author: PropTypes.string,
+    authors: PropTypes.string,
     rate: PropTypes.number,
     price: PropTypes.string,
     img: PropTypes.string,
@@ -58,6 +58,6 @@ CourseCard.propTypes = {
 CourseCard.defaultProps = {
   course: {
     price: 'For Free',
-    img: ''
+    img: '',
   },
 };

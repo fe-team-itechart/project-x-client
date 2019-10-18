@@ -25,7 +25,8 @@
     "import/imports-first": ["error", "absolute-first"],
     "import/newline-after-import": "error",
     "react/state-in-constructor": 0,
-    "react/jsx-props-no-spreading": 1
+    "react/no-did-update-set-state": 0,
+    "react/no-array-index-key": 0
   },
   "globals": {
     "window": true,

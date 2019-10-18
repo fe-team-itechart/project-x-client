@@ -7,25 +7,23 @@ import { ProfileRouters } from '../../containers/profile';
 import { Trobleshooting } from '../help/troubleshooting';
 import { CourseTaking } from '../help/courseTaking';
 import ResetPassword from '../../containers/auth/resetPassword';
-import Catalogue from '../../containers/catalogue';
+import { Catalogue } from '../../containers/catalogue';
+import CoursePageDetails from '../../containers/coursePageDetails';
 
 export const Main = () => {
   return (
     <>
-      <Switch>
-        <Route exact path="/" component={Layout} />
-        <Route path="/catalogue" component={Catalogue} />
-        <Route path="/getting-started" component={GettingStarted} />
-        <Route path="/troubleshooting" component={Trobleshooting} />
-        <Route path="/course-taking" component={CourseTaking} />
-        <Route path="/reset" component={ResetPassword} />
-        <Route
-          exact
-          path="/course/preview/:id"
-          render={({ match }) => <div>Course with id = {match.params.id}</div>}
-        />
-        <ProfileRouters />
-      </Switch>
+    <Switch>
+      <Route exact path="/" component={Layout} />
+      <Route path="/catalogue" component={Catalogue} />
+      <Route path="/getting-started" component={GettingStarted} />
+      <Route path="/troubleshooting" component={Trobleshooting} />
+      <Route path="/course-taking" component={CourseTaking} />
+      <Route path="/reset" component={ResetPassword} />
+      <Route path="/course-page-details/:id" component={CoursePageDetails} />
+      <Route exact path='/course/preview/:id' render={({match}) => (<div>Course with id = {match.params.id}</div>)} />
+      <ProfileRouters />
+    </Switch>
     </>
   );
 };
