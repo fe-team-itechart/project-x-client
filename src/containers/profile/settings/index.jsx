@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Profile } from '../profile';
+import Profile from '../profile';
 
 import styles from './styles.module.scss';
 

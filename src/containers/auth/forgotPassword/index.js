@@ -2,11 +2,12 @@ import React, { PureComponent } from 'react';
 
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
+import { withTranslation } from 'react-i18next';
 
 import { forgotPasswordRequest } from '../../../services/auth';
 import { emailValidate } from '../../../validation/auth';
 
-import Spinner from '../../../components/spinner';
+import { Spinner } from '../../../components/spinner';
 import { Modal } from '../../../components/modal';
 
 import styles from './styles.module.scss';
@@ -66,7 +67,7 @@ class ForgotPassword extends PureComponent {
   render() {
     const { pending, message, errors, success } = this.state;
 
-    const { modalStatus } = this.props;
+    const { modalStatus, t } = this.props;
 
     return (
       <Modal open={modalStatus} onClose={this.modalClose}>
@@ -74,7 +75,7 @@ class ForgotPassword extends PureComponent {
           <form className={styles.form}>
             <input
               className={styles.input}
-              placeholder="Enter Email"
+              placeholder={`${t('Enter E-mail')}`}
               name="forgot-password-id"
               id="forgot-password-id"
               type="email"
@@ -82,20 +83,21 @@ class ForgotPassword extends PureComponent {
               required
             />
             <div className={styles.errorMessage}>{errors.email || message}</div>
-            <button type="button" className={`${styles.btn}`} onClick={this.send}>
-              Send
+            <button
+              type="button"
+              className={`${styles.btn}`}
+              onClick={this.send}>
+              {`${t('Send')}`}
             </button>
           </form>
         )}
 
-        {pending && (
-          <div className={styles.form}>
-            <Spinner loading={pending} />
-          </div>
-        )}
+        {pending && <Spinner loading={pending} />}
 
         {!pending && message && success && (
-          <div className={`${styles.form} ${styles.successMessage}`}>{message}</div>
+          <div className={`${styles.form} ${styles.successMessage}`}>
+            {message}
+          </div>
         )}
       </Modal>
     );
@@ -107,4 +109,4 @@ ForgotPassword.propTypes = {
   onModalClose: PropTypes.func.isRequired,
 };
 
-export default ForgotPassword;
+export default (withTranslation('translations')(ForgotPassword));

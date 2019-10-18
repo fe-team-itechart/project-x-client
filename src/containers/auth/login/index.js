@@ -8,6 +8,7 @@ import queryString from 'query-string';
 import { FaEye, FaEyeSlash, FaLock, FaEnvelope } from 'react-icons/fa';
 import { withTranslation } from 'react-i18next';
 
+import { Spinner } from '../../../components/spinner';
 import { Modal } from '../../../components/modal';
 import { loginRequest, socialLoginRequest } from '../../../actions/auth';
 import { loginValidate } from '../../../validation/auth';
@@ -24,6 +25,7 @@ class Login extends Component {
     password: '',
     errors: {},
     hidden: true,
+    isLoading: false,
   };
 
   componentDidMount() {
@@ -45,7 +47,7 @@ class Login extends Component {
     });
   };
 
-  passwordVisability = () => {
+  passwordVisibility = () => {
     this.setState({ hidden: !this.state.hidden });
   };
 
@@ -77,27 +79,29 @@ class Login extends Component {
       this.setState({ errors });
     } else {
       const request = new Promise((resolve, reject) => {
+        this.setState({ isLoading: true });
         loginRequest({ email, password, resolve, reject });
       });
       request.then(
         () => {
           onModalClose(false);
-          this.setState({ errors: {} });
+          this.setState({ errors: {}, isLoading: false });
         },
         errors => {
-          this.setState({ errors });
+          this.setState({ errors, isLoading: false });
         }
       );
     }
   };
 
   render() {
-    const { email, password, errors } = this.state;
+    const { isLoading, email, password, errors } = this.state;
     const { modalStatus, t } = this.props;
 
     return (
       <>
         <Modal open={modalStatus} onClose={this.closeModal}>
+          {isLoading && <Spinner />}
           <h2 className={styles.title}>{`${t(
             'Log In to your Das Pish account'
           )}`}</h2>
@@ -160,12 +164,12 @@ class Login extends Component {
               </a>
             </div>
             <button type="submit" className={styles.submit}>
-              Log In
+              {`${t('Log In')}`}
             </button>
             <span
               onClick={this.openForgotPasswordModal}
               className={styles.linkForgot}>
-              Forgot Password?
+              {`${t('Forgot Password?')}`}
             </span>
           </form>
         </Modal>

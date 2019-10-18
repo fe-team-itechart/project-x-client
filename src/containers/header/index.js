@@ -118,7 +118,7 @@ const Header = props => {
                 type="button"
                 className={styles.button}
                 onClick={openModalLog}>
-                {t('Log in')}
+                {t('Log In')}
               </button>
               <button
                 type="button"
@@ -178,4 +178,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(withTranslation('translations')(Header));
-
