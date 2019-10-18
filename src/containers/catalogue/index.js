@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 
 import { Spinner } from '../../components/spinner';
+import { CourseCard } from '../../components/courseCard';
 import { getCoursesByAttribute } from '../../services/courses';
 
 import styles from './styles.module.scss';
@@ -47,7 +48,12 @@ export class Catalogue extends Component {
             <section className={styles.coursesWrapper}>
               {this.state.courses.length !== 0 ? (
                 this.state.courses.map((course, index) => (
-                  <h1>{course.courseName}</h1>
+                  <CourseCard
+                    key={index}
+                    title={course.courseName}
+                    authors={course.authors}
+                    rate={course.rating}
+                  />
                 ))
               ) : (
                 <h2>

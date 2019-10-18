@@ -11,6 +11,7 @@ import { Catalogue } from '../../containers/catalogue';
 
 export const Main = () => {
   return (
+    <>
     <Switch>
       <Route exact path="/" component={Layout} />
       <Route path="/catalogue" component={Catalogue} />
@@ -18,7 +19,9 @@ export const Main = () => {
       <Route path="/troubleshooting" component={Trobleshooting} />
       <Route path="/course-taking" component={CourseTaking} />
       <Route path="/reset" component={ResetPassword} />
+      <Route exact path='/course/preview/:id' render={({match}) => (<div>Course with id = {match.params.id}</div>)} />
       <ProfileRouters />
     </Switch>
+    </>
   );
 };

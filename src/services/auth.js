@@ -1,4 +1,4 @@
-import jwt_decode from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 
 import { httpService } from './httpService';
 import { storageWrapper } from './storageService';
@@ -11,7 +11,7 @@ const config = {
 };
 
 export const socialLoginRequest = res => {
-  const decoded = jwt_decode(res.payload);
+  const decoded = jwtDecode(res.payload);
   storageWrapper.setToken(res.payload);
 
   return decoded;
@@ -22,7 +22,7 @@ export const registerRequest = async data => {
     const {
       data: { token },
     } = await httpService.post({ url: links.registrationRoute, data, config });
-    const decoded = jwt_decode(token);
+    const decoded = jwtDecode(token);
     storageWrapper.setToken(token);
 
     return decoded;
@@ -36,7 +36,7 @@ export const loginRequest = async data => {
     const {
       data: { token },
     } = await httpService.post({ url: links.loginRoute, data, config });
-    const decoded = jwt_decode(token);
+    const decoded = jwtDecode(token);
     storageWrapper.setToken(token);
 
     return decoded;
