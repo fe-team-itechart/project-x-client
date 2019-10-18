@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import { getCourseDetails } from '../../services/course';
 
@@ -24,7 +23,7 @@ class coursePageDetails extends Component {
       : this.setState({ course: response.data, isLoading: false });
   }
 
-  showMoreReviews() {
+  showMoreReviews = () => {
     const { course, showReviewsNum } = this.state;
 
     if (course.courseReviews.length > showReviewsNum)
@@ -117,7 +116,7 @@ class coursePageDetails extends Component {
                 <button
                   className={styles.showMoreButton}
                   type="button"
-                  onClick={() => this.showMoreReviews()}>
+                  onClick={this.showMoreReviews}>
                   Show more reviews
                 </button>
               </div>
@@ -129,11 +128,4 @@ class coursePageDetails extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
-
-const mapDispatchToProps = {};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(coursePageDetails);
+export default coursePageDetails;
