@@ -12,6 +12,7 @@ import {
   FaLock,
   FaEnvelope,
 } from 'react-icons/fa';
+import { withTranslation } from 'react-i18next';
 
 import { Spinner } from '../../../components/spinner';
 import { Modal } from '../../../components/modal';
@@ -111,14 +112,14 @@ class Register extends Component {
       errors,
       isLoading,
     } = this.state;
-    const { modalStatus } = this.props;
+    const { modalStatus, t } = this.props;
 
     return (
       <>
         <Modal open={modalStatus} onClose={this.closeModal}>
           {isLoading && <Spinner />}
           <h2 className={styles.title}>
-            Create account and be a DasPish member!
+            {`${t('Create account and be a DasPish member!')}`}
           </h2>
           <form onSubmit={this.onSubmit} noValidate>
             <div className={styles.iconInput}>
@@ -128,7 +129,7 @@ class Register extends Component {
                 id="userName"
                 name="userName"
                 value={userName}
-                placeholder="Name"
+                placeholder={`${t('Username')}`}
                 onChange={this.onChange}
               />
             </div>
@@ -163,7 +164,7 @@ class Register extends Component {
                   id="password"
                   name="password"
                   value={password}
-                  placeholder="Password"
+                  placeholder={`${t('Password')}`}
                   onChange={this.onChange}
                 />
               </div>
@@ -183,7 +184,7 @@ class Register extends Component {
                 id="confirmPassword"
                 name="confirmPassword"
                 value={confirmPassword}
-                placeholder="Confirm Password"
+                placeholder={`${t('Confirm Password')}`}
                 onChange={this.onChange}
               />
             </div>
@@ -213,12 +214,12 @@ class Register extends Component {
               </a>
             </div>
             <button type="submit" className={styles.submit}>
-              Create account
+              {`${t('Create account')}`}
             </button>
             <span
               onClick={this.alreadyHaveAccount}
               className={styles.linkForgot}>
-              Already have an account?
+              {`${t('Already have an account?')}`}
             </span>
           </form>
           )}
@@ -244,5 +245,5 @@ export default withRouter(
   connect(
     null,
     mapDispatchToProps
-  )(Register)
+  )(withTranslation('translations')(Register))
 );
