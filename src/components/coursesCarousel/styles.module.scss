@@ -5,7 +5,7 @@
 @import '../../scss/shared/breakpoints.scss';
 
 .carouselContainer {
-  height: 375px;
+  height: 400px;
   background-color: $bcg-gray-light;
   margin: 15px 0;
   width: 90%;
@@ -47,9 +47,8 @@
   }
 
   .courseCardContainer {
-    height: 285px;
-    width: 270px;
-    background-color: $bcg-gray-dark;
+    height: 320px;
+    width: 300px;
     position: relative;
     left: 50%;
     margin-left: -135px;
@@ -57,48 +56,6 @@
     @media screen and (max-width: 350px) {
       left: 50%;
       margin-left: -135px;
-    }
-
-    .addingButton {
-      position: absolute;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 24px;
-      padding: 0;
-      width: 40px;
-      height: 40px;
-      top: 10px;
-      right: 10px;
-    }
-
-    .image {
-      margin: 0;
-      width: 100%;
-      height: 130px;
-      background: url('https://www.scnsoft.com/blog-pictures/cover-pics/react_js.png')
-        center / cover;
-      border-radius: 5px;
-    }
-
-    .name {
-      color: $white;
-      margin: 10px auto;
-      width: 220px;
-    }
-
-    .duration {
-      color: $light-gray;
-      margin: 10px auto;
-      width: 220px;
-    }
-
-    button {
-      @include primary-button;
-      margin: auto;
-      width: 220px;
-      height: 70px;
     }
   }
 }

@@ -4,6 +4,7 @@ import AliceCarousel from 'react-alice-carousel';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 import { getCoursesForCarousel } from '../../services/courses';
+import { CourseCard } from '../courseCard';
 
 import 'react-alice-carousel/lib/alice-carousel.css';
 import styles from './styles.module.scss';
@@ -39,23 +40,22 @@ class CoursesCarousel extends Component {
     const { data } = await getCoursesForCarousel();
     this.setState({
       courses: data,
+    });
+    this.setState({
       galleryItems: this.galleryItems(),
     });
   }
 
   galleryItems() {
     return this.state.courses
-      ? this.state.courses.map((item, i) => (
+      ? this.state.courses.map((item, index) => (
           <div className={styles.courseCardContainer}>
-            <button type="button" className={styles.addingButton}>
-              +
-            </button>
-            <figure className={styles.image} />
-            <p className={styles.name}>{item.title}</p>
-            <p className={styles.duration}>
-              Number of lessons: {item.numberOfLessons}
-            </p>
-            <button type="button">View</button>
+            <CourseCard
+              key={index}
+              title={item.courseName}
+              authors={item.authors}
+              rate={item.rating}
+            />
           </div>
         ))
       : null;
@@ -70,7 +70,9 @@ class CoursesCarousel extends Component {
   };
 
   onSlideChanged = e => {
-    const lastSlide = Math.ceil(this.state.galleryItems.length / itemsOnSlide);
+    const lastSlide = Math.ceil(
+      this.state.galleryItems.length / this.state.itemsOnSlide
+    );
 
     this.setState({
       currentIndex: e.item,
@@ -81,6 +83,8 @@ class CoursesCarousel extends Component {
 
   render() {
     const { galleryItems, currentIndex, lastSlide, slide } = this.state;
+
+    console.log(this.state.galleryItems);
 
     return (
       <section className={styles.carouselContainer}>
