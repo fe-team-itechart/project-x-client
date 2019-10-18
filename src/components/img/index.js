@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import Skeleton from 'react-loading-skeleton';
+
 import { links } from '../../utils/constants';
 
  class Img extends Component {
@@ -40,7 +42,7 @@ import { links } from '../../utils/constants';
     const { isLoading } = this.state;
     return (
       <>
-        {isLoading && <Skeleton duration={2} width={'100%'} height={'100%'} />}
+        {isLoading && <Skeleton duration={2} width='100%' height='100%' />}
         <img ref={this.refImg} {...props} alt="Loading..." />
       </>
     );
