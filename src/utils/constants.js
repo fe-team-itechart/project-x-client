@@ -13,4 +13,6 @@ export const links = {
   twitter:'http://twitter.com/',
   facebook:'https://www.facebook.com/',
   linkedIn:'https://www.linkedin.com/',
+  coursePreview: 'course/preview/',
+  placeHolderImage: 'http://placeimg.com/640/480/tech'
 };
