@@ -4,7 +4,6 @@ import { auth, profile } from '../actions/types';
 
 const initialState = {
   isAuthenticated: false,
-  loading: true,
   data: null,
   profile: null,
   isProfileLoading: true,
@@ -13,20 +12,17 @@ const initialState = {
 const loginSuccess = (state, { payload }) => ({
   ...state,
   isAuthenticated: true,
-  loading: false,
   data: payload,
 });
 
 const loginFailure = state => ({
   ...state,
   isAuthenticated: false,
-  loading: false,
 });
 
 const logOutSuccess = state => ({
   ...state,
   isAuthenticated: false,
-  loading: false,
   data: null,
 });
 

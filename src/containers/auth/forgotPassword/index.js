@@ -6,7 +6,7 @@ import { isEmpty } from 'lodash';
 import { forgotPasswordRequest } from '../../../services/auth';
 import { emailValidate } from '../../../validation/auth';
 
-import Spinner from '../../../components/spinner';
+import { Spinner } from '../../../components/spinner';
 import { Modal } from '../../../components/modal';
 
 import styles from './styles.module.scss';
@@ -82,20 +82,21 @@ class ForgotPassword extends PureComponent {
               required
             />
             <div className={styles.errorMessage}>{errors.email || message}</div>
-            <button type="button" className={`${styles.btn}`} onClick={this.send}>
+            <button
+              type="button"
+              className={`${styles.btn}`}
+              onClick={this.send}>
               Send
             </button>
           </form>
         )}
 
-        {pending && (
-          <div className={styles.form}>
-            <Spinner loading={pending} />
-          </div>
-        )}
+        {pending && <Spinner loading={pending} />}
 
         {!pending && message && success && (
-          <div className={`${styles.form} ${styles.successMessage}`}>{message}</div>
+          <div className={`${styles.form} ${styles.successMessage}`}>
+            {message}
+          </div>
         )}
       </Modal>
     );

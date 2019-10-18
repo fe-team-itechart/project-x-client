@@ -1,0 +1,59 @@
+@import '../../scss/shared/colors.scss';
+@import '../../scss/shared/fonts.scss';
+
+.courseCardWrapper{
+  text-decoration: unset;
+}
+
+.courseCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $bcg-gray-light;
+  padding: 15px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  color: $white;
+  font-family: $primary-font;
+  max-width: 280px;
+  border: 1px solid $gray-input;
+
+  &:hover {
+    box-shadow: 0px 0px 10px 5px $gray-input;
+    cursor: pointer;
+  }
+
+  .courseCardPreview {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 2px;
+    max-width: 280px;
+    width: 100%;
+  }
+
+  .courseCardDescription {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+
+    .courseCardTitle {
+      margin-bottom: 10px;
+    }
+
+    .courseCardPrice {
+      align-self: flex-end;
+      margin: 5px;
+      font-size: 1.5em;
+    }
+
+    .courseCardAuthor {
+      margin: 5px;
+    }
+
+    .courseCardRate {
+      margin: 5px;
+    }
+  }
+}

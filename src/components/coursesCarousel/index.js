@@ -29,61 +29,98 @@ const responsive = {
 class CoursesCarousel extends Component {
   state = {
     courses: [],
+    currentIndex: 0,
+    lastSlide: 0,
+    slide: 0,
+    galleryItems: [],
   };
 
   async componentDidMount() {
     const { data } = await getCoursesForCarousel();
-    this.setState({ courses: data });
+    this.setState({
+      courses: data,
+      galleryItems: this.galleryItems(),
+    });
   }
 
-  galleryItems = () => {
-    return this.state.courses.map((item, i) => (
-      <div className={styles.courseCardContainer}>
-        <button type="button" className={styles.addingButton}>
-          +
-        </button>
-        <figure className={styles.image} />
-        <p className={styles.name}>{item.title}</p>
-        <p className={styles.duration}>
-          Number of lessons: {item.numberOfLessons}
-        </p>
-        <button type="button">View</button>
-      </div>
-    ));
-  };
+  galleryItems() {
+    return this.state.courses
+      ? this.state.courses.map((item, i) => (
+          <div className={styles.courseCardContainer}>
+            <button type="button" className={styles.addingButton}>
+              +
+            </button>
+            <figure className={styles.image} />
+            <p className={styles.name}>{item.title}</p>
+            <p className={styles.duration}>
+              Number of lessons: {item.numberOfLessons}
+            </p>
+            <button type="button">View</button>
+          </div>
+        ))
+      : null;
+  }
 
-  nextItem = () => {
-    this.Carousel.slideNext();
-  };
-
-  prevItem = () => {
+  slidePrev = () => {
     this.Carousel.slidePrev();
   };
 
+  slideNext = () => {
+    this.Carousel.slideNext();
+  };
+
+  onSlideChanged = e => {
+    const lastSlide = Math.ceil(this.state.galleryItems.length / itemsOnSlide);
+
+    this.setState({
+      currentIndex: e.item,
+      slide: e.slide + 1,
+      lastSlide,
+    });
+  };
+
   render() {
+    const { galleryItems, currentIndex, lastSlide, slide } = this.state;
+
     return (
       <section className={styles.carouselContainer}>
         <button
           className={styles.navButton}
           type="button"
-          onClick={this.prevItem}>
-          <IoIosArrowBack color="white" className={styles.carouselArrows} />
+          onClick={this.slidePrev}>
+          <IoIosArrowBack
+            color="white"
+            className={
+              currentIndex > 0
+                ? styles.carouselArrows
+                : `${styles.carouselArrows} ${styles.disabled}`
+            }
+          />
         </button>
         <div className={styles.carousel}>
           <AliceCarousel
-            items={this.galleryItems()}
+            items={galleryItems}
             mouseDragEnabled
             infinite={false}
             responsive={responsive}
             buttonsDisabled
+            slideToIndex={currentIndex}
+            onSlideChanged={this.onSlideChanged}
             ref={el => (this.Carousel = el)}
           />
         </div>
         <button
           className={styles.navButton}
           type="button"
-          onClick={this.nextItem}>
-          <IoIosArrowForward color="white" className={styles.carouselArrows} />
+          onClick={this.slideNext}>
+          <IoIosArrowForward
+            color="white"
+            className={
+              slide !== lastSlide
+                ? styles.carouselArrows
+                : `${styles.carouselArrows} ${styles.disabled}`
+            }
+          />
         </button>
       </section>
     );
