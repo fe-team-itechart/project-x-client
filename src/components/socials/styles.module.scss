@@ -31,10 +31,9 @@
 
     &.active {
       opacity: 1;
-      transition: 0.3s;
 
       svg {
-        transform: rotate(180deg);
+        transform: rotate(360deg);
         transition: 0.3s;
       }
     }
