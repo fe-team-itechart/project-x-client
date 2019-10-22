@@ -5,7 +5,7 @@ import {
   IoLogoVk,
   IoLogoYoutube,
   IoLogoFacebook,
-  IoIosCellular,
+  IoIosGlobe,
 } from 'react-icons/io';
 
 import styles from './styles.module.scss';
@@ -18,7 +18,7 @@ const Socials = () => {
       <div
         className={isOpen ? `${styles.arrow} ${styles.active}` : styles.arrow}
         onClick={() => setOpen(!isOpen)}>
-        <IoIosCellular />
+        <IoIosGlobe />
       </div>
       <div
         className={
