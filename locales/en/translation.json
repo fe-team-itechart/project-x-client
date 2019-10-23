@@ -51,5 +51,20 @@
   "User not found": "User not found",
   "Please enter course name, description or author": "Please enter course name, description or author",
   "Username is not allowed to be empty": "Username is not allowed to be empty",
-  "Passwords do not match": "Passwords do not match"
+  "Passwords do not match": "Passwords do not match",
+  "For free": "For free",
+  "Teacher request": "Teacher request",
+  "Checkbox 1": "Checkbox 1",
+  "Checkbox 2": "Checkbox 2",
+  "Add payment data": "Add payment data",
+  "Update password": "Update password",
+  "Continue": "Continue",
+  "Students": "Students",
+  "Author": "Author",
+  "Language": "Language",
+  "Your profits": "Your profits",
+  "Reviews": "Reviews",
+  "Show more reviews": "Show more reviews",
+  "There are no courses with": "There are no courses with",
+  "value": "value"
 }

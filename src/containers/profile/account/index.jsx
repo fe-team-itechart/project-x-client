@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { isEmpty } from 'lodash';
+import { withTranslation } from 'react-i18next';
 
 import Profile from '../profile';
 import { changePasswordValidate } from '../../../validation/auth';
@@ -29,7 +30,7 @@ class Account extends Component {
         password: '',
         confirmPassword: '',
         errors: {},
-        update: !this.state.update
+        update: !this.state.update,
       });
       changePassword({ password });
     }
@@ -70,7 +71,7 @@ class Account extends Component {
                 id="password"
                 name="password"
                 value={password}
-                placeholder="Password"
+                placeholder={`${this.props.t('Password')}`}
                 disabled={update}
                 onChange={this.onChange}
               />
@@ -84,7 +85,7 @@ class Account extends Component {
                 id="confirmPassword"
                 name="confirmPassword"
                 value={confirmPassword}
-                placeholder="Confirm Password"
+                placeholder={`${this.props.t('Confirm Password')}`}
                 disabled={update}
                 onChange={this.onChange}
               />
@@ -93,20 +94,20 @@ class Account extends Component {
               {update ? (
                 <div>
                   <button type="button" onClick={this.updatePassword}>
-                    Update password
+                    {this.props.t('Update password')}
                   </button>
                   <button type="button" className={styles.paymentBtn}>
-                    Add payment data
+                    {this.props.t('Add payment data')}
                   </button>
                 </div>
               ) : (
-                  <>
-                    <button type="submit">Save</button>
-                    <button type="button" onClick={this.closeUpdate}>
-                      Close
+                <>
+                  <button type="submit">{this.props.t('Save')}</button>
+                  <button type="button" onClick={this.closeUpdate}>
+                    {this.props.t('Close')}
                   </button>
-                  </>
-                )}
+                </>
+              )}
             </div>
           </form>
         </div>
@@ -115,5 +116,4 @@ class Account extends Component {
   }
 }
 
-
-export default Account;
+export default withTranslation('translations')(Account);

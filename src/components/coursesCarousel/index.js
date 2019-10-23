@@ -4,7 +4,7 @@ import AliceCarousel from 'react-alice-carousel';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 import { getCoursesForCarousel } from '../../services/courses';
-import { CourseCard } from '../courseCard';
+import CourseCard from '../courseCard';
 
 import 'react-alice-carousel/lib/alice-carousel.css';
 import styles from './styles.module.scss';
@@ -84,8 +84,6 @@ class CoursesCarousel extends Component {
 
   render() {
     const { galleryItems, currentIndex, lastSlide, slide } = this.state;
-
-    console.log(this.state.galleryItems);
 
     return (
       <section className={styles.carouselContainer}>

@@ -1,10 +1,12 @@
 import React from 'react'
 
+import { withTranslation } from 'react-i18next';
+
 import Profile from '../profile';
 
 import styles from './styles.module.scss';
 
-export const Settings = () => {
+const Settings = props => {
 
   return (
     <>
@@ -17,22 +19,24 @@ export const Settings = () => {
           </select>
         </div>
         <button type='button'>
-          Teacher request
+          {props.t('Teacher request')}
         </button>
         <ul>
           <li>
             <input className={styles.styledCheckbox} id="styled-checkbox-1" type="checkbox" />
-            <label htmlFor="styled-checkbox-1">Checkbox 1</label>
+            <label htmlFor="styled-checkbox-1">{props.t('Checkbox 1')}</label>
           </li>
           <li>
             <input className={styles.styledCheckbox} id="styled-checkbox-2" type="checkbox" />
-            <label htmlFor="styled-checkbox-2">Checkbox 2</label>
+            <label htmlFor="styled-checkbox-2">{props.t('Checkbox 2')}</label>
           </li>
         </ul>
         <button type='button'>
-          save
+          {props.t('Save')}
         </button>
       </div>
     </>
   )
 }
+
+export default (withTranslation('translations')(Settings));

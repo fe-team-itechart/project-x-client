@@ -3,7 +3,7 @@ import { Switch } from 'react-router-dom';
 
 import { PrivateRoute } from '../../components/privateRoute';
 import ProfileData from './profile/index';
-import { Settings } from './settings';
+import Settings from './settings';
 import Account from './account';
 import { Courses } from './courses';
 

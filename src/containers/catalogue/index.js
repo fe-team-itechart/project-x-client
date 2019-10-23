@@ -3,12 +3,13 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 
 import { Spinner } from '../../components/spinner';
-import { CourseCard } from '../../components/courseCard';
+import CourseCard from '../../components/courseCard';
 import { getCoursesByAttribute } from '../../services/courses';
+import { withTranslation } from 'react-i18next';
 
 import styles from './styles.module.scss';
 
-export class Catalogue extends Component {
+class Catalogue extends Component {
   state = {
     courses: [],
     isLoading: true,
@@ -58,7 +59,8 @@ export class Catalogue extends Component {
                 ))
               ) : (
                 <h2>
-                  There are no courses with {this.state.searchValue} value
+                  {this.props.t('There are no courses with')}{' '}
+                  {this.state.searchValue} {this.props.t('value')}
                 </h2>
               )}
             </section>
@@ -68,3 +70,5 @@ export class Catalogue extends Component {
     );
   }
 }
+
+export default withTranslation('translations')(Catalogue);

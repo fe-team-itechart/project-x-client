@@ -51,5 +51,20 @@
   "User not found": "Такого пользователя не существует",
   "Please enter course name, description or author": "Пожалуйста, введите название курса, описание или автора",
   "Username is not allowed to be empty": "Введите имя пользователя",
-  "Passwords do not match": "Пароли не совпадают"
+  "Passwords do not match": "Пароли не совпадают",
+  "For free": "Бесплатно",
+  "Teacher request": "Стать учителем",
+  "Checkbox 1": "Выбор 1",
+  "Checkbox 2": "Выбор 2",
+  "Add payment data": "Добавить способ оплаты",
+  "Update password": "Обновить пароль",
+  "Continue": "Продолжить",
+  "Students": "Студенты",
+  "Author": "Автор",
+  "Language": "Язык",
+  "Your profits": "Вы научитесь",
+  "Reviews": "Отзывы",
+  "Show more reviews": "Показать больше отзывов",
+  "There are no courses with": "Не найдено курсов с",
+  "value": "значением"
 }
