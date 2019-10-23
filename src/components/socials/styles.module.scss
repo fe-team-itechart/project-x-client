@@ -14,7 +14,7 @@
     align-items: center;
 
     opacity: 0.5;
-    height: 56px;
+    height: 50px;
     width: 50px;
 
     background: $gradient;
@@ -31,10 +31,9 @@
 
     &.active {
       opacity: 1;
-      transition: 0.3s;
 
       svg {
-        transform: rotate(180deg);
+        transform: rotate(360deg);
         transition: 0.3s;
       }
     }
@@ -58,6 +57,9 @@
       overflow: hidden;
 
       li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 2px;
 
         &:hover {
@@ -66,7 +68,7 @@
 
         svg {
           padding: 12px;
-          font-size: 24px;
+          font-size: 18px;
           color: $white;
         }
       }

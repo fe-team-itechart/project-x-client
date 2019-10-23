@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 
-import styles from './styles.module.scss';
 import {
-  FaChevronLeft,
-  FaVk,
-  FaYoutube,
-  FaFacebookSquare,
-} from 'react-icons/fa';
+  IoIosMail,
+  IoLogoVk,
+  IoLogoYoutube,
+  IoLogoFacebook,
+  IoIosGlobe,
+} from 'react-icons/io';
+
+import styles from './styles.module.scss';
 
 const Socials = () => {
   const [isOpen, setOpen] = useState(false);
@@ -16,7 +18,7 @@ const Socials = () => {
       <div
         className={isOpen ? `${styles.arrow} ${styles.active}` : styles.arrow}
         onClick={() => setOpen(!isOpen)}>
-        <FaChevronLeft />
+        <IoIosGlobe />
       </div>
       <div
         className={
@@ -28,7 +30,7 @@ const Socials = () => {
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.youtube.com/user/iTechArt">
-              <FaYoutube />
+              <IoLogoYoutube />
             </a>
           </li>
           <li>
@@ -36,7 +38,7 @@ const Socials = () => {
               target="_blank"
               rel="noopener noreferrer"
               href="https://vk.com/itechart.group">
-              <FaVk />
+              <IoLogoVk />
             </a>
           </li>
           <li>
@@ -44,7 +46,15 @@ const Socials = () => {
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.facebook.com/iTechArt.Group">
-              <FaFacebookSquare />
+              <IoLogoFacebook />
+            </a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="mailto:careers@itechart-group.com">
+              <IoIosMail />
             </a>
           </li>
         </ul>
