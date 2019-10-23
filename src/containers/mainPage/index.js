@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import AliceCarousel from 'react-alice-carousel';
-import Socials from '../../components/socials';
 import { withTranslation } from 'react-i18next';
+import Socials from '../../components/socials';
 
 import 'react-alice-carousel/lib/alice-carousel.css';
 import styles from './styles.module.scss';
@@ -48,8 +48,10 @@ class MainPage extends Component {
         <div className={styles.slider}>
           <AliceCarousel
             items={this.sliderItems()}
-            mouseDragEnabled
-            infinite={false}
+            mouseDragEnabled={false}
+            autoPlay={true}
+            autoPlayInterval={5000}
+            infinite={true}
             buttonsDisabled
             ref={el => (this.Carousel = el)}
           />
