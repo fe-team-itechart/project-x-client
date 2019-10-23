@@ -84,9 +84,7 @@ class CoursesCarousel extends Component {
 
   render() {
     const { galleryItems, currentIndex, lastSlide, slide } = this.state;
-
-    console.log(this.state.galleryItems);
-
+    
     return (
       <section className={styles.carouselContainer}>
         <button

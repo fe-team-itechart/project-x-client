@@ -5,7 +5,7 @@
 
 .search {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   flex: 1 1 auto;
   cursor: pointer;
@@ -13,24 +13,28 @@
   &:hover {
     color: $orange;
   }
-
   @media (max-width: $width-sm) {
-    padding: 0 25px;
+    padding: 0 0 0 20px;
   }
 
   input {
     @include primary-input;
     padding: 0;
-    width: 100%;
+    width: 85%;
     margin: 0;
 
     &::placeholder {
       color: $gray-input;
     }
 
+    @media (max-width: $width-md) {
+      width: 80%;
+    }
+
     @media (max-width: $width-sm) {
       padding: 8px 0;
       margin-bottom: 10px;
+      width: 85%;
     }
   }
 

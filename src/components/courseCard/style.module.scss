@@ -42,6 +42,7 @@
     .courseCardTitle {
       text-overflow: ellipsis;
       width: 100%;
+      font-size: 18px;
       overflow: hidden;
       white-space: nowrap;
       text-align: center;
@@ -52,15 +53,17 @@
     .courseCardPrice {
       align-self: flex-end;
       margin: 5px;
-      font-size: 1.5em;
+      font-size: 1.2em;
     }
 
     .courseCardAuthor {
+      font-size: 14px;
       margin: 5px;
     }
 
     .courseCardRate {
       margin: 5px;
+      font-size: 14px;
     }
   }
 }
