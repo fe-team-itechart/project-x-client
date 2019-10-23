@@ -12,18 +12,14 @@ const emailSchema = Joi.string()
 
 const passwordSchema = Joi.string()
   .required()
-  .regex(
-    /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/
-  )
+  .regex(/^(?=.*?[A-Z-А-Я])(?=.*?[#?!@$%^&*-])/)
   .min(8)
   .max(32);
 
 const passwordConfirmSchema = Joi.object().keys({
   password: Joi.string()
     .required()
-    .regex(
-      /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/
-    )
+    .regex(/^(?=.*?[A-Z-А-Я])(?=.*?[#?!@$%^&*-])/)
     .min(8)
     .max(32),
   confirmPassword: Joi.any()
@@ -53,7 +49,7 @@ export const loginValidate = (email, password) => {
 
     if (
       errors.password.includes(
-        '(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}'
+        '^(?=.*?[A-Z-А-Я])(?=.*?[#?!@$%^&*-])'
       )
     ) {
       errors.password =
@@ -93,7 +89,7 @@ export const registerValidate = (
     );
     if (
       errors.password.includes(
-        '(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}'
+        '^(?=.*?[A-Z-А-Я])(?=.*?[#?!@$%^&*-])'
       )
     ) {
       errors.password =
@@ -104,7 +100,7 @@ export const registerValidate = (
   if (userNameValidate.error) {
     errors.userName = userNameValidate.error.details[0].message.replace(
       '"value"',
-      'First name'
+      'Username'
     );
   }
 
@@ -126,7 +122,7 @@ export const changePasswordValidate = (password, confirmPassword) => {
     );
     if (
       errors.password.includes(
-        '(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}'
+        '^(?=.*?[A-Z-А-Я])(?=.*?[#?!@$%^&*-])'
       )
     ) {
       errors.password =

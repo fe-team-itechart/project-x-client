@@ -119,7 +119,7 @@ class Login extends Component {
             </div>
             {errors.email || errors.status === 404 ? (
               <span className={styles.invalidFeedback}>
-                {errors.email ? errors.email : errors.message}
+                {errors.email ? t(`${errors.email}`) : t(`${errors.message}`)}
               </span>
             ) : (
               <div className={styles.reservedPlace}></div>
@@ -142,7 +142,7 @@ class Login extends Component {
             </div>
             {errors.password || errors.status === 403 ? (
               <span className={styles.invalidFeedback}>
-                {errors.password ? errors.password : errors.message}
+                {errors.password ? t(`${errors.password}`) : t(`${errors.message}`)}
               </span>
             ) : (
               <div className={styles.reservedPlace}></div>

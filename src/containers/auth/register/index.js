@@ -134,10 +134,13 @@ class Register extends Component {
               />
             </div>
             {errors.userName ? (
-              <span className={styles.invalidFeedback}>{errors.userName}</span>
+              <span className={styles.invalidFeedback}>
+                {t(`${errors.userName}`)}
+              </span>
             ) : (
               <div className={styles.reservedPlace}></div>
             )}
+
             <div className={styles.iconInput}>
               <FaEnvelope />
               <input
@@ -151,11 +154,12 @@ class Register extends Component {
             </div>
             {errors.email || errors.status === 400 ? (
               <span className={styles.invalidFeedback}>
-                {errors.email ? errors.email : errors.message}
+                {errors.email ? t(`${errors.email}`) : errors.message}
               </span>
             ) : (
               <div className={styles.reservedPlace}></div>
             )}
+
             <div className={styles.iconInput}>
               <div className={styles.password}>
                 <FaLock />
@@ -173,10 +177,11 @@ class Register extends Component {
               </div>
             </div>
             {errors.password ? (
-              <span className={styles.invalidFeedback}>{errors.password}</span>
+              <span className={styles.invalidFeedback}>{t(`${errors.password}`) }</span>
             ) : (
               <div className={styles.reservedPlace}></div>
             )}
+
             <div className={styles.iconInput}>
               <FaLock />
               <input
@@ -197,6 +202,7 @@ class Register extends Component {
             ) : (
               <div className={styles.reservedPlace}></div>
             )}
+
             <div className={styles.socialButtonsContainer}>
               <a href={links.googleURL}>
                 <div className={styles.googleButton}>
@@ -213,9 +219,11 @@ class Register extends Component {
                 </div>
               </a>
             </div>
+
             <button type="submit" className={styles.submit}>
               {`${t('Create account')}`}
             </button>
+            
             <span
               onClick={this.alreadyHaveAccount}
               className={styles.linkForgot}>
