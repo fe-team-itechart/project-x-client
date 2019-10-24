@@ -3,7 +3,7 @@
 
 .footer {
   margin: 15px 0;
-  width: 90%;
+  width: 75%;
   background-color: $bcg-gray-light;
   display: flex;
   justify-content: space-between;
@@ -23,7 +23,7 @@
 
     span {
       margin-right: 10px;
-      font-size: 22px;
+      font-size: 18px;
       transform: rotate(-20deg);
       text-decoration: underline;
     }
@@ -33,6 +33,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 14px;
 
     a {
       color: $white;
