@@ -41,7 +41,7 @@ class Account extends Component {
 
   render() {
     const { password, email, errors } = this.state;
-
+    const { t: translate } = this.props
     return (
       <>
         <div className={styles.accountWrapper}>
@@ -73,7 +73,7 @@ class Account extends Component {
               )}
             </div>
             <div className={styles.buttonWrapper}>
-              <button type="submit">{`${this.props.t('Save')}`}</button>
+              <button type="submit">{`${translate('Save')}`}</button>
             </div>
           </form>
         </div>
