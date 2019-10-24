@@ -3,7 +3,7 @@
 .mainPageWrapper {
   position: relative;
   display: flex;
-  width: 90%;
+  width: 75%;
   flex-direction: column;
   background-color: $bcg-gray-light;
   margin-bottom: 20px;
@@ -24,12 +24,12 @@
     flex-direction: column;
 
     h1 {
-      font-size: 40px;
+      font-size: 28px;
     }
 
     p {
       color: $text-gray-light;
-      font-size: 32px;
+      font-size: 24px;
     }
   }
 }

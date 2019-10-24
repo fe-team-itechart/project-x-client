@@ -1,15 +1,13 @@
 import React from 'react';
 
 import MainPage from '../../containers/mainPage';
-import CoursesCarousel from '../../components/coursesCarousel';
-import Help from '../help';
+import CoursesCarousel from '../coursesCarousel';
 
 export const Layout = () => {
   return (
     <>
       <MainPage />
       <CoursesCarousel />
-      <Help />
     </>
   );
 };
