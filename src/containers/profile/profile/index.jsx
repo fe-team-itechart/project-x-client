@@ -12,7 +12,6 @@ import {
   updateProfileRequest,
 } from '../../../actions/profile';
 import { links } from '../../../utils/constants';
-import Profile from '../profile';
 import { Spinner } from '../../../components/spinner';
 
 import styles from './styles.module.scss';
@@ -24,7 +23,6 @@ const ProfileData = ({
   isProfileLoading,
   t: translate
 }) => {
-  const [checked, setCheck] = useState(true);
   const [formData, setFormData] = useState({
     userName: '',
     description: '',
@@ -72,142 +70,111 @@ const ProfileData = ({
       setErrors(errors);
     } else {
       setErrors({});
-      setCheck(!checked);
       updateProfileRequest(formData);
     }
   };
 
-  const onCheck = () => {
-    setCheck(!checked);
-  };
-
   return (
     <>
-      <Profile />
       {isProfileLoading ? (
         <Spinner />
       ) : (
-          <form className={styles.profile} onSubmit={onSubmit} noValidate>
-            <div className={styles.userFullName}>
+        <form className={styles.profileWrapper} onSubmit={onSubmit} noValidate>
+          <div className={styles.userFullName}>
+            <div>
+              <input
+                type="text"
+                name="userName"
+                value={userName}
+                placeholder={`${translate('Username')}`}
+                onChange={onChange}
+              />
+              {errors.userName && (
+                <span className={styles.invalidFeedback}>
+                  {errors.userName}
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div className={styles.description}>
+            <textarea
+              type="text"
+              rows="4"
+              name="description"
+              value={description}
+              placeholder={`${translate('Description')}`}
+              onChange={onChange}
+            />
+            {errors.description && (
+              <span className={styles.invalidFeedback}>
+                {errors.description}
+              </span>
+            )}
+          </div>
+
+          <div className={styles.social}>
+            <div>
               <div>
+                <FaTwitter className={styles.twitterIcon} />
                 <input
-                  type="text"
-                  name="userName"
-                  value={userName}
-                  placeholder={`${translate('Username')}`}
-                  disabled={checked}
+                  type="url"
+                  name="twitterLink"
+                  value={twitterLink}
+                  placeholder={links.twitter}
                   onChange={onChange}
                 />
-
-                {errors.userName && (
+                {errors.twitterLink && (
                   <span className={styles.invalidFeedback}>
-                    {errors.userName}
+                    {errors.twitterLink}
+                  </span>
+                )}
+              </div>
+
+              <div>
+                <FaFacebookF className={styles.facebookIcon} />
+                <input
+                  type="url"
+                  name="facebookLink"
+                  value={facebookLink}
+                  placeholder={links.facebook}
+                  onChange={onChange}
+                />
+                {errors.facebookLink && (
+                  <span className={styles.invalidFeedback}>
+                    {errors.facebookLink}
+                  </span>
+                )}
+              </div>
+
+              <div>
+                <FaLinkedinIn className={styles.linkedinIcon} />
+                <input
+                  type="url"
+                  name="linkedInLink"
+                  value={linkedInLink}
+                  placeholder={links.linkedIn}
+                  onChange={onChange}
+                />
+                {errors.linkedInLink && (
+                  <span className={styles.invalidFeedback}>
+                    {errors.linkedInLink}
                   </span>
                 )}
               </div>
             </div>
-
-            <div className={styles.description}>
-              <textarea
-                type="text"
-                rows="4"
-                name="description"
-                value={description}
-                placeholder={`${translate('Description')}`}
-                disabled={checked}
-                onChange={onChange}
-              />
-
-              {errors.description && (
-                <span className={styles.invalidFeedback}>
-                  {errors.description}
-                </span>
-              )}
-            </div>
-
-            <div className={styles.social}>
-              <div>
-                <div>
-                  <FaTwitter className={styles.twitterIcon} />
-                  <input
-                    type="url"
-                    name="twitterLink"
-                    value={twitterLink}
-                    placeholder={links.twitter}
-                    disabled={checked}
-                    onChange={onChange}
-                  />
-
-                  {errors.twitterLink && (
-                    <span className={styles.invalidFeedback}>
-                      {errors.twitterLink}
-                    </span>
-                  )}
-                </div>
-
-                <div>
-                  <FaFacebookF className={styles.facebookIcon} />
-                  <input
-                    type="url"
-                    name="facebookLink"
-                    value={facebookLink}
-                    placeholder={links.facebook}
-                    disabled={checked}
-                    onChange={onChange}
-                  />
-
-                  {errors.facebookLink && (
-                    <span className={styles.invalidFeedback}>
-                      {errors.facebookLink}
-                    </span>
-                  )}
-                </div>
-
-                <div>
-                  <FaLinkedinIn className={styles.linkedinIcon} />
-                  <input
-                    type="url"
-                    name="linkedInLink"
-                    value={linkedInLink}
-                    placeholder={links.linkedIn}
-                    disabled={checked}
-                    onChange={onChange}
-                  />
-
-                  {errors.linkedInLink && (
-                    <span className={styles.invalidFeedback}>
-                      {errors.linkedInLink}
-                    </span>
-                  )}
-                </div>
-              </div>
-            </div>
-            
-            <div className={styles.buttonsBlock}>
-              {checked ? (
-                <div>
-                  <button type="button" onClick={onCheck}>
-                    {`${translate('Update')}`}
-                  </button>
-                </div>
-              ) : (
-                  <>
-                    <button type="submit">{`${translate('Save')}`}</button>
-                    <button type="button" onClick={onCheck}>
-                      {`${translate('Close')}`}
-                    </button>
-                  </>
-                )}
-            </div>
-          </form>
-        )}
+          </div>
+          <div className={styles.buttonsWrapper}>
+            <button type="submit">{`${translate('Save')}`}</button>
+          </div>
+        </form>
+      )}
     </>
   );
 };
 
 ProfileData.propTypes = {
   getProfileRequest: PropTypes.func.isRequired,
-  updateProfileRequest: PropTypes.func.isRequired,
   updateProfileRequest: PropTypes.func.isRequired,
   isProfileLoading: PropTypes.bool.isRequired,
 };

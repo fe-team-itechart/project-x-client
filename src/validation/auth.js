@@ -133,6 +133,38 @@ export const changePasswordValidate = (password, confirmPassword) => {
   return errors;
 };
 
+export const changeAccountValidate = (email, password) => {
+  let errors = {};
+
+  const emailValidate = Joi.validate(email, emailSchema);
+  const passwordValidate = Joi.validate(password, passwordSchema);
+
+  if (emailValidate.error) {
+    errors.email = emailValidate.error.details[0].message.replace(
+      '"value"',
+      'Email'
+    );
+  }
+
+  if (passwordValidate.error) {
+    errors.password = passwordValidate.error.details[0].message.replace(
+      '"value"',
+      'Password'
+    );
+
+    if (
+      errors.password.includes(
+        '(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}'
+      )
+    ) {
+      errors.password =
+        'Password must contain at least one uppercase letter and one special symbol';
+    }
+  }
+
+  return errors;
+};
+
 export const emailValidate = email => {
   let errors = {};
   const emailValidate = Joi.validate(email, emailSchema);

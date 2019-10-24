@@ -15,8 +15,8 @@ const Footer = props => {
         <p>{`${props.t('Copyright (c) DasPish Corporate')}`}</p>
       </div>
       <div className={styles.termsWrapper}>
-        <Link to="/">{`${translate('Terms')}`}</Link>
-        <Link to="/">{`${translate('Privacy Policy and Cookie Policy')}`}</Link>
+        <Link to="/terms">{`${translate('Terms')}`}</Link>
+        <Link to="/privacy">{`${translate('Privacy Policy and Cookie Policy')}`}</Link>
       </div>
     </footer>
   );
