@@ -57,6 +57,7 @@ class Catalogue extends Component {
                     authors={course.authors}
                     rate={course.rating}
                     id={course.id}
+                    price={course.price}
                   />
                 ))
               ) : (
