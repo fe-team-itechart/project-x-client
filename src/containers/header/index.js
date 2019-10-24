@@ -70,7 +70,7 @@ const Header = props => {
     props.i18n.changeLanguage(newLang);
   };
 
-  const { isAuthenticated, logOutRequest, t } = props;
+  const { isAuthenticated, logOutRequest, t: translate } = props;
 
   return (
     <header className={styles.header}>
@@ -80,6 +80,7 @@ const Header = props => {
           <h1>DasPish</h1>
         </Link>
       </div>
+
       <>
         <Search />
         {width < 992 && (
@@ -87,10 +88,11 @@ const Header = props => {
             {!isOpenMenu ? <FaBars /> : <FaWindowClose />}
           </div>
         )}
+
         <div id="menu" className={styles.menu}>
           <div onClick={checkMobileMenuStatus}>
             <Link to="/catalogue" className={styles.link}>
-              {t('Catalogue')}
+              {translate('Catalogue')}
             </Link>
           </div>
 
@@ -99,14 +101,15 @@ const Header = props => {
               <div className={styles.authButtonsWrapper}>
                 <div onClick={checkMobileMenuStatus}>
                   <Link to="/profile-public" className={styles.link}>
-                    {t('Account')}
+                    {translate('Account')}
                   </Link>
                 </div>
+
                 <button
                   type="button"
                   className={styles.button}
                   onClick={logOutRequest}>
-                  {t('Log out')}
+                  {translate('Log out')}
                 </button>
               </div>
             </>
@@ -116,13 +119,14 @@ const Header = props => {
                 type="button"
                 className={styles.button}
                 onClick={openModalLog}>
-                {t('Log In')}
+                {translate('Log In')}
               </button>
+
               <button
                 type="button"
                 className={styles.button}
                 onClick={openModalReg}>
-                {t('Register')}
+                {translate('Register')}
               </button>
             </div>
           )}

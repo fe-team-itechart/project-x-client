@@ -24,12 +24,14 @@ class Search extends Component {
   };
 
   render() {
+    const { t: translate } = this.props;
+
     return (
       <form className={styles.search} onSubmit={this.onSubmit}>
         <input
           name="searchValue"
           value={this.state.searchValue}
-          placeholder={`${this.props.t(
+          placeholder={`${translate(
             'Please enter course name, description or author'
           )}`}
           onChange={this.onChange}

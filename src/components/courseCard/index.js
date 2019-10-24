@@ -11,7 +11,7 @@ import { links } from '../../utils/constants';
 import styles from './style.module.scss';
 
 const CourseCard = props => {
-  const { title, authors, rate, price = 'For free', img = '', id, t } = props;
+  const { title, authors, rate, price = 'For free', img = '', id, t: translate } = props;
  
   return (
     <Link
@@ -37,7 +37,7 @@ const CourseCard = props => {
             />
             ({rate})
           </div>
-          <div className={styles.courseCardPrice}>{t(`${price}`)}</div>
+          <div className={styles.courseCardPrice}>{translate(`${price}`)}</div>
         </section>
       </figure>
     </Link>

@@ -7,14 +7,16 @@ import { withTranslation } from 'react-i18next';
 import styles from './styles.module.scss';
 
 const Help = props => {
+  const { t: translate } = props;
+
   return (
     <section className={styles.cardsWrapper}>
       <h2>Help</h2>
       <Link to="/getting-started" className={styles.cardLink}>
         <div className={styles.cardWrapper}>
           <FaClipboardList />
-          <h3>{`${props.t('Getting Started')}`}</h3>
-          <p>{`${props.t(
+          <h3>{`${translate('Getting Started')}`}</h3>
+          <p>{`${translate(
             'Learn how our courses works and how to start learning'
           )}`}</p>
         </div>
@@ -23,16 +25,16 @@ const Help = props => {
       <Link to="/troubleshooting" className={styles.cardLink}>
         <div className={styles.cardWrapper}>
           <FaCogs />
-          <h3>{`${props.t('Troubleshooting')}`}</h3>
-          <p>{`${props.t('Experiencing a bug? Check here')}`}</p>
+          <h3>{`${translate('Troubleshooting')}`}</h3>
+          <p>{`${translate('Experiencing a bug? Check here')}`}</p>
         </div>
       </Link>
 
       <Link to="/course-taking" className={styles.cardLink}>
         <div className={styles.cardWrapper}>
           <FaBook />
-          <h3>{`${props.t('Course Taking')}`}</h3>
-          <p>{`${props.t('Everything about taking our course')}`}</p>
+          <h3>{`${translate('Course Taking')}`}</h3>
+          <p>{`${translate('Everything about taking our course')}`}</p>
         </div>
       </Link>
     </section>

@@ -26,12 +26,13 @@ class Account extends Component {
     if (!isEmpty(errors)) {
       this.setState({ errors });
     } else {
-      this.setState({
+      this.setState((previousState => ({
         password: '',
         confirmPassword: '',
         errors: {},
-        update: !this.state.update,
-      });
+        update: !previousState.update
+      })));
+
       changePassword({ password });
     }
   };
@@ -59,6 +60,7 @@ class Account extends Component {
 
   render() {
     const { password, confirmPassword, errors, update } = this.state;
+    const { t: translate } = this.state;
 
     return (
       <>
@@ -71,7 +73,7 @@ class Account extends Component {
                 id="password"
                 name="password"
                 value={password}
-                placeholder={`${this.props.t('Password')}`}
+                placeholder={`${translate('Password')}`}
                 disabled={update}
                 onChange={this.onChange}
               />
@@ -79,32 +81,35 @@ class Account extends Component {
                 <div className={styles.invalidFeedback}>{errors.password}</div>
               )}
             </div>
+
             <div className={styles.password}>
               <input
                 type="password"
                 id="confirmPassword"
                 name="confirmPassword"
                 value={confirmPassword}
-                placeholder={`${this.props.t('Confirm Password')}`}
+                placeholder={`${translate('Confirm Password')}`}
                 disabled={update}
                 onChange={this.onChange}
               />
             </div>
+
             <div className={styles.buttonsBlock}>
               {update ? (
                 <div>
                   <button type="button" onClick={this.updatePassword}>
-                    {this.props.t('Update password')}
+                    {translate('Update password')}
                   </button>
+
                   <button type="button" className={styles.paymentBtn}>
-                    {this.props.t('Add payment data')}
+                    {translate('Add payment data')}
                   </button>
                 </div>
               ) : (
                 <>
-                  <button type="submit">{this.props.t('Save')}</button>
+                  <button type="submit">{translate('Save')}</button>
                   <button type="button" onClick={this.closeUpdate}>
-                    {this.props.t('Close')}
+                    {translate('Close')}
                   </button>
                 </>
               )}

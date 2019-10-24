@@ -56,7 +56,7 @@ class CoursesCarousel extends Component {
 
   onSlideChanged = e => {
     const lastSlide = Math.ceil(
-      this.state.galleryItems.length / this.state.itemsOnSlide
+      this.state.galleryItems.length / e.itemsInSlide
     );
 
     this.setState({
@@ -84,7 +84,7 @@ class CoursesCarousel extends Component {
 
   render() {
     const { galleryItems, currentIndex, lastSlide, slide } = this.state;
-
+    
     return (
       <section className={styles.carouselContainer}>
         <button
@@ -119,7 +119,7 @@ class CoursesCarousel extends Component {
           <IoIosArrowForward
             color="white"
             className={
-              slide !== lastSlide
+              slide !== lastSlide || lastSlide === 0
                 ? styles.carouselArrows
                 : `${styles.carouselArrows} ${styles.disabled}`
             }

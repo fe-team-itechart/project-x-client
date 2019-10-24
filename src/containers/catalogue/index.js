@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 import queryString from 'query-string';
+import { withTranslation } from 'react-i18next';
 
 import { Spinner } from '../../components/spinner';
 import CourseCard from '../../components/courseCard';
 import { getCoursesByAttribute } from '../../services/courses';
-import { withTranslation } from 'react-i18next';
 
 import styles from './styles.module.scss';
 
@@ -37,6 +37,8 @@ class Catalogue extends Component {
   };
 
   render() {
+    const { t: translate } = this.props;
+
     return (
       <main className={styles.mainPageWrapper}>
         {this.state.isLoading ? (
@@ -59,8 +61,8 @@ class Catalogue extends Component {
                 ))
               ) : (
                 <h2>
-                  {this.props.t('There are no courses with')}{' '}
-                  {this.state.searchValue} {this.props.t('value')}
+                  {translate('There are no courses with')}{' '}
+                  {this.state.searchValue} {translate('value')}
                 </h2>
               )}
             </section>

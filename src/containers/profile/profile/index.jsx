@@ -22,7 +22,7 @@ const ProfileData = ({
   getProfileRequest,
   updateProfileRequest,
   isProfileLoading,
-  t
+  t: translate
 }) => {
   const [checked, setCheck] = useState(true);
   const [formData, setFormData] = useState({
@@ -94,10 +94,11 @@ const ProfileData = ({
                   type="text"
                   name="userName"
                   value={userName}
-                  placeholder={`${t('Username')}`}
+                  placeholder={`${translate('Username')}`}
                   disabled={checked}
                   onChange={onChange}
                 />
+
                 {errors.userName && (
                   <span className={styles.invalidFeedback}>
                     {errors.userName}
@@ -105,22 +106,25 @@ const ProfileData = ({
                 )}
               </div>
             </div>
+
             <div className={styles.description}>
               <textarea
                 type="text"
                 rows="4"
                 name="description"
                 value={description}
-                placeholder={`${t('Description')}`}
+                placeholder={`${translate('Description')}`}
                 disabled={checked}
                 onChange={onChange}
               />
+
               {errors.description && (
                 <span className={styles.invalidFeedback}>
                   {errors.description}
                 </span>
               )}
             </div>
+
             <div className={styles.social}>
               <div>
                 <div>
@@ -133,12 +137,14 @@ const ProfileData = ({
                     disabled={checked}
                     onChange={onChange}
                   />
+
                   {errors.twitterLink && (
                     <span className={styles.invalidFeedback}>
                       {errors.twitterLink}
                     </span>
                   )}
                 </div>
+
                 <div>
                   <FaFacebookF className={styles.facebookIcon} />
                   <input
@@ -149,12 +155,14 @@ const ProfileData = ({
                     disabled={checked}
                     onChange={onChange}
                   />
+
                   {errors.facebookLink && (
                     <span className={styles.invalidFeedback}>
                       {errors.facebookLink}
                     </span>
                   )}
                 </div>
+
                 <div>
                   <FaLinkedinIn className={styles.linkedinIcon} />
                   <input
@@ -165,6 +173,7 @@ const ProfileData = ({
                     disabled={checked}
                     onChange={onChange}
                   />
+
                   {errors.linkedInLink && (
                     <span className={styles.invalidFeedback}>
                       {errors.linkedInLink}
@@ -173,18 +182,19 @@ const ProfileData = ({
                 </div>
               </div>
             </div>
+            
             <div className={styles.buttonsBlock}>
               {checked ? (
                 <div>
                   <button type="button" onClick={onCheck}>
-                    {`${t('Update')}`}
+                    {`${translate('Update')}`}
                   </button>
                 </div>
               ) : (
                   <>
-                    <button type="submit">{`${t('Save')}`}</button>
+                    <button type="submit">{`${translate('Save')}`}</button>
                     <button type="button" onClick={onCheck}>
-                      {`${t('Close')}`}
+                      {`${translate('Close')}`}
                     </button>
                   </>
                 )}
