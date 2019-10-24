@@ -4,8 +4,23 @@
 @import '../../../scss/mixins/button.scss';
 @import '../../../scss/mixins/input.scss';
 
-.profile {
-  margin: 40px 15px 0 15px;
+.profileWrapper {
+  margin: 50px 30px;
+
+  @media screen and (min-width: $width-xl) {
+    width: 540px;
+  }
+
+  @media screen and (min-width: $width-xs) {
+    .social {
+      div {
+        input {
+          width: 100%;
+          margin: 10px 0;
+        }
+      }
+    }
+  }
 
   input,
   textarea {
@@ -58,7 +73,7 @@
     width: 100%;
 
     div {
-
+      
       div {
         display: flex;
         justify-content: center;
@@ -85,32 +100,16 @@
     }
   }
 
-  .buttonsBlock {
+  .buttonsWrapper {
+    display: flex;
+    justify-content: flex-end;
     width: 100%;
 
     button {
       @include primary-button;
       width: 100px;
       height: 50px;
-      margin: 25px 15px 15px 0;
-      float: left;
+      margin: 15px 0;
     }
-  }
-
-  @media screen and (min-width: $width-xs) {
-
-    .social {
-
-      div {
-
-        input {
-          width: 100%;
-          margin: 10px 0;
-        }
-      }
-    }
-  }
-  @media screen and (min-width: $width-xl) {
-    width: 540px;
   }
 }
