@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 export const Terms = () => {
   return (
     <section className={styles.termsWrapper}>
-      <h1>Terms</h1>
+      <h2>Terms</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur
         lectus mauris, in egestas sapien pharetra eu. Sed suscipit sit amet

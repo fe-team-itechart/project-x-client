@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 export const Privacy = () => {
   return (
     <section className={styles.privacyWrapper}>
-      <h1>Privacy Policy</h1>
+      <h2>Privacy Policy</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur
         lectus mauris, in egestas sapien pharetra eu. Sed suscipit sit amet
