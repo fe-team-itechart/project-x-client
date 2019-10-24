@@ -8,7 +8,7 @@
   height: 400px;
   background-color: $bcg-gray-light;
   margin: 15px 0;
-  width: 90%;
+  width: 75%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,7 +39,7 @@
   }
 
   .carousel {
-    width: 85%;
+    width: 90%;
 
     @media screen and (max-width: $width-md) {
       width: 100%;
@@ -51,11 +51,11 @@
     width: 300px;
     position: relative;
     left: 50%;
-    margin-left: -135px;
+    margin-left: -150px;
 
     @media screen and (max-width: 350px) {
       left: 50%;
-      margin-left: -135px;
+      margin-left: -150px;
     }
   }
 }
