@@ -55,6 +55,7 @@ class coursePageDetails extends Component {
           <div>
             <h2 className={styles.courseTitle}>{courseName}</h2>
             <p className={styles.shortDescription}>{description}</p>
+
             <div className={styles.courseStats}>
               <div className={styles.stars}>
                 <StarRatings
@@ -67,53 +68,65 @@ class coursePageDetails extends Component {
                   name="courseRating"
                 />
               </div>
+
               <span>{rating}</span>
+
               <span className={styles.verticalLine} />
+
               <span>
                 <font>{translate('Students')}: </font>
                 {numberOfEnrolledStudents}
               </span>
             </div>
+
             <div>
               <span>
                 <font>{translate('Author')}: </font>
                 {authors}
               </span>
+
               <span className={styles.verticalLine} />
+
               <span>
                 <font>{translate('Language')}: </font>
                 {language}
               </span>
             </div>
+
             <hr />
             <p className={styles.profitTitle}>{translate('Your profits')}</p>
+
             <ul className={styles.profitList}>
-              {profits.map(el => (
-                <li key={el.id}>{el.description}</li>
+              {profits.map(profit => (
+                <li key={profit.id}>{profit.description}</li>
               ))}
             </ul>
+
             <hr />
             <p className={styles.reviewsTitle}>{translate('Reviews')}</p>
-            {courseReviews.slice(0, showReviewsNum).map((el, key) => (
+            {courseReviews.slice(0, showReviewsNum).map((review, key) => (
               <div className={styles.reviewWrapper} key={key}>
                 <div>
-                  <span>Jhon Doe(Default)</span>
+                  <span>{review.user.userName}</span>
+
                   <div className={styles.stars}>
                     <StarRatings
-                      rating={el.rating}
+                      rating={review.rating}
                       starRatedColor="#ff8c05"
                       starEmptyColor="#515151"
                       starDimension="24px"
                       starSpacing="3px"
                       numberOfStars={5}
-                      name={`review${el.key}`}
+                      name={`review${review.key}`}
                     />
                   </div>
-                  <span>{el.createdAt}</span>
+
+                  <span>{review.createdAt}</span>
                 </div>
-                <p>{el.text}</p>
+                <p>{review.text}</p>
               </div>
             ))}
+             
             {courseReviews.length > showReviewsNum && (
               <div className={styles.buttonWrapper}>
                 <button
