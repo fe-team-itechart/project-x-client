@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import StarRatings from 'react-star-ratings';
+import { withTranslation } from 'react-i18next';
 
-import { getCourseDetails } from '../../services/course';
-import { subscribeCourse, subscribeCourseCheck } from '../../services/courses';
+import { getCourseDetails, subscribeCourse, subscribeCourseCheck } from '../../services/course';
 import { Spinner } from '../../components/spinner';
 
 import styles from './styles.module.scss';
@@ -74,6 +74,7 @@ class coursePageDetails extends Component {
     const { isLoading, showReviewsNum, error, subscribed } = this.state;
 
     const { isAuthenticated } = this.props;
+    const { t: translate } = this.props;
 
     return (
       <main className={styles.coursePageDetailsWrapper}>
@@ -103,17 +104,17 @@ class coursePageDetails extends Component {
                     <span>{rating}</span>
                     <span className={styles.verticalLine} />
                     <span>
-                      <font>Students:</font> {numberOfEnrolledStudents}
+                      <font>{translate('Students')}: </font> {numberOfEnrolledStudents}
                     </span>
                   </div>
                   <div>
                     <span>
-                      <font>Author: </font>
+                      <font>{translate('Author')}: </font>
                       {authors}
                     </span>
                     <span className={styles.verticalLine} />
                     <span>
-                      <font>Language: </font>
+                    <font>{translate('Language')}: </font>
                       {language}
                     </span>
                   </div>
@@ -121,27 +122,27 @@ class coursePageDetails extends Component {
                 {
                   isAuthenticated && !subscribed &&
                   (<div className={styles.subscribeButtonWrapper}>
-                    <button className={styles.subscribeButton} type='button' onClick={this.subscribeUserCourse}> Subscribe</button>
+                    <button className={styles.subscribeButton} type='button' onClick={this.subscribeUserCourse}>{translate('Subscribe')}</button>
                   </div>)
                 }
                 {
                   isAuthenticated && subscribed && (
                     <div className={styles.subscribeButtonWrapper}>
-                      <span className={styles.subscribeNotification}>You have already subscribed</span>
+                      <span className={styles.subscribeNotification}>{translate('You have already subscribed')}</span>
                     </div>
                   )
                 }
               </header>
 
               <hr />
-              <p className={styles.profitTitle}>Your profit</p>
+              <p className={styles.profitTitle}>{translate('Your profits')}</p>
               <ul className={styles.profitList}>
                 {profits && profits.map(el => (
                   <li key={el.id}>{el.description}</li>
                 ))}
               </ul>
               <hr />
-              <p className={styles.reviewsTitle}>Reviews</p>
+              <p className={styles.reviewsTitle}>{translate('Reviews')}</p>
               {courseReviews && courseReviews.slice(0, showReviewsNum).map((el, key) => (
                 <div className={styles.reviewWrapper} key={key}>
                   <div>
@@ -168,7 +169,7 @@ class coursePageDetails extends Component {
                     className={styles.showMoreButton}
                     type="button"
                     onClick={this.showMoreReviews}>
-                    Show more reviews
+                     {translate('Show more reviews')}
                 </button>
                 </div>
               )}
@@ -183,4 +184,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.user.isAuthenticated
 });
 
-export default withRouter(connect(mapStateToProps, null)(coursePageDetails));
+export default withRouter(connect(mapStateToProps, null)(withTranslation('translations')(coursePageDetails)));

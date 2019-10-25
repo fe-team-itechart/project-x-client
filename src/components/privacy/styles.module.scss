@@ -1,0 +1,15 @@
+@import '../../scss/shared/colors.scss';
+
+.privacyWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+  min-height: 100vh;
+  background-color: $bcg-gray-light;
+
+  p {
+    color: $white;
+    margin: 10px 30px;
+  }
+}

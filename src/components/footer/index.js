@@ -6,6 +6,8 @@ import { withTranslation } from 'react-i18next';
 import styles from './styles.module.scss';
 
 const Footer = props => {
+  const { t: translate } = props;
+
   return (
     <footer className={styles.footer}>
       <div className={styles.logoWrapper}>
@@ -13,8 +15,8 @@ const Footer = props => {
         <p>{`${props.t('Copyright (c) DasPish Corporate')}`}</p>
       </div>
       <div className={styles.termsWrapper}>
-        <Link to="/">{`${props.t('Terms')}`}</Link>
-        <Link to="/">{`${props.t('Privacy Policy and Cookie Policy')}`}</Link>
+        <Link to="/terms">{`${translate('Terms')}`}</Link>
+        <Link to="/privacy">{`${translate('Privacy Policy and Cookie Policy')}`}</Link>
       </div>
     </footer>
   );

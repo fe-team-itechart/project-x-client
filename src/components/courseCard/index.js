@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import StarRatings from 'react-star-ratings';
+import { withTranslation } from 'react-i18next';
 
 import Img from '../img/index';
 import { links } from '../../utils/constants';
 
 import styles from './style.module.scss';
 
-export const CourseCard = course => {
-  const { title, authors, rate, price = 'For free', img = '', id } = course;
+const CourseCard = props => {
+  const { title, authors, rate, price, img = '', id, t: translate } = props;
 
   return (
     <Link
@@ -36,7 +37,10 @@ export const CourseCard = course => {
             />
             ({rate})
           </div>
-          <div className={styles.courseCardPrice}>{price}</div>
+
+          <div className={styles.courseCardPrice}>
+            {translate(`${price ? `${price} $` : 'For free'}`)}
+          </div>
         </section>
       </figure>
     </Link>
@@ -61,3 +65,5 @@ CourseCard.defaultProps = {
     img: '',
   },
 };
+
+export default withTranslation('translations')(CourseCard);

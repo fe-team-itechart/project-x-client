@@ -15,9 +15,10 @@
   border-radius: 8px;
   color: $white;
   font-family: $primary-font;
-  max-width: 280px;
+  max-width: 260px;
   max-height: 400px; 
   border: 1px solid $gray-input;
+  margin: 30px;
 
   &:hover {
     box-shadow: 0px 0px 10px 5px $gray-input;
@@ -28,7 +29,7 @@
     object-fit: cover;
     object-position: center;
     border-radius: 2px;
-    max-width: 280px;
+    max-width: 260px;
     width: 100%;
   }
 
@@ -42,6 +43,7 @@
     .courseCardTitle {
       text-overflow: ellipsis;
       width: 100%;
+      font-size: 18px;
       overflow: hidden;
       white-space: nowrap;
       text-align: center;
@@ -52,15 +54,17 @@
     .courseCardPrice {
       align-self: flex-end;
       margin: 5px;
-      font-size: 1.5em;
+      font-size: 1.2em;
     }
 
     .courseCardAuthor {
+      font-size: 14px;
       margin: 5px;
     }
 
     .courseCardRate {
       margin: 5px;
+      font-size: 14px;
     }
   }
 }

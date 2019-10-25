@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { SubscribedCourseCard } from './subscribedCourseCard';
-import { CreatedCourseCard } from './createdCourseCard';
+import CreatedCourseCard from './createdCourseCard';
 import { FindNewCourseCard } from './findNewCourseCard';
 import { AddNewCourseCard } from './addNewCourseCard';
 

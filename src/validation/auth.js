@@ -12,18 +12,14 @@ const emailSchema = Joi.string()
 
 const passwordSchema = Joi.string()
   .required()
-  .regex(
-    /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/
-  )
+  .regex(/^(?=.*?[A-Z-А-Я])(?=.*?[#?!@$%^&*-])/)
   .min(8)
   .max(32);
 
 const passwordConfirmSchema = Joi.object().keys({
   password: Joi.string()
     .required()
-    .regex(
-      /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}/
-    )
+    .regex(/^(?=.*?[A-Z-А-Я])(?=.*?[#?!@$%^&*-])/)
     .min(8)
     .max(32),
   confirmPassword: Joi.any()
@@ -53,7 +49,7 @@ export const loginValidate = (email, password) => {
 
     if (
       errors.password.includes(
-        '(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}'
+        '^(?=.*?[A-Z-А-Я])(?=.*?[#?!@$%^&*-])'
       )
     ) {
       errors.password =
@@ -93,7 +89,7 @@ export const registerValidate = (
     );
     if (
       errors.password.includes(
-        '(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}'
+        '^(?=.*?[A-Z-А-Я])(?=.*?[#?!@$%^&*-])'
       )
     ) {
       errors.password =
@@ -104,7 +100,7 @@ export const registerValidate = (
   if (userNameValidate.error) {
     errors.userName = userNameValidate.error.details[0].message.replace(
       '"value"',
-      'First name'
+      'Username'
     );
   }
 
@@ -124,6 +120,38 @@ export const changePasswordValidate = (password, confirmPassword) => {
       '"password"',
       'Password'
     );
+    if (
+      errors.password.includes(
+        '^(?=.*?[A-Z-А-Я])(?=.*?[#?!@$%^&*-])'
+      )
+    ) {
+      errors.password =
+        'Password must contain at least one uppercase letter and one special symbol';
+    }
+  }
+
+  return errors;
+};
+
+export const changeAccountValidate = (email, password) => {
+  let errors = {};
+
+  const emailValidate = Joi.validate(email, emailSchema);
+  const passwordValidate = Joi.validate(password, passwordSchema);
+
+  if (emailValidate.error) {
+    errors.email = emailValidate.error.details[0].message.replace(
+      '"value"',
+      'Email'
+    );
+  }
+
+  if (passwordValidate.error) {
+    errors.password = passwordValidate.error.details[0].message.replace(
+      '"value"',
+      'Password'
+    );
+
     if (
       errors.password.includes(
         '(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}'

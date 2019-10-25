@@ -49,15 +49,22 @@ export const logOutRequest = () => {
   storageWrapper.deleteToken();
 };
 
-export const changePassword = async data => {
-  config.headers.Authorization = localStorage.token;
+export const changeAccountData = async data => {
+  try {
+    config.headers.Authorization = localStorage.token;
 
-  const res = await httpService.put({
-    url: links.changePasswordRoute,
-    data,
-    config,
-  });
-  return res;
+    const response = await httpService.put({
+      url: links.changePasswordRoute,
+      data,
+      config,
+    });
+
+    storageWrapper.setToken(response.data.token);
+
+    return response;
+  } catch (error) {
+    throw error.response.data;
+  }
 };
 
 export const forgotPasswordRequest = async data => {

@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 
 import queryString from 'query-string';
 import { isEmpty } from 'lodash';
-
 import { Redirect } from 'react-router-dom';
+import { withTranslation } from 'react-i18next';
 
 import { resetPassword } from '../../../services/auth';
 import { changePasswordValidate } from '../../../validation/auth';
@@ -32,6 +32,7 @@ class ResetPassword extends PureComponent {
 
   preValidateForm = ({ password, passwordConfirm }) => {
     const errors = changePasswordValidate(password, passwordConfirm);
+
     if (!isEmpty(errors)) {
       this.setState({
         errors,
@@ -45,22 +46,26 @@ class ResetPassword extends PureComponent {
     e.preventDefault();
     const { token, passwordConfirm, password } = this.state;
     const valid = this.preValidateForm({ password, passwordConfirm });
+
     if (valid) {
       this.setState({
         pending: true,
         message: null,
         success: false,
       });
+
       const { status, message } = await resetPassword({
         token,
         password,
         confirmPassword: passwordConfirm,
       });
+
       this.setState({
         pending: false,
         message,
         success: status === 200,
       });
+
       setTimeout(() => {
         this.setState({
           redirect: true,
@@ -80,6 +85,7 @@ class ResetPassword extends PureComponent {
 
   render() {
     const { pending, message, errors, success, redirect } = this.state;
+    const { t: translate } = this.props;
 
     return (
       <div className={styles.wrapperForm}>
@@ -94,6 +100,7 @@ class ResetPassword extends PureComponent {
               onChange={this.onChangeInput}
               required
             />
+
             <input
               type="password"
               name="passwordConfirm"
@@ -103,14 +110,16 @@ class ResetPassword extends PureComponent {
               onChange={this.onChangeInput}
               required
             />
+
             <div className={`${styles.row} ${styles.errorMessage}`}>
               {errors.password || message}
             </div>
+
             <button
               type="submit"
               className={`${styles.btn}`}
               onClick={this.sendReset}>
-              Push
+              {translate('Push')}
             </button>
           </form>
         )}
@@ -142,4 +151,4 @@ class ResetPassword extends PureComponent {
   }
 }
 
-export default ResetPassword;
+export default withTranslation('translations')(ResetPassword);

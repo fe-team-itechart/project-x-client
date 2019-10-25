@@ -3,63 +3,59 @@
 @import '../../../scss/mixins/input.scss';
 @import '../../../scss/shared/breakpoints.scss';
 
-.account {
-  margin-top: 50px;
+.accountWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 50px 30px;
   padding: 0;
 
-  .password {
-    width: 100%;
+  @media screen and (max-width: $width-xs) {
+    justify-content: center;
+  }
 
-    input {
-      @include primary-input;
-      width: 100%;
-      margin: 15px 0;
+  form {
+    width: 50%;
+
+    @media screen and (max-width: $width-lg) {
+      width: 80%;
     }
 
-    .invalidFeedback {
-      color: $pink;
-      margin-top: 5px;
+    @media screen and (max-width: $width-sm) {
       width: 100%;
+    }
+
+    .password {
+      width: 100%;
+
+      input {
+        @include primary-input;
+        width: 100%;
+        margin: 15px 0;
+      }
+
+      .invalidFeedback {
+        color: $pink;
+        margin-top: 5px;
+        width: 100%;
+      }
     }
   }
 
-  .buttonsBlock {
-    width: 100%;
+  .buttonWrapper {
     display: flex;
-    flex-wrap: wrap;
-
-    div {
-      display: flex;
-      flex-wrap: wrap;
-    }
+    justify-content: flex-end;
+    width: 100%;
 
     button {
       @include primary-button;
       background: $gradient;
+      width: 100px;
       height: 50px;
       text-align: center;
-      margin: 25px 15px 15px 0;
+      margin: 15px 0;
       color: $white;
       border: none;
     }
-  }
-
-  .paymentBtn {
-    @include primary-button;
-    height: 50px;
-    text-align: center;
-    margin: 45px 15px 15px 5%;
-    color: $white;
-    border: none;
-  }
-
-  @media screen and (min-width: $width-xs) {
-    width: 94%;
-    padding: 0 3%;
-  }
-
-  @media screen and (min-width: $width-xl) {
-    width: 550px;
-    padding: 0;
   }
 }

@@ -5,7 +5,7 @@
 
 .title {
   color: $orange;
-  font-size: 28px;
+  font-size: 20px;
   text-align: center;
 }
 
@@ -30,6 +30,14 @@ form {
       padding: 0 5px 0 0;
     }
 
+    .password {
+      width: 90%;
+
+      input {
+        width: 85%;
+      }
+    }
+
     input {
       border-bottom: 0;
       margin: 0;
@@ -40,10 +48,6 @@ form {
       &:focus {
         border-bottom: 0;
       }
-    }
-
-    .password {
-      width: 90%;
     }
 
     .eyeIcon {
@@ -66,7 +70,7 @@ form {
 
   .submit {
     @include primary-button;
-    width: 210px;
+    width: 140px;
     margin: 10px 0 15px 0;
   }
 

@@ -4,7 +4,7 @@
 
 .coursePageDetailsWrapper {
   display: flex;
-  width: 90%;
+  width: 75%;
   background-color: $bcg-gray-light;
   flex-direction: column;
 
@@ -93,7 +93,7 @@
   }
 
   .courseTitle {
-    font-size: 36px;
+    font-size: 28px;
     font-weight: normal;
     margin: 10px 0;
   }
@@ -101,13 +101,14 @@
   .shortDescription {
     color: $white;
     margin: 5px 0;
+    font-size: 16px;
   }
 
   .profitTitle,
   .reviewsTitle {
     margin: 10px 0;
     color: $white;
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .profitList {
@@ -118,11 +119,13 @@
 
     li {
       margin-bottom: 5px;
+      font-size: 15px;
     }
   }
 
   .reviewWrapper {
     margin: 10px 0;
+    font-size: 16px;
 
     p {
       margin: 0;

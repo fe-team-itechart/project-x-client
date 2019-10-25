@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import AliceCarousel from 'react-alice-carousel';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
-import { getCoursesForCarousel } from '../../services/courses';
-import { CourseCard } from '../courseCard';
+import { getCoursesForCarousel } from '../../services/course';
+import CourseCard from '../courseCard';
 
 import 'react-alice-carousel/lib/alice-carousel.css';
 import styles from './styles.module.scss';
@@ -76,6 +76,7 @@ class CoursesCarousel extends Component {
               authors={course.authors}
               rate={course.rating}
               id={course.id}
+              price={course.price}
             />
           </div>
         ))
