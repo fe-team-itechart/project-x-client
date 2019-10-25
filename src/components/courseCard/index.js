@@ -11,8 +11,8 @@ import { links } from '../../utils/constants';
 import styles from './style.module.scss';
 
 const CourseCard = props => {
-  const { title, authors, rate, price = 'For free', img = '', id, t: translate } = props;
- 
+  const { title, authors, rate, price, img = '', id, t: translate } = props;
+
   return (
     <Link
       to={`${links.coursePreview}${id}`}
@@ -37,7 +37,10 @@ const CourseCard = props => {
             />
             ({rate})
           </div>
-          <div className={styles.courseCardPrice}>{translate(`${price}`)}</div>
+
+          <div className={styles.courseCardPrice}>
+            {translate(`${price ? `${price} $` : 'For free'}`)}
+          </div>
         </section>
       </figure>
     </Link>

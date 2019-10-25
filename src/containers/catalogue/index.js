@@ -5,7 +5,7 @@ import { withTranslation } from 'react-i18next';
 
 import { Spinner } from '../../components/spinner';
 import CourseCard from '../../components/courseCard';
-import { getCoursesByAttribute } from '../../services/courses';
+import { getCoursesByAttribute } from '../../services/course';
 
 import styles from './styles.module.scss';
 
@@ -57,6 +57,7 @@ class Catalogue extends Component {
                     authors={course.authors}
                     rate={course.rating}
                     id={course.id}
+                    price={course.price}
                   />
                 ))
               ) : (
