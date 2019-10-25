@@ -16,5 +16,7 @@ export const links = {
   facebook:'https://www.facebook.com/',
   linkedIn:'https://www.linkedin.com/',
   coursePreview: 'course/preview/',
-  placeHolderImage: 'http://placeimg.com/640/480/tech'
+  placeHolderImage: 'http://placeimg.com/640/480/tech',
+  subscribeCourse: 'course/subscribe',
+  subscribeCourseCheck: 'course/subscribe/check'
 };
