@@ -45,11 +45,14 @@ class Register extends Component {
   }
 
   passwordVisibility = () => {
-    this.setState({ hidden: !this.state.hidden });
+    this.setState((previousState) => ({
+      hidden: !previousState.hidden
+    }));
   };
 
   closeModal = () => {
     this.props.onModalClose(false);
+
     this.setState({
       userName: '',
       email: '',
@@ -82,6 +85,7 @@ class Register extends Component {
     } else {
       const request = new Promise((resolve, reject) => {
         this.setState({ isLoading: true });
+
         registerRequest({
           userName,
           email,
@@ -91,6 +95,7 @@ class Register extends Component {
           reject,
         });
       });
+
       request.then(
         () => {
           onModalClose(false);
@@ -112,14 +117,14 @@ class Register extends Component {
       errors,
       isLoading,
     } = this.state;
-    const { modalStatus, t } = this.props;
+    const { modalStatus, t: translate } = this.props;
 
     return (
       <>
         <Modal open={modalStatus} onClose={this.closeModal}>
           {isLoading && <Spinner />}
           <h2 className={styles.title}>
-            {`${t('Create account and be a DasPish member!')}`}
+            {`${translate('Create account and be a DasPish member!')}`}
           </h2>
           <form onSubmit={this.onSubmit} noValidate>
             <div className={styles.iconInput}>
@@ -129,15 +134,18 @@ class Register extends Component {
                 id="userName"
                 name="userName"
                 value={userName}
-                placeholder={`${t('Username')}`}
+                placeholder={`${translate('Username')}`}
                 onChange={this.onChange}
               />
             </div>
             {errors.userName ? (
-              <span className={styles.invalidFeedback}>{errors.userName}</span>
+              <span className={styles.invalidFeedback}>
+                {translate(`${errors.userName}`)}
+              </span>
             ) : (
-              <div className={styles.reservedPlace}></div>
+              <div className={styles.reservedPlace}/>
             )}
+
             <div className={styles.iconInput}>
               <FaEnvelope />
               <input
@@ -151,11 +159,12 @@ class Register extends Component {
             </div>
             {errors.email || errors.status === 400 ? (
               <span className={styles.invalidFeedback}>
-                {errors.email ? errors.email : errors.message}
+                {errors.email ? translate(`${errors.email}`) : errors.message}
               </span>
             ) : (
-              <div className={styles.reservedPlace}></div>
+              <div className={styles.reservedPlace} />
             )}
+
             <div className={styles.iconInput}>
               <div className={styles.password}>
                 <FaLock />
@@ -164,7 +173,7 @@ class Register extends Component {
                   id="password"
                   name="password"
                   value={password}
-                  placeholder={`${t('Password')}`}
+                  placeholder={`${translate('Password')}`}
                   onChange={this.onChange}
                 />
               </div>
@@ -173,10 +182,11 @@ class Register extends Component {
               </div>
             </div>
             {errors.password ? (
-              <span className={styles.invalidFeedback}>{errors.password}</span>
+              <span className={styles.invalidFeedback}>{translate(`${errors.password}`) }</span>
             ) : (
-              <div className={styles.reservedPlace}></div>
+              <div className={styles.reservedPlace} />
             )}
+
             <div className={styles.iconInput}>
               <FaLock />
               <input
@@ -184,7 +194,7 @@ class Register extends Component {
                 id="confirmPassword"
                 name="confirmPassword"
                 value={confirmPassword}
-                placeholder={`${t('Confirm Password')}`}
+                placeholder={`${translate('Confirm Password')}`}
                 onChange={this.onChange}
               />
             </div>
@@ -195,8 +205,9 @@ class Register extends Component {
                   : errors.message}
               </span>
             ) : (
-              <div className={styles.reservedPlace}></div>
+              <div className={styles.reservedPlace} />
             )}
+
             <div className={styles.socialButtonsContainer}>
               <a href={links.googleURL}>
                 <div className={styles.googleButton}>
@@ -213,16 +224,17 @@ class Register extends Component {
                 </div>
               </a>
             </div>
+
             <button type="submit" className={styles.submit}>
-              {`${t('Create account')}`}
+              {`${translate('Create account')}`}
             </button>
+            
             <span
               onClick={this.alreadyHaveAccount}
               className={styles.linkForgot}>
-              {`${t('Already have an account?')}`}
+              {`${translate('Already have an account?')}`}
             </span>
           </form>
-          )}
         </Modal>
       </>
     );

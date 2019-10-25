@@ -31,6 +31,7 @@ class Login extends Component {
   componentDidMount() {
     const { location, history } = this.props;
     const parsed = queryString.parse(location.search);
+
     if (parsed.token) {
       this.props.socialLoginRequest(parsed.token);
       history.push('/');
@@ -39,7 +40,9 @@ class Login extends Component {
 
   closeModal = () => {
     const { onModalClose } = this.props;
+
     onModalClose(false);
+
     this.setState({
       email: '',
       password: '',
@@ -48,13 +51,17 @@ class Login extends Component {
   };
 
   passwordVisibility = () => {
-    this.setState({ hidden: !this.state.hidden });
+    this.setState((previousState) => ({
+      hidden: !previousState.hidden
+    }));
   };
 
   openForgotPasswordModal = () => {
     const { onModalClose, onModalCloseForgotPass } = this.props;
+
     onModalClose(false);
     onModalCloseForgotPass(true);
+
     this.setState({
       email: '',
       password: '',
@@ -82,6 +89,7 @@ class Login extends Component {
         this.setState({ isLoading: true });
         loginRequest({ email, password, resolve, reject });
       });
+
       request.then(
         () => {
           onModalClose(false);
@@ -96,15 +104,16 @@ class Login extends Component {
 
   render() {
     const { isLoading, email, password, errors } = this.state;
-    const { modalStatus, t } = this.props;
+    const { modalStatus, t: translate } = this.props;
 
     return (
       <>
         <Modal open={modalStatus} onClose={this.closeModal}>
           {isLoading && <Spinner />}
-          <h2 className={styles.title}>{`${t(
+          <h2 className={styles.title}>{`${translate(
             'Log In to your Das Pish account'
           )}`}</h2>
+
           <form onSubmit={this.onSubmit} noValidate>
             <div className={styles.iconInput}>
               <FaEnvelope />
@@ -117,13 +126,15 @@ class Login extends Component {
                 onChange={this.onChange}
               />
             </div>
+
             {errors.email || errors.status === 404 ? (
               <span className={styles.invalidFeedback}>
-                {errors.email ? errors.email : errors.message}
+                {errors.email ? translate(`${errors.email}`) : translate(`${errors.message}`)}
               </span>
             ) : (
-              <div className={styles.reservedPlace}></div>
+              <div className={styles.reservedPlace}/>
             )}
+
             <div className={styles.iconInput}>
               <div className={styles.password}>
                 <FaLock />
@@ -132,7 +143,7 @@ class Login extends Component {
                   id="password"
                   name="password"
                   value={password}
-                  placeholder={`${t('Password')}`}
+                  placeholder={`${translate('Password')}`}
                   onChange={this.onChange}
                 />
               </div>
@@ -140,13 +151,15 @@ class Login extends Component {
                 {this.state.hidden ? <FaEye /> : <FaEyeSlash />}
               </div>
             </div>
+
             {errors.password || errors.status === 403 ? (
               <span className={styles.invalidFeedback}>
-                {errors.password ? errors.password : errors.message}
+                {errors.password ? translate(`${errors.password}`) : translate(`${errors.message}`)}
               </span>
             ) : (
-              <div className={styles.reservedPlace}></div>
+              <div className={styles.reservedPlace} />
             )}
+
             <div className={styles.socialButtonsContainer}>
               <a href={links.googleURL}>
                 <div className={styles.googleButton}>
@@ -163,13 +176,15 @@ class Login extends Component {
                 </div>
               </a>
             </div>
+
             <button type="submit" className={styles.submit}>
-              {`${t('Log In')}`}
+              {`${translate('Log In')}`}
             </button>
+            
             <span
               onClick={this.openForgotPasswordModal}
               className={styles.linkForgot}>
-              {`${t('Forgot Password?')}`}
+              {`${translate('Forgot Password?')}`}
             </span>
           </form>
         </Modal>

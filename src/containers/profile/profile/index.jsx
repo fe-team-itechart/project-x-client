@@ -21,7 +21,7 @@ const ProfileData = ({
   getProfileRequest,
   updateProfileRequest,
   isProfileLoading,
-  t,
+  t: translate
 }) => {
   const [formData, setFormData] = useState({
     userName: '',
@@ -86,7 +86,7 @@ const ProfileData = ({
                 type="text"
                 name="userName"
                 value={userName}
-                placeholder={`${t('Username')}`}
+                placeholder={`${translate('Username')}`}
                 onChange={onChange}
               />
               {errors.userName && (
@@ -96,13 +96,14 @@ const ProfileData = ({
               )}
             </div>
           </div>
+
           <div className={styles.description}>
             <textarea
               type="text"
               rows="4"
               name="description"
               value={description}
-              placeholder={`${t('Description')}`}
+              placeholder={`${translate('Description')}`}
               onChange={onChange}
             />
             {errors.description && (
@@ -111,6 +112,7 @@ const ProfileData = ({
               </span>
             )}
           </div>
+
           <div className={styles.social}>
             <div>
               <div>
@@ -128,6 +130,7 @@ const ProfileData = ({
                   </span>
                 )}
               </div>
+
               <div>
                 <FaFacebookF className={styles.facebookIcon} />
                 <input
@@ -143,6 +146,7 @@ const ProfileData = ({
                   </span>
                 )}
               </div>
+
               <div>
                 <FaLinkedinIn className={styles.linkedinIcon} />
                 <input
@@ -161,7 +165,7 @@ const ProfileData = ({
             </div>
           </div>
           <div className={styles.buttonsWrapper}>
-            <button type="submit">{`${t('Save')}`}</button>
+            <button type="submit">{`${translate('Save')}`}</button>
           </div>
         </form>
       )}

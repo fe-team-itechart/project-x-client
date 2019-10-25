@@ -29,6 +29,7 @@ class Account extends Component {
         password: '',
         errors: {},
       });
+      
       changeAccountData({ email, password });
     }
   };
@@ -42,6 +43,7 @@ class Account extends Component {
   render() {
     const { password, email, errors } = this.state;
     const { t: translate } = this.props
+
     return (
       <>
         <div className={styles.accountWrapper}>
@@ -59,13 +61,14 @@ class Account extends Component {
                 <div className={styles.invalidFeedback}>{errors.email}</div>
               )}
             </div>
+
             <div className={styles.password}>
               <input
                 type="password"
                 id="password"
                 name="password"
                 value={password}
-                placeholder="Password"
+                placeholder={`${translate('Password')}`}
                 onChange={this.onChange}
               />
               {errors.password && (

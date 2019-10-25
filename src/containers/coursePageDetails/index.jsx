@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import StarRatings from 'react-star-ratings';
+import { withTranslation } from 'react-i18next';
 
 import { getCourseDetails } from '../../services/course';
 import { Spinner } from '../../components/spinner';
@@ -42,6 +43,7 @@ class coursePageDetails extends Component {
       courseReviews,
     } = this.state.course;
     const { isLoading, showReviewsNum, error } = this.state;
+    const { t: translate } = this.props;
 
     return (
       <main className={styles.coursePageDetailsWrapper}>
@@ -66,31 +68,32 @@ class coursePageDetails extends Component {
                 />
               </div>
               <span>{rating}</span>
-              <span className={styles.verticalLine}></span>
+              <span className={styles.verticalLine} />
               <span>
-                <font>Students:</font> {numberOfEnrolledStudents}
+                <font>{translate('Students')}: </font>
+                {numberOfEnrolledStudents}
               </span>
             </div>
             <div>
               <span>
-                <font>Author: </font>
+                <font>{translate('Author')}: </font>
                 {authors}
               </span>
-              <span className={styles.verticalLine}></span>
+              <span className={styles.verticalLine} />
               <span>
-                <font>Language: </font>
+                <font>{translate('Language')}: </font>
                 {language}
               </span>
             </div>
             <hr />
-            <p className={styles.profitTitle}>Your profit</p>
+            <p className={styles.profitTitle}>{translate('Your profits')}</p>
             <ul className={styles.profitList}>
               {profits.map(el => (
                 <li key={el.id}>{el.description}</li>
               ))}
             </ul>
             <hr />
-            <p className={styles.reviewsTitle}>Reviews</p>
+            <p className={styles.reviewsTitle}>{translate('Reviews')}</p>
             {courseReviews.slice(0, showReviewsNum).map((el, key) => (
               <div className={styles.reviewWrapper} key={key}>
                 <div>
@@ -117,7 +120,7 @@ class coursePageDetails extends Component {
                   className={styles.showMoreButton}
                   type="button"
                   onClick={this.showMoreReviews}>
-                  Show more reviews
+                  {translate('Show more reviews')}
                 </button>
               </div>
             )}
@@ -128,4 +131,4 @@ class coursePageDetails extends Component {
   }
 }
 
-export default coursePageDetails;
+export default withTranslation('translations')(coursePageDetails);

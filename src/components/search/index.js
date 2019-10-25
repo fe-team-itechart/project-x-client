@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { MdSearch } from 'react-icons/md';
+import { withTranslation } from 'react-i18next';
 
 import styles from './styles.module.scss';
 
@@ -23,12 +24,16 @@ class Search extends Component {
   };
 
   render() {
+    const { t: translate } = this.props;
+
     return (
       <form className={styles.search} onSubmit={this.onSubmit}>
         <input
           name="searchValue"
           value={this.state.searchValue}
-          placeholder="Please enter course name, description or author"
+          placeholder={`${translate(
+            'Please enter course name, description or author'
+          )}`}
           onChange={this.onChange}
         />
         <button type="submit">
@@ -39,4 +44,4 @@ class Search extends Component {
   }
 }
 
-export default withRouter(Search);
+export default withRouter(withTranslation('translations')(Search));

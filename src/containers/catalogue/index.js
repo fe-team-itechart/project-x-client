@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 
 import queryString from 'query-string';
+import { withTranslation } from 'react-i18next';
 
 import { Spinner } from '../../components/spinner';
-import { CourseCard } from '../../components/courseCard';
+import CourseCard from '../../components/courseCard';
 import { getCoursesByAttribute } from '../../services/courses';
 
 import styles from './styles.module.scss';
 
-export class Catalogue extends Component {
+class Catalogue extends Component {
   state = {
     courses: [],
     isLoading: true,
@@ -36,6 +37,8 @@ export class Catalogue extends Component {
   };
 
   render() {
+    const { t: translate } = this.props;
+
     return (
       <main className={styles.mainPageWrapper}>
         {this.state.isLoading ? (
@@ -58,7 +61,8 @@ export class Catalogue extends Component {
                 ))
               ) : (
                 <h2>
-                  There are no courses with {this.state.searchValue} value
+                  {translate('There are no courses with')}{' '}
+                  {this.state.searchValue} {translate('value')}
                 </h2>
               )}
             </section>
@@ -68,3 +72,5 @@ export class Catalogue extends Component {
     );
   }
 }
+
+export default withTranslation('translations')(Catalogue);

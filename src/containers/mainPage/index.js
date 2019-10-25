@@ -11,24 +11,24 @@ import './dotsStyles.scss';
 
 class MainPage extends Component {
   sliderItems = () => {
-    const { t } = this.props;
+    const { t: translate } = this.props;
 
     const slides = [
       {
-        header: `${t('Learn ! Potom DasPish !')}`,
-        description: `${t(
+        header: `${translate('Learn ! Potom DasPish !')}`,
+        description: `${translate(
           "We are learning the whole world ! If don't believe us you don't believe nobody."
         )}`,
       },
       {
-        header: `${t('Lorem ipsum dolor sit amet consectetur adipisicing.')}`,
-        description: `${t(
+        header: `${translate('Lorem ipsum dolor sit amet consectetur adipisicing.')}`,
+        description: `${translate(
           'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum nobis similique delectus? Dolor, ut aliquid..'
         )}`,
       },
       {
-        header: `${t('Lorem, ipsum dolor.')}`,
-        description: `${t(
+        header: `${translate('Lorem, ipsum dolor.')}`,
+        description: `${translate(
           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, incidunt eum sint maiores necessitatibus dolores laudantium quasi quas minus amet.'
         )}`,
       },
@@ -45,6 +45,7 @@ class MainPage extends Component {
     return (
       <section className={`mainPageSlider ${styles.mainPageWrapper}`}>
         <Socials />
+
         <div className={styles.slider}>
           <AliceCarousel
             items={this.sliderItems()}

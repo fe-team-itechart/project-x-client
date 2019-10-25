@@ -23,6 +23,7 @@ class ForgotPassword extends PureComponent {
 
   preValidateForm = ({ email }) => {
     const errors = emailValidate(email);
+
     if (!isEmpty(errors)) {
       this.setState({
         errors,
@@ -36,12 +37,15 @@ class ForgotPassword extends PureComponent {
     e.preventDefault();
     const email = this.state.email;
     const valid = this.preValidateForm({ email });
+    
     if (valid) {
       this.setState({
         pending: true,
         message: null,
       });
+
       const { status, message } = await forgotPasswordRequest({ email });
+
       this.setState({
         pending: false,
         message,
@@ -67,7 +71,7 @@ class ForgotPassword extends PureComponent {
   render() {
     const { pending, message, errors, success } = this.state;
 
-    const { modalStatus, t } = this.props;
+    const { modalStatus, t: translate } = this.props;
 
     return (
       <Modal open={modalStatus} onClose={this.modalClose}>
@@ -75,19 +79,20 @@ class ForgotPassword extends PureComponent {
           <form className={styles.form}>
             <input
               className={styles.input}
-              placeholder={`${t('Enter E-mail')}`}
+              placeholder={`${translate('Enter E-mail')}`}
               name="forgot-password-id"
               id="forgot-password-id"
               type="email"
               onChange={this.onChangeInput}
               required
             />
+
             <div className={styles.errorMessage}>{errors.email || message}</div>
             <button
               type="button"
               className={`${styles.btn}`}
               onClick={this.send}>
-              {`${t('Send')}`}
+              {`${translate('Send')}`}
             </button>
           </form>
         )}
