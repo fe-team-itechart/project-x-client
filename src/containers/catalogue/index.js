@@ -53,7 +53,7 @@ class Catalogue extends Component {
                 this.state.courses.map((course, index) => (
                   <CourseCard
                     key={index}
-                    title={course.courseName}
+                    title={course.coursename}
                     authors={course.authors}
                     rate={course.rating}
                     id={course.id}
