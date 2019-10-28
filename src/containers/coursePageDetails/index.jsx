@@ -137,28 +137,28 @@ class coursePageDetails extends Component {
               <hr />
               <p className={styles.profitTitle}>{translate('Your profits')}</p>
               <ul className={styles.profitList}>
-                {profits && profits.map(el => (
-                  <li key={el.id}>{el.description}</li>
+                {profits && profits.map(profit => (
+                  <li key={profit.id}>{profit.description}</li>
                 ))}
               </ul>
               <hr />
               <p className={styles.reviewsTitle}>{translate('Reviews')}</p>
-              {courseReviews && courseReviews.slice(0, showReviewsNum).map((el, key) => (
+              {courseReviews && courseReviews.slice(0, showReviewsNum).map((review, key) => (
                 <div className={styles.reviewWrapper} key={key}>
                   <div>
                     <span>Jhon Doe(Default)</span>
                     <div className={styles.stars}>
                       <StarRatings
-                        rating={el.rating}
+                        rating={review.rating}
                         starRatedColor="#ff8c05"
                         starEmptyColor="#515151"
                         starDimension="24px"
                         starSpacing="3px"
                         numberOfStars={5}
-                        name={`review${el.key}`}
+                        name={`review${review.key}`}
                       />
                     </div>
-                    <span>{el.createdAt}</span>
+                    <span>{review.createdAt}</span>
                   </div>
                   <p>{el.text}</p>
                 </div>
