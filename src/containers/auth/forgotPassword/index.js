@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import { withTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 import { forgotPasswordRequest } from '../../../services/auth';
 import { emailValidate } from '../../../validation/auth';
@@ -11,13 +12,13 @@ import { Spinner } from '../../../components/spinner';
 import { Modal } from '../../../components/modal';
 
 import styles from './styles.module.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 class ForgotPassword extends PureComponent {
   state = {
     email: null,
     pending: false,
     message: null,
-    errors: {},
     success: false,
   };
 
@@ -25,9 +26,7 @@ class ForgotPassword extends PureComponent {
     const errors = emailValidate(email);
 
     if (!isEmpty(errors)) {
-      this.setState({
-        errors,
-      });
+      toast.info(errors.email);
       return false;
     }
     return true;
@@ -46,6 +45,8 @@ class ForgotPassword extends PureComponent {
 
       const { status, message } = await forgotPasswordRequest({ email });
 
+      if( status !== 200 ) toast.error(message);
+
       this.setState({
         pending: false,
         message,
@@ -62,14 +63,13 @@ class ForgotPassword extends PureComponent {
   onChangeInput = e => {
     this.setState({
       email: e.target.value,
-      errors: {},
       message: null,
       success: false,
     });
   };
 
   render() {
-    const { pending, message, errors, success } = this.state;
+    const { pending, message, success } = this.state;
 
     const { modalStatus, t: translate } = this.props;
 
@@ -86,10 +86,8 @@ class ForgotPassword extends PureComponent {
               onChange={this.onChangeInput}
               required
             />
-
-            <div className={styles.errorMessage}>{errors.email || message}</div>
             <button
-              type="button"
+              type="submit"
               className={`${styles.btn}`}
               onClick={this.send}>
               {`${translate('Send')}`}

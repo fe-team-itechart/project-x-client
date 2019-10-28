@@ -7,6 +7,7 @@ import { isEmpty } from 'lodash';
 import queryString from 'query-string';
 import { FaEye, FaEyeSlash, FaLock, FaEnvelope } from 'react-icons/fa';
 import { withTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 
 import { Spinner } from '../../../components/spinner';
 import { Modal } from '../../../components/modal';
@@ -18,12 +19,12 @@ import GoogleIcon from '../../../../public/assets/google.svg';
 import LinkedInIcon from '../../../../public/assets/linkedin.svg';
 
 import styles from '../styles.module.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Login extends Component {
   state = {
     email: '',
     password: '',
-    errors: {},
     hidden: true,
     isLoading: false,
   };
@@ -46,7 +47,6 @@ class Login extends Component {
     this.setState({
       email: '',
       password: '',
-      errors: {},
     });
   };
 
@@ -65,7 +65,6 @@ class Login extends Component {
     this.setState({
       email: '',
       password: '',
-      errors: {},
     });
   };
 
@@ -83,7 +82,9 @@ class Login extends Component {
     const errors = loginValidate(email, password);
 
     if (!isEmpty(errors)) {
-      this.setState({ errors });
+      Object.keys(errors).forEach(key => {
+        toast.info(errors[key]);
+      }); 
     } else {
       const request = new Promise((resolve, reject) => {
         this.setState({ isLoading: true });
@@ -92,18 +93,20 @@ class Login extends Component {
 
       request.then(
         () => {
+          toast.success('Login success');
           onModalClose(false);
-          this.setState({ errors: {}, isLoading: false });
+          this.setState({ isLoading: false });
         },
         errors => {
-          this.setState({ errors, isLoading: false });
+          toast.error(errors.message);
+          this.setState({ isLoading: false });
         }
       );
     }
   };
 
   render() {
-    const { isLoading, email, password, errors } = this.state;
+    const { isLoading, email, password } = this.state;
     const { modalStatus, t: translate } = this.props;
 
     return (
@@ -127,14 +130,6 @@ class Login extends Component {
               />
             </div>
 
-            {errors.email || errors.status === 404 ? (
-              <span className={styles.invalidFeedback}>
-                {errors.email ? translate(`${errors.email}`) : translate(`${errors.message}`)}
-              </span>
-            ) : (
-              <div className={styles.reservedPlace}/>
-            )}
-
             <div className={styles.iconInput}>
               <div className={styles.password}>
                 <FaLock />
@@ -152,13 +147,9 @@ class Login extends Component {
               </div>
             </div>
 
-            {errors.password || errors.status === 403 ? (
-              <span className={styles.invalidFeedback}>
-                {errors.password ? translate(`${errors.password}`) : translate(`${errors.message}`)}
-              </span>
-            ) : (
-              <div className={styles.reservedPlace} />
-            )}
+            <button type="submit" className={styles.submit}>
+              {`${translate('Log In')}`}
+            </button>
 
             <div className={styles.socialButtonsContainer}>
               <a href={links.googleURL}>
@@ -176,10 +167,6 @@ class Login extends Component {
                 </div>
               </a>
             </div>
-
-            <button type="submit" className={styles.submit}>
-              {`${translate('Log In')}`}
-            </button>
             
             <span
               onClick={this.openForgotPasswordModal}
