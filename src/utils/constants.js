@@ -18,5 +18,6 @@ export const links = {
   coursePreview: 'course/preview/',
   placeHolderImage: 'http://placeimg.com/640/480/tech',
   subscribeCourse: 'course/subscribe',
-  subscribeCourseCheck: 'course/subscribe/check'
+  subscribeCourseCheck: 'course/subscribe/check',
+  resetPassword: 'users/reset-password'
 };

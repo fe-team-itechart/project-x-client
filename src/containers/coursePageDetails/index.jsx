@@ -24,7 +24,7 @@ class coursePageDetails extends Component {
     const courseId = this.props.match.params.id;
     const response = await getCourseDetails(courseId);
     const subscribed = await subscribeCourseCheck(courseId);
-    
+
     if (subscribed && subscribed.id) {
       this.setState({
         subscribed: true
@@ -114,7 +114,7 @@ class coursePageDetails extends Component {
                     </span>
                     <span className={styles.verticalLine} />
                     <span>
-                    <font>{translate('Language')}: </font>
+                      <font>{translate('Language')}: </font>
                       {language}
                     </span>
                   </div>
@@ -160,7 +160,7 @@ class coursePageDetails extends Component {
                     </div>
                     <span>{review.createdAt}</span>
                   </div>
-                  <p>{el.text}</p>
+                  <p>{review.text}</p>
                 </div>
               ))}
               {courseReviews && courseReviews.length > showReviewsNum && (
@@ -169,8 +169,8 @@ class coursePageDetails extends Component {
                     className={styles.showMoreButton}
                     type="button"
                     onClick={this.showMoreReviews}>
-                     {translate('Show more reviews')}
-                </button>
+                    {translate('Show more reviews')}
+                  </button>
                 </div>
               )}
             </div>

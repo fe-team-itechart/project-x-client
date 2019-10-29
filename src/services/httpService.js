@@ -5,6 +5,9 @@ class HttpService {
     this.baseUrl = baseUrl;
     this.baseConfig = {
       responseType: 'json',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     };
     this.service = axios.create({ ...this.baseConfig });
   }

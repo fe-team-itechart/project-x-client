@@ -4,12 +4,6 @@ import { httpService } from './httpService';
 import { storageWrapper } from './storageService';
 import { links } from '../utils/constants';
 
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-  },
-};
-
 export const socialLoginRequest = res => {
   const decoded = jwtDecode(res.payload);
   storageWrapper.setToken(res.payload);
@@ -21,7 +15,7 @@ export const registerRequest = async data => {
   try {
     const {
       data: { token },
-    } = await httpService.post({ url: links.registrationRoute, data, config });
+    } = await httpService.post({ url: links.registrationRoute, data });
     const decoded = jwtDecode(token);
     storageWrapper.setToken(token);
 
@@ -35,7 +29,7 @@ export const loginRequest = async data => {
   try {
     const {
       data: { token },
-    } = await httpService.post({ url: links.loginRoute, data, config });
+    } = await httpService.post({ url: links.loginRoute, data });
     const decoded = jwtDecode(token);
     storageWrapper.setToken(token);
 
@@ -50,9 +44,13 @@ export const logOutRequest = () => {
 };
 
 export const changeAccountData = async data => {
-  try {
-    config.headers.Authorization = localStorage.token;
+  const config = {
+    headers: {
+      Authorization: storageWrapper.getToken(),
+    },
+  };
 
+  try {
     const response = await httpService.put({
       url: links.changePasswordRoute,
       data,
@@ -79,20 +77,20 @@ export const forgotPasswordRequest = async data => {
 };
 
 export const resetPassword = async ({ token, password, confirmPassword }) => {
+  const config = {
+    headers: {
+      Authorization: token,
+    },
+    validateStatus: status => status >= 200 && status < 500,
+  };
+
   const response = await httpService.post({
-    url: `users/reset-password`,
+    url: links.resetPassword,
     data: {
       password,
       confirmPassword,
     },
-    config: {
-      ...config,
-      headers: {
-        ...config.headers,
-        authorization: token,
-      },
-      validateStatus: status => status >= 200 && status < 500,
-    },
+    config,
   });
   return response.data;
 };
