@@ -11,7 +11,7 @@ import { Spinner } from '../../components/spinner';
 import styles from './styles.module.scss';
 
 
-class coursePageDetails extends Component {
+class CoursePageDetails extends Component {
   state = {
     course: {},
     error: null,
@@ -40,10 +40,13 @@ class coursePageDetails extends Component {
 
   subscribeUserCourse = async () => {
     const courseId = this.props.match.params.id;
+
     this.setState({
       isLoading: true
     });
+
     const response = await subscribeCourse(courseId);
+
     if (response && response.id) {
       this.setState({
         subscribed: true,
@@ -122,7 +125,11 @@ class coursePageDetails extends Component {
                 {
                   isAuthenticated && !subscribed &&
                   (<div className={styles.subscribeButtonWrapper}>
-                    <button className={styles.subscribeButton} type='button' onClick={this.subscribeUserCourse}>{translate('Subscribe')}</button>
+                    <button
+                      className={styles.subscribeButton}
+                      type='button'
+                      onClick={this.subscribeUserCourse}
+                    >{translate('Subscribe')}</button>
                   </div>)
                 }
                 {
@@ -184,4 +191,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.user.isAuthenticated
 });
 
-export default withRouter(connect(mapStateToProps, null)(withTranslation('translations')(coursePageDetails)));
+export default withRouter(connect(mapStateToProps, null)(withTranslation('translations')(CoursePageDetails)));
