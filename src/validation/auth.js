@@ -1,5 +1,7 @@
 import Joi from 'joi-browser';
 
+const passwordRegex = /^(?=.*?[A-Z-А-Я])(?=.*?[\?\$\^\*#!@%&-])/;
+
 export const userNameSchema = Joi.string()
   .min(2)
   .max(20)
@@ -12,14 +14,14 @@ const emailSchema = Joi.string()
 
 const passwordSchema = Joi.string()
   .required()
-  .regex(/^(?=.*?[A-Z-А-Я])(?=.*?[#?!@$%^&*-])/)
+  .regex(passwordRegex)
   .min(8)
   .max(32);
 
 const passwordConfirmSchema = Joi.object().keys({
   password: Joi.string()
     .required()
-    .regex(/^(?=.*?[A-Z-А-Я])(?=.*?[#?!@$%^&*-])/)
+    .regex(passwordRegex)
     .min(8)
     .max(32),
   confirmPassword: Joi.any()
@@ -48,9 +50,7 @@ export const loginValidate = (email, password) => {
     );
 
     if (
-      errors.password.includes(
-        '^(?=.*?[A-Z-А-Я])(?=.*?[#?!@$%^&*-])'
-      )
+      errors.password.includes(`${passwordRegex}`)
     ) {
       errors.password =
         'Password must contain at least one uppercase letter and one special symbol';
@@ -88,9 +88,7 @@ export const registerValidate = (
       'Password'
     );
     if (
-      errors.password.includes(
-        '^(?=.*?[A-Z-А-Я])(?=.*?[#?!@$%^&*-])'
-      )
+      errors.password.includes(`${passwordRegex}`)
     ) {
       errors.password =
         'Password must contain at least one uppercase letter and one special symbol';
@@ -121,9 +119,7 @@ export const changePasswordValidate = (password, confirmPassword) => {
       'Password'
     );
     if (
-      errors.password.includes(
-        '^(?=.*?[A-Z-А-Я])(?=.*?[#?!@$%^&*-])'
-      )
+      errors.password.includes(`${passwordRegex}`)
     ) {
       errors.password =
         'Password must contain at least one uppercase letter and one special symbol';
@@ -152,11 +148,7 @@ export const changeAccountValidate = (email, password) => {
       'Password'
     );
 
-    if (
-      errors.password.includes(
-        '(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}'
-      )
-    ) {
+    if (errors.password.includes(`${passwordRegex}`)) {
       errors.password =
         'Password must contain at least one uppercase letter and one special symbol';
     }
