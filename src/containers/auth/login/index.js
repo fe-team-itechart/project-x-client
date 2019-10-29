@@ -92,7 +92,7 @@ class Login extends Component {
 
       request.then(
         () => {
-          showToast('error', 'Login success');
+          showToast('success', 'Login success');
           onModalClose(false);
           this.setState({ isLoading: false });
         },

@@ -99,7 +99,7 @@ class Register extends Component {
 
       request.then(
         () => {
-          showToast('error', 'Registration success');
+          showToast('success', 'Registration success');
           onModalClose(false);
           this.setState({ isLoading: false });
         },
