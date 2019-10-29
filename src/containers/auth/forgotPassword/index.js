@@ -26,7 +26,7 @@ class ForgotPassword extends PureComponent {
     const errors = emailValidate(email);
 
     if (!isEmpty(errors)) {
-      toast.info(errors.email);
+      toast.error(errors.email);
       return false;
     }
     return true;

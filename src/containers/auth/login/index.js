@@ -83,7 +83,7 @@ class Login extends Component {
 
     if (!isEmpty(errors)) {
       Object.keys(errors).forEach(key => {
-        toast.info(errors[key]);
+        toast.error(errors[key]);
       }); 
     } else {
       const request = new Promise((resolve, reject) => {
@@ -93,7 +93,7 @@ class Login extends Component {
 
       request.then(
         () => {
-          toast.success('Login success');
+          toast.error('Login success');
           onModalClose(false);
           this.setState({ isLoading: false });
         },

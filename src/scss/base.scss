@@ -20,3 +20,8 @@ h6 {
 .hidden_text {
   display: none;
 }
+
+.Toastify__toast--error {
+  background: $gradient;
+  border-radius: 8px;
+}

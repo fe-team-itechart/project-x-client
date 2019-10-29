@@ -82,7 +82,7 @@ class Register extends Component {
 
     if (!isEmpty(errors)) {
       Object.keys(errors).forEach(key => {
-        toast.info(errors[key]);
+        toast.error(errors[key]);
       }); 
     } else {
       const request = new Promise((resolve, reject) => {
@@ -100,7 +100,7 @@ class Register extends Component {
 
       request.then(
         () => {
-          toast.success('Registration success');
+          toast.error('Registration success');
           onModalClose(false);
           this.setState({ isLoading: false });
         },
