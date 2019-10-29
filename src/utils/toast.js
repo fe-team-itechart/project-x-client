@@ -1,10 +1,11 @@
 import { toast } from 'react-toastify';
 
-export const showToast = ({ type, message }) => {
+export const showToast = ( type, message ) => {
   const options = {
     autoClose: 2000,
-    position: toast.POSITION.TOP_CENTER,
+    position: toast.POSITION.TOP_RIGHT,
     hideProgressBar: false,
+    className: 'toastifyMessage',
   };
 
   if (type === 'success') {

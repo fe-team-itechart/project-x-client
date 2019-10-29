@@ -13,7 +13,7 @@ import {
   FaEnvelope,
 } from 'react-icons/fa';
 import { withTranslation } from 'react-i18next';
-import { toast } from 'react-toastify';
+import { showToast } from '../../../utils/toast';
 
 import { Spinner } from '../../../components/spinner';
 import { Modal } from '../../../components/modal';
@@ -24,7 +24,6 @@ import GoogleIcon from '../../../../public/assets/google.svg';
 import LinkedInIcon from '../../../../public/assets/linkedin.svg';
 
 import styles from '../styles.module.scss';
-import 'react-toastify/dist/ReactToastify.css';
 
 class Register extends Component {
   state = {
@@ -82,7 +81,7 @@ class Register extends Component {
 
     if (!isEmpty(errors)) {
       Object.keys(errors).forEach(key => {
-        toast.error(errors[key]);
+        showToast('error', errors[key]);
       }); 
     } else {
       const request = new Promise((resolve, reject) => {
@@ -100,12 +99,12 @@ class Register extends Component {
 
       request.then(
         () => {
-          toast.error('Registration success');
+          showToast('error', 'Registration success');
           onModalClose(false);
           this.setState({ isLoading: false });
         },
         errors => {
-          toast.error(errors.message);
+          showToast('error', errors.message);
           this.setState({ isLoading: false });
         }
       );

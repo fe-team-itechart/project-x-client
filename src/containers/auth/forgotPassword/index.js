@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import { withTranslation } from 'react-i18next';
-import { toast } from 'react-toastify';
+import { showToast } from '../../../utils/toast';
 
 import { forgotPasswordRequest } from '../../../services/auth';
 import { emailValidate } from '../../../validation/auth';
@@ -12,7 +12,6 @@ import { Spinner } from '../../../components/spinner';
 import { Modal } from '../../../components/modal';
 
 import styles from './styles.module.scss';
-import 'react-toastify/dist/ReactToastify.css';
 
 class ForgotPassword extends PureComponent {
   state = {
@@ -26,7 +25,7 @@ class ForgotPassword extends PureComponent {
     const errors = emailValidate(email);
 
     if (!isEmpty(errors)) {
-      toast.error(errors.email);
+      showToast('error', errors.email);
       return false;
     }
     return true;
@@ -45,7 +44,7 @@ class ForgotPassword extends PureComponent {
 
       const { status, message } = await forgotPasswordRequest({ email });
 
-      if( status !== 200 ) toast.error(message);
+      if( status !== 200 ) showToast('error', message);
 
       this.setState({
         pending: false,
