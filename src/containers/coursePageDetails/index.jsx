@@ -10,7 +10,6 @@ import { Spinner } from '../../components/spinner';
 
 import styles from './styles.module.scss';
 
-
 class CoursePageDetails extends Component {
   state = {
     course: {},
@@ -76,8 +75,7 @@ class CoursePageDetails extends Component {
 
     const { isLoading, showReviewsNum, error, subscribed } = this.state;
 
-    const { isAuthenticated } = this.props;
-    const { t: translate } = this.props;
+    const { t: translate, isAuthenticated } = this.props;
 
     return (
       <main className={styles.coursePageDetailsWrapper}>
