@@ -16,10 +16,10 @@
   .spinner {
     display: block;
     width: 70%;
-    max-width: 400px;
+    max-width: 100px;
 
     border-radius: 50%;
-    border-top: 10px solid $orange;
+    border-top: 3px solid $orange;
 
     animation: spin 1.5s linear infinite;
   }
