@@ -1,0 +1,28 @@
+@import '../../../scss/shared/colors.scss';
+
+.itemList {
+    padding: 5px;
+}
+
+.itemListTitle:hover {
+    cursor: pointer;
+    color: $orange;
+}
+
+
+.listShowTrue {
+  overflow: hidden;
+  -webkit-transition: max-height 0.2s linear, padding 0.2s linear;
+  transition: max-height 0.2s linear, padding 0.2s linear;
+  max-height: 700px;
+  padding: 10px 10px;
+}
+
+.listShowFalse {
+  overflow: hidden;
+  padding: 0px 10px;
+  max-height: 0px;
+  -webkit-transition: max-height 0.2s linear, padding 0.2s linear;
+  transition: max-height 0.2s linear, padding 0.2s linear;
+}
+

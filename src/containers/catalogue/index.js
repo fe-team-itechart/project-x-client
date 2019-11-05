@@ -5,9 +5,11 @@ import { withTranslation } from 'react-i18next';
 
 import { Spinner } from '../../components/spinner';
 import CourseCard from '../../components/courseCard';
+import TreeCategories from '../treeCategories';
 import { getCoursesByAttribute } from '../../services/course';
 
 import styles from './styles.module.scss';
+
 
 class Catalogue extends Component {
   state = {
@@ -41,10 +43,11 @@ class Catalogue extends Component {
 
     return (
       <main className={styles.mainPageWrapper}>
+        <TreeCategories />
         {this.state.isLoading ? (
           <Spinner />
         ) : (
-          <>
+          <div>
             <div className={styles.searchValueWrapper}>
               <h3>/{this.state.searchValue}/</h3>
             </div>
@@ -67,7 +70,7 @@ class Catalogue extends Component {
                 </h2>
               )}
             </section>
-          </>
+          </div>
         )}
       </main>
     );
