@@ -1,5 +1,6 @@
 @import '../../scss/shared/colors.scss';
 @import '../../scss/mixins/button.scss';
+@import '../../scss/shared/breakpoints.scss';
 
 .coursePageDetailsWrapper {
   display: flex;
@@ -10,6 +11,64 @@
   & > div {
     padding: 15px 25px;
   }
+
+  .headerWrapper {
+    display: flex;
+
+    .headerDescription {
+      flex: 1 1 auto;
+    }
+
+    .subscribeButtonWrapper {
+      flex: 0 0 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .subscribeButton {
+        @include primary-button;
+        width: 70%;
+        height: 100px;
+        font-size: 1.4em;
+      }
+
+      .subscribeNotification {
+        color: $white;
+        border: 1px solid $white;
+        border-radius: 8px;
+        padding: 13px 20px;
+        font-size: 1.4em;
+        width: 70%;
+        height: 100px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    
+    @media (max-width: $width-lg) {
+      flex-direction: column;
+      
+      .subscribeButtonWrapper {
+        flex: 1 1 100px;
+      }
+
+      .subscribeButtonWrapper {
+
+        .subscribeButton {
+          width: 250px;
+          height: auto;
+        }
+
+        .subscribeNotification {
+          width: 250px;
+          height: auto;
+        }
+      }
+    }
+  }
+
 
   .error {
     text-align: center;
@@ -87,6 +146,8 @@
       transition: none;
     }
   }
+
+ 
 
   hr {
     background-color: $bcg-gray-dark;

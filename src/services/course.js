@@ -1,11 +1,6 @@
 import { httpService } from './httpService';
 import { links } from '../utils/constants';
-
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-  },
-};
+import { storageWrapper } from './storageService';
 
 export const getCourseDetails = async id => {
   let response = {};
@@ -13,7 +8,6 @@ export const getCourseDetails = async id => {
   try {
     const course = await httpService.get({
       url: links.coursePreviewRoute + id,
-      config,
     });
 
     response = {
@@ -23,7 +17,6 @@ export const getCourseDetails = async id => {
 
     return response;
   } catch (error) {
-
     response = {
       error: true,
       data: error.response.data,
@@ -36,7 +29,6 @@ export const getCourseDetails = async id => {
 export const getCoursesForCarousel = async () => {
   const { data } = await httpService.get({
     url: links.coursesCarouselRoute,
-    config,
   });
 
   return data;
@@ -45,7 +37,6 @@ export const getCoursesForCarousel = async () => {
 export const getCoursesByAttribute = async (search, limit) => {
   const { data } = await httpService.get({
     url: links.searchCourses,
-    config,
     params: {
       search,
       limit,
@@ -53,4 +44,39 @@ export const getCoursesByAttribute = async (search, limit) => {
   });
 
   return data.data;
+};
+
+export const subscribeCourse = async courseId => {
+  const config = {
+    headers: {
+      Authorization: storageWrapper.getToken(),
+    },
+  };
+
+  const { data } = await httpService.post({
+    url: `${links.subscribeCourse}/${courseId}`,
+    config,
+    data: {},
+  });
+
+  return data.data;
+};
+
+export const subscribeCourseCheck = async courseId => {
+  const config = {
+    headers: {
+      Authorization: storageWrapper.getToken(),
+    },
+    validateStatus: status => status >= 200 && status < 500,
+  };
+
+  const { data } = await httpService.get({
+    url: `${links.subscribeCourseCheck}/${courseId}`,
+    config,
+    data: {},
+  });
+
+  const response = data.status >= 300 ? data : data.data;
+
+  return response;
 };
