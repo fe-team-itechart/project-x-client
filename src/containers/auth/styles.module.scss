@@ -22,7 +22,7 @@ form {
     @include primary-input;
     display: flex;
     width: 75%;
-    margin: 15px 15px 0;
+    margin: 20px 15px 0;
     align-items: center;
 
     svg {
@@ -58,7 +58,7 @@ form {
   input {
     @include primary-input;
     width: 75%;
-    margin: 15px 15px 0;
+    margin: 20px 15px 0;
   }
 
   .invalidFeedback {
@@ -71,14 +71,14 @@ form {
   .submit {
     @include primary-button;
     width: 140px;
-    margin: 10px 0 15px 0;
+    margin: 15px 0;
   }
 
   .socialButtonsContainer {
     display: flex;
     justify-content: space-around;
     width: 105px;
-    margin-top: 10px;
+    margin-bottom: 10px;
 
     .googleButton,
     .linkedinButton {

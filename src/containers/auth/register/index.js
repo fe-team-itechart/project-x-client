@@ -13,6 +13,7 @@ import {
   FaEnvelope,
 } from 'react-icons/fa';
 import { withTranslation } from 'react-i18next';
+import { showToast } from '../../../utils/toast';
 
 import { Spinner } from '../../../components/spinner';
 import { Modal } from '../../../components/modal';
@@ -30,7 +31,6 @@ class Register extends Component {
     email: '',
     password: '',
     confirmPassword: '',
-    errors: {},
     hidden: true,
     isLoading: false,
   };
@@ -58,7 +58,6 @@ class Register extends Component {
       email: '',
       password: '',
       confirmPassword: '',
-      errors: {},
     });
   };
 
@@ -81,7 +80,9 @@ class Register extends Component {
     const errors = registerValidate(userName, email, password, confirmPassword);
 
     if (!isEmpty(errors)) {
-      this.setState({ errors });
+      Object.keys(errors).forEach(key => {
+        showToast('error', errors[key]);
+      }); 
     } else {
       const request = new Promise((resolve, reject) => {
         this.setState({ isLoading: true });
@@ -98,11 +99,13 @@ class Register extends Component {
 
       request.then(
         () => {
+          showToast('success', 'Registration success');
           onModalClose(false);
-          this.setState({ errors: {}, isLoading: false });
+          this.setState({ isLoading: false });
         },
         errors => {
-          this.setState({ errors, isLoading: false });
+          showToast('error', errors.message);
+          this.setState({ isLoading: false });
         }
       );
     }
@@ -114,7 +117,6 @@ class Register extends Component {
       email,
       password,
       confirmPassword,
-      errors,
       isLoading,
     } = this.state;
     const { modalStatus, t: translate } = this.props;
@@ -138,13 +140,6 @@ class Register extends Component {
                 onChange={this.onChange}
               />
             </div>
-            {errors.userName ? (
-              <span className={styles.invalidFeedback}>
-                {translate(`${errors.userName}`)}
-              </span>
-            ) : (
-              <div className={styles.reservedPlace}/>
-            )}
 
             <div className={styles.iconInput}>
               <FaEnvelope />
@@ -157,13 +152,6 @@ class Register extends Component {
                 onChange={this.onChange}
               />
             </div>
-            {errors.email || errors.status === 400 ? (
-              <span className={styles.invalidFeedback}>
-                {errors.email ? translate(`${errors.email}`) : errors.message}
-              </span>
-            ) : (
-              <div className={styles.reservedPlace} />
-            )}
 
             <div className={styles.iconInput}>
               <div className={styles.password}>
@@ -181,11 +169,6 @@ class Register extends Component {
                 {this.state.hidden ? <FaEye /> : <FaEyeSlash />}
               </div>
             </div>
-            {errors.password ? (
-              <span className={styles.invalidFeedback}>{translate(`${errors.password}`) }</span>
-            ) : (
-              <div className={styles.reservedPlace} />
-            )}
 
             <div className={styles.iconInput}>
               <FaLock />
@@ -198,15 +181,10 @@ class Register extends Component {
                 onChange={this.onChange}
               />
             </div>
-            {errors.confirmPassword || errors.status === 403 ? (
-              <span className={styles.invalidFeedback}>
-                {errors.confirmPassword
-                  ? errors.confirmPassword
-                  : errors.message}
-              </span>
-            ) : (
-              <div className={styles.reservedPlace} />
-            )}
+
+            <button type="submit" className={styles.submit}>
+              {`${translate('Create account')}`}
+            </button>
 
             <div className={styles.socialButtonsContainer}>
               <a href={links.googleURL}>
@@ -224,10 +202,6 @@ class Register extends Component {
                 </div>
               </a>
             </div>
-
-            <button type="submit" className={styles.submit}>
-              {`${translate('Create account')}`}
-            </button>
             
             <span
               onClick={this.alreadyHaveAccount}
